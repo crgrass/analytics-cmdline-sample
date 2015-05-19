@@ -1,0 +1,19 @@
+.text-area {
+	-fx-background-color: rgba(53,89,119,0.4);
+	-fx-font:16px "Serif";
+}
+
+#text-flow {
+	-fx-background-color: rgba(255,255,255, 0.9);
+}
+
+
+
+#test {
+	-fx-font:20px "Serif";
+}
+
+#import-complete {
+	-fx-font:16px "Serif";
+	-fx-text-fill: green;
+}
