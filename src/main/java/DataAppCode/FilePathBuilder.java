@@ -28,11 +28,17 @@ import java.util.Map.Entry;
  */
 public class FilePathBuilder {
 
-public static Map<String,String> buildFilePathMap() {
+
+  /*
+   * The buildFilePathMap loads a map with a key for each
+   * Vendor and that vendors local filepath directory housing import
+   * files as the key.
+   */
+  public static Map<String,String> buildFilePathMap() {
   
   Map<String,String> fileLocations = new HashMap<String,String>();
   
-  //Will leave this for now
+  //TODO: Adwords does not recquire a import folder and this should eventually be removed 
   fileLocations.put("Google Adwords", "Z:\\marketing\\common\\Marketing Data App\\FileCheckTest\\fileCheckTest.txt");
   
   fileLocations.put("Centro Digital Display", 
@@ -53,10 +59,12 @@ public static Map<String,String> buildFilePathMap() {
   
   fileLocations.put("LinkedIn", "C:\\Users\\cgrass\\Dropbox\\Vendor Data - Import and Archive\\LinkedIn\\FY15\\FY15 LinkedIn Reporting - Weekly Drop Folder");
   
-  //Iterate through hash map
-  //append \\
-  //append vendorName
-  //append startDate
+  
+  /*
+   * The following code block determines what the filename of the correct import file is.
+   * This is determined based off of the naming convention that each file will be named
+   * [Vendor]_[YYYY_MM_DD].csv. 
+   */
   
   Iterator<Entry<String, String>> itr = fileLocations.entrySet().iterator();
   while (itr.hasNext()) {
@@ -66,16 +74,101 @@ public static Map<String,String> buildFilePathMap() {
     if (!currVendor.contains("Centro")) {
       currFilePath = currFilePath + "\\"+ currVendor + "_" + DataAppTest.startDate.toString() +".csv";
     } else {
+      //TODO: Eliminate the need for a special case here.
+      //A special case is required for centro as there are four different mediums that come from this
+      //vendor
       currFilePath = currFilePath + "\\Centro"+ "_" + DataAppTest.startDate.toString() +".csv";
     }
     
-    fileLocations.put(currVendor,currFilePath);
+    fileLocations.put(currVendor,currFilePath); // replace existing entries with updated entrieds
+  }//end of while
+  
+  return fileLocations;
+}
+  
+  
+  
+  
+  
+  /*
+   * The buildFilePathMapDropBox loads a map with a key for each
+   * Vendor and that vendors dropbox directory housing import
+   * files as the key.
+   */
+  public static Map<String,String> buildFilePathMapDropBox() {
+  
+  Map<String,String> fileLocations = new HashMap<String,String>();
+  
+  //TODO: Adwords does not require a import folder and this should eventually be removed 
+  fileLocations.put("Google Adwords", "Z:\\marketing\\common\\Marketing Data App\\FileCheckTest\\fileCheckTest.txt");
+  
+  fileLocations.put("Centro Digital Display", 
+      "C:\\Users\\cgrass\\Dropbox\\Vendor Data - Import and Archive\\Centro\\FY15\\FY15 Centro Reporting - Weekly Drop Folder");
+  
+  fileLocations.put("Centro Mobile Display", 
+      "C:\\Users\\cgrass\\Dropbox\\Vendor Data - Import and Archive\\Centro\\FY15\\FY15 Centro Reporting - Weekly Drop Folder");
+  
+  fileLocations.put("Centro Video Display", 
+      "C:\\Users\\cgrass\\Dropbox\\Vendor Data - Import and Archive\\Centro\\FY15\\FY15 Centro Reporting - Weekly Drop Folder");
+  
+  fileLocations.put("Centro Rich Media", 
+      "C:\\Users\\cgrass\\Dropbox\\Vendor Data - Import and Archive\\Centro\\FY15\\FY15 Centro Reporting - Weekly Drop Folder");
+  
+  fileLocations.put("Facebook", "C:\\Users\\cgrass\\Dropbox\\Vendor Data - Import and Archive\\Facebook\\FY15\\FY15 Facebook Reporting - Weekly Drop Folder");
+  
+  fileLocations.put("Twitter", "C:\\Users\\cgrass\\Dropbox\\Vendor Data - Import and Archive\\Twitter\\FY15\\FY15 Twitter Reporting - Weekly Drop Folder");
+  
+  fileLocations.put("LinkedIn", "/Vendor Data - Import and Archive/LinkedIn/FY15//FY15 LinkedIn Reporting - Weekly Drop Folder");
+  
+  
+  /*
+   * The following code block determines what the filename of the correct import file is.
+   * This is determined based off of the naming convention that each file will be named
+   * [Vendor]_[YYYY_MM_DD].csv. 
+   */
+  
+  Iterator<Entry<String, String>> itr = fileLocations.entrySet().iterator();
+  while (itr.hasNext()) {
+    Map.Entry<String,String> pairs = itr.next();
+    String currVendor = pairs.getKey();
+    String currFilePath = pairs.getValue();
+    if (!currVendor.contains("Centro")) {
+      currFilePath = currFilePath + "\\"+ currVendor + "_" + DataAppTest.startDate.toString() +".csv";
+    } else {
+      //TODO: Eliminate the need for a special case here.
+      //A special case is required for centro as there are four different mediums that come from this
+      //vendor
+      currFilePath = currFilePath + "\\Centro"+ "_" + DataAppTest.startDate.toString() +".csv";
+    }
+    
+    fileLocations.put(currVendor,currFilePath); // replace existing entries with updated entrieds
   }//end of while
   
   return fileLocations;
 }
 
-public static Map<String,String> dummyFilePathMap() {
+  
+  public static void main(String[] args) {
+    
+    
+    Map<String,String> test = buildFilePathMap();
+    
+    Iterator<Entry<String, String>> itr = test.entrySet().iterator();
+    while (itr.hasNext()) {
+      Map.Entry<String,String> pairs = itr.next();
+      String currFilePath = pairs.getValue();
+      System.out.println(currFilePath);
+    }//end of while
+    
+    
+
+  }
+  
+  
+  
+//TODO: Determine if this following method is used anywhere. If this was just a starter method the 
+  
+  public static Map<String,String> dummyFilePathMap() {
   
   Map<String,String> fileLocations = new HashMap<String,String>();
   
@@ -103,22 +196,5 @@ public static Map<String,String> dummyFilePathMap() {
   
   return fileLocations;
 }
-  
-  
-  public static void main(String[] args) {
-    
-    
-    Map<String,String> test = buildFilePathMap();
-    
-    Iterator<Entry<String, String>> itr = test.entrySet().iterator();
-    while (itr.hasNext()) {
-      Map.Entry<String,String> pairs = itr.next();
-      String currFilePath = pairs.getValue();
-      System.out.println(currFilePath);
-    }//end of while
-    
-    
-
-  }
 
 }

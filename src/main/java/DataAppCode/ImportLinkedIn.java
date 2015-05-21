@@ -168,7 +168,11 @@ public class ImportLinkedIn {
     guiCode.DataAppTest.outputDisplay.write(OutputMessages.startingVendorImport("LinkedIn"));
     
     //Read csv and return raw data
-    Map<String,String> filePaths = FilePathBuilder.buildFilePathMap();
+    //TODO: This filepathBuilder map is built every time a vendor import file is run.
+    //This is wasteful and should be created once and then stored for multiple uses.
+    
+    
+    Map<String,String> filePaths = FilePathBuilder.buildFilePathMap(); //contains all vendors and their respective import directory paths
     ArrayList<String[]> data = null;
     try {
       System.out.println("Reading LinkedIn File...\n");
