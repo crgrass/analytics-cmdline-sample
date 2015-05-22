@@ -16,6 +16,7 @@ package DataAppCode;
 import com.dropbox.core.*;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Locale;
 import java.awt.Desktop;
 import java.net.URI;
@@ -135,11 +136,27 @@ public class dropboxAPITest {
     
     try {
       client = providedDBConnection();
-      DbxEntry.File f = testDownloadLinkedIn(client);
-      
+      File f = testDownloadLinkedIn(client);
 //      listContents(client);
     } catch (Exception e) {
       e.printStackTrace();
+    }
+    
+    ArrayList<String[]> data = null;
+    
+    System.out.println("Attempting to read data into array");
+    try {
+      data = CSVReaders.readLICsv("retrievedLinkedIn.csv");
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+    
+    
+    System.out.println("Printing Data: ");
+    for (String[] row: data) {
+      for (String metric : row) {
+        System.out.println(metric);
+      }
     }
     
     

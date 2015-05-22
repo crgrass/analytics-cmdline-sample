@@ -14,6 +14,7 @@
 
 package DataAppCode;
 
+import com.dropbox.core.DbxException;
 import com.google.api.services.analytics.model.GaData;
 import com.google.api.services.samples.analytics.cmdline.GACall;
 import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
@@ -164,23 +165,43 @@ public class ImportLinkedIn {
 
 
   public static void main(String[] args) {
+    System.out.println("Importing LinkedIn");
     
-    guiCode.DataAppTest.outputDisplay.write(OutputMessages.startingVendorImport("LinkedIn"));
+//    guiCode.DataAppTest.outputDisplay.write(OutputMessages.startingVendorImport("LinkedIn"));
     
     //Read csv and return raw data
     //TODO: This filepathBuilder map is built every time a vendor import file is run.
     //This is wasteful and should be created once and then stored for multiple uses.
     
     
-    Map<String,String> filePaths = FilePathBuilder.buildFilePathMap(); //contains all vendors and their respective import directory paths
+    Map<String,String> filePaths = FilePathBuilder.buildFilePathMapDropBox(); //contains all vendors and their respective import directory paths
     ArrayList<String[]> data = null;
     try {
+      
+      //pull down data, write to file and overwrite any existing files
+      try {
+         DropBoxConnection.pullCSV("LinkedIn");
+      } catch (DbxException exception) {
+        // TODO Auto-generated catch block
+        exception.printStackTrace();
+      }
+      
+      
       System.out.println("Reading LinkedIn File...\n");
-      data = CSVReaders.readLICsv(filePaths.get("LinkedIn"));
+      data = CSVReaders.readLICsv("retrievedLinkedIn.csv");
       System.out.println("LinkedIn Read Complete.\n");
     } catch (IOException exception) {
       // TODO Auto-generated catch block
       exception.printStackTrace();
+    }
+    
+    System.out.println("About to print array.");
+    System.out.println("Size: " + data.size());
+    for (String[] row : data) {
+      for (String item : row) {
+        System.out.println(item);
+      }
+      System.out.println("");
     }
     CSVReaders.removeHeader(data);
     CSVReaders.removeTail(data);

@@ -1,6 +1,7 @@
 package guiCode;
 
 import javafx.scene.control.ScrollPane;
+import DataAppCode.DropBoxConnection;
 import javafx.scene.text.TextFlow;
 import javafx.scene.web.HTMLEditor;
 import javafx.beans.property.SimpleStringProperty;
@@ -62,7 +63,7 @@ public class DataAppTest extends Application {
 
 	@Override
 	public void start(Stage primaryStage) {
-//	  System.setOut(ps); These redirect standard output to app console
+//	  System.setOut(ps); //These redirect standard output to app console
 //	  System.setErr(ps);
 	  
 	  
@@ -132,23 +133,24 @@ public class DataAppTest extends Application {
 	  fileHandler.setFormatter(formatter);
 	  Logger.getLogger("").addHandler(fileHandler);
 	  
-	  //preserve older stdout/stderr streams
-	  PrintStream stdout = System.out;
-	  PrintStream stderr = System.err;
+//	  //preserve older stdout/stderr streams
+//	  PrintStream stdout = System.out;
+//	  PrintStream stderr = System.err;
+//	  
+//	  //rebind stdout/stderr to logger
+//	  Logger logger;
+//	  LoggingOutputStream los;
+//	  
+//	  logger = Logger.getLogger("stdout");
+//	  los = new LoggingOutputStream(logger, StdOutErrLevel.STDOUT);
+//	  System.setOut(new PrintStream(los,true));
+//	  
+//	  logger = Logger.getLogger("stderr");
+//	  los = new LoggingOutputStream(logger, StdOutErrLevel.STDERR);
+//	  System.setErr(new PrintStream(los,true));
 	  
-	  //rebind stdout/stderr to logger
-	  Logger logger;
-	  LoggingOutputStream los;
-	  
-	  logger = Logger.getLogger("stdout");
-	  los = new LoggingOutputStream(logger, StdOutErrLevel.STDOUT);
-	  System.setOut(new PrintStream(los,true));
-	  
-	  logger = Logger.getLogger("stderr");
-	  los = new LoggingOutputStream(logger, StdOutErrLevel.STDERR);
-	  System.setErr(new PrintStream(los,true));
-	  
-	  
+	  //Open connection to dropbox API
+	  DropBoxConnection.initializeDropboxConnection();
 	  
 	  //master method for JavaFX
 	  launch(args);
