@@ -14,6 +14,7 @@
 
 package DataAppCode;
 
+import com.dropbox.core.DbxException;
 import com.google.api.services.analytics.model.GaData;
 import com.google.api.services.samples.analytics.cmdline.GACall;
 import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
@@ -42,7 +43,7 @@ public class ImportTwitter {
 
     PreparedStatement updateTW = null;
 
-    String tblName = "DATESTtblTWitterMetrics";
+    String tblName = "DATESTtblTwitterMetrics";
     //These fields are out of order
     String fields = "(startDate,endDate,componentName,source,medium,TWclicks,clicks,impressions,"
         + "CTR,CPC,spend,engagements,billedEngagements,retweets,replies,follows,favorites,"
@@ -119,19 +120,32 @@ public class ImportTwitter {
 
     guiCode.DataAppTest.outputDisplay.write(OutputMessages.startingVendorImport("Twitter"));
     
+    Map<String,String> filePaths = FilePathBuilder.buildFilePathMapDropBox(); //contains all vendors and their respective import directory paths
+    ArrayList<String[]> data = null;
+    try {
+      
+      //pull down data, write to file and overwrite any existing files
+      try {
+         DropBoxConnection.pullCSV("Twitter");
+      } catch (DbxException exception) {
+        // TODO Auto-generated catch block
+        exception.printStackTrace();
+      } catch (IOException exception) {
+        // TODO Auto-generated catch block
+        exception.printStackTrace();
+      }
+    
     //Read csv and return raw data
     
-    Map<String,String> filePaths = FilePathBuilder.buildFilePathMap();
-    
-    ArrayList<String[]> data = new ArrayList<String[]>();
     try {
       System.out.println("Reading Twitter File...\n");
-      data = CSVReaders.readLICsv(filePaths.get("Twitter"));
+      data = CSVReaders.readLICsv("retrievedTwitter.csv");
       System.out.println("Twitter File Read Complete.\n");
     } catch (IOException e) {
       System.out.println("There was a problem reading the Twitter File.");
       e.printStackTrace();
     }
+    
     
     CSVReaders.removeHeader(data);
     CSVReaders.removeTail(data); //If data is missing this may be the reason why
@@ -189,6 +203,10 @@ public class ImportTwitter {
 
     guiCode.DataAppTest.outputDisplay.write(OutputMessages.vendorImportComplete("Twitter"));
 
-  }//end of main
+  } finally {
+    
+  }
 
-}//end of Import Twitter
+}
+
+}

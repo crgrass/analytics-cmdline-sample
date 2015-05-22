@@ -14,6 +14,7 @@
 
 package DataAppCode;
 
+import com.dropbox.core.DbxException;
 import com.google.api.services.analytics.model.GaData;
 import com.google.api.services.samples.analytics.cmdline.GACall;
 import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
@@ -42,7 +43,7 @@ public class ImportFB {
 
     PreparedStatement updateFB = null;
 
-    String tblName = "DATESTtblFBMetrics";
+    String tblName = "DATESTtblFacebookMetrics";
     //These fields are out of order
     String fields = "(startDate,endDate,componentName,placement,device,source,medium,reach,frequency,clicks,"
         + "uniqueClicks,websiteClicks,impressions,CTR,uniqueCTR,averageCPC,averageCPM,CP1KR,actions,PTA,spend,"
@@ -122,10 +123,23 @@ public class ImportFB {
     
     guiCode.DataAppTest.outputDisplay.write(OutputMessages.startingVendorImport("Facebook"));
     
+    Map<String,String> filePaths = FilePathBuilder.buildFilePathMapDropBox(); //contains all vendors and their respective import directory paths
+    ArrayList<String[]> data = null;
+    try {
+      
+      //pull down data, write to file and overwrite any existing files
+      try {
+         DropBoxConnection.pullCSV("Facebook"); //TODO: These
+      } catch (DbxException exception) {
+        exception.printStackTrace();
+      } catch (IOException exception) {
+        exception.printStackTrace();
+      }
+      
+    
   //Read csv and return raw data
-    Map<String,String> filePaths = FilePathBuilder.buildFilePathMap();
     System.out.println("Reading Facebook File...\n");
-    ArrayList<String[]> data = CSVReaders.readCsv(filePaths.get("Facebook"));
+    data = CSVReaders.readCsv("retrievedFacebook.csv");
     CSVReaders.removeHeader(data);
     CSVReaders.removeTail(data); //If data is missing this may be the reason why
     System.out.println("Facebook File Read Complete.\n");
@@ -170,6 +184,10 @@ public class ImportFB {
     }
     
     
+    for (FBRecord rec: acquisitionData) {
+      System.out.println(rec + "\n");
+    }
+    
     
     
   //execute query
@@ -184,6 +202,10 @@ public class ImportFB {
     DataAppTest.importActivity.reset();
     
     guiCode.DataAppTest.outputDisplay.write(OutputMessages.vendorImportComplete("Facebook"));
+  } finally {
+    
   }
 
+}
+  
 }

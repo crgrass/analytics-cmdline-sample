@@ -100,23 +100,23 @@ public class FilePathBuilder {
   Map<String,String> fileLocations = new HashMap<String,String>();
   
   //TODO: Adwords does not require a import folder and this should eventually be removed 
-  fileLocations.put("Google Adwords", "Z:\\marketing\\common\\Marketing Data App\\FileCheckTest\\fileCheckTest.txt");
+  fileLocations.put("Google Adwords", "/Vendor Data - Import and Archive/");
   
   fileLocations.put("Centro Digital Display", 
-      "C:\\Users\\cgrass\\Dropbox\\Vendor Data - Import and Archive\\Centro\\FY15\\FY15 Centro Reporting - Weekly Drop Folder");
+      "/Vendor Data - Import and Archive/Centro/FY15/FY15 Centro Reporting - Weekly Drop Folder");
   
   fileLocations.put("Centro Mobile Display", 
-      "C:\\Users\\cgrass\\Dropbox\\Vendor Data - Import and Archive\\Centro\\FY15\\FY15 Centro Reporting - Weekly Drop Folder");
+      "/Vendor Data - Import and Archive/Centro/FY15/FY15 Centro Reporting - Weekly Drop Folder");
   
   fileLocations.put("Centro Video Display", 
-      "C:\\Users\\cgrass\\Dropbox\\Vendor Data - Import and Archive\\Centro\\FY15\\FY15 Centro Reporting - Weekly Drop Folder");
+      "/Vendor Data - Import and Archive/Centro/FY15/FY15 Centro Reporting - Weekly Drop Folder");
   
   fileLocations.put("Centro Rich Media", 
-      "C:\\Users\\cgrass\\Dropbox\\Vendor Data - Import and Archive\\Centro\\FY15\\FY15 Centro Reporting - Weekly Drop Folder");
+      "/Vendor Data - Import and Archive/Centro/FY15/FY15 Centro Reporting - Weekly Drop Folder");
   
-  fileLocations.put("Facebook", "C:\\Users\\cgrass\\Dropbox\\Vendor Data - Import and Archive\\Facebook\\FY15\\FY15 Facebook Reporting - Weekly Drop Folder");
+  fileLocations.put("Facebook", "/Vendor Data - Import and Archive/Facebook/FY15/FY15 Facebook Reporting - Weekly Drop Folder");
   
-  fileLocations.put("Twitter", "C:\\Users\\cgrass\\Dropbox\\Vendor Data - Import and Archive\\Twitter\\FY15\\FY15 Twitter Reporting - Weekly Drop Folder");
+  fileLocations.put("Twitter", "/Vendor Data - Import and Archive/Twitter/FY15/FY15 Twitter Reporting - Weekly Drop Folder");
   
   fileLocations.put("LinkedIn", "/Vendor Data - Import and Archive/LinkedIn/FY15/FY15 LinkedIn Reporting - Weekly Drop Folder");
   
@@ -138,7 +138,7 @@ public class FilePathBuilder {
       //TODO: Eliminate the need for a special case here.
       //A special case is required for centro as there are four different mediums that come from this
       //vendor
-      currFilePath = currFilePath + "\\Centro"+ "_" + DataAppTest.startDate.toString() +".csv";
+      currFilePath = currFilePath + "//Centro"+ "_" + DataAppTest.startDate.toString() +".csv";
     }
     
     fileLocations.put(currVendor,currFilePath); // replace existing entries with updated entrieds

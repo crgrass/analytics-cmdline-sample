@@ -14,6 +14,7 @@
 
 package DataAppCode;
 
+import com.dropbox.core.DbxException;
 import com.google.api.services.analytics.model.GaData;
 import com.google.api.services.samples.analytics.cmdline.GACall;
 import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
@@ -145,17 +146,7 @@ public static void printGroupedData(HashMap<GroupID, ArrayList<String[]>> groupe
     Map.Entry pairs = (Map.Entry)it.next();
     System.out.println(pairs.getKey()); //this should trigger the too string method
     ArrayList<String[]> val = (ArrayList<String[]>)pairs.getValue();
-    System.out.println("This is the size of the array list: " + val.size());
-    System.out.println();
-    for (String[] row : val) {
-      for (int i = 0; i < row.length; i++) {
-        System.out.print(row[i] + ", ");
-      }
-      System.out.println();
-    }//end of row iteration
-    System.out.println();
   }//end of record iteration
-  System.out.println();
 }
   
   
@@ -221,9 +212,6 @@ public static void printGroupedData(HashMap<GroupID, ArrayList<String[]>> groupe
       }// end of outer loop
 
       Float aggCTR = (float)totalClicks/(float)totalImpressions;
-      System.out.println("Numerator: " + (float)totalClicks);
-      System.out.println("Denominator: " + (float)totalImpressions);
-      System.out.println("Result: " + (float)totalClicks/(float)totalImpressions);
       Float aggCPC = totalSpend/(float)totalClicks;
       Float kImpressions = (float)totalImpressions/1000;
       Float aggCPM = totalSpend/kImpressions;
@@ -325,11 +313,27 @@ public static void printGroupedData(HashMap<GroupID, ArrayList<String[]>> groupe
   public static void main(String[] args) {
     
     guiCode.DataAppTest.outputDisplay.write(OutputMessages.startingVendorImport("Centro Digital Display"));
+    
+    Map<String,String> filePaths = FilePathBuilder.buildFilePathMapDropBox(); //contains all vendors and their respective import directory paths
+    ArrayList<String[]> data = null;
+    try {
+      
+      //pull down data, write to file and overwrite any existing files
+      try {
+         DropBoxConnection.pullCSV("Centro Digital Display");
+      } catch (DbxException exception) {
+        // TODO Auto-generated catch block
+        exception.printStackTrace();
+      } catch (IOException exception) {
+        // TODO Auto-generated catch block
+        exception.printStackTrace();
+      }
   
     //Read csv and return raw data
-    Map<String,String> filePaths = FilePathBuilder.buildFilePathMap();
     System.out.println("Reading Centro Display File...\n");
-    ArrayList<String[]> data = CSVReaders.readCsv(filePaths.get("Centro Digital Display"));
+    data = CSVReaders.readCsv("retrievedCentro Digital Display.csv");
+
+    
     CSVReaders.removeHeader(data);
     CSVReaders.removeTail(data); //If data is missing this may be the reason why
     System.out.println("Centro Digital Display File Read Complete.\n");
@@ -390,6 +394,9 @@ public static void printGroupedData(HashMap<GroupID, ArrayList<String[]>> groupe
 
     guiCode.DataAppTest.outputDisplay.write(OutputMessages.vendorImportComplete("Centro Digital Display"));
 
+  } finally {
+    
   }
 
+}
 }

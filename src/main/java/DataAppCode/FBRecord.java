@@ -183,6 +183,14 @@ public class FBRecord implements importRecord {
       if (Float.isNaN(aggCPC)){
         aggCPC = 0.0f;
       }
+      
+      if (Float.isNaN(aggCPM)){
+        aggCPM = 0.0f;
+      }
+      
+      if (Float.isNaN(aggCP1KR) || Float.isInfinite(aggCP1KR)){
+        aggCP1KR = 0.0f;
+      }
 
       String startDate = guiCode.DataAppTest.startDate.toString();
       String endDate = guiCode.DataAppTest.endDate.toString();
@@ -195,6 +203,7 @@ public class FBRecord implements importRecord {
           aggCP1KR,totalActions,totalPTA,totalLikes,totalWebsiteClicks,totalSpend);
       FBRecordCollection.add(rec);
     }
+    
 
     return FBRecordCollection;
   }
