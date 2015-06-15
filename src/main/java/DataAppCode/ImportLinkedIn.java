@@ -195,14 +195,6 @@ public class ImportLinkedIn {
       exception.printStackTrace();
     }
     
-    System.out.println("About to print array.");
-    System.out.println("Size: " + data.size());
-    for (String[] row : data) {
-      for (String item : row) {
-        System.out.println(item);
-      }
-      System.out.println("");
-    }
     CSVReaders.removeHeader(data);
     CSVReaders.removeTail(data);
     

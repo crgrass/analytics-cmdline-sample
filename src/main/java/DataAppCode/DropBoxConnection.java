@@ -115,7 +115,7 @@ public class DropBoxConnection {
     //The file exists
     File f = new File("dropboxAccess.txt");//File contains the access code
     if (!f.exists()) {//if the file doesn't exists
-      System.out.println("The file does not exist.");
+      System.out.println("The dropboxAccess.txt file does not exist.");
       //get the access code
       try {
         authorizeDropbox();
@@ -125,6 +125,8 @@ public class DropBoxConnection {
         exception.printStackTrace();
       }
     } else {//The file exists
+      System.out.println("The Dropbox access file was found."
+          + " Authorization token created and additional authorization is not required.\n");
       
       try {
         DbxAppInfo appInfo = new DbxAppInfo(APP_KEY,APP_SECRET); //Create app Info
@@ -153,13 +155,18 @@ public class DropBoxConnection {
   
   public static File pullCSV(String vendor) throws DbxException, IOException {
     DbxEntry.File md;
+    //where is this file built in mac
     File outputFile = new File("retrieved" + vendor + ".csv");
     OutputStream out = new FileOutputStream(outputFile);
     
     try {
       Map<String,String> paths = FilePathBuilder.buildFilePathMapDropBox();
+      //check if the file exists
+      System.out.println("In pull csv.");
+      if (client.getMetadata(paths.get(vendor)) == null ) {
+        System.out.println("The file at path " + paths.get(vendor) + " could not be found");
+      }
       md = client.getFile(paths.get(vendor), null, out); //null second param indicates latest version requested
-      System.out.println("Printing output:");
       BufferedReader r = new BufferedReader( new FileReader(outputFile));
       String s = "", line = null;
       while((line = r.readLine()) != null) {
@@ -183,7 +190,6 @@ public class DropBoxConnection {
   public static void main(String[] args) {
     
     initializeDropboxConnection();
-    System.out.println("DropBoxConnection Main Method Complete.");
 
   }//end of main method
 

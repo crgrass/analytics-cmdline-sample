@@ -318,7 +318,7 @@ public static void printGroupedData(HashMap<GroupID, ArrayList<String[]>> groupe
     ArrayList<String[]> data = null;
     try {
       
-      //pull down data, write to file and overwrite any existing files
+      //pull down data from dropbox, write to file and overwrite any data files
       try {
          DropBoxConnection.pullCSV("Centro Digital Display");
       } catch (DbxException exception) {
@@ -329,27 +329,27 @@ public static void printGroupedData(HashMap<GroupID, ArrayList<String[]>> groupe
         exception.printStackTrace();
       }
   
-    //Read csv and return raw data
-    System.out.println("Reading Centro Display File...\n");
+    //Read csv generated and return raw data
+    System.out.println("Reading Centro Display File... ");
     data = CSVReaders.readCsv("retrievedCentro Digital Display.csv");
 
     
     CSVReaders.removeHeader(data);
     CSVReaders.removeTail(data); //If data is missing this may be the reason why
-    System.out.println("Centro Digital Display File Read Complete.\n");
+    System.out.print("Complete.\n");
     
     //Now that we have the raw data in ArrayList<String[]> form
     //We need to group appropriately into a hashmap
     //We will then iterate through the HashMap and aggregate each entry
     
-    System.out.println("Grouping Data by Source, Medium and Campaign...\n");
+    System.out.println("Grouping Data by Source, Medium and Campaign... ");
     HashMap<GroupID, ArrayList<String[]>> groupedData = groupRawData(data);
-    System.out.println("Grouping Complete.\n");
+    System.out.print("Complete.\n");
 
     
-    System.out.println("Aggregating Centro Digital Display Data...\n");
+    System.out.println("Aggregating Centro Digital Display Data... ");
     ArrayList<DDRecord> acquisitionData = aggregate(groupedData);
-    System.out.println("Aggregation Complete.\n");
+    System.out.print("Complete.\n");
 
     System.out.println("Removing all records with 0 Impressions.\n");
     acquisitionData = importUtils.remove0ImpressionRecords(acquisitionData);
@@ -366,12 +366,12 @@ public static void printGroupedData(HashMap<GroupID, ArrayList<String[]>> groupe
     GaData behaviorResults = GACall.main(args,testDates,2);
     System.out.println("\nGoogle Analytics API Request Complete.\n");
     
-    //match behavior and acquisition data
-    System.out.println("Matching Acquisition Metrics to their respective behavior metrics...\n");
+    //match aggregated acquisition data and behavior data from Google Analytics
+    System.out.println("Matching Acquisition Metrics to their respective behavior metrics... ");
     importUtils.matchBehaviorAcq(acquisitionData, behaviorResults);
-    System.out.println("Matching Complete.\n");
+    System.out.print("Matching Complete.\n");
     
-    //Establish Connection
+    //Establish database connection
     Connection cnx = null;
     try {
 //      cnx = DatabaseUtils.getTestDBConnection();

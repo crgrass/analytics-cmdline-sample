@@ -14,6 +14,7 @@
 
 package DataAppCode;
 
+import com.dropbox.core.DbxException;
 import com.google.api.services.analytics.model.GaData;
 import com.google.api.services.samples.analytics.cmdline.GACall;
 import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
@@ -87,9 +88,14 @@ public class ImportMob {
         updateCentroMob.setString(5,currRec.getCampaign());
         updateCentroMob.setInt(6,currRec.getClicks());
         updateCentroMob.setInt(7,currRec.getImpressions());
+       
         updateCentroMob.setFloat(8,currRec.getCTR());
+
+
         updateCentroMob.setFloat(9,currRec.getAvgCPC());
+
         updateCentroMob.setFloat(10, currRec.getAvgCPM());
+
         updateCentroMob.setFloat(11,currRec.getTotalConversions());
         updateCentroMob.setFloat(12,currRec.getPCConversions());
         updateCentroMob.setFloat(13,currRec.getPIConversions());
@@ -101,6 +107,7 @@ public class ImportMob {
         updateCentroMob.setFloat(19,currRec.getBounceRate());
         updateCentroMob.setBoolean(20,currRec.getPartialWeek());
         updateCentroMob.setInt(21,currRec.getDaysActive());
+        
 
         updateCentroMob.executeUpdate();
         cnxn.commit();
@@ -115,10 +122,23 @@ public class ImportMob {
     
     guiCode.DataAppTest.outputDisplay.write(OutputMessages.startingVendorImport("Centro Mobile"));
     
-    Map<String,String> filePaths = FilePathBuilder.buildFilePathMap();
+    Map<String,String> filePaths = FilePathBuilder.buildFilePathMapDropBox();
+    ArrayList<String[]> data = null;
+    
+    //pull down data, write to file and overwrite any existing files
+    try {
+      DropBoxConnection.pullCSV("Centro Mobile Display");
+    } catch (DbxException exception) {
+      // TODO Auto-generated catch block
+      exception.printStackTrace();
+    } catch (IOException exception) {
+      // TODO Auto-generated catch block
+      exception.printStackTrace();
+    }
     
     System.out.println("Reading Centro Mobile File...\n");
-    ArrayList<String[]> data = CSVReaders.readCsv(filePaths.get("Centro Mobile Display"));
+    data = CSVReaders.readCsv("retrievedCentro Mobile Display.csv");
+    
     CSVReaders.removeHeader(data);
     CSVReaders.removeTail(data); //If data is missing this may be the reason why
     System.out.println("Centro Mobile File Read Complete.\n");

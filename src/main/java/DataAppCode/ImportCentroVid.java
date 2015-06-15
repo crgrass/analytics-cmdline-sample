@@ -14,6 +14,7 @@
 
 package DataAppCode;
 
+import com.dropbox.core.DbxException;
 import com.google.api.services.analytics.model.GaData;
 import com.google.api.services.samples.analytics.cmdline.GACall;
 import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
@@ -113,11 +114,22 @@ public class ImportCentroVid {
   public static void main(String[] args) {
     
     guiCode.DataAppTest.outputDisplay.write(OutputMessages.startingVendorImport("Centro Video"));
+    Map<String,String> filePaths = FilePathBuilder.buildFilePathMapDropBox();
+    ArrayList<String[]> data = null;
     
-    Map<String,String> filePaths = FilePathBuilder.buildFilePathMap();
+    //pull down data, write to file and overwrite any existing files
+    try {
+      DropBoxConnection.pullCSV("Centro Video Display");
+    } catch (DbxException exception) {
+      // TODO Auto-generated catch block
+      exception.printStackTrace();
+    } catch (IOException exception) {
+      // TODO Auto-generated catch block
+      exception.printStackTrace();
+    }
     
     System.out.println("Reading Centro Video File...\n");
-    ArrayList<String[]> data = CSVReaders.readCsv(filePaths.get("Centro Video Display"));
+    data = CSVReaders.readCsv("retrievedCentro Mobile Display.csv");
     CSVReaders.removeHeader(data);
     CSVReaders.removeTail(data); //If data is missing this may be the reason why
     System.out.println("Centro Video File Read Complete.\n");

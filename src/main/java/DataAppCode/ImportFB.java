@@ -182,13 +182,7 @@ public class ImportFB {
       System.out.println("There was an error establishing connection to the database");
       System.out.println(e.getMessage());
     }
-    
-    
-    for (FBRecord rec: acquisitionData) {
-      System.out.println(rec + "\n");
-    }
-    
-    
+       
     
   //execute query
     try{

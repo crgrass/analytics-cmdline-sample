@@ -154,6 +154,18 @@ public class VidRecord implements importRecord {
       Float kImpressions = (float)totalImpressions/1000;
       Float aggCPM = totalSpend/kImpressions;
       //TODOL System.out.println("Ensure this cpm calc is correct: " + aggCPM);
+      
+      if(Float.isNaN(aggCTR)) {
+        aggCTR = 0.0f;
+      }
+      
+      if(Float.isNaN(aggCPC)) {
+        aggCPC = 0.0f;
+      }
+      
+      if(Float.isNaN(aggCPM)) {
+        aggCPM = 0.0f;
+      }
 
       String startDate = guiCode.DataAppTest.startDate.toString();
       String endDate = guiCode.DataAppTest.endDate.toString();

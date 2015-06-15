@@ -79,6 +79,7 @@ public class PasswordTest extends Application {
 	}
 
 	public static void main(String[] args) {
+	  System.out.println("Printing at start of pwd test");
 		launch(args);
 	}
 }

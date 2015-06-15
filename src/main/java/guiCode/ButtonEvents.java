@@ -14,8 +14,11 @@
 
 package guiCode;
 
-import javafx.scene.layout.ColumnConstraints;
+import com.dropbox.core.DbxEntry;
+import com.dropbox.core.DbxException;
 
+import DataAppCode.DropBoxConnection;
+import javafx.scene.layout.ColumnConstraints;
 import javafx.stage.WindowEvent;
 import javafx.concurrent.Worker;
 import javafx.scene.control.ProgressBar;
@@ -28,6 +31,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.scene.control.CheckBox;
 
 import java.io.File;
+import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -461,10 +465,24 @@ public class ButtonEvents {
                 @Override
                 public void run() {
                   
-                Map<String,String> fileLocations = FilePathBuilder.buildFilePathMap();  
+                Map<String,String> fileLocations = FilePathBuilder.buildFilePathMapDropBox();  
                 //update occurs in here
-                  File f = new File(fileLocations.get(file.getVendorName()));
-                  if((f.exists() && !f.isDirectory()) ||
+                //TODO: correct this so that it works with DropBox
+         
+                  
+                  boolean fileExists = false; //flag to determine if file exists in dbx
+                  //attempt to retrieve metadata proving that the file exists
+                  try {
+                    DbxEntry metaData = DropBoxConnection.client.getMetadata(fileLocations.get(file.getVendorName()));
+                    if (metaData != null) { //if metadata exists set flag to true
+                      fileExists = true;
+                    }
+                  } catch (DbxException exception) {
+                    exception.printStackTrace();
+                  }
+                  
+                  //if the file exists set the file found image from an X to a checkmark
+                  if(fileExists ||
                       file.getVendorName().equals("Google Adwords")) {
                     file.setFileFoundImage();
                     file.setFileFound(true);

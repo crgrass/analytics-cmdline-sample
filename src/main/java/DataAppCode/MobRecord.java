@@ -57,9 +57,9 @@ public class MobRecord implements importRecord {
   private Float percentNewVisits = 0.0f;
   private Float bounceRate = 0.0f;
   
-  
   //constructor
-  //behavior metrics are always created at a later date
+  //Behavior metrics are missing from the constructor as they are added to the record
+  //after construction once the GA API has been called
   public MobRecord(String[] dateArray, String src, String med, String camp, String ntwk,
                        Integer clks, Integer impr, Float ctr, Float cpc, Float cpm, Float spnd,
                        Integer totalcnv, Integer pccnv, Integer picnv) {
@@ -79,16 +79,12 @@ public class MobRecord implements importRecord {
     setPCConversions(pccnv);
     setPIConversions(picnv);
   }
-
-  
-  
   
   /*
    * PreCondition: Raw data is already grouped appropriately
    */
   public static ArrayList<MobRecord> aggregate(HashMap<GroupID,ArrayList<String[]>> rawData) {
 
-    //TODO: all start dates should come from one place
     System.out.println("Aggregating rows based on Source, Medium and Campaign...\n");
     
     
@@ -146,12 +142,23 @@ public class MobRecord implements importRecord {
       Float aggCPC = totalSpend/(float)totalClicks;
       Float kImpressions = (float)totalImpressions/1000;
       Float aggCPM = totalSpend/kImpressions;
-      //TODOL System.out.println("Ensure this cpm calc is correct: " + aggCPM);
-
-      String startDate = guiCode.DataAppTest.startDate.toString();
-      String endDate = guiCode.DataAppTest.endDate.toString();
-      String[] dateArray = {startDate,endDate};
+      //TODO: System.out.println("Ensure this cpm calc is correct: " + aggCPM);
       
+      //NaN must be converted as MySQL wil not import NaN values
+      if (Float.isNaN(aggCTR)) {
+        aggCTR = 0.0f;
+      }
+      if (Float.isNaN(aggCPC)) {
+        aggCPC = 0.0f;
+      }
+      if (Float.isNaN(aggCPM)) {
+        aggCPM = 0.0f;
+      }      
+
+      //Access start and end dates from DataAppTest static methods and load into array
+      String[] dateArray = {guiCode.DataAppTest.startDate.toString(),guiCode.DataAppTest.endDate.toString()};
+      
+      //Get the GroupID of the current record
       GroupID currID = (GroupID)pairs.getKey();
 
       MobRecord rec = new MobRecord(dateArray,currID.getSource(),currID.getMedium(),currID.getCampaign(),currID.getSource(),//<- This is network
@@ -165,291 +172,197 @@ public class MobRecord implements importRecord {
     // TODO Auto-generated method stub
 
   }
-  /**
-   * @return the recordCount
-   */
+
   public int getRecordCount() {
     return recordCount;
   }
-  /**
-   * @param recordCount the recordCount to set
-   */
+
   public void setRecordCount(int recordCount) {
     this.recordCount = recordCount;
   }
-  /**
-   * @return the partialWeek
-   */
+
   public boolean getPartialWeek() {
     return partialWeek;
   }
-  /**
-   * @param partialWeek the partialWeek to set
-   */
+
   public void setPartialWeek(boolean partialWeek) {
     this.partialWeek = partialWeek;
   }
-  /**
-   * @return the daysActive
-   */
+
   public int getDaysActive() {
     return daysActive;
   }
-  /**
-   * @param daysActive the daysActive to set
-   */
+
   public void setDaysActive(int daysActive) {
     this.daysActive = daysActive;
   }
-  /**
-   * @return the startDate
-   */
+
   public String getStartDate() {
     return startDate;
   }
-  /**
-   * @param startDate the startDate to set
-   */
+
   public void setStartDate(String startDate) {
     this.startDate = startDate;
   }
-  /**
-   * @return the endDate
-   */
+
   public String getEndDate() {
     return endDate;
   }
-  /**
-   * @param endDate the endDate to set
-   */
+
   public void setEndDate(String endDate) {
     this.endDate = endDate;
   }
-  /**
-   * @return the source
-   */
+
   public String getSource() {
     return source;
   }
-  /**
-   * @param source the source to set
-   */
+
   public void setSource(String source) {
     this.source = source;
   }
-  /**
-   * @return the medium
-   */
+
   public String getMedium() {
     return medium;
   }
-  /**
-   * @param medium the medium to set
-   */
+
   public void setMedium(String medium) {
     this.medium = medium;
   }
-  /**
-   * @return the campaign
-   */
+
   public String getCampaign() {
     return campaign;
   }
-  /**
-   * @param campaign the campaign to set
-   */
+
   public void setCampaign(String campaign) {
     this.campaign = campaign;
   }
-  /**
-   * @return the network
-   */
+
   public String getNetwork() {
     return network;
   }
-  /**
-   * @param network the network to set
-   */
+
   public void setNetwork(String network) {
     this.network = network;
   }
-  /**
-   * @return the clicks
-   */
+
   public Integer getClicks() {
     return clicks;
   }
-  /**
-   * @param clicks the clicks to set
-   */
+
   public void setClicks(Integer clicks) {
     this.clicks = clicks;
   }
-  /**
-   * @return the impressions
-   */
+
   @Override
   public Integer getImpressions() {
     return impressions;
   }
-  /**
-   * @param impressions the impressions to set
-   */
+
   public void setImpressions(Integer impressions) {
     this.impressions = impressions;
   }
-  /**
-   * @return the cTR
-   */
+
   public Float getCTR() {
     return CTR;
   }
-  /**
-   * @param cTR the cTR to set
-   */
+
   public void setCTR(Float cTR) {
     CTR = cTR;
   }
-  /**
-   * @return the avgCPC
-   */
+
   public Float getAvgCPC() {
     return avgCPC;
   }
-  /**
-   * @param avgCPC the avgCPC to set
-   */
+
   public void setAvgCPC(Float avgCPC) {
     this.avgCPC = avgCPC;
   }
-  /**
-   * @return the avgCPM
-   */
+
   public Float getAvgCPM() {
     return avgCPM;
   }
-  /**
-   * @param avgCPM the avgCPM to set
-   */
+
   public void setAvgCPM(Float avgCPM) {
     this.avgCPM = avgCPM;
   }
-  /**
-   * @return the spend
-   */
+
   public Float getSpend() {
     return spend;
   }
-  /**
-   * @param spend the spend to set
-   */
+
   public void setSpend(Float spend) {
     this.spend = spend;
   }
-  /**
-   * @return the totalConversions
-   */
+
   public Integer getTotalConversions() {
     return totalConversions;
   }
-  /**
-   * @param totalConversions the totalConversions to set
-   */
+
   public void setTotalConversions(Integer totalConversions) {
     this.totalConversions = totalConversions;
   }
-  /**
-   * @return the pCConversions
-   */
+
   public Integer getPCConversions() {
     return PCConversions;
   }
-  /**
-   * @param pCConversions the pCConversions to set
-   */
+
   public void setPCConversions(Integer pCConversions) {
     PCConversions = pCConversions;
   }
-  /**
-   * @return the pIConversions
-   */
+
   public Integer getPIConversions() {
     return PIConversions;
   }
-  /**
-   * @param pIConversions the pIConversions to set
-   */
+
   public void setPIConversions(Integer pIConversions) {
     PIConversions = pIConversions;
   }
-  /**
-   * @return the visits
-   */
+
   public Integer getVisits() {
     return visits;
   }
-  /**
-   * @param visits the visits to set
-   */
+
   @Override
   public void setVisits(Integer visits) {
     this.visits = visits;
   }
-  /**
-   * @return the pagesPerVisit
-   */
+
   public Float getPagesPerVisit() {
     return pagesPerVisit;
   }
-  /**
-   * @param pagesPerVisit the pagesPerVisit to set
-   */
+
   @Override
   public void setPagesPerVisit(Float pagesPerVisit) {
     this.pagesPerVisit = pagesPerVisit;
   }
-  /**
-   * @return the avgDuration
-   */
+
   public Float getAvgDuration() {
     return avgDuration;
   }
-  /**
-   * @param avgDuration the avgDuration to set
-   */
+
   @Override
   public void setAvgDuration(Float avgDuration) {
     this.avgDuration = avgDuration;
   }
-  /**
-   * @return the percentNewVisits
-   */
+
   public Float getPercentNewVisits() {
     return percentNewVisits;
   }
-  /**
-   * @param percentNewVisits the percentNewVisits to set
-   */
+
   @Override
   public void setPercentNewVisits(Float percentNewVisits) {
     this.percentNewVisits = percentNewVisits;
   }
-  /**
-   * @return the bounceRate
-   */
+
   public Float getBounceRate() {
     return bounceRate;
   }
-  /**
-   * @param bounceRate the bounceRate to set
-   */
+
   @Override
   public void setBounceRate(Float bounceRate) {
     this.bounceRate = bounceRate;
   }
-  /* (non-Javadoc)
-   * @see DataAppCode.importRecord#match(java.util.List)
-   */
+
   /*
    * Pre: The query passed to the GA API requests source, medium and campaign
    * as the first, second and third dimensions. Without this query structure the

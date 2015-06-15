@@ -28,10 +28,16 @@ import java.util.Map;
  */
 public class importUtils {
 
-   
-  //DD record but will leave this here as a reminder
-  //iterates backward to avoid removal issues
+  
+  /*
+   * Remove all records from the ArrayList that have zero impressions. This generic
+   * method is designed to handle arrays of VendorObjects. Sometimes external reports
+   * will contain placeholder rows for ad units that will run or have run previously.
+   * There is no value to storing this information in the database and for this reason
+   * they are removed.
+   */
   public static <E> ArrayList<E> remove0ImpressionRecords(ArrayList<E> origArray) {
+    //loop iterates backwards to avoid issues around index changes on deletion of records
     for (int i = origArray.size() - 1; i >= 0; i--) {
       importRecord currRec = (importRecord)origArray.get(i);
       if (currRec.getImpressions() == 0) {
@@ -40,6 +46,8 @@ public class importUtils {
     }//end of for
     return origArray;
   }//end of remove0ImpressionRecords
+  
+  
   
   public static <E> void matchBehaviorAcq(ArrayList<E> acquisition ,GaData behavior ) {
     for (E currRec : acquisition) {
@@ -85,6 +93,7 @@ public class importUtils {
       centroSourceMappings.put("SparkNotes.com","Sparknotes");
       centroSourceMappings.put("YouTube.com","YouTube");
       centroSourceMappings.put("BrandExchange.net","Brand_Exchange");
+      centroSourceMappings.put("Spotify.com", "Spotify");
       
       HashMap<String,String> centroMediumMappings = new HashMap<String,String>();
       centroMediumMappings.put("Digital Display (web)","Display");
@@ -103,6 +112,10 @@ public class importUtils {
       centroCampaignMappings.put("USM008","FY2015_Degree_Completion");
       centroCampaignMappings.put("USM009","FY2015_Transfer");
       centroCampaignMappings.put("USM010","FY2015_Courses_Fall/Spring");
+      //USM011 is run through Centro by Rinck but USM Marketing is not responsible
+      //for this campaign
+      centroCampaignMappings.put("USM011","ERROR_FY2015_Law");
+      centroCampaignMappings.put("USM012","FY2015_Courses_Summer");
       
       
       String source = "";
@@ -189,6 +202,8 @@ public static HashMap<GroupID, ArrayList<String[]>> groupFacebookRawData(ArrayLi
     facebookCampaignMappings.put("fy15_lg_fb_disp_cu_tt","FY2015_Transfer");
     facebookCampaignMappings.put("fy15_lg_fb_disp_wa_ic","FY2015_Courses_Fall/Spring");
     facebookCampaignMappings.put("fy15_lg_fb_disp_hs_ug_tour1","FY2015_CampusTourTest1");
+    facebookCampaignMappings.put("fy15_lg_fb_disp_cu_sic","FY2015_Courses_Summer");//these are not tracked separately
+    facebookCampaignMappings.put("fy15_lg_fb_disp_wa_sic","FY2015_Courses_Summer");
     
     HashMap<String,String> facebookPlacementMappings = new HashMap<String,String>();
     facebookPlacementMappings.put("Right Column","Right_Rail");
@@ -269,6 +284,8 @@ public static HashMap<GroupID, ArrayList<String[]>> groupTwitterRawData(ArrayLis
     twitterCampaignMappings.put("Degree Completer","FY2015_Degree_Completion");
     twitterCampaignMappings.put("UG_Transfer","FY2015_Transfer");
     twitterCampaignMappings.put("UG_Transfer_Additional Spend","FY2015_Transfer");
+    twitterCampaignMappings.put("USM Summer Courses Working Adult","FY2015_Courses_Summer");
+    twitterCampaignMappings.put("USM Summer Courses Undergrad","FY2015_Courses_Summer");
     
     
     String source = "Twitter";
