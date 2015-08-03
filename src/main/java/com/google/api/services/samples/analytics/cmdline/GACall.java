@@ -268,8 +268,8 @@ public class GACall {
         dateArray[0], // Start date.
         dateArray[1], // End date.
         "ga:visits,ga:pageViewsPerVisit,ga:avgTimeOnSite,ga:percentNewVisits,ga:entranceBounceRate") // Metrics.
-        .setDimensions("ga:source,ga:medium,ga:campaign")
-        .setFilters("ga:campaign=@FY2015;ga:source==Facebook;ga:medium==Newsfeed,ga:medium==Right_Rail")
+        .setDimensions("ga:source,ga:medium,ga:campaign,ga:adContent")
+        .setFilters("ga:campaign=@FY2015;ga:source==Facebook;ga:medium==Newsfeed,ga:medium==Right_Rail,ga:medium==Social")
         .setMaxResults(25)
         .execute();
   }
@@ -281,7 +281,7 @@ public class GACall {
         dateArray[0], // Start date.
         dateArray[1], // End date.
         "ga:visits,ga:pageViewsPerVisit,ga:avgTimeOnSite,ga:percentNewVisits,ga:entranceBounceRate") // Metrics.
-        .setDimensions("ga:source,ga:medium,ga:campaign")
+        .setDimensions("ga:source,ga:medium,ga:campaign,ga:adContent")
         .setFilters("ga:source==Collective,ga:source==Sparknotes,ga:source==Brand_Exchange,ga:source==Pandora;ga:medium==Display")
         .setMaxResults(25)
         .execute();
@@ -294,7 +294,7 @@ public class GACall {
         dateArray[0], // Start date.
         dateArray[1], // End date.
         "ga:visits,ga:pageViewsPerVisit,ga:avgTimeOnSite,ga:percentNewVisits,ga:entranceBounceRate") // Metrics.
-        .setDimensions("ga:source,ga:medium,ga:campaign")
+        .setDimensions("ga:source,ga:medium,ga:campaign,ga:adContent")
         .setFilters("ga:source==MobileFuse,ga:source==Sparknotes,ga:source==Pandora;ga:medium==Mobile")
         .setMaxResults(25)
         .execute();
@@ -307,7 +307,7 @@ public class GACall {
         dateArray[0], // Start date.
         dateArray[1], // End date.
         "ga:visits,ga:pageViewsPerVisit,ga:avgTimeOnSite,ga:percentNewVisits,ga:entranceBounceRate") // Metrics.
-        .setDimensions("ga:source,ga:medium,ga:campaign")
+        .setDimensions("ga:source,ga:medium,ga:campaign,ga:adContent")
         .setFilters("ga:source==Collective,ga:source==Sparknotes,ga:source==Brand_Exchange,ga:source==Pandora;ga:medium==Rich")
         .setMaxResults(25)
         .execute();
@@ -320,7 +320,7 @@ public class GACall {
         dateArray[0], // Start date.
         dateArray[1], // End date.
         "ga:visits,ga:pageViewsPerVisit,ga:avgTimeOnSite,ga:percentNewVisits,ga:entranceBounceRate") // Metrics.
-        .setDimensions("ga:source,ga:medium,ga:campaign")
+        .setDimensions("ga:source,ga:medium,ga:campaign,ga:adContent")
         .setFilters("ga:source==YouTube,ga:source==Collective,ga:source==Brand_Exchange;ga:medium==Preroll")
         .setMaxResults(25)
         .execute();

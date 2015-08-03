@@ -14,6 +14,8 @@
 
 package DataAppCode;
 
+import guiCode.DataAppTest;
+
 import java.io.BufferedReader;
 
 import au.com.bytecode.opencsv.*;
@@ -21,8 +23,13 @@ import au.com.bytecode.opencsv.*;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.Map;
 
 /**
@@ -92,6 +99,43 @@ public class CSVReaders {
   public static void removeTail(ArrayList<String[]> raw) {
     raw.remove(raw.size()-1);
   }
+  
+  public static void removeInvalidDates(ArrayList<String[]> raw, String vendor, LocalDate startDate) {
+  
+    //if start date positions and format are inconsistent create either a dictionary that 
+    //contains all startDate indexes or make this a final field in the object
+    //if this is the case medium will likely need to be passed as a parameter
+    HashMap<String,LinkedList<String>> vendorConfig = new HashMap<String, LinkedList<String>>();
+    
+    //TODO: this is currently going to build the vendorConfig library everytime the 
+    //method is run. It would be more efficient to build this once per application
+    //run time.
+    
+    vendorConfig.put("Centro", new LinkedList<String>(Arrays.asList("M/d/yyyy","0"))); // mm/dd/yyyy
+    vendorConfig.put("Facebook", new LinkedList<String>(Arrays.asList("yyyy-MM-dd","2"))); // mm/dd/yyyy
+    vendorConfig.put("Twitter", new LinkedList<String>(Arrays.asList("yyyy-M-d H:m Z","5"))); // yyyy-mm-dd hh:mm -0400(timezone)
+    vendorConfig.put("LinkedIn", new LinkedList<String>(Arrays.asList("L dd, yyyy","0")));// Mar dd, yyyy
+    
+    
+    
+    //iterate through array
+    for (Iterator<String[]> it = raw.iterator(); it.hasNext();) {
+      String[] currRow = it.next();
+      //accesses the correct row for the date string from the vendorConfig dictionary
+      String dateString = currRow[Integer.parseInt(vendorConfig.get(vendor).get(1))];
+      
+      //access the format pattern from the vendor config dict
+      DateTimeFormatter formatter = DateTimeFormatter.ofPattern(vendorConfig.get(vendor).get(0));
+      LocalDate currDate = LocalDate.parse(dateString, formatter);
+      
+      //compare date to startDate provided from user input
+      //remove values outside startDate + 6
+      if (currDate.isBefore(startDate) 
+          || currDate.isAfter(startDate.plusDays(6))) {
+       it.remove();
+      }
+    } 
+  }//end of remove invalid dates
   
   public static ArrayList<String[]> readLICsv(String filePath) throws IOException {
     ArrayList<String[]> rawData = new ArrayList<String[]>();

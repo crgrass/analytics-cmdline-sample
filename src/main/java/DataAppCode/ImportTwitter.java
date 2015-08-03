@@ -148,7 +148,6 @@ public class ImportTwitter {
     
     
     CSVReaders.removeHeader(data);
-    CSVReaders.removeTail(data); //If data is missing this may be the reason why
     
     System.out.println("Grouping Data by Source, Medium and Campaign...\n");
     HashMap<GroupID, ArrayList<String[]>> groupedData = importUtils.groupTwitterRawData(data);
@@ -175,7 +174,7 @@ public class ImportTwitter {
     
     //match behavior and acquisition data
     System.out.println("Matching Acquisition Metrics to their respective behavior metrics...\n");
-    importUtils.matchBehaviorAcq(acquisitionData, behaviorResults);
+    importUtils.matchTWBehaviorAcq(acquisitionData, behaviorResults);
     System.out.println("Matching Complete.\n");
     
     //Establish Connection

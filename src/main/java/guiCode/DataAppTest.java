@@ -63,8 +63,8 @@ public class DataAppTest extends Application {
 
 	@Override
 	public void start(Stage primaryStage) {
-	  System.setOut(ps); //These redirect standard output to app console
-	  System.setErr(ps);
+//	  System.setOut(ps); //These redirect standard output to app console
+//	  System.setErr(ps);
 	  
 	  
 //	  //Create logger, filehandler and formatter
@@ -79,7 +79,7 @@ public class DataAppTest extends Application {
 //	  } catch (IOException e) {
 //	    e.printStackTrace();
 //	  }
-	  
+	   
 	  
 	  VBox primaryVBox = new VBox();
 	  primaryVBox.setPadding(new Insets(5,5,5,5));

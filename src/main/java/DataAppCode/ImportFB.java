@@ -45,10 +45,10 @@ public class ImportFB {
 
     String tblName = "DATESTtblFacebookMetrics";
     //These fields are out of order
-    String fields = "(startDate,endDate,componentName,placement,device,source,medium,reach,frequency,clicks,"
+    String fields = "(startDate,endDate,componentName,adContent, placement,device,source,medium,reach,frequency,clicks,"
         + "uniqueClicks,websiteClicks,impressions,CTR,uniqueCTR,averageCPC,averageCPM,CP1KR,actions,PTA,spend,"
         + "likes,visits,pagesPerVisit,averageDuration,percentNewVisits,bounceRate,partialWeek,daysActive)";
-    String parameters = "(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    String parameters = "(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
     String insertQuery = "INSERT INTO " + tblName + fields + " VALUES" + parameters;
 
@@ -79,32 +79,33 @@ public class ImportFB {
         updateFB.setDate(1,sqlFormatStartDate);
         updateFB.setDate(2,sqlFormatEndDate);
         updateFB.setString(3,currRec.getCampaign());
-        updateFB.setString(4,currRec.getPlacement());
-        updateFB.setString(5,currRec.getDevice());
-        updateFB.setString(6,currRec.getSource());
-        updateFB.setString(7,currRec.getMedium());
-        updateFB.setInt(8,currRec.getReach());
-        updateFB.setFloat(9,currRec.getFrequency());
-        updateFB.setFloat(10,currRec.getClicks());
-        updateFB.setFloat(11, currRec.getUniqueClicks());
-        updateFB.setFloat(12,currRec.getWebsiteClicks());
-        updateFB.setFloat(13,currRec.getImpressions());
-        updateFB.setFloat(14,currRec.getCTR());
-        updateFB.setFloat(15,currRec.getUniqueCTR());
-        updateFB.setFloat(16,currRec.getAvgCPC());
-        updateFB.setFloat(17,currRec.getAvgCPM());
-        updateFB.setFloat(18,currRec.getCP1KR());
-        updateFB.setFloat(19,currRec.getActions());
-        updateFB.setInt(20,currRec.getPTA());
-        updateFB.setFloat(21,currRec.getSpend());
-        updateFB.setInt(22,currRec.getLikes());
-        updateFB.setInt(23,currRec.getVisits());
-        updateFB.setFloat(24,currRec.getPagesPerVisit());
-        updateFB.setFloat(25,currRec.getAvgDuration());
-        updateFB.setFloat(26,currRec.getPercentNewVisits());
-        updateFB.setFloat(27,currRec.getBounceRate());
-        updateFB.setBoolean(28,currRec.getPartialWeek());
-        updateFB.setInt(29,currRec.getDaysActive());
+        updateFB.setString(4, currRec.getAdContent());
+        updateFB.setString(5,currRec.getPlacement());
+        updateFB.setString(6,currRec.getDevice());
+        updateFB.setString(7,currRec.getSource());
+        updateFB.setString(8,currRec.getMedium());
+        updateFB.setInt(9,currRec.getReach());
+        updateFB.setFloat(10,currRec.getFrequency());
+        updateFB.setFloat(11,currRec.getClicks());
+        updateFB.setFloat(12, currRec.getUniqueClicks());
+        updateFB.setFloat(13,currRec.getWebsiteClicks());
+        updateFB.setFloat(14,currRec.getImpressions());
+        updateFB.setFloat(15,currRec.getCTR());
+        updateFB.setFloat(16,currRec.getUniqueCTR());
+        updateFB.setFloat(17,currRec.getAvgCPC());
+        updateFB.setFloat(18,currRec.getAvgCPM());
+        updateFB.setFloat(19,currRec.getCP1KR());
+        updateFB.setFloat(20,currRec.getActions());
+        updateFB.setInt(21,currRec.getPTA());
+        updateFB.setFloat(22,currRec.getSpend());
+        updateFB.setInt(23,currRec.getLikes());
+        updateFB.setInt(24,currRec.getVisits());
+        updateFB.setFloat(25,currRec.getPagesPerVisit());
+        updateFB.setFloat(26,currRec.getAvgDuration());
+        updateFB.setFloat(27,currRec.getPercentNewVisits());
+        updateFB.setFloat(28,currRec.getBounceRate());
+        updateFB.setBoolean(29,currRec.getPartialWeek());
+        updateFB.setInt(30,currRec.getDaysActive());
 
         updateFB.executeUpdate();
         cnxn.commit();
@@ -141,7 +142,7 @@ public class ImportFB {
     System.out.println("Reading Facebook File...\n");
     data = CSVReaders.readCsv("retrievedFacebook.csv");
     CSVReaders.removeHeader(data);
-    CSVReaders.removeTail(data); //If data is missing this may be the reason why
+//    CSVReaders.removeTail(data); //This likely deletes pertinent info
     System.out.println("Facebook File Read Complete.\n");
     
     System.out.println("Grouping Data by Source, Medium, Campaign and Placement...\n");

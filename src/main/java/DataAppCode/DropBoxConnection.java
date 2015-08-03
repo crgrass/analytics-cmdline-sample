@@ -162,7 +162,6 @@ public class DropBoxConnection {
     try {
       Map<String,String> paths = FilePathBuilder.buildFilePathMapDropBox();
       //check if the file exists
-      System.out.println("In pull csv.");
       if (client.getMetadata(paths.get(vendor)) == null ) {
         System.out.println("The file at path " + paths.get(vendor) + " could not be found");
       }

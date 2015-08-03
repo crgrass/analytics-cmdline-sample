@@ -45,11 +45,11 @@ public class ImportCentroVid {
 
     String tblName = "DATESTtblVideoMetrics";
     //These fields are out of order
-    String fields = "(startDate,endDate,source,medium,componentName,clicks,"
+    String fields = "(startDate,endDate,componentName,source,medium,site,adContent,clicks,"
         + "impressions,YTViews,allCTR,averageCPC,averageCPM,spend,totalConversions,pcConversions,piConversions,"
         + "visits,pagesPerVisit,averageDuration,"
         + "percentNewVisits,bounceRate,partialWeek,daysActive)";
-    String parameters = "(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    String parameters = "(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
     String insertQuery = "INSERT INTO " + tblName + fields + " VALUES" + parameters;
 
@@ -79,26 +79,28 @@ public class ImportCentroVid {
    
         updateCentroVid.setDate(1,sqlFormatStartDate);
         updateCentroVid.setDate(2,sqlFormatEndDate);
-        updateCentroVid.setString(3,currRec.getSource());
-        updateCentroVid.setString(4,currRec.getMedium());
-        updateCentroVid.setString(5,currRec.getCampaign());
-        updateCentroVid.setInt(6,currRec.getClicks());
-        updateCentroVid.setInt(7,currRec.getImpressions());
-        updateCentroVid.setInt(8,currRec.getYTViews());
-        updateCentroVid.setFloat(9,currRec.getCTR());
-        updateCentroVid.setFloat(10,currRec.getAvgCPC());
-        updateCentroVid.setFloat(11, currRec.getAvgCPM());
-        updateCentroVid.setFloat(12,currRec.getTotalConversions());
-        updateCentroVid.setFloat(13,currRec.getPCConversions());
-        updateCentroVid.setFloat(14,currRec.getPIConversions());
-        updateCentroVid.setFloat(15,currRec.getSpend());
-        updateCentroVid.setInt(16,currRec.getVisits());
-        updateCentroVid.setFloat(17,currRec.getPagesPerVisit());
-        updateCentroVid.setFloat(18,currRec.getAvgDuration());
-        updateCentroVid.setFloat(19,currRec.getPercentNewVisits());
-        updateCentroVid.setFloat(20,currRec.getBounceRate());
-        updateCentroVid.setBoolean(21,currRec.getPartialWeek());
-        updateCentroVid.setInt(22,currRec.getDaysActive());
+        updateCentroVid.setString(3,currRec.getCampaign());
+        updateCentroVid.setString(4,currRec.getSource());
+        updateCentroVid.setString(5,currRec.getMedium());
+        updateCentroVid.setString(6, currRec.getNetwork());
+        updateCentroVid.setString(7,currRec.getAdContent());
+        updateCentroVid.setInt(8,currRec.getClicks());
+        updateCentroVid.setInt(9,currRec.getImpressions());
+        updateCentroVid.setInt(10,currRec.getYTViews());
+        updateCentroVid.setFloat(11,currRec.getCTR());
+        updateCentroVid.setFloat(12,currRec.getAvgCPC());
+        updateCentroVid.setFloat(13, currRec.getAvgCPM());
+        updateCentroVid.setFloat(14,currRec.getSpend());
+        updateCentroVid.setFloat(15,currRec.getTotalConversions());
+        updateCentroVid.setFloat(16,currRec.getPCConversions());
+        updateCentroVid.setFloat(17,currRec.getPIConversions());
+        updateCentroVid.setInt(18,currRec.getVisits());
+        updateCentroVid.setFloat(19,currRec.getPagesPerVisit());
+        updateCentroVid.setFloat(20,currRec.getAvgDuration());
+        updateCentroVid.setFloat(21,currRec.getPercentNewVisits());
+        updateCentroVid.setFloat(22,currRec.getBounceRate());
+        updateCentroVid.setBoolean(23,currRec.getPartialWeek());
+        updateCentroVid.setInt(24,currRec.getDaysActive());
 
         updateCentroVid.executeUpdate();
         cnxn.commit();
@@ -129,9 +131,9 @@ public class ImportCentroVid {
     }
     
     System.out.println("Reading Centro Video File...\n");
-    data = CSVReaders.readCsv("retrievedCentro Mobile Display.csv");
+    data = CSVReaders.readCsv("retrievedCentro Video Display.csv");
     CSVReaders.removeHeader(data);
-    CSVReaders.removeTail(data); //If data is missing this may be the reason why
+    CSVReaders.removeInvalidDates(data, "Centro", DataAppTest.startDate);
     System.out.println("Centro Video File Read Complete.\n");
     
     System.out.println("Grouping Data by Source, Medium and Campaign...\n");

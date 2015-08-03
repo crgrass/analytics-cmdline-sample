@@ -42,6 +42,7 @@ public class DDRecord implements importRecord {
   private String medium;
   private String campaign;
   private String network; //This is new be sure to include in query
+  private String adContent;
   private Integer clicks;
   private Integer impressions;
   private Float CTR;
@@ -60,7 +61,7 @@ public class DDRecord implements importRecord {
   
   //constructor
   //behavior metrics are always created at a later date
-  public DDRecord(String[] dateArray, String src, String med, String camp, String ntwk,
+  public DDRecord(String[] dateArray, String src, String med, String camp, String ntwk, String adc,
                        Integer clks, Integer impr, Float ctr, Float cpc, Float cpm, Float spnd,
                        Integer totalcnv, Integer pccnv, Integer picnv) {
     setStartDate(dateArray[0]);
@@ -69,6 +70,7 @@ public class DDRecord implements importRecord {
     setMedium(med);
     setCampaign(camp);
     setNetwork(ntwk);
+    setAdContent(adc);
     setClicks(clks);
     setImpressions(impr);
     setCTR(ctr);
@@ -87,7 +89,8 @@ public class DDRecord implements importRecord {
    */
   @Override
   public boolean match(List<String> gaRow) {
-    if (gaRow.get(0).equals(this.source) && gaRow.get(1).equals(this.medium) && gaRow.get(2).equals(this.campaign) ) {
+    if (gaRow.get(0).equals(this.source) && gaRow.get(1).equals(this.medium) && gaRow.get(2).equals(this.campaign)
+        && gaRow.get(3).equals(this.adContent)) {
       return true;
     }
     return false;
@@ -122,69 +125,6 @@ public class DDRecord implements importRecord {
     return printThis;
   }
   
-  
-  
-  
-  
-  /*
-   * PreCondition: Raw data is already grouped appropriately
-   */
-  public static ArrayList<LIRecord> aggregate(HashMap<GroupID,ArrayList<String[]>> rawData) {
-
-    //TODO: all start dates should come from one place
-    
-    ArrayList<LIRecord> LIRecordCollection = new ArrayList<LIRecord>();
-
-    //Need to loop through Hash Map
-    Iterator it = rawData.entrySet().iterator();
-    while (it.hasNext()) {
-      Map.Entry pairs = (Map.Entry)it.next();
-      //pairs.getValue() is the adwords record
-      ArrayList<String[]> currList = (ArrayList<String[]>)pairs.getValue();
-
-      //Metrics are aggregated here
-      Integer totalClicks = 0;
-      Integer totalImpressions = 0;
-      Float totalSpend = 0.0f;
-      Integer totalVisits = 0;
-
-      //TODO:Discarding last row as a band aid
-      //eventually need to stop importing last row
-
-      for (String[] row : currList) {
-        //Index 0 : Date, Index 1 : Advertiser Name, Index 2 : Currency
-        //Index 3 : Campaign ID, Index 4 : Campaign Name, Index 5 : Campaign Type
-        //Index 6 : Campaign Status, Index 7 :Cost Type, Index:8 Campaign Daily Budget
-        //Index 9 : Campaign Total Budget, Index 10 : Lead Count
-        //Index 11: Impressions
-        totalImpressions += Integer.parseInt(row[11]);
-        //TODO: Need to ensure all csvs can handle number formats with commas
-
-        //Index 12: Clicks
-        totalClicks += Integer.parseInt(row[12]);
-        //Index 13: Other Clicks, Index 14: Social Actions, Index 15: Total Clicks
-        //Index 16: CTR, Index 17: Total CTR, Index 18: Avg. CPC
-        //Index 19: Average CPM, Index 20: Total Spent
-        totalSpend += Float.parseFloat(row[20]);
-      }// end of outer loop
-
-      Float aggCTR = (float)totalClicks/(float)totalImpressions;
-      Float aggCPC = totalSpend/(float)totalClicks;
-      Float kImpressions = (float)totalImpressions/1000;
-      Float aggCPM = totalSpend/kImpressions;
-      System.out.println("Ensure this cpm calc is correct: " + aggCPM);
-
-      String startDate = guiCode.DataAppTest.startDate.toString();
-      String endDate = guiCode.DataAppTest.endDate.toString();
-      String[] dateArray = {startDate,endDate};
-
-      LIRecord rec = new LIRecord(dateArray,"LinkedIn","Social","FY2015_PDP",
-          totalClicks,totalImpressions,aggCTR,aggCPC,aggCPM,totalSpend);
-      LIRecordCollection.add(rec);
-    }
-
-    return LIRecordCollection;
-  }
 
   /**
    * @param args
@@ -520,6 +460,14 @@ public class DDRecord implements importRecord {
   @Override
   public void setBounceRate(Float bounceRate) {
     this.bounceRate = bounceRate;
+  }
+
+  public String getAdContent() {
+    return adContent;
+  }
+
+  public void setAdContent(String adContent) {
+    this.adContent = adContent;
   }
 
 }

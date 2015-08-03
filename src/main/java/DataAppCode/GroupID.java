@@ -19,7 +19,6 @@ package DataAppCode;
  *
  */
 
-//TODO: add getter and setter methods
 public class GroupID {
   private String campaign;
   private String source;
@@ -27,41 +26,72 @@ public class GroupID {
   private boolean hasNetwork = false;
   private String network;
   private boolean hasGroup = false;
-  private String adGroup;
-  private String placement;
+  private String adGroup; //only used for Adwords
+  private String placement; //only used for Facebook
+  //this field is used when creative with different messaging is run in the same campaign
+  private String adContent;
   
-  //This should be populated at the same time as the vendor specific object
-  //Overloading method with different signatures for different vendors
   
+  /*
+   * The following three methods are constructs that are overloaded with additional parameters
+   * when they are needed. The simplest matching of acquisition data requires only three parameters
+   * the source, mediume and campaign. However adwords and facebook have an additional criteria
+   * (AdGroup and Placement). A third constructor was created when two different sub-campaigns
+   * were run under the same campaign in Spring 2015. This means that Digital Display, Twitter and
+   * Facebook additional needed to be split by another criteria ad content. (The time is now campaign vs.
+   * the )
+   */
+  
+  @Deprecated
+  //This three parameter constructor was used prior to adContent being used
+  //for every vendor
   public GroupID(String source, String medium,String campaign) {
     this.source = source;
     this.medium = medium;
     this.campaign = campaign;
   }
   
-  //overloaded method accounting for additional matching criteria used with Adwords and vendors
-  //that split by the network dimension
-  public GroupID(String source, String medium, String campaign, String additionalCriteria) {
+  //Constructor
+  public GroupID(String source, String medium, String campaign, String adContent) {
     this.campaign = campaign;
     this.source = source;
     this.medium = medium;
-    
-    //Only adwords and facebook have additional criteria
-    if (this.source == "Adwords") {
-      this.adGroup = additionalCriteria;
-    } else if (source == "Facebook") {
-      this.setPlacement(additionalCriteria);
-    }//end of else
+    this.adContent = adContent;
   }
   
+  //Overloaded constructor used for Facebook to account for Placement identifier (Newsfeed/Right Rail)
+  //Note: adContent is used for Ad Group with SEM
+  public GroupID(String source, String medium, String campaign,String adContent, String placement) {
+    this.campaign = campaign;
+    this.source = source;
+    this.medium = medium;
+    this.adContent = adContent;
+    this.placement = placement;
+  }
+  
+  
   //If there is a matching issue here it may be due to the addition of placement, however,
-  //comparing nulls should cause issue
+  //comparing nulls shouldn't cause issue
   public boolean equals(GroupID id) {
+    if (this.source.equals(id.getSource()) && this.medium.equals(id.getMedium()) && this.campaign.equals(id.getCampaign())
+        && this.adContent.equals(id.getAdContent())) {
+      return true;
+    }
+    return false;
+  }
+  
+  //Twitter does not split by adContent
+  public boolean twitterEquals(GroupID id) {
     if (this.source.equals(id.getSource()) && this.medium.equals(id.getMedium()) && this.campaign.equals(id.getCampaign())) {
       return true;
     }
     return false;
   }
+  
+  
+  
+  
+  
   
   @Override
   public String toString() {
@@ -180,6 +210,14 @@ public class GroupID {
 
   public void setPlacement(String placement) {
     this.placement = placement;
+  }
+
+  public String getAdContent() {
+    return adContent;
+  }
+
+  public void setAdContent(String adContent) {
+    this.adContent = adContent;
   }
 
 }

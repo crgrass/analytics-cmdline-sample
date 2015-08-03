@@ -37,6 +37,7 @@ public class FBRecord implements importRecord {
   private String source; // the source is also the network
   private String medium;
   private String campaign;
+  private String adContent;
   private String placement; //This is new be sure to include in query
   private String device;
   private Integer reach;
@@ -62,7 +63,7 @@ public class FBRecord implements importRecord {
   
   //constructor
   //behavior metrics are always created at a later date
-  public FBRecord(String[] dateArray, String src, String med, String camp, String plc, String dvc, 
+  public FBRecord(String[] dateArray, String src, String med, String camp,String adc, String plc, String dvc, 
                   Integer rch, Float frq,Integer clks, Integer unqclks, Integer impr, Float ctr, Float unqctr, 
                   Float cpc, Float cpm,Float cp1k, Integer act, Integer pa, Integer lks, Integer webclks, Float spnd) {
     setStartDate(dateArray[0]);
@@ -70,6 +71,7 @@ public class FBRecord implements importRecord {
     setSource(src);
     setMedium(med);
     setCampaign(camp);
+    setAdContent(adc);
     setPlacement(plc);
     setDevice(dvc);
     setReach(rch);
@@ -133,35 +135,43 @@ public class FBRecord implements importRecord {
       Float totalSpend = 0.0f;
       
       //TODO: Need to be able to handle empty cells that should be zero
+      
 
-      //TODO:Discarding last row as a band aid
-      //eventually need to stop importing last row
 
       for (String[] row : currList) {
+        //Each array should be of size 20
+        //Checking size of list and exiting import method if
+        //size is incorrect
+        
+        if (row.length != 21) {
+          System.out.println("The Facebook data was not imported due to an incorrect"
+              + " number of fields.  Check the source file.");
+          return new ArrayList<FBRecord>(); //exit method
+        }
         //Index 0 : Start Date, Index 1 : End Date, Index 2 : Campaign Name
         //!!!Index 3 : Ad Set Name - !!!Campaign!!!, Index 4 : !!!Placement, Device!!!,
         //Index 5 : Reach
-        totalReach += Integer.parseInt(row[5]);
+        totalReach += Integer.parseInt(row[6]);
         //Index 6 : Frequency, 
         //Index 7 : Impressions
-        totalImpressions += Integer.parseInt(row[7]);
+        totalImpressions += Integer.parseInt(row[8]);
         //Index: 8 Clicks
-        totalClicks += Integer.parseInt(row[8]);
+        totalClicks += Integer.parseInt(row[9]);
         //Index 9 : UniqueClicks
-        totalUniqueClicks += Integer.parseInt(row[9]);
+        totalUniqueClicks += Integer.parseInt(row[10]);
         //Index 10 : CTR, Index 11: uniqueCTR 
         //Index 12: Spend
-        totalSpend += Float.parseFloat(row[12]);
+        totalSpend += Float.parseFloat(row[13]);
         //Index 13: AverageCPM, Index 14: CP1KR
         //Index 15: CPC
         //Index 16: Actions
-        totalActions += Integer.parseInt(row[16]);
+        totalActions += Integer.parseInt(row[17]);
         //Index 17: PTA
-        totalPTA += Integer.parseInt(row[17]);
+        totalPTA += Integer.parseInt(row[18]);
         //Index 18: Page Likes
-        totalLikes += Integer.parseInt(row[18]);
+        totalLikes += Integer.parseInt(row[19]);
         //Index 19: Website Clicks
-        totalWebsiteClicks += Integer.parseInt(row[19]);
+        totalWebsiteClicks += Integer.parseInt(row[20]);
         
         
         //TODO: Need to ensure all csvs can handle number formats with commas
@@ -177,20 +187,25 @@ public class FBRecord implements importRecord {
       
       //this might be simplified by grouping and then looping through
       //Check for 0 by 0 division and replace NaN with 0
-      if (Float.isNaN(aggCP1KR)){
+      if (Float.isNaN(aggFrequency) || Float.isInfinite(aggFrequency)){
         aggCP1KR = 0.0f;
       }
-      if (Float.isNaN(aggCPC)){
-        aggCPC = 0.0f;
-      }
       
-      if (Float.isNaN(aggCPM)){
-        aggCPM = 0.0f;
+      if (Float.isNaN(aggCTR) || Float.isInfinite(aggCTR)){
+        aggCP1KR = 0.0f;
       }
       
       if (Float.isNaN(aggCP1KR) || Float.isInfinite(aggCP1KR)){
         aggCP1KR = 0.0f;
       }
+      if (Float.isNaN(aggCPC) || Float.isInfinite(aggCPC)){
+        aggCPC = 0.0f;
+      }
+      
+      if (Float.isNaN(aggCPM) || Float.isInfinite(aggCPM)){
+        aggCPM = 0.0f;
+      }
+      
 
       String startDate = guiCode.DataAppTest.startDate.toString();
       String endDate = guiCode.DataAppTest.endDate.toString();
@@ -198,7 +213,7 @@ public class FBRecord implements importRecord {
       
       GroupID currID = (GroupID)pairs.getKey();
 
-      FBRecord rec = new FBRecord(dateArray,currID.getSource(),currID.getMedium(),currID.getCampaign(),currID.getPlacement(), "Device",//placeholder for device
+      FBRecord rec = new FBRecord(dateArray,currID.getSource(),currID.getMedium(),currID.getCampaign(),currID.getAdContent(), currID.getPlacement(), "Device",//placeholder for device
           totalReach,aggFrequency,totalClicks,totalUniqueClicks,totalImpressions,aggCTR,aggUniqueCTR,aggCPC,aggCPM,
           aggCP1KR,totalActions,totalPTA,totalLikes,totalWebsiteClicks,totalSpend);
       FBRecordCollection.add(rec);
@@ -216,6 +231,7 @@ public class FBRecord implements importRecord {
     returnString += "Source: " + this.source + "\n";
     returnString += "Medium: " + this.medium + "\n";
     returnString += "Campaign: " + this.campaign + "\n";
+    returnString += "AdContent: " + this.adContent + "\n";
     returnString += "Placement: " + this.placement + "\n"; //This is new be sure to include in query
     returnString += "Device: " + this.device + "\n";
     returnString += "Reach: " + this.reach + "\n";
@@ -619,10 +635,21 @@ public class FBRecord implements importRecord {
    */
   @Override
   public boolean match(List<String> gaRow) {
-    if (gaRow.get(0).equals(this.source) && gaRow.get(1).equals(this.medium) && gaRow.get(2).equals(this.campaign)) {
+    if (gaRow.get(0).equals(this.source) && gaRow.get(1).equals(this.medium) && gaRow.get(2).equals(this.campaign)
+        && gaRow.get(3).equals(this.adContent)) {
       return true;
     }
     return false;
+  }
+
+
+  public String getAdContent() {
+    return adContent;
+  }
+
+
+  public void setAdContent(String adContent) {
+    this.adContent = adContent;
   }
 
 }

@@ -42,6 +42,7 @@ public class VidRecord implements importRecord {
   private String medium;
   private String campaign;
   private String network; //This is new be sure to include in query
+  private String adContent;
   private Integer clicks;
   private Integer impressions;
   private Integer YTViews =0;
@@ -60,7 +61,7 @@ public class VidRecord implements importRecord {
   
   //constructor
   //behavior metrics are always created at a later date
-  public VidRecord(String[] dateArray, String src, String med, String camp, String ntwk,
+  public VidRecord(String[] dateArray, String src, String med, String camp, String ntwk, String adc,
                        Integer clks, Integer impr,Integer yt, Float ctr, Float cpc, Float cpm, Float spnd,
                        Integer totalcnv, Integer pccnv, Integer picnv) {
     setStartDate(dateArray[0]);
@@ -69,6 +70,7 @@ public class VidRecord implements importRecord {
     setMedium(med);
     setCampaign(camp);
     setNetwork(ntwk);
+    setAdContent(adc);
     setClicks(clks);
     setImpressions(impr);
     setYTViews(yt);
@@ -99,6 +101,7 @@ public class VidRecord implements importRecord {
         onlyVid.put(currID, currArray);
       }//end of if
     }//end of while
+    
     
     //The returned ArrayList
     ArrayList<VidRecord> VidRecordCollection = new ArrayList<VidRecord>();
@@ -155,15 +158,18 @@ public class VidRecord implements importRecord {
       Float aggCPM = totalSpend/kImpressions;
       //TODOL System.out.println("Ensure this cpm calc is correct: " + aggCPM);
       
-      if(Float.isNaN(aggCTR)) {
+      if(Float.isNaN(aggCTR) ||
+          Float.isInfinite(aggCTR)) {
         aggCTR = 0.0f;
       }
       
-      if(Float.isNaN(aggCPC)) {
+      if(Float.isNaN(aggCPC) ||
+          Float.isInfinite(aggCPC)) {
         aggCPC = 0.0f;
       }
       
-      if(Float.isNaN(aggCPM)) {
+      if(Float.isNaN(aggCPM) ||
+          Float.isInfinite(aggCPM)) {
         aggCPM = 0.0f;
       }
 
@@ -174,7 +180,7 @@ public class VidRecord implements importRecord {
       GroupID currID = (GroupID)pairs.getKey();
 
       VidRecord rec = new VidRecord(dateArray,currID.getSource(),currID.getMedium(),currID.getCampaign(),currID.getSource(),//<- This is network
-          totalClicks,totalImpressions,totalYTViews,aggCTR,aggCPC,aggCPM,totalSpend, totalConversions,pcConversions,piConversions);
+          currID.getAdContent(),totalClicks,totalImpressions,totalYTViews,aggCTR,aggCPC,aggCPM,totalSpend, totalConversions,pcConversions,piConversions);
       VidRecordCollection.add(rec);
     }
 
@@ -578,10 +584,21 @@ public class VidRecord implements importRecord {
    */
   @Override
   public boolean match(List<String> gaRow) {
-    if (gaRow.get(0).equals(this.source) && gaRow.get(1).equals(this.medium) && gaRow.get(2).equals(this.campaign) ) {
+    if (gaRow.get(0).equals(this.source) && gaRow.get(1).equals(this.medium) && gaRow.get(2).equals(this.campaign) &&
+        gaRow.get(3).equals(this.adContent)) {
       return true;
     }
     return false;
+  }
+
+
+  public String getAdContent() {
+    return adContent;
+  }
+
+
+  public void setAdContent(String adContent) {
+    this.adContent = adContent;
   }
 
 }// end of VidRecord

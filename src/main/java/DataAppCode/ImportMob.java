@@ -49,11 +49,11 @@ public class ImportMob {
 
     String tblName = "DATESTtblMobileMetrics";
     //These fields are out of order
-    String fields = "(startDate,endDate,source,medium,componentName,clicks,"
+    String fields = "(startDate,endDate,source,medium,componentName,adContent,clicks,"
         + "impressions,allCTR,averageCPC,averageCPM,spend,totalConversions,pcConversions,piConversions,"
         + "visits,pagesPerVisit,averageDuration,"
         + "percentNewVisits,bounceRate,partialWeek,daysActive)";
-    String parameters = "(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    String parameters = "(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
     String insertQuery = "INSERT INTO " + tblName + fields + " VALUES" + parameters;
 
@@ -86,27 +86,29 @@ public class ImportMob {
         updateCentroMob.setString(3,currRec.getSource());
         updateCentroMob.setString(4,currRec.getMedium());
         updateCentroMob.setString(5,currRec.getCampaign());
-        updateCentroMob.setInt(6,currRec.getClicks());
-        updateCentroMob.setInt(7,currRec.getImpressions());
+        updateCentroMob.setString(6, currRec.getAdContent());
+        updateCentroMob.setInt(7,currRec.getClicks());
+        updateCentroMob.setInt(8,currRec.getImpressions());
        
-        updateCentroMob.setFloat(8,currRec.getCTR());
+        updateCentroMob.setFloat(9,currRec.getCTR());
 
 
-        updateCentroMob.setFloat(9,currRec.getAvgCPC());
+        updateCentroMob.setFloat(10,currRec.getAvgCPC());
 
-        updateCentroMob.setFloat(10, currRec.getAvgCPM());
+        
+        updateCentroMob.setFloat(11, currRec.getAvgCPM());
+        updateCentroMob.setFloat(12,currRec.getSpend());
 
-        updateCentroMob.setFloat(11,currRec.getTotalConversions());
-        updateCentroMob.setFloat(12,currRec.getPCConversions());
-        updateCentroMob.setFloat(13,currRec.getPIConversions());
-        updateCentroMob.setFloat(14,currRec.getSpend());
-        updateCentroMob.setInt(15,currRec.getVisits());
-        updateCentroMob.setFloat(16,currRec.getPagesPerVisit());
-        updateCentroMob.setFloat(17,currRec.getAvgDuration());
-        updateCentroMob.setFloat(18,currRec.getPercentNewVisits());
-        updateCentroMob.setFloat(19,currRec.getBounceRate());
-        updateCentroMob.setBoolean(20,currRec.getPartialWeek());
-        updateCentroMob.setInt(21,currRec.getDaysActive());
+        updateCentroMob.setFloat(13,currRec.getTotalConversions());
+        updateCentroMob.setFloat(14,currRec.getPCConversions());
+        updateCentroMob.setFloat(15,currRec.getPIConversions());
+        updateCentroMob.setInt(16,currRec.getVisits());
+        updateCentroMob.setFloat(17,currRec.getPagesPerVisit());
+        updateCentroMob.setFloat(18,currRec.getAvgDuration());
+        updateCentroMob.setFloat(19,currRec.getPercentNewVisits());
+        updateCentroMob.setFloat(20,currRec.getBounceRate());
+        updateCentroMob.setBoolean(21,currRec.getPartialWeek());
+        updateCentroMob.setInt(22,currRec.getDaysActive());
         
 
         updateCentroMob.executeUpdate();
@@ -140,7 +142,8 @@ public class ImportMob {
     data = CSVReaders.readCsv("retrievedCentro Mobile Display.csv");
     
     CSVReaders.removeHeader(data);
-    CSVReaders.removeTail(data); //If data is missing this may be the reason why
+    CSVReaders.removeInvalidDates(data, "Centro", DataAppTest.startDate);
+    
     System.out.println("Centro Mobile File Read Complete.\n");
     
     System.out.println("Grouping Data by Source, Medium and Campaign...\n");

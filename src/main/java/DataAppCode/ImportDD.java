@@ -41,9 +41,58 @@ import java.util.Set;
 public class ImportDD {
   
   
-public static HashMap<GroupID, ArrayList<String[]>> groupRawData(ArrayList<String[]> rawData) {
+  @Deprecated // Replaced by GroupCentroRawData in importUtils package 
+  public static HashMap<GroupID, ArrayList<String[]>> groupRawData(ArrayList<String[]> rawData) {
+    /*
+     * Build the dictionaries that convert the string identifying the source, medium, campaign and ad
+     * content to the exact string that will match with the values from the ad units data in Google
+     * Analytics. 
+     * 
+     * Note: This list will need to be updated as new campaigns are launched.
+     */
     
+    //These mappings convert the string identifying the source, medium and campaign in the Centro Files
+    //to the string that matches the corresponding term in Google Analytics
+    //Note: As USM utilizes more networks through Centro this list will need to be updated.
+    HashMap<String,String> centroSourceMappings = new HashMap<String,String>();
+    centroSourceMappings.put("Collective.com","Collective");
+    centroSourceMappings.put("MobileFuse.com","MobileFuse");
+    centroSourceMappings.put("Pandora.com","Pandora");
+    centroSourceMappings.put("Petersons.com","Peterson");
+    centroSourceMappings.put("SparkNotes.com","Sparknotes");
+    centroSourceMappings.put("YouTube.com","YouTube");
+    centroSourceMappings.put("BrandExchange.net","Brand_Exchange");
+
+    HashMap<String,String> centroMediumMappings = new HashMap<String,String>();
+    centroMediumMappings.put("Digital Display (web)","Display");
+    centroMediumMappings.put("Video Display","Preroll");
+    centroMediumMappings.put("Mobile Display","Mobile");
+    centroMediumMappings.put("Rich media","Rich");
+
+    HashMap<String,String> centroCampaignMappings = new HashMap<String,String>();
+    centroCampaignMappings.put("USM001","");
+    centroCampaignMappings.put("USM002","");
+    centroCampaignMappings.put("USM003","");
+    centroCampaignMappings.put("USM004","");
+    centroCampaignMappings.put("USM005","");
+    centroCampaignMappings.put("USM006","FY2015_Undergrad");
+    centroCampaignMappings.put("USM007","FY2015_Graduate");
+    centroCampaignMappings.put("USM008","FY2015_Degree_Completion");
+    centroCampaignMappings.put("USM009","FY2015_Transfer");
+    centroCampaignMappings.put("USM010","FY2015_Courses_Summer");
+    
+    HashMap<String,String> centroAdContentMappings = new HashMap<String,String>();
+    centroAdContentMappings.put("time","Time_Is_Now");
+    centroAdContentMappings.put("summer","(not set)");
+    centroAdContentMappings.put("tour","Campus_Tour");
+    centroAdContentMappings.put("misc","Unknown");
+
+
+    
+    
+    //Dictionary that will house all grouped data
     HashMap<GroupID, ArrayList<String[]>> groupedData = new HashMap<GroupID, ArrayList<String[]>>();
+
     for (String[] row : rawData) {
       //what are the key fields necessary for the groupID
       /*
@@ -51,70 +100,84 @@ public static HashMap<GroupID, ArrayList<String[]>> groupRawData(ArrayList<Strin
        * "BrandExchange.net",
        * Medium: Index : 5 Values: Digital Display (web),Video Display, Mobile Display, Rich Media
        * Campaign: Index: 2 Values: USM001-010
+       * Ad Content: Index:6
        */
-      
-      //These mappings convert the string identifying the source, medium and campaign in the Centro Files
-      //to the string that matches the corresponding term in Google Analytics
-      //Note: As USM utilizes more networks through Centro this list will need to be updated.
-      HashMap<String,String> centroSourceMappings = new HashMap<String,String>();
-      centroSourceMappings.put("Collective.com","Collective");
-      centroSourceMappings.put("MobileFuse.com","MobileFuse");
-      centroSourceMappings.put("Pandora.com","Pandora");
-      centroSourceMappings.put("Petersons.com","Peterson");
-      centroSourceMappings.put("SparkNotes.com","Sparknotes");
-      centroSourceMappings.put("YouTube.com","YouTube");
-      centroSourceMappings.put("BrandExchange.net","Brand_Exchange");
-      
-      HashMap<String,String> centroMediumMappings = new HashMap<String,String>();
-      centroMediumMappings.put("Digital Display (web)","Display");
-      centroMediumMappings.put("Video Display","Preroll");
-      centroMediumMappings.put("Mobile Display","Mobile");
-      centroMediumMappings.put("Rich media","Rich");
-      
-      HashMap<String,String> centroCampaignMappings = new HashMap<String,String>();
-      centroCampaignMappings.put("USM001","");
-      centroCampaignMappings.put("USM002","");
-      centroCampaignMappings.put("USM003","");
-      centroCampaignMappings.put("USM004","");
-      centroCampaignMappings.put("USM005","");
-      centroCampaignMappings.put("USM006","FY2015_Undergrad");
-      centroCampaignMappings.put("USM007","FY2015_Graduate");
-      centroCampaignMappings.put("USM008","FY2015_Degree_Completion");
-      centroCampaignMappings.put("USM009","FY2015_Transfer");
-      centroCampaignMappings.put("USM010","FY2015_Courses_Fall/Spring");
-      
-      
-      String source = "";
-      String medium = ""; 
-      String campaign = "";
-      
-      
+
+      String source;
+      String medium; 
+      String campaign;
+      String adContent;
+
+
+      //Assign value to source
       if (centroSourceMappings.containsKey(row[3])) {
         source = centroSourceMappings.get(row[3]);
       } else {
-        source = "Source Not Found";
+        source = "Source Not Found" + row[3];
       }
 
-      
+      //Assign value to medium
       if (centroMediumMappings.containsKey(row[5])) {
         medium = centroMediumMappings.get(row[5]); 
       } else {
         medium = "Medium Not Found: " + row[5];
-        System.out.println(medium);
       }
-      
+
+      //Assign value to campaign
       if (centroCampaignMappings.containsKey(row[2])) {
         campaign = centroCampaignMappings.get(row[2]); 
       } else {
-        campaign = "Campaign Not Found";
+        campaign = "Campaign Not Found" + row[2];
       }
       
+      
+
+      
+      //Assign value to adContent based on whether the value contains the
+      //key within it. This is different then source, medium and campaign as
+      //it is not looking for an exact match.
+      if (row[6].contains("time")) {
+        adContent = "time";
+      } else if (row[6].contains("tour")) {
+        adContent = "tour";
+      } else if (campaign.equals("FY2015_Courses_Summer")) { //ad content not set for Summer DD
+        adContent = "summer";
+      } else if (row[6].equals("Tracking Pixel")) {
+        adContent = "Tracking Pixel";
+      } else {
+        adContent = "misc";
+      }
+      
+      
+      
+      //TODO: Since this is DD Tracking pixel wouldn't ap
+      if (adContent.equals("Tracking Pixel")) {
+        if (campaign.equals("FY2015_Courses_Summer")) {
+          adContent = "summer";
+        } else {
+          adContent = "time";
+        }
+      }
+      
+      
+      //TODO: Check campaign and assign adContent value based on this.
+      //adContent parameter for Summer YouTube is not set
+      //adContent parameter for FY2015_Undergrad YouTube is Time_Is_Now
+      
+      //if key is not dictionary a null value is returned?
+      //this can raise a null pointer exception
+      adContent = centroAdContentMappings.get(adContent);
+      
+
       //load GroupID
-      GroupID currGroupID = new GroupID(source,medium,campaign);
+      GroupID currGroupID = new GroupID(source,medium,campaign, adContent);
       
       
+
+
+
       boolean groupIDExists = false;
-      //Iterates through hashmap and raised flag if the groupID already exists
+      //Iterates through hashmap and raises flag if the groupID already exists
       Iterator it = groupedData.entrySet().iterator();
       while (it.hasNext()) {
         Map.Entry pairs = (Map.Entry)it.next();
@@ -125,15 +188,15 @@ public static HashMap<GroupID, ArrayList<String[]>> groupRawData(ArrayList<Strin
           groupedData.get(iteratedGroupID).add(row);
         } //end of if
       }// end of while
-      
-      //A matching key was not found
+
+      //A matching groupID was not found and a new key must be created
       if (!groupIDExists) {
         groupedData.put(currGroupID, new ArrayList<String[]>()); //create the new key value pair with empty array list
         groupedData.get(currGroupID).add(row); //add row
       }//end of if   
-      
+
     }// end of for
-    
+
     return groupedData;
   }//end of group raw data
 
@@ -154,13 +217,14 @@ public static void printGroupedData(HashMap<GroupID, ArrayList<String[]>> groupe
   /*
    * PreCondition: Raw data is already grouped appropriately
    */
+
+ //TODO: This method can likely be modified to work aggregate all Centro data at once.
   public static ArrayList<DDRecord> aggregate(HashMap<GroupID,ArrayList<String[]>> rawData) {
 
-    //TODO: all start dates should come from one place
-    System.out.println("Aggregating rows based on Source, Network and Campaign...\n");
+    System.out.println("Aggregating rows based on Source, Network, Campaign and AdContent...\n");
     
     
-    //Iterate through HashMap and place only digial display entries into a new HashMap
+    //Iterate through HashMap and place only digital display entries into a new onlyDD HashMap
     HashMap<GroupID,ArrayList<String[]>> onlyDD = new HashMap<GroupID,ArrayList<String[]>>();
     Iterator itr = rawData.entrySet().iterator();
     while (itr.hasNext()) {
@@ -172,10 +236,10 @@ public static void printGroupedData(HashMap<GroupID, ArrayList<String[]>> groupe
       }//end of if
     }//end of while
     
-    //The returned ArrayList
+    //Create final returned arrayList
     ArrayList<DDRecord> DDRecordCollection = new ArrayList<DDRecord>();
 
-    //Need to loop through Hash Map
+    //Loop through hash map aggregating values
     Iterator it = onlyDD.entrySet().iterator();
     while (it.hasNext()) {
       Map.Entry pairs = (Map.Entry)it.next();
@@ -225,7 +289,7 @@ public static void printGroupedData(HashMap<GroupID, ArrayList<String[]>> groupe
       GroupID currID = (GroupID)pairs.getKey();
 
       DDRecord rec = new DDRecord(dateArray,currID.getSource(),currID.getMedium(),currID.getCampaign(),currID.getSource(),//<- This is network
-          totalClicks,totalImpressions,aggCTR,aggCPC,aggCPM,totalSpend, totalConversions,pcConversions,piConversions);
+          currID.getAdContent(),totalClicks,totalImpressions,aggCTR,aggCPC,aggCPM,totalSpend, totalConversions,pcConversions,piConversions);
       DDRecordCollection.add(rec);
     }
 
@@ -239,11 +303,11 @@ public static void printGroupedData(HashMap<GroupID, ArrayList<String[]>> groupe
 
     String tblName = "DATESTtblDigitalDisplayMetrics";
     //These fields are out of order
-    String fields = "(startDate,endDate,source,medium,componentName,clicks,"
+    String fields = "(startDate,endDate,source,medium,componentName,adContent,clicks,"
         + "impressions,allCTR,averageCPC,averageCPM,spend,totalConversions,pcConversions,piConversions,"
         + "visits,pagesPerVisit,averageDuration,"
         + "percentNewVisits,bounceRate,partialWeek,daysActive)";
-    String parameters = "(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    String parameters = "(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
     String insertQuery = "INSERT INTO " + tblName + fields + " VALUES" + parameters;
 
@@ -276,28 +340,45 @@ public static void printGroupedData(HashMap<GroupID, ArrayList<String[]>> groupe
         updateCentroDD.setString(3,currRec.getSource());
         updateCentroDD.setString(4,currRec.getMedium());
         updateCentroDD.setString(5,currRec.getCampaign());
-        updateCentroDD.setInt(6,currRec.getClicks());
-        updateCentroDD.setInt(7,currRec.getImpressions());
-        updateCentroDD.setFloat(8,currRec.getCTR());
+        updateCentroDD.setString(6, currRec.getAdContent());
+        updateCentroDD.setInt(7,currRec.getClicks());
+        updateCentroDD.setInt(8,currRec.getImpressions());
+        
+        if (Double.isNaN(currRec.getCTR()) || 
+            currRec.getCTR() == Double.POSITIVE_INFINITY) {
+          currRec.setCTR(-1.0f);
+          System.out.println("Converted special value");
+        }
+        updateCentroDD.setFloat(9,currRec.getCTR());
+        
+        
+        
         //MySQL databases will not accept NaN or Infinity as a float value
-        if (currRec.getAvgCPC() == Double.NaN || 
+        if (Double.isNaN(currRec.getAvgCPC())|| 
             currRec.getAvgCPC() == Double.POSITIVE_INFINITY) {
           currRec.setAvgCPC(-1.0f);
           System.out.println("Converted special value");
         }
-        updateCentroDD.setFloat(9,currRec.getAvgCPC());
-        updateCentroDD.setFloat(10, currRec.getAvgCPM());
-        updateCentroDD.setFloat(11,currRec.getTotalConversions());
-        updateCentroDD.setFloat(12,currRec.getPCConversions());
-        updateCentroDD.setFloat(13,currRec.getPIConversions());
-        updateCentroDD.setFloat(14,currRec.getSpend());
-        updateCentroDD.setInt(15,currRec.getVisits());
-        updateCentroDD.setFloat(16,currRec.getPagesPerVisit());
-        updateCentroDD.setFloat(17,currRec.getAvgDuration());
-        updateCentroDD.setFloat(18,currRec.getPercentNewVisits());
-        updateCentroDD.setFloat(19,currRec.getBounceRate());
-        updateCentroDD.setBoolean(20,currRec.getPartialWeek());
-        updateCentroDD.setInt(21,currRec.getDaysActive());
+        updateCentroDD.setFloat(10,currRec.getAvgCPC());
+        
+        
+        if (Double.isNaN(currRec.getAvgCPM()) || 
+            currRec.getAvgCPM() == Double.POSITIVE_INFINITY) {
+          currRec.setAvgCPM(-1.0f);
+        }
+        
+        updateCentroDD.setFloat(11, currRec.getAvgCPM());
+        updateCentroDD.setFloat(12, currRec.getSpend());
+        updateCentroDD.setFloat(13,currRec.getTotalConversions());
+        updateCentroDD.setFloat(14,currRec.getPCConversions());
+        updateCentroDD.setFloat(15,currRec.getPIConversions());
+        updateCentroDD.setInt(16,currRec.getVisits());
+        updateCentroDD.setFloat(17,currRec.getPagesPerVisit());
+        updateCentroDD.setFloat(18,currRec.getAvgDuration());
+        updateCentroDD.setFloat(19,currRec.getPercentNewVisits());
+        updateCentroDD.setFloat(20,currRec.getBounceRate());
+        updateCentroDD.setBoolean(21,currRec.getPartialWeek());
+        updateCentroDD.setInt(22,currRec.getDaysActive());
 
         updateCentroDD.executeUpdate();
         cnxn.commit();
@@ -335,14 +416,15 @@ public static void printGroupedData(HashMap<GroupID, ArrayList<String[]>> groupe
 
     
     CSVReaders.removeHeader(data);
-    CSVReaders.removeTail(data); //If data is missing this may be the reason why
+    CSVReaders.removeInvalidDates(data, "Centro", DataAppTest.startDate);
+    
     System.out.print("Complete.\n");
     
     //Now that we have the raw data in ArrayList<String[]> form
     //We need to group appropriately into a hashmap
     //We will then iterate through the HashMap and aggregate each entry
     
-    System.out.println("Grouping Data by Source, Medium and Campaign... ");
+    System.out.println("Grouping Data by Source, Medium, Campaign and AdContent... ");
     HashMap<GroupID, ArrayList<String[]>> groupedData = groupRawData(data);
     System.out.print("Complete.\n");
 
@@ -350,6 +432,8 @@ public static void printGroupedData(HashMap<GroupID, ArrayList<String[]>> groupe
     System.out.println("Aggregating Centro Digital Display Data... ");
     ArrayList<DDRecord> acquisitionData = aggregate(groupedData);
     System.out.print("Complete.\n");
+    
+    System.out.println("The number of DD records for import is: " + acquisitionData.size());
 
     System.out.println("Removing all records with 0 Impressions.\n");
     acquisitionData = importUtils.remove0ImpressionRecords(acquisitionData);

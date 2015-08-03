@@ -42,6 +42,7 @@ public class MobRecord implements importRecord {
   private String medium;
   private String campaign;
   private String network; //This is new be sure to include in query
+  private String adContent;
   private Integer clicks;
   private Integer impressions;
   private Float CTR;
@@ -60,7 +61,7 @@ public class MobRecord implements importRecord {
   //constructor
   //Behavior metrics are missing from the constructor as they are added to the record
   //after construction once the GA API has been called
-  public MobRecord(String[] dateArray, String src, String med, String camp, String ntwk,
+  public MobRecord(String[] dateArray, String src, String med, String camp, String ntwk, String adc,
                        Integer clks, Integer impr, Float ctr, Float cpc, Float cpm, Float spnd,
                        Integer totalcnv, Integer pccnv, Integer picnv) {
     setStartDate(dateArray[0]);
@@ -69,6 +70,7 @@ public class MobRecord implements importRecord {
     setMedium(med);
     setCampaign(camp);
     setNetwork(ntwk);
+    setAdContent(adc);
     setClicks(clks);
     setImpressions(impr);
     setCTR(ctr);
@@ -80,12 +82,16 @@ public class MobRecord implements importRecord {
     setPIConversions(picnv);
   }
   
+  
+  //TODO: The DD aggregate method is in the importDD class. Need to move one method
+  //or another to ensure consistency.
+  
   /*
    * PreCondition: Raw data is already grouped appropriately
    */
   public static ArrayList<MobRecord> aggregate(HashMap<GroupID,ArrayList<String[]>> rawData) {
 
-    System.out.println("Aggregating rows based on Source, Medium and Campaign...\n");
+    System.out.println("Aggregating rows based on Source, Medium, Campaign and AdContent...\n");
     
     
     //Iterate through HashMap and place only digial display entries into a new HashMap
@@ -144,14 +150,19 @@ public class MobRecord implements importRecord {
       Float aggCPM = totalSpend/kImpressions;
       //TODO: System.out.println("Ensure this cpm calc is correct: " + aggCPM);
       
+      //TODO: checking for NaN and Infinity happens in the updateDD method
+      //as opposed to here where it takes place in the aggregate method.
+      //Need to bring this into alignment for consistency.
+      
+      
       //NaN must be converted as MySQL wil not import NaN values
-      if (Float.isNaN(aggCTR)) {
+      if (Float.isNaN(aggCTR) || Float.isInfinite(aggCTR)) {
         aggCTR = 0.0f;
       }
-      if (Float.isNaN(aggCPC)) {
+      if (Float.isNaN(aggCPC) || Float.isInfinite(aggCPC)) {
         aggCPC = 0.0f;
       }
-      if (Float.isNaN(aggCPM)) {
+      if (Float.isNaN(aggCPM) || Float.isInfinite(aggCPM)) {
         aggCPM = 0.0f;
       }      
 
@@ -162,7 +173,7 @@ public class MobRecord implements importRecord {
       GroupID currID = (GroupID)pairs.getKey();
 
       MobRecord rec = new MobRecord(dateArray,currID.getSource(),currID.getMedium(),currID.getCampaign(),currID.getSource(),//<- This is network
-          totalClicks,totalImpressions,aggCTR,aggCPC,aggCPM,totalSpend, totalConversions,pcConversions,piConversions);
+      currID.getAdContent(),totalClicks,totalImpressions,aggCTR,aggCPC,aggCPM,totalSpend, totalConversions,pcConversions,piConversions);
       MobRecordCollection.add(rec);
     }
 
@@ -364,16 +375,25 @@ public class MobRecord implements importRecord {
   }
 
   /*
-   * Pre: The query passed to the GA API requests source, medium and campaign
+   * Pre: The query passed to the GA API requests source, medium, campaign and adcontent
    * as the first, second and third dimensions. Without this query structure the
    * the wrong dimension from the GA results will be matched always returning false 
    */
   @Override
   public boolean match(List<String> gaRow) {
-    if (gaRow.get(0).equals(this.source) && gaRow.get(1).equals(this.medium) && gaRow.get(2).equals(this.campaign) ) {
+    if (gaRow.get(0).equals(this.source) && gaRow.get(1).equals(this.medium) && gaRow.get(2).equals(this.campaign)
+        && gaRow.get(3).equals(this.adContent)) {
       return true;
     }
     return false;
+  }
+
+  public String getAdContent() {
+    return adContent;
+  }
+
+  public void setAdContent(String adContent) {
+    this.adContent = adContent;
   }
 
 }

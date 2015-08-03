@@ -177,20 +177,20 @@ public class TWRecord implements importRecord {
             //Index 0 : id, Index 1 : Campaign, Index 2 : Campaign URL
             //Index 3 : Funding Instrument ID, Index 4 : Funding Instrument Name,
             //Index 5 : Time, Index 6 : Campaign Start Date,Index 7: Campaign End Date,
-            totalSpend += Float.parseFloat(row[8]); //Index 8 : Spend
-            totalImpressions += Integer.parseInt(row[9]); //Index9:  Impressions
-            String currCampaign = pairs.getKey().getCampaign();
-            totalEngagements += Integer.parseInt(row[10]); //Index 10: Engagements
-            totalBilledEngagements += Integer.parseInt(row[11]);//Index 11: Billed Engagements
-            totalRetweets += Integer.parseInt(row[12]);//Index 12: Retweets
-            totalReplies += Integer.parseInt(row[13]);//Index13: Replies
-            totalFollows += Integer.parseInt(row[14]);//Index 14: Follows
-            totalTWClicks += Integer.parseInt(row[15]);//Index 15: TWClicks
-            totalFavorites += Integer.parseInt(row[16]);//Index 16: Favorites
-            totalCardEngagements += Integer.parseInt(row[17]);//Index 17: Card Engagements
-            totalUnfollows += Integer.parseInt(row[18]);//Index 18: Unfollows
+            totalSpend += Float.parseFloat(row[8].replaceAll("\"","")); //Index 8 : Spend
+            totalImpressions += Integer.parseInt(row[9].replaceAll("\"","")); //Index9:  Impressions
+//            String currCampaign = pairs.getKey().getCampaign();
+            totalEngagements += (int)Float.parseFloat(row[10].replaceAll("\"","")); //Index 10: Engagements
+            totalBilledEngagements += Integer.parseInt(row[11].replaceAll("\"",""));//Index 11: Billed Engagements
+            totalRetweets += Integer.parseInt(row[12].replaceAll("\"",""));//Index 12: Retweets
+            totalReplies += Integer.parseInt(row[13].replaceAll("\"",""));//Index13: Replies
+            totalFollows += Integer.parseInt(row[14].replaceAll("\"",""));//Index 14: Follows
+            totalTWClicks += Integer.parseInt(row[15].replaceAll("\"",""));//Index 15: TWClicks
+            totalFavorites += Integer.parseInt(row[16].replaceAll("\"",""));//Index 16: Favorites
+            totalCardEngagements += Integer.parseInt(row[17].replaceAll("\"",""));//Index 17: Card Engagements
+            totalUnfollows += Integer.parseInt(row[18].replaceAll("\"",""));//Index 18: Unfollows
             //Index 19: Engagement Rate
-            totalLinkClicks += Integer.parseInt(row[20]);//Index 20: Link Clicks
+            totalLinkClicks += (int)Float.parseFloat(row[20].replaceAll("\"",""));//Index 20: Link Clicks
             //TODO: Need to ensure all csvs can handle number formats with commas
           }// end of inner loop
           
