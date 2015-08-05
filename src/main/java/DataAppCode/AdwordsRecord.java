@@ -18,6 +18,8 @@ package DataAppCode;
  * @author cgrass@google.com (Your Name Here)
  *
  */
+
+//test comment to ensure changing of git text editor was successful
 public class AdwordsRecord {
   
   //record attributes
