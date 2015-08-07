@@ -82,5 +82,19 @@ public class MultiDateImportTest {
       assertTrue("A date other than Tuesday was found.", currDate.getDayOfWeek() == DayOfWeek.TUESDAY);
     }
   }
+  
+  @Test
+  public void testRunMultiImport() {
+    System.out.println("Testing multiDate import for Adwords");
+    
+    //generate dates
+    ArrayList<LocalDate> dates = MultiDateImport.generateStartDates(startDate, endDate);
+    
+    //This will import for the dates of 03-03 to 03-07
+    MultiDateImport.runMultiImport(dates);
+    
+    System.out.println("Test complete check DB to ensure correct records were imported.");
+    
+  }
 
 }

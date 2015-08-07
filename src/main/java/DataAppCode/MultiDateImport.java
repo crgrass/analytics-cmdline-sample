@@ -32,6 +32,8 @@ public class MultiDateImport {
   //Request user input to define first and last startDates (inclusive)
   //User input will initially be provided in the testing setup methods
   
+  
+  //Enumerate all start dates between the two
   public static ArrayList<LocalDate> generateStartDates(LocalDate begin, LocalDate end) {
     ArrayList<LocalDate> importDates = new ArrayList<LocalDate>();
     
@@ -50,11 +52,14 @@ public class MultiDateImport {
     return importDates;
   }
   
-  //Enumerate all start dates between the two
   
-  //Loop iterating through startDate
   
   //For each date run import script for the date selected
+  public static void runMultiImport (ArrayList<LocalDate> importDates){
+    for (LocalDate currDate : importDates) {
+      VendorImportMethods.importAdwords(new String[] {}, currDate, currDate.plusDays(6));
+    }
+  }
   
   //Execution of the multImport must stop if there is an error
   //information must be provided to the user indicating how much data was imported
