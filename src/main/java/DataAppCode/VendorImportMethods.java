@@ -100,7 +100,7 @@ public class VendorImportMethods {
 
       //guiCode.DataAppTest.outputDisplay.write(OutputMessages.importActivity(DataAppTest.importActivity.toString()));
 
-      //DataAppTest.importActivity.reset();
+      //DataAppTest.importActivity.reset(); 
       
       //guiCode.DataAppTest.outputDisplay.write(OutputMessages.vendorImportComplete("Google Adwords"));
 
