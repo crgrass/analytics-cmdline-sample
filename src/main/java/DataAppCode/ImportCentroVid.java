@@ -116,12 +116,12 @@ public class ImportCentroVid {
   public static void main(String[] args) {
     
     guiCode.DataAppTest.outputDisplay.write(OutputMessages.startingVendorImport("Centro Video"));
-    Map<String,String> filePaths = FilePathBuilder.buildFilePathMapDropBox();
+    Map<String,String> filePaths = FilePathBuilder.buildFilePathMapDropBox(DataAppTest.startDate);
     ArrayList<String[]> data = null;
     
     //pull down data, write to file and overwrite any existing files
     try {
-      DropBoxConnection.pullCSV("Centro Video Display");
+      DropBoxConnection.pullCSV("Centro Video Display", DataAppTest.startDate);
     } catch (DbxException exception) {
       // TODO Auto-generated catch block
       exception.printStackTrace();

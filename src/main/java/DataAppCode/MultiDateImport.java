@@ -53,15 +53,25 @@ public class MultiDateImport {
   }
   
   
+  //TODO:Execution of the multImport must stop if there is an error
+  //information must be provided to the user indicating how much data was imported
   
   //For each date run import script for the date selected
-  public static void runMultiImport (ArrayList<LocalDate> importDates){
+  public static void multiImportAdwords(ArrayList<LocalDate> importDates){
+    
     for (LocalDate currDate : importDates) {
       VendorImportMethods.importAdwords(new String[] {}, currDate, currDate.plusDays(6));
     }
   }
   
-  //Execution of the multImport must stop if there is an error
-  //information must be provided to the user indicating how much data was imported
+  //For each date run import script for the date selected
+  public static void multiImportFacebook(ArrayList<LocalDate> importDates){
+    
+    for (LocalDate currDate : importDates) {
+      VendorImportMethods.importFacebook(new String[] {}, currDate, currDate.plusDays(6));
+    }
+  }
+  
 
-}
+
+}//end of method

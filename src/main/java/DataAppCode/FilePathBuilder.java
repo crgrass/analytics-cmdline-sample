@@ -16,6 +16,7 @@ package DataAppCode;
 
 import guiCode.DataAppTest;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -37,27 +38,6 @@ public class FilePathBuilder {
   public static Map<String,String> buildFilePathMap() {
   
   Map<String,String> fileLocations = new HashMap<String,String>();
-  
-  //TODO: Adwords does not recquire a import folder and this should eventually be removed 
-  fileLocations.put("Google Adwords", "Z:\\marketing\\common\\Marketing Data App\\FileCheckTest\\fileCheckTest.txt");
-  
-  fileLocations.put("Centro Digital Display", 
-      "C:\\Users\\cgrass\\Dropbox\\Vendor Data - Import and Archive\\Centro\\FY15\\FY15 Centro Reporting - Weekly Drop Folder");
-  
-  fileLocations.put("Centro Mobile Display", 
-      "C:\\Users\\cgrass\\Dropbox\\Vendor Data - Import and Archive\\Centro\\FY15\\FY15 Centro Reporting - Weekly Drop Folder");
-  
-  fileLocations.put("Centro Video Display", 
-      "C:\\Users\\cgrass\\Dropbox\\Vendor Data - Import and Archive\\Centro\\FY15\\FY15 Centro Reporting - Weekly Drop Folder");
-  
-  fileLocations.put("Centro Rich Media", 
-      "C:\\Users\\cgrass\\Dropbox\\Vendor Data - Import and Archive\\Centro\\FY15\\FY15 Centro Reporting - Weekly Drop Folder");
-  
-  fileLocations.put("Facebook", "C:\\Users\\cgrass\\Dropbox\\Vendor Data - Import and Archive\\Facebook\\FY15\\FY15 Facebook Reporting - Weekly Drop Folder");
-  
-  fileLocations.put("Twitter", "C:\\Users\\cgrass\\Dropbox\\Vendor Data - Import and Archive\\Twitter\\FY15\\FY15 Twitter Reporting - Weekly Drop Folder");
-  
-  fileLocations.put("LinkedIn", "C:\\Users\\cgrass\\Dropbox\\Vendor Data - Import and Archive\\LinkedIn\\FY15\\FY15 LinkedIn Reporting - Weekly Drop Folder");
   
   
   /*
@@ -95,7 +75,7 @@ public class FilePathBuilder {
    * Vendor and that vendors dropbox directory housing import
    * files as the key.
    */
-  public static Map<String,String> buildFilePathMapDropBox() {
+  public static Map<String,String> buildFilePathMapDropBox(LocalDate startDate) {
   
   Map<String,String> fileLocations = new HashMap<String,String>();
   
@@ -131,14 +111,15 @@ public class FilePathBuilder {
   while (itr.hasNext()) {
     Map.Entry<String,String> pairs = itr.next();
     String currVendor = pairs.getKey();
+    System.out.println("currVendor: " + currVendor);
     String currFilePath = pairs.getValue();
     if (!currVendor.contains("Centro")) {
-      currFilePath = currFilePath + "//"+ currVendor + "_" + DataAppTest.startDate.toString() +".csv";
+      currFilePath = currFilePath + "//"+ currVendor + "_" + startDate.toString() +".csv";
     } else {
       //TODO: Eliminate the need for a special case here.
       //A special case is required for centro as there are four different mediums that come from this
       //vendor
-      currFilePath = currFilePath + "//Centro"+ "_" + DataAppTest.startDate.toString() +".csv";
+      currFilePath = currFilePath + "//Centro"+ "_" + startDate.toString() +".csv";
     }
     
     fileLocations.put(currVendor,currFilePath); // replace existing entries with updated entrieds

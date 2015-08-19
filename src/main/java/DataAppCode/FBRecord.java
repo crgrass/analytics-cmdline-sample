@@ -14,6 +14,7 @@
 
 package DataAppCode;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -95,7 +96,8 @@ public class FBRecord implements importRecord {
   /*
    * PreCondition: Raw data is already grouped appropriately
    */
-  public static ArrayList<FBRecord> aggregate(HashMap<GroupID,ArrayList<String[]>> rawData) {
+  public static ArrayList<FBRecord> aggregate(HashMap<GroupID,ArrayList<String[]>> rawData,
+      LocalDate sDate, LocalDate eDate) {
 
     //TODO: all start dates should come from one place
     
@@ -207,8 +209,8 @@ public class FBRecord implements importRecord {
       }
       
 
-      String startDate = guiCode.DataAppTest.startDate.toString();
-      String endDate = guiCode.DataAppTest.endDate.toString();
+      String startDate = sDate.toString();
+      String endDate = eDate.toString();
       String[] dateArray = {startDate,endDate};
       
       GroupID currID = (GroupID)pairs.getKey();
