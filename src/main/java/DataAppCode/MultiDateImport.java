@@ -72,6 +72,14 @@ public class MultiDateImport {
     }
   }
   
+  //For each date run import script for the date selected
+  public static void multiImportTwitter(ArrayList<LocalDate> importDates){
+    
+    for (LocalDate currDate : importDates) {
+      VendorImportMethods.importTwitter(new String[] {}, currDate, currDate.plusDays(6));
+    }
+  }
+  
 
 
 }//end of method

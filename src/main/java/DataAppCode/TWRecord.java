@@ -14,6 +14,7 @@
 
 package DataAppCode;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -128,7 +129,8 @@ public class TWRecord implements importRecord {
       /*
        * PreCondition: Raw data is already grouped appropriately
        */
-      public static ArrayList<TWRecord> aggregate(HashMap<GroupID,ArrayList<String[]>> rawData) {
+      public static ArrayList<TWRecord> aggregate(HashMap<GroupID,ArrayList<String[]>> rawData, LocalDate sDate,
+          LocalDate eDate) {
         System.out.println("Aggregating rows based on Source, Medium and Campaign...\n");
         
         //Iterate through HashMap and place only Twitter entries into a new HashMap
@@ -210,9 +212,7 @@ public class TWRecord implements importRecord {
             aggCPC = 0.0f;
           }
 
-          String startDate = guiCode.DataAppTest.startDate.toString();
-          String endDate = guiCode.DataAppTest.endDate.toString();
-          String[] dateArray = {startDate,endDate};
+          String[] dateArray = {sDate.toString(),eDate.toString()};
           
           GroupID currID = pairs.getKey();
 

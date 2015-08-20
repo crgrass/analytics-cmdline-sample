@@ -199,6 +199,93 @@ public class VendorImportMethods {
   }
 
 }
+  
+  public static void importTwitter(String[] args, LocalDate sDate, LocalDate eDate) {
+//    guiCode.DataAppTest.outputDisplay.write(OutputMessages.startingVendorImport("Twitter"));
+    
+    ArrayList<String[]> data = null;
+    try {
+      
+      //pull down data, write to file and overwrite any existing files
+      try {
+         DropBoxConnection.pullCSV("Twitter", sDate);
+      } catch (DbxException exception) {
+        exception.printStackTrace();
+      } catch (IOException exception) {
+        exception.printStackTrace();
+      }
+    
+    //Read csv and return raw data
+    
+    try {
+      System.out.println("Reading Twitter File...\n");
+      data = CSVReaders.readLICsv("retrievedTwitter.csv");
+      System.out.println("Twitter File Read Complete.\n");
+    } catch (IOException e) {
+      System.out.println("There was a problem reading the Twitter File.");
+      e.printStackTrace();
+    }
+    
+    
+    CSVReaders.removeHeader(data);
+    
+    System.out.println("Grouping Data by Source, Medium and Campaign...\n");
+    HashMap<GroupID, ArrayList<String[]>> groupedData = importUtils.groupTwitterRawData(data);
+    System.out.println("Grouping Complete.\n");
+    
+    System.out.println("Aggregating Twitter Data...\n");
+    ArrayList<TWRecord> acquisitionData = TWRecord.aggregate(groupedData, sDate, eDate);
+    System.out.println("Aggregation Complete.\n");
+    
+    System.out.println("Removing all records with 0 Impressions.\n");
+    acquisitionData = importUtils.remove0ImpressionRecords(acquisitionData);
+    
+    //Data is now aggregated and ready for matching
+    
+    String startDate = sDate.toString();
+    String endDate = eDate.toString();
+    String[] testDates = {startDate,endDate};
+    
+    System.out.println("Connecting to Google Analytics API for "
+        + "Behavior metrics\n");
+    System.out.println("Google Analytics API messages below: \n");
+    GaData behaviorResults = GACall.main(args,testDates,7);
+    System.out.println("\nGoogle Analytics API Request Complete.\n");
+    
+    //match behavior and acquisition data
+    System.out.println("Matching Acquisition Metrics to their respective behavior metrics...\n");
+    importUtils.matchTWBehaviorAcq(acquisitionData, behaviorResults);
+    System.out.println("Matching Complete.\n");
+    
+    //Establish Connection
+    Connection cnx = null;
+    try {
+//      cnx = DatabaseUtils.getTestDBConnection();
+      cnx = DatabaseUtils.getGoogleCloudTestDBConnection();
+      System.out.println("Database Connection Successful\n");
+    } catch (Exception e) {
+      System.out.println("There was an error establishing connection to the database");
+      System.out.println(e.getMessage());
+    }
+
+    //execute query
+    try{
+      ImportTwitter.updateTW(acquisitionData,cnx);
+    } catch (SQLException e) {
+      System.out.println(e.getMessage());  
+
+    }
+
+//    guiCode.DataAppTest.outputDisplay.write(OutputMessages.importActivity(DataAppTest.importActivity.toString()));
+
+    //    DataAppTest.importActivity.reset();
+
+    //    guiCode.DataAppTest.outputDisplay.write(OutputMessages.vendorImportComplete("Twitter"));
+
+    } finally {
+
+    }
+  }
 
   
   

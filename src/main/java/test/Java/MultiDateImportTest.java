@@ -104,13 +104,28 @@ public class MultiDateImportTest {
   
   @Test
   public void testMultiImportFacebook() {
-    System.out.println("Testing multiDate import for Adwords");
+    System.out.println("Testing multiDate import for Facebook");
     
     //generate dates
     ArrayList<LocalDate> dates = MultiDateImport.generateStartDates(startDate, endDate);
     
     //This will import for the dates of listed in the class variables
     MultiDateImport.multiImportFacebook(dates);
+    
+    System.out.println("Test complete check DB to ensure correct records were imported.");
+    
+  }
+  
+  
+  @Test
+  public void testMultiImportTwitter() {
+    System.out.println("Testing multiDate import for Twitter");
+    
+    //generate dates
+    ArrayList<LocalDate> dates = MultiDateImport.generateStartDates(startDate, endDate);
+    
+    //This will import for the dates of listed in the class variables
+    MultiDateImport.multiImportTwitter(dates);
     
     System.out.println("Test complete check DB to ensure correct records were imported.");
     
