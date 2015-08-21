@@ -130,5 +130,48 @@ public class MultiDateImportTest {
     System.out.println("Test complete check DB to ensure correct records were imported.");
     
   }
+  
+  @Test
+  public void testMultiImportDigitalDisplay() {
+    System.out.println("Testing multiDate import for Digital Display");
+    
+    //generate dates
+    ArrayList<LocalDate> dates = MultiDateImport.generateStartDates(startDate, endDate);
+    
+    //This will import for the dates of listed in the class variables
+    MultiDateImport.multiImportCentroDigitalDisplay(dates);
+    
+    System.out.println("Test complete check DB to ensure correct records were imported.");
+    
+  }
 
+
+  @Test
+  public void testMultiImportVideo() {
+    System.out.println("Testing multiDate import for Video");
+
+    //generate dates
+    ArrayList<LocalDate> dates = MultiDateImport.generateStartDates(startDate, endDate);
+
+    //This will import for the dates of listed in the class variables
+    MultiDateImport.multiImportCentroVideo(dates);
+
+    System.out.println("Test complete check DB to ensure correct records were imported.");
+
+  }
+  
+  @Test
+  public void testMultiImportMobile() {
+    System.out.println("Testing multiDate import for Mobile");
+
+    //generate dates
+    ArrayList<LocalDate> dates = MultiDateImport.generateStartDates(startDate, endDate);
+
+    //This will import for the dates of listed in the class variables
+    MultiDateImport.multiImportCentroMobile(dates);
+
+    System.out.println("Test complete check DB to ensure correct records were imported.");
+
+  }
+  
 }

@@ -80,6 +80,30 @@ public class MultiDateImport {
     }
   }
   
+  //For each date run import script for the date selected
+  public static void multiImportCentroDigitalDisplay(ArrayList<LocalDate> importDates){
+    
+    for (LocalDate currDate : importDates) {
+      VendorImportMethods.importCentroDigitalDisplay(new String[] {}, currDate, currDate.plusDays(6));
+    }
+  }
+  
+  //For each date run import script for the date selected
+  public static void multiImportCentroVideo(ArrayList<LocalDate> importDates){
+    
+    for (LocalDate currDate : importDates) {
+      VendorImportMethods.importCentroVideo(new String[] {}, currDate, currDate.plusDays(6));
+    }
+  }
+  
+  //For each date run import script for the date selected
+  public static void multiImportCentroMobile(ArrayList<LocalDate> importDates){
+    
+    for (LocalDate currDate : importDates) {
+      VendorImportMethods.importCentroMobile(new String[] {}, currDate, currDate.plusDays(6));
+    }
+  }
+  
 
 
 }//end of method

@@ -108,7 +108,7 @@ public class importUtils {
    * These methods can eventually be turned multi-purpose by passing in the
    * source, medium and campaign mappings as a parameter
    */
-  public static HashMap<GroupID, ArrayList<String[]>> groupCentroRawData(ArrayList<String[]> rawData) {
+  public static HashMap<GroupID, ArrayList<String[]>> groupCentroRawData(ArrayList<String[]> rawData, LocalDate sDate) {
     
     HashMap<GroupID, ArrayList<String[]>> groupedData = new HashMap<GroupID, ArrayList<String[]>>();
     for (String[] row : rawData) {
@@ -154,7 +154,7 @@ public class importUtils {
       //Summer is typically run in the same campaign as individual courses
       //use date to determine which campaign to use.
       LocalDate summerCampStart = LocalDate.of(2015, Month.FEBRUARY, 1);
-      if (DataAppTest.startDate.compareTo(summerCampStart) > 0) {
+      if (sDate.compareTo(summerCampStart) > 0) {
         centroCampaignMappings.put("USM010","FY2015_Courses_Summer");
       } else {
         centroCampaignMappings.put("USM010","FY2015_Fall/Spring");

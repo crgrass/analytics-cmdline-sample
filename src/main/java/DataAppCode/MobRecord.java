@@ -14,6 +14,7 @@
 
 package DataAppCode;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -89,7 +90,8 @@ public class MobRecord implements importRecord {
   /*
    * PreCondition: Raw data is already grouped appropriately
    */
-  public static ArrayList<MobRecord> aggregate(HashMap<GroupID,ArrayList<String[]>> rawData) {
+  public static ArrayList<MobRecord> aggregate(HashMap<GroupID,ArrayList<String[]>> rawData, LocalDate sDate,
+      LocalDate eDate) {
 
     System.out.println("Aggregating rows based on Source, Medium, Campaign and AdContent...\n");
     
@@ -167,7 +169,7 @@ public class MobRecord implements importRecord {
       }      
 
       //Access start and end dates from DataAppTest static methods and load into array
-      String[] dateArray = {guiCode.DataAppTest.startDate.toString(),guiCode.DataAppTest.endDate.toString()};
+      String[] dateArray = {sDate.toString(),eDate.toString()};
       
       //Get the GroupID of the current record
       GroupID currID = (GroupID)pairs.getKey();

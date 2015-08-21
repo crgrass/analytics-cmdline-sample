@@ -137,11 +137,13 @@ public class ImportCentroVid {
     System.out.println("Centro Video File Read Complete.\n");
     
     System.out.println("Grouping Data by Source, Medium and Campaign...\n");
-    HashMap<GroupID, ArrayList<String[]>> groupedData = importUtils.groupCentroRawData(data);
+    HashMap<GroupID, ArrayList<String[]>> groupedData = importUtils.groupCentroRawData(data,
+        guiCode.DataAppTest.startDate);
     System.out.println("Grouping Complete.\n");
     
     System.out.println("Aggregating Centro Video Data...\n");
-    ArrayList<VidRecord> acquisitionData = VidRecord.aggregate(groupedData);
+    ArrayList<VidRecord> acquisitionData = VidRecord.aggregate(groupedData, DataAppTest.startDate,
+        DataAppTest.endDate);
     System.out.println("Aggregation Complete.\n");
     
     System.out.println("Removing all records with 0 Impressions.\n");

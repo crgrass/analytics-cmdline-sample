@@ -147,11 +147,12 @@ public class ImportMob {
     System.out.println("Centro Mobile File Read Complete.\n");
     
     System.out.println("Grouping Data by Source, Medium and Campaign...\n");
-    HashMap<GroupID, ArrayList<String[]>> groupedData = importUtils.groupCentroRawData(data);
+    HashMap<GroupID, ArrayList<String[]>> groupedData = importUtils.groupCentroRawData(data, guiCode.DataAppTest.startDate);
     System.out.println("Grouping Complete.\n");
     
     System.out.println("Aggregating Centro Mobile Data...\n");
-    ArrayList<MobRecord> acquisitionData = MobRecord.aggregate(groupedData);
+    ArrayList<MobRecord> acquisitionData = MobRecord.aggregate(groupedData, DataAppTest.startDate,
+        DataAppTest.endDate);
     System.out.println("Aggregation Complete.\n");
     
     System.out.println("Removing all records with 0 Impressions.\n");
