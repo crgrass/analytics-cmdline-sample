@@ -395,13 +395,14 @@ public static void printGroupedData(HashMap<GroupID, ArrayList<String[]>> groupe
     
     guiCode.DataAppTest.outputDisplay.write(OutputMessages.startingVendorImport("Centro Digital Display"));
     
-    Map<String,String> filePaths = FilePathBuilder.buildFilePathMapDropBox(); //contains all vendors and their respective import directory paths
+    Map<String,String> filePaths = FilePathBuilder.buildFilePathMapDropBox(DataAppTest.startDate); //contains all vendors and their respective import directory paths
     ArrayList<String[]> data = null;
     try {
       
       //pull down data from dropbox, write to file and overwrite any data files
       try {
-         DropBoxConnection.pullCSV("Centro Digital Display");
+         DropBoxConnection.pullCSV("Centro Digital Display",DataAppTest.startDate,
+             DataAppTest.endDate);
       } catch (DbxException exception) {
         // TODO Auto-generated catch block
         exception.printStackTrace();

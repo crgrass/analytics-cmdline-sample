@@ -174,13 +174,13 @@ public class ImportLinkedIn {
     //This is wasteful and should be created once and then stored for multiple uses.
     
     
-    Map<String,String> filePaths = FilePathBuilder.buildFilePathMapDropBox(); //contains all vendors and their respective import directory paths
+    Map<String,String> filePaths = FilePathBuilder.buildFilePathMapDropBox(DataAppTest.startDate); //contains all vendors and their respective import directory paths
     ArrayList<String[]> data = null;
     try {
       
       //pull down data, write to file and overwrite any existing files
       try {
-         DropBoxConnection.pullCSV("LinkedIn");
+         DropBoxConnection.pullCSV("LinkedIn", DataAppTest.startDate,DataAppTest.endDate);
       } catch (DbxException exception) {
         // TODO Auto-generated catch block
         exception.printStackTrace();

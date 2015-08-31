@@ -124,13 +124,14 @@ public class ImportFB {
     
     guiCode.DataAppTest.outputDisplay.write(OutputMessages.startingVendorImport("Facebook"));
     
-    Map<String,String> filePaths = FilePathBuilder.buildFilePathMapDropBox(); //contains all vendors and their respective import directory paths
+    Map<String,String> filePaths = FilePathBuilder.buildFilePathMapDropBox(DataAppTest.startDate); //contains all vendors and their respective import directory paths
     ArrayList<String[]> data = null;
     try {
       
       //pull down data, write to file and overwrite any existing files
       try {
-         DropBoxConnection.pullCSV("Facebook"); //TODO: These
+         DropBoxConnection.pullCSV("Facebook", DataAppTest.startDate,
+             DataAppTest.endDate); //TODO: These
       } catch (DbxException exception) {
         exception.printStackTrace();
       } catch (IOException exception) {

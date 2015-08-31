@@ -89,9 +89,26 @@ public class CSVReaders {
   } //end of printRawData
   
   //PreCondition: Header is first Array in ArrayList
-  //PostCondition: rawData no longer 
   public static void removeHeader(ArrayList<String[]> raw) {
     raw.remove(0);
+  }
+  
+  //PreCondition: Header is first Array in ArrayList
+  /*
+   * Exported Double Click reports contain report meta data in 
+   * the first 9 rows of the file. Thus, requiring a different
+   * method to trim the header
+   */
+  public static void formatDCMData(ArrayList<String[]> raw) {
+    //Remove first 10 rows (header)
+    for (int i = 0; i < 10; i++) {
+      //This is inefficient and should be optimized
+      raw.remove(0);
+    }
+    
+    //Remove Grand Total (footer)
+    raw.remove(raw.size()-1);
+    
   }
   
   //PreCondition: Header is first Array in ArrayList
@@ -115,6 +132,7 @@ public class CSVReaders {
     vendorConfig.put("Facebook", new LinkedList<String>(Arrays.asList("yyyy-MM-dd","2"))); // mm/dd/yyyy
     vendorConfig.put("Twitter", new LinkedList<String>(Arrays.asList("yyyy-M-d H:m Z","5"))); // yyyy-mm-dd hh:mm -0400(timezone)
     vendorConfig.put("LinkedIn", new LinkedList<String>(Arrays.asList("L dd, yyyy","0")));// Mar dd, yyyy
+    vendorConfig.put("DoubleClick", new LinkedList<String>(Arrays.asList("yyyy-M-d","0")));// mm/dd/yyyy yyyy-M-d
     
     
     

@@ -124,12 +124,12 @@ public class ImportMob {
     
     guiCode.DataAppTest.outputDisplay.write(OutputMessages.startingVendorImport("Centro Mobile"));
     
-    Map<String,String> filePaths = FilePathBuilder.buildFilePathMapDropBox();
+    Map<String,String> filePaths = FilePathBuilder.buildFilePathMapDropBox(DataAppTest.startDate);
     ArrayList<String[]> data = null;
     
     //pull down data, write to file and overwrite any existing files
     try {
-      DropBoxConnection.pullCSV("Centro Mobile Display");
+      DropBoxConnection.pullCSV("Centro Mobile Display", DataAppTest.startDate,DataAppTest.endDate);
     } catch (DbxException exception) {
       // TODO Auto-generated catch block
       exception.printStackTrace();

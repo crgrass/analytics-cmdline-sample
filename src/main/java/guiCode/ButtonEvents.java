@@ -465,7 +465,7 @@ public class ButtonEvents {
                 @Override
                 public void run() {
                   
-                Map<String,String> fileLocations = FilePathBuilder.buildFilePathMapDropBox();  
+                Map<String,String> fileLocations = FilePathBuilder.buildFilePathMapDropBox(DataAppTest.startDate);  
                 //update occurs in here
                 //TODO: correct this so that it works with DropBox
          
