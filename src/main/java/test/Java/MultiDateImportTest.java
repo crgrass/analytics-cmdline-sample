@@ -22,6 +22,9 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import DataAppCode.DropBoxConnection;
+
+import guiCode.DataAppTest;
 import DataAppCode.MultiDateImport;
 
 import java.time.DayOfWeek;
@@ -34,8 +37,8 @@ import java.util.ArrayList;
  */
 public class MultiDateImportTest {
   
-  LocalDate startDate = LocalDate.of(2015,03,03);
-  LocalDate endDate = LocalDate.of(2015,04,07);
+  LocalDate startDate = LocalDate.of(2015,05,12);
+  LocalDate endDate = LocalDate.of(2015,05,26);
 
 
   @BeforeClass
@@ -55,6 +58,8 @@ public class MultiDateImportTest {
    */
   @Before
   public void setUp() throws Exception {
+    //Dropbox connection must be initialized
+    DropBoxConnection.initializeDropboxConnection();
   }
 
   /**
@@ -70,17 +75,103 @@ public class MultiDateImportTest {
   @Test
   public void testGenerateStartDates() {
     System.out.println("Testing that appropriate number of dates exists");
-    System.out.println("For the startDates 03-03 to 04-07 there should be six startDates");
+    System.out.println("For the startDates 05-12 to 05-26 there should be six startDates");
     ArrayList<LocalDate> dates = MultiDateImport.generateStartDates(startDate, endDate);
     for (LocalDate e : dates) {
       System.out.println(e.toString());
     }
-    assertTrue("There was an unexpected number of events.(" + dates.size() +")", dates.size() == 6);
+    assertTrue("There was an unexpected number of events.(" + dates.size() +")", dates.size() == 3);
     System.out.println("\nTesting that all values are Tuesdays");
     for (int i=0; i < dates.size(); i++) {
       LocalDate currDate = dates.get(i);
       assertTrue("A date other than Tuesday was found.", currDate.getDayOfWeek() == DayOfWeek.TUESDAY);
     }
   }
+  
+  @Test
+  public void testMultiImportAdwords() {
+    System.out.println("Testing multiDate import for Adwords");
+    
+    //generate dates
+    ArrayList<LocalDate> dates = MultiDateImport.generateStartDates(startDate, endDate);
+    
+    //This will import for the dates of listed in the class variables
+    MultiDateImport.multiImportAdwords(dates);
+    
+    System.out.println("Test complete check DB to ensure correct records were imported.");
+    
+  }
+  
+  @Test
+  public void testMultiImportFacebook() {
+    System.out.println("Testing multiDate import for Facebook");
+    
+    //generate dates
+    ArrayList<LocalDate> dates = MultiDateImport.generateStartDates(startDate, endDate);
+    
+    //This will import for the dates of listed in the class variables
+    MultiDateImport.multiImportFacebook(dates);
+    
+    System.out.println("Test complete check DB to ensure correct records were imported.");
+    
+  }
+  
+  
+  @Test
+  public void testMultiImportTwitter() {
+    System.out.println("Testing multiDate import for Twitter");
+    
+    //generate dates
+    ArrayList<LocalDate> dates = MultiDateImport.generateStartDates(startDate, endDate);
+    
+    //This will import for the dates of listed in the class variables
+    MultiDateImport.multiImportTwitter(dates);
+    
+    System.out.println("Test complete check DB to ensure correct records were imported.");
+    
+  }
+  
+  @Test
+  public void testMultiImportDigitalDisplay() {
+    System.out.println("Testing multiDate import for Digital Display");
+    
+    //generate dates
+    ArrayList<LocalDate> dates = MultiDateImport.generateStartDates(startDate, endDate);
+    
+    //This will import for the dates of listed in the class variables
+    MultiDateImport.multiImportCentroDigitalDisplay(dates);
+    
+    System.out.println("Test complete check DB to ensure correct records were imported.");
+    
+  }
 
+
+  @Test
+  public void testMultiImportVideo() {
+    System.out.println("Testing multiDate import for Video");
+
+    //generate dates
+    ArrayList<LocalDate> dates = MultiDateImport.generateStartDates(startDate, endDate);
+
+    //This will import for the dates of listed in the class variables
+    MultiDateImport.multiImportCentroVideo(dates);
+
+    System.out.println("Test complete check DB to ensure correct records were imported.");
+
+  }
+  
+  @Test
+  public void testMultiImportMobile() {
+    System.out.println("Testing multiDate import for Mobile");
+
+    //generate dates
+    ArrayList<LocalDate> dates = MultiDateImport.generateStartDates(startDate, endDate);
+
+    //This will import for the dates of listed in the class variables
+    MultiDateImport.multiImportCentroMobile(dates);
+
+    System.out.println("Test complete check DB to ensure correct records were imported.");
+
+  }
+  
 }

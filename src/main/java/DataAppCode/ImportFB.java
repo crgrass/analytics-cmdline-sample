@@ -124,13 +124,12 @@ public class ImportFB {
     
     guiCode.DataAppTest.outputDisplay.write(OutputMessages.startingVendorImport("Facebook"));
     
-    Map<String,String> filePaths = FilePathBuilder.buildFilePathMapDropBox(); //contains all vendors and their respective import directory paths
     ArrayList<String[]> data = null;
     try {
       
       //pull down data, write to file and overwrite any existing files
       try {
-         DropBoxConnection.pullCSV("Facebook"); //TODO: These
+         DropBoxConnection.pullCSV("Facebook", DataAppTest.startDate); //TODO: These
       } catch (DbxException exception) {
         exception.printStackTrace();
       } catch (IOException exception) {
@@ -150,7 +149,8 @@ public class ImportFB {
     System.out.println("Grouping Complete.\n");
     
     System.out.println("Aggregating Facebook Data...\n");
-    ArrayList<FBRecord> acquisitionData = FBRecord.aggregate(groupedData);
+    ArrayList<FBRecord> acquisitionData = FBRecord.aggregate(groupedData, DataAppTest.startDate,
+        DataAppTest.endDate);
     System.out.println("Aggregation Complete.\n");
    
     System.out.println("Removing all records with 0 Impressions.\n");

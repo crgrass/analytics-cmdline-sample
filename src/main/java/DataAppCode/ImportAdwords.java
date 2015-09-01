@@ -117,7 +117,8 @@ public class ImportAdwords {
     HashMap<GroupID,AdwordsRecord> data = new HashMap<GroupID,AdwordsRecord>();
     
     
-    //rows is the key that holds relevant data
+    //TODO: This step is not necessary but does make the code more readable.
+    //values could be loaded directly from the "row" into the constructor.
     for (List<String> row : results.getRows()) {
       String source = row.get(0);
       String medium = row.get(1);
@@ -134,16 +135,13 @@ public class ImportAdwords {
       Float percentNewVisits = Float.parseFloat(row.get(12));
       Float bounceRate = Float.parseFloat(row.get(13));
       
-      // Create adwords record and ID object
+      // Create Adwords record and ID object
       AdwordsRecord currRecord = new AdwordsRecord(dates,source, medium,campaign,
           adGroup, clicks, impressions, CTR, avgCPC,spend,visits,pagesPerVisit,
           avgDuration,percentNewVisits,bounceRate);
       GroupID currID = new GroupID(source, medium, campaign);
-      /*
-       * Note: this may not work for grouping as it may be using memory address
-       * instead of contents of object. May need to use an if else statement
-       * with a custom equals method based off of the group ID.
-       */
+
+      //return Adwords records with their IDs
       data.put(currID,currRecord);
     } // end of outer loop
     

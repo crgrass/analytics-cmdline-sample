@@ -14,6 +14,7 @@
 
 package DataAppCode;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -87,7 +88,8 @@ public class VidRecord implements importRecord {
   /*
    * PreCondition: Raw data is already grouped appropriately
    */
-  public static ArrayList<VidRecord> aggregate(HashMap<GroupID,ArrayList<String[]>> rawData) {
+  public static ArrayList<VidRecord> aggregate(HashMap<GroupID,ArrayList<String[]>> rawData, LocalDate sDate, 
+      LocalDate eDate) {
     
     
     //Iterate through HashMap and place only digial display entries into a new HashMap
@@ -173,9 +175,8 @@ public class VidRecord implements importRecord {
         aggCPM = 0.0f;
       }
 
-      String startDate = guiCode.DataAppTest.startDate.toString();
-      String endDate = guiCode.DataAppTest.endDate.toString();
-      String[] dateArray = {startDate,endDate};
+
+      String[] dateArray = {sDate.toString(),eDate.toString()};
       
       GroupID currID = (GroupID)pairs.getKey();
 

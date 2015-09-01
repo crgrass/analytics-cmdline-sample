@@ -32,6 +32,8 @@ public class MultiDateImport {
   //Request user input to define first and last startDates (inclusive)
   //User input will initially be provided in the testing setup methods
   
+  
+  //Enumerate all start dates between the two
   public static ArrayList<LocalDate> generateStartDates(LocalDate begin, LocalDate end) {
     ArrayList<LocalDate> importDates = new ArrayList<LocalDate>();
     
@@ -50,13 +52,58 @@ public class MultiDateImport {
     return importDates;
   }
   
-  //Enumerate all start dates between the two
   
-  //Loop iterating through startDate
+  //TODO:Execution of the multImport must stop if there is an error
+  //information must be provided to the user indicating how much data was imported
   
   //For each date run import script for the date selected
+  public static void multiImportAdwords(ArrayList<LocalDate> importDates){
+    
+    for (LocalDate currDate : importDates) {
+      VendorImportMethods.importAdwords(new String[] {}, currDate, currDate.plusDays(6));
+    }
+  }
   
-  //Execution of the multImport must stop if there is an error
-  //information must be provided to the user indicating how much data was imported
+  //For each date run import script for the date selected
+  public static void multiImportFacebook(ArrayList<LocalDate> importDates){
+    
+    for (LocalDate currDate : importDates) {
+      VendorImportMethods.importFacebook(new String[] {}, currDate, currDate.plusDays(6));
+    }
+  }
+  
+  //For each date run import script for the date selected
+  public static void multiImportTwitter(ArrayList<LocalDate> importDates){
+    
+    for (LocalDate currDate : importDates) {
+      VendorImportMethods.importTwitter(new String[] {}, currDate, currDate.plusDays(6));
+    }
+  }
+  
+  //For each date run import script for the date selected
+  public static void multiImportCentroDigitalDisplay(ArrayList<LocalDate> importDates){
+    
+    for (LocalDate currDate : importDates) {
+      VendorImportMethods.importCentroDigitalDisplay(new String[] {}, currDate, currDate.plusDays(6));
+    }
+  }
+  
+  //For each date run import script for the date selected
+  public static void multiImportCentroVideo(ArrayList<LocalDate> importDates){
+    
+    for (LocalDate currDate : importDates) {
+      VendorImportMethods.importCentroVideo(new String[] {}, currDate, currDate.plusDays(6));
+    }
+  }
+  
+  //For each date run import script for the date selected
+  public static void multiImportCentroMobile(ArrayList<LocalDate> importDates){
+    
+    for (LocalDate currDate : importDates) {
+      VendorImportMethods.importCentroMobile(new String[] {}, currDate, currDate.plusDays(6));
+    }
+  }
+  
 
-}
+
+}//end of method

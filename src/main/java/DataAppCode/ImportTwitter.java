@@ -120,13 +120,13 @@ public class ImportTwitter {
 
     guiCode.DataAppTest.outputDisplay.write(OutputMessages.startingVendorImport("Twitter"));
     
-    Map<String,String> filePaths = FilePathBuilder.buildFilePathMapDropBox(); //contains all vendors and their respective import directory paths
+    Map<String,String> filePaths = FilePathBuilder.buildFilePathMapDropBox(DataAppTest.startDate); //contains all vendors and their respective import directory paths
     ArrayList<String[]> data = null;
     try {
       
       //pull down data, write to file and overwrite any existing files
       try {
-         DropBoxConnection.pullCSV("Twitter");
+         DropBoxConnection.pullCSV("Twitter",DataAppTest.startDate);
       } catch (DbxException exception) {
         // TODO Auto-generated catch block
         exception.printStackTrace();
@@ -154,7 +154,8 @@ public class ImportTwitter {
     System.out.println("Grouping Complete.\n");
     
     System.out.println("Aggregating Twitter Data...\n");
-    ArrayList<TWRecord> acquisitionData = TWRecord.aggregate(groupedData);
+    ArrayList<TWRecord> acquisitionData = TWRecord.aggregate(groupedData, DataAppTest.startDate,
+        DataAppTest.endDate);
     System.out.println("Aggregation Complete.\n");
     
     System.out.println("Removing all records with 0 Impressions.\n");
