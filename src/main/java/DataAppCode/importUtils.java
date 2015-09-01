@@ -111,8 +111,8 @@ public class importUtils {
     
     HashMap<GroupID, ArrayList<String[]>> groupedData = new HashMap<GroupID, ArrayList<String[]>>();
     HashMap<String,String> DCMSourceMappings = new HashMap<String,String>();
-    DCMSourceMappings.put("Collective.com","Collective");
     DCMSourceMappings.put("MobileFuse.com","MobileFuse");
+    DCMSourceMappings.put("Collective.com","Collective");
     DCMSourceMappings.put("Pandora","Pandora");
     DCMSourceMappings.put("YouTube.com","YouTube");
     
@@ -123,6 +123,8 @@ public class importUtils {
     DCMMediumMappings.put("Preroll","Preroll");
     DCMMediumMappings.put("Tablet","Preroll");
     DCMMediumMappings.put("Mobile","Mobile");
+    //TODO: Note this is an anomaly from campaign set up, find a way to remove
+    DCMMediumMappings.put("Collective.com","Display");
     
     
     HashMap<String,String> DCMCampaignMappings = new HashMap<String,String>();
@@ -154,18 +156,19 @@ public class importUtils {
         medium = DCMMediumMappings.get(row[4]); 
       } else {
         medium = "Medium Not Found";
-        System.out.println("Source not found for: " + row[4]);
+        System.out.println("Medium not found for: " + row[4]);
       }
       
       if (DCMCampaignMappings.containsKey(row[1])) {
         campaign = DCMCampaignMappings.get(row[1]);
       } else {
         campaign = "Campaign Not Found";
-        System.out.println("Source not found for: " + row[1]);
+        System.out.println("Campaign not found for: " + row[1]);
       }
       
       //TODO: Remove hardcoded value before creative refresh
-      adContent= "SAL_V1";
+      //Note:  this value is replaced by map key
+      adContent= "SAL";
       
       //if key is not dictionary a null value is returned?
       //this can raise a null pointer exception

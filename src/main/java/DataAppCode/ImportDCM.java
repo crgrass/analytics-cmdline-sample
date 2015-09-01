@@ -58,7 +58,8 @@ public static void printGroupedData(HashMap<GroupID, ArrayList<String[]>> groupe
    */
 
  //TODO: This method can likely be modified to work aggregate all Centro data at once.
-  public static ArrayList<DDRecord> aggregate(HashMap<GroupID,ArrayList<String[]>> rawData) {
+  public static ArrayList<DDRecord> aggregate(HashMap<GroupID,ArrayList<String[]>> rawData, LocalDate sDate,
+      LocalDate eDate) {
 
     System.out.println("Aggregating rows based on Source, Network, Campaign and AdContent...\n");
     
@@ -108,9 +109,7 @@ public static void printGroupedData(HashMap<GroupID, ArrayList<String[]>> groupe
       //TODOL System.out.println("Ensure this cpm calc is correct: " + aggCPM);
 
       //Dates need to come from one common source
-      String startDate = guiCode.DataAppTest.startDate.toString();
-      String endDate = guiCode.DataAppTest.endDate.toString();
-      String[] dateArray = {startDate,endDate};
+      String[] dateArray = {sDate.toString(),eDate.toString()};
       
       GroupID currID = (GroupID)pairs.getKey();
 
@@ -254,7 +253,7 @@ public static void printGroupedData(HashMap<GroupID, ArrayList<String[]>> groupe
     
     System.out.println("Aggregating DoubleClick Digital Display Data... ");
     //TODO: Create Aggregate method
-    ArrayList<DDRecord> acquisitionData = aggregate(groupedData);
+    ArrayList<DDRecord> acquisitionData = aggregate(groupedData, sDate, eDate);
     System.out.print("Complete.\n");
     
     System.out.println("The number of DD records for import is: " + acquisitionData.size());
