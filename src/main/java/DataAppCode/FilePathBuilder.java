@@ -73,7 +73,7 @@ public class FilePathBuilder {
   /*
    * The buildFilePathMapDropBox loads a map with a key for each
    * Vendor and that vendors dropbox directory housing import
-   * files as the key.
+   * files as the value.
    */
   public static Map<String,String> buildFilePathMapDropBox(LocalDate startDate) {
   
@@ -129,9 +129,8 @@ public class FilePathBuilder {
 }
 
   
+  
   public static void main(String[] args) {
-
-    
     
     Map<String,String> test = buildFilePathMap();
     
@@ -145,38 +144,5 @@ public class FilePathBuilder {
     
 
   }
-  
-  
-  
-//TODO: Determine if this following method is used anywhere. If this was just a starter method the 
-  
-  public static Map<String,String> dummyFilePathMap() {
-  
-  Map<String,String> fileLocations = new HashMap<String,String>();
-  
-  //Will leave this for now
-  fileLocations.put("Google Adwords", "Z:\\marketing\\common\\Marketing Data App\\FileCheckTest\\fileCheckTest.txt");
-  
-  fileLocations.put("Centro Digital Display", 
-      "Z:\\marketing\\common\\Marketing Data App\\FileCheckTest\\fileCheckTest.txt");
-  
-  fileLocations.put("Centro Mobile Display", 
-      "Z:\\marketing\\common\\Marketing Data App\\FileCheckTest\\fileCheckTest.txt");
-  
-  fileLocations.put("Centro Video Display", 
-      "Z:\\marketing\\common\\Marketing Data App\\FileCheckTest\\fileCheckTest.txt");
-  
-  fileLocations.put("Centro Rich Media", 
-      "Z:\\marketing\\common\\Marketing Data App\\FileCheckTest\\fileCheckTest.txt");
-  
-  fileLocations.put("Facebook", "Z:\\marketing\\common\\Marketing Data App\\FileCheckTest\\fileCheckTest.txt");
-  
-  fileLocations.put("Twitter", "Z:\\marketing\\common\\Marketing Data App\\FileCheckTest\\fileCheckTest.txt");
-  
-  fileLocations.put("LinkedIn", "Z:\\marketing\\common\\Marketing Data App\\FileCheckTest\\fileCheckTest.txt");
-  
-  
-  return fileLocations;
-}
 
 }

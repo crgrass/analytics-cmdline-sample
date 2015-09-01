@@ -18,8 +18,8 @@ import com.dropbox.core.DbxException;
 import com.google.api.services.analytics.model.GaData;
 import com.google.api.services.samples.analytics.cmdline.GACall;
 
-import guiCode.DataAppTest;
-import guiCode.OutputMessages;
+//import guiCode.DataAppTest;
+//import guiCode.OutputMessages;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -27,7 +27,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
+//import java.util.Map;
 
 /**
  * @author cgrass@google.com (Chris Grass)
@@ -376,13 +376,11 @@ public class VendorImportMethods {
   }
 
 }
-  
-  
+    
   
   
   public static void importCentroVideo(String[] args, LocalDate sDate, LocalDate eDate) {
 //    guiCode.DataAppTest.outputDisplay.write(OutputMessages.startingVendorImport("Centro Video"));
-    Map<String,String> filePaths = FilePathBuilder.buildFilePathMapDropBox(sDate);
     ArrayList<String[]> data = null;
     
     //pull down data, write to file and overwrite any existing files
@@ -443,8 +441,6 @@ public class VendorImportMethods {
       ImportCentroVid.updateCentroVid(acquisitionData,cnx);
     } catch (SQLException e) {
     System.out.println(e.getMessage()); 
-    String error = e.getMessage();
-    
     }
     
 //    guiCode.DataAppTest.outputDisplay.write(OutputMessages.importActivity(DataAppTest.importActivity.toString()));
@@ -529,6 +525,86 @@ public class VendorImportMethods {
 //    DataAppTest.importActivity.reset();
 
 //    guiCode.DataAppTest.outputDisplay.write(OutputMessages.vendorImportComplete("Centro Mobile"));
+
+}
+  
+  
+  
+  
+  
+  public static void importAllCentro(String[] args, LocalDate sDate, LocalDate eDate) {
+
+ 
+  ArrayList<String[]> data = null; //holds raw data
+  
+  //pull down data, write to file and overwrite any existing files
+  try {
+    //TODO: Create Centro key in dropbox filepath builder
+    DropBoxConnection.pullCSV("Centro", sDate);
+  } catch (DbxException exception) {
+    exception.printStackTrace();
+  } catch (IOException exception) {
+    exception.printStackTrace();
+  }
+  
+  System.out.println("Reading Centro File...\n");
+  //TODO: Modify filename in dropbox to create filename as listed in the parameter below
+  data = CSVReaders.readCsv("retrievedCentroDisplay.csv"); 
+  CSVReaders.removeHeader(data);
+  CSVReaders.removeInvalidDates(data, "Centro", sDate);
+  System.out.println("Centro File Read Complete.\n");
+  
+  System.out.println("Grouping Data by Source, Medium and Campaign...\n");
+  //This groupedData hashMap has all data and is not filtered by medium until the aggregate method
+  HashMap<GroupID, ArrayList<String[]>> groupedData = importUtils.groupCentroRawData(data, sDate);
+  System.out.println("Grouping Complete.\n");
+  
+  System.out.println("Aggregating Centro Data...\n");
+  //Change to generalized DD record
+  ArrayList<VidRecord> acquisitionData = VidRecord.aggregate(groupedData, sDate, eDate);
+  System.out.println("Aggregation Complete.\n");
+  
+  System.out.println("Removing all records with 0 Impressions.\n");
+  acquisitionData = importUtils.remove0ImpressionRecords(acquisitionData);
+  
+  //Data is now aggregated and ready for matching
+  
+  String[] testDates = {sDate.toString(),eDate.toString()};
+  
+  System.out.println("Connecting to Google Analytics API for "
+      + "Behavior metrics\n");
+  System.out.println("Google Analytics API messages below: \n");
+  GaData behaviorResults = GACall.main(args,testDates,3);
+  System.out.println("\nGoogle Analytics API Request Complete.\n");
+  
+//match behavior and acquisition data
+  System.out.println("Matching Acquisition Metrics to their respective behavior metrics...\n");
+  importUtils.matchBehaviorAcq(acquisitionData, behaviorResults);
+  System.out.println("Matching Complete.\n");
+  //Establish Connection
+  Connection cnx = null;
+  try {
+//    cnx = DatabaseUtils.getTestDBConnection();
+    cnx = DatabaseUtils.getGoogleCloudTestDBConnection();
+    System.out.println("Database Connection Successful\n");
+  } catch (Exception e) {
+    System.out.println("There was an error establishing connection to the database");
+    System.out.println(e.getMessage());
+  }
+  
+//execute query
+  try{
+    ImportCentroVid.updateCentroVid(acquisitionData,cnx);
+  } catch (SQLException e) {
+  System.out.println(e.getMessage()); 
+  
+  }
+  
+//  guiCode.DataAppTest.outputDisplay.write(OutputMessages.importActivity(DataAppTest.importActivity.toString()));
+
+//  DataAppTest.importActivity.reset();
+
+//  guiCode.DataAppTest.outputDisplay.write(OutputMessages.vendorImportComplete("Centro Video"));
 
 }
 
