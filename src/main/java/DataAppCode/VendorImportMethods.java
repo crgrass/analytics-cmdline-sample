@@ -23,7 +23,6 @@ import com.google.api.services.samples.analytics.cmdline.GACall;
 
 import java.io.IOException;
 import java.sql.Connection;
-import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -357,7 +356,7 @@ public class VendorImportMethods {
     //execute query
     try{
       ImportDD.updateCentroDD(acquisitionData,cnx);
-    } catch (SQLException e) {
+    } catch (Exception e) {
     System.out.println(e.getMessage());  
     }
     
@@ -433,7 +432,7 @@ public class VendorImportMethods {
   //execute query
     try{
       ImportCentroVid.updateCentroVid(acquisitionData,cnx);
-    } catch (SQLException e) {
+    } catch (Exception e) {
     System.out.println(e.getMessage()); 
     
     }

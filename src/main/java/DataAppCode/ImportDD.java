@@ -33,7 +33,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
-import java.util.Set;
 
 /**
  * @author cgrass@google.com (Your Name Here)
@@ -151,7 +150,7 @@ public class ImportDD {
       
       
       
-      //TODO: Since this is DD Tracking pixel wouldn't ap
+
       if (adContent.equals("Tracking Pixel")) {
         if (campaign.equals("FY2015_Courses_Summer")) {
           adContent = "summer";
@@ -161,7 +160,6 @@ public class ImportDD {
       }
       
       
-      //TODO: Check campaign and assign adContent value based on this.
       //adContent parameter for Summer YouTube is not set
       //adContent parameter for FY2015_Undergrad YouTube is Time_Is_Now
       
@@ -179,10 +177,10 @@ public class ImportDD {
 
       boolean groupIDExists = false;
       //Iterates through hashmap and raises flag if the groupID already exists
-      Iterator it = groupedData.entrySet().iterator();
+      Iterator<Map.Entry<GroupID, ArrayList<String[]>>> it = groupedData.entrySet().iterator();
       while (it.hasNext()) {
-        Map.Entry pairs = (Map.Entry)it.next();
-        GroupID iteratedGroupID = (GroupID)pairs.getKey();
+        Map.Entry<GroupID,ArrayList<String[]>> pairs = it.next();
+        GroupID iteratedGroupID = pairs.getKey();
         if (iteratedGroupID.equals(currGroupID)) {
           groupIDExists = true;
           //add string once match is identified
@@ -205,11 +203,10 @@ public class ImportDD {
 
 
 public static void printGroupedData(HashMap<GroupID, ArrayList<String[]>> grouped) {
-  Iterator it = grouped.entrySet().iterator();
+  Iterator<Map.Entry<GroupID, ArrayList<String[]>>> it = grouped.entrySet().iterator();
   while (it.hasNext()) {
-    Map.Entry pairs = (Map.Entry)it.next();
+    Map.Entry<GroupID, ArrayList<String[]>> pairs = it.next();
     System.out.println(pairs.getKey()); //this should trigger the too string method
-    ArrayList<String[]> val = (ArrayList<String[]>)pairs.getValue();
   }//end of record iteration
 }
   
@@ -228,11 +225,12 @@ public static void printGroupedData(HashMap<GroupID, ArrayList<String[]>> groupe
     
     //Iterate through HashMap and place only digital display entries into a new onlyDD HashMap
     HashMap<GroupID,ArrayList<String[]>> onlyDD = new HashMap<GroupID,ArrayList<String[]>>();
-    Iterator itr = rawData.entrySet().iterator();
+    Iterator<Map.Entry<GroupID, ArrayList<String[]>>> itr = rawData.entrySet().iterator();
     while (itr.hasNext()) {
-      Map.Entry pairs = (Map.Entry)itr.next();
-      GroupID currID = (GroupID)pairs.getKey();
-      ArrayList<String[]> currArray = (ArrayList<String[]>)pairs.getValue();
+      Map.Entry<GroupID, ArrayList<String[]>> pairs = itr.next();
+      GroupID currID = pairs.getKey();
+      ArrayList<String[]> currArray = pairs.getValue();
+      //This is the sorting that should be removed
       if (currID.getMedium().equals("Display")) {
         onlyDD.put(currID, currArray);
       }//end of if
@@ -242,22 +240,19 @@ public static void printGroupedData(HashMap<GroupID, ArrayList<String[]>> groupe
     ArrayList<DDRecord> DDRecordCollection = new ArrayList<DDRecord>();
 
     //Loop through hash map aggregating values
-    Iterator it = onlyDD.entrySet().iterator();
+    Iterator<Map.Entry<GroupID, ArrayList<String[]>>> it = onlyDD.entrySet().iterator();
     while (it.hasNext()) {
-      Map.Entry pairs = (Map.Entry)it.next();
-      ArrayList<String[]> currList = (ArrayList<String[]>)pairs.getValue();
+      Map.Entry<GroupID,ArrayList<String[]>> pairs = it.next();
+      ArrayList<String[]> currList = pairs.getValue();
 
       //Metrics are aggregated here
       Integer totalClicks = 0;
       Integer totalImpressions = 0;
       Float totalSpend = 0.0f;
-      Integer totalVisits = 0;
       Integer totalConversions = 0;
       Integer pcConversions = 0;
       Integer piConversions = 0;
 
-      //TODO:Discarding last row as a band aid
-      //eventually need to stop importing last row
 
       for (String[] row : currList) {
         //Index 0 : Start Date, Index 1 : End Date, !!!Index 2 : Campaign!!!
@@ -267,7 +262,6 @@ public static void printGroupedData(HashMap<GroupID, ArrayList<String[]>> groupe
         //Index 11: CTR, Index 12: Average CPC, Index 13: Average CPM, Index 14: Total Media Cost
         //Index 15: Total Conversions, Index 16: PC Conversions, Index 17: PI Conversions
         totalImpressions += Integer.parseInt(row[9]);
-        //TODO: Need to ensure all csvs can handle number formats with commas
 
         //Index 12: Clicks
         totalClicks += Integer.parseInt(row[8]);
@@ -287,7 +281,7 @@ public static void printGroupedData(HashMap<GroupID, ArrayList<String[]>> groupe
 
       String[] dateArray = {sDate.toString(),eDate.toString()};
       
-      GroupID currID = (GroupID)pairs.getKey();
+      GroupID currID = pairs.getKey();
 
       DDRecord rec = new DDRecord(dateArray,currID.getSource(),currID.getMedium(),currID.getCampaign(),currID.getSource(),//<- This is network
           currID.getAdContent(),totalClicks,totalImpressions,aggCTR,aggCPC,aggCPM,totalSpend, totalConversions,pcConversions,piConversions);
@@ -297,8 +291,7 @@ public static void printGroupedData(HashMap<GroupID, ArrayList<String[]>> groupe
     return DDRecordCollection;
   }
   
-  public static void updateCentroDD(ArrayList<DDRecord> importData, Connection cnxn)
-      throws SQLException {
+  public static void updateCentroDD(ArrayList<DDRecord> importData, Connection cnxn){
 
     PreparedStatement updateCentroDD = null;
 
@@ -329,7 +322,6 @@ public static void printGroupedData(HashMap<GroupID, ArrayList<String[]>> groupe
         } catch (ParseException e) {
           e.printStackTrace();
         } catch (java.text.ParseException exception) {
-          // TODO Auto-generated catch block
           exception.printStackTrace();
         }
         
@@ -396,7 +388,6 @@ public static void printGroupedData(HashMap<GroupID, ArrayList<String[]>> groupe
     
     guiCode.DataAppTest.outputDisplay.write(OutputMessages.startingVendorImport("Centro Digital Display"));
     
-    Map<String,String> filePaths = FilePathBuilder.buildFilePathMapDropBox(DataAppTest.startDate); //contains all vendors and their respective import directory paths
     ArrayList<String[]> data = null;
     try {
       
@@ -404,10 +395,8 @@ public static void printGroupedData(HashMap<GroupID, ArrayList<String[]>> groupe
       try {
          DropBoxConnection.pullCSV("Centro Digital Display",DataAppTest.startDate);
       } catch (DbxException exception) {
-        // TODO Auto-generated catch block
         exception.printStackTrace();
       } catch (IOException exception) {
-        // TODO Auto-generated catch block
         exception.printStackTrace();
       }
   
@@ -470,7 +459,7 @@ public static void printGroupedData(HashMap<GroupID, ArrayList<String[]>> groupe
     //execute query
     try{
       updateCentroDD(acquisitionData,cnx);
-    } catch (SQLException e) {
+    } catch (Exception e) {
     System.out.println(e.getMessage());  
     }
     

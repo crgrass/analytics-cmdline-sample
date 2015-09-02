@@ -30,7 +30,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.Map;
 
 /**
  * @author cgrass@google.com (Your Name Here)
@@ -38,8 +37,7 @@ import java.util.Map;
  */
 public class ImportCentroVid {
   
-  public static void updateCentroVid(ArrayList<VidRecord> importData, Connection cnxn)
-      throws SQLException {
+  public static void updateCentroVid(ArrayList<VidRecord> importData, Connection cnxn){
 
     PreparedStatement updateCentroVid = null;
 
@@ -116,7 +114,6 @@ public class ImportCentroVid {
   public static void main(String[] args) {
     
     guiCode.DataAppTest.outputDisplay.write(OutputMessages.startingVendorImport("Centro Video"));
-    Map<String,String> filePaths = FilePathBuilder.buildFilePathMapDropBox(DataAppTest.startDate);
     ArrayList<String[]> data = null;
     
     //pull down data, write to file and overwrite any existing files
@@ -179,9 +176,8 @@ public class ImportCentroVid {
   //execute query
     try{
       updateCentroVid(acquisitionData,cnx);
-    } catch (SQLException e) {
+    } catch (Exception e) {
     System.out.println(e.getMessage()); 
-    String error = e.getMessage();
     
     }
     
