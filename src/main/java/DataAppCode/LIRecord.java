@@ -14,8 +14,7 @@
 
 package DataAppCode;
 
-import java.text.NumberFormat;
-import java.text.ParseException;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -80,6 +79,7 @@ public class LIRecord implements importRecord {
    * as the first, second and third dimensions. Without this query structure the
    * the wrong dimension from the GA results will be matched always returning false 
    */
+  @Override
   public boolean match(List<String> gaRow) {
     if (gaRow.get(0).equals(this.source) && gaRow.get(1).equals(this.medium) && gaRow.get(2).equals(this.campaign) ) {
       return true;
@@ -94,26 +94,20 @@ public class LIRecord implements importRecord {
    */
   public static ArrayList<LIRecord> aggregate(HashMap<GroupID,ArrayList<String[]>> rawData) {
     System.out.println("Aggregating rows based on Source, Medium and Campaign...\n");
-
-    //TODO: all start dates should come from one place
     
     ArrayList<LIRecord> LIRecordCollection = new ArrayList<LIRecord>();
 
     //Need to loop through Hash Map
-    Iterator it = rawData.entrySet().iterator();
+    Iterator<Map.Entry<GroupID, ArrayList<String[]>>> it = rawData.entrySet().iterator();
     while (it.hasNext()) {
-      Map.Entry pairs = (Map.Entry)it.next();
+      Map.Entry<GroupID, ArrayList<String[]>> pairs = it.next();
       //pairs.getValue() is the adwords record
-      ArrayList<String[]> currList = (ArrayList<String[]>)pairs.getValue();
+      ArrayList<String[]> currList = pairs.getValue();
 
       //Metrics are aggregated here
       Integer totalClicks = 0;
       Integer totalImpressions = 0;
       Float totalSpend = 0.0f;
-      Integer totalVisits = 0;
-
-      //TODO:Discarding last row as a band aid
-      //eventually need to stop importing last row
 
       for (String[] row : currList) {
         //Index 0 : Date, Index 1 : Advertiser Name, Index 2 : Currency
@@ -122,7 +116,6 @@ public class LIRecord implements importRecord {
         //Index 9 : Campaign Total Budget, Index 10 : Lead Count
         //Index 11: Impressions
         totalImpressions += Integer.parseInt(row[11]);
-        //TODO: Need to ensure all csvs can handle number formats with commas
 
         //Index 12: Clicks
         totalClicks += Integer.parseInt(row[12]);
@@ -238,6 +231,7 @@ public class LIRecord implements importRecord {
 
 
 
+  @Override
   public Integer getImpressions() {
     return impressions;
   }
@@ -304,6 +298,7 @@ public class LIRecord implements importRecord {
 
 
 
+  @Override
   public void setVisits(Integer visits) {
     this.visits = visits;
   }
@@ -316,6 +311,7 @@ public class LIRecord implements importRecord {
 
 
 
+  @Override
   public void setPagesPerVisit(Float pagesPerVisit) {
     this.pagesPerVisit = pagesPerVisit;
   }
@@ -328,6 +324,7 @@ public class LIRecord implements importRecord {
 
 
 
+  @Override
   public void setAvgDuration(Float avgDuration) {
     this.avgDuration = avgDuration;
   }
@@ -340,6 +337,7 @@ public class LIRecord implements importRecord {
 
 
 
+  @Override
   public void setPercentNewVisits(Float percentNewVisits) {
     this.percentNewVisits = percentNewVisits;
   }
@@ -352,6 +350,7 @@ public class LIRecord implements importRecord {
 
 
 
+  @Override
   public void setBounceRate(Float bounceRate) {
     this.bounceRate = bounceRate;
   }
@@ -394,6 +393,7 @@ public class LIRecord implements importRecord {
 
 
 
+  @Override
   public String toString() {
     String printThis = "";
     printThis += "Start Date: " + this.getStartDate() + "\n";

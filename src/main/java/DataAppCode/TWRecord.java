@@ -172,8 +172,6 @@ public class TWRecord implements importRecord {
           
           //TODO: Need to be able to handle empty cells that should be zero
 
-          //TODO:Discarding last row as a band aid
-          //eventually need to stop importing last row
 
           for (String[] row : currList) {
             //Index 0 : id, Index 1 : Campaign, Index 2 : Campaign URL
@@ -235,7 +233,6 @@ public class TWRecord implements importRecord {
 
 
   public static void main(String[] args) {
-    // TODO Auto-generated method stub
 
   }
 
@@ -370,6 +367,7 @@ public class TWRecord implements importRecord {
   /**
    * @return the impressions
    */
+  @Override
   public Integer getImpressions() {
     return impressions;
   }
@@ -667,6 +665,7 @@ public class TWRecord implements importRecord {
   /**
    * @param visits the visits to set
    */
+  @Override
   public void setVisits(Integer visits) {
     this.visits = visits;
   }
@@ -685,6 +684,7 @@ public class TWRecord implements importRecord {
   /**
    * @param pagesPerVisit the pagesPerVisit to set
    */
+  @Override
   public void setPagesPerVisit(Float pagesPerVisit) {
     this.pagesPerVisit = pagesPerVisit;
   }
@@ -703,6 +703,7 @@ public class TWRecord implements importRecord {
   /**
    * @param avgDuration the avgDuration to set
    */
+  @Override
   public void setAvgDuration(Float avgDuration) {
     this.avgDuration = avgDuration;
   }
@@ -721,6 +722,7 @@ public class TWRecord implements importRecord {
   /**
    * @param percentNewVisits the percentNewVisits to set
    */
+  @Override
   public void setPercentNewVisits(Float percentNewVisits) {
     this.percentNewVisits = percentNewVisits;
   }
@@ -739,6 +741,7 @@ public class TWRecord implements importRecord {
   /**
    * @param bounceRate the bounceRate to set
    */
+  @Override
   public void setBounceRate(Float bounceRate) {
     this.bounceRate = bounceRate;
   }

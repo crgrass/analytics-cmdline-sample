@@ -14,11 +14,8 @@
 
 package DataAppCode;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
+
 
 /**
  * @author cgrass@google.com (Your Name Here)
@@ -26,9 +23,10 @@ import java.util.Map;
  */
 public class DDRecord implements importRecord {
   
-  private final int SOURCE_INDEX = 0;
-  private final int MEDIUM_INDEX = 0;
-  private final int CAMPAIGN_INDEX = 4;
+  //TODO: Determine way to store vendor specific data in the vendorRecor itself
+//  private final int SOURCE_INDEX = 0;
+//  private final int MEDIUM_INDEX = 0;
+//  private final int CAMPAIGN_INDEX = 4;
   
  //record attributes
   private int recordCount = 0;

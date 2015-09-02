@@ -27,9 +27,11 @@ import java.util.Map;
  */
 public class VidRecord implements importRecord {
 
-  private final int SOURCE_INDEX = 0;
-  private final int MEDIUM_INDEX = 0;
-  private final int CAMPAIGN_INDEX = 4;
+  //Contain distinct vendor info inside the
+  //vendorRecord classes
+//  private final int SOURCE_INDEX = 0;
+//  private final int MEDIUM_INDEX = 0;
+//  private final int CAMPAIGN_INDEX = 4;
   
  //record attributes
   private int recordCount = 0;
@@ -94,11 +96,11 @@ public class VidRecord implements importRecord {
     
     //Iterate through HashMap and place only digial display entries into a new HashMap
     HashMap<GroupID,ArrayList<String[]>> onlyVid = new HashMap<GroupID,ArrayList<String[]>>();
-    Iterator itr = rawData.entrySet().iterator();
+    Iterator<Map.Entry<GroupID, ArrayList<String[]>>> itr = rawData.entrySet().iterator();
     while (itr.hasNext()) {
-      Map.Entry pairs = (Map.Entry)itr.next();
-      GroupID currID = (GroupID)pairs.getKey();
-      ArrayList<String[]> currArray = (ArrayList<String[]>)pairs.getValue();
+      Map.Entry<GroupID, ArrayList<String[]>> pairs = itr.next();
+      GroupID currID = pairs.getKey();
+      ArrayList<String[]> currArray = pairs.getValue();
       if (currID.getMedium().equals("Preroll")) {
         onlyVid.put(currID, currArray);
       }//end of if
@@ -109,10 +111,10 @@ public class VidRecord implements importRecord {
     ArrayList<VidRecord> VidRecordCollection = new ArrayList<VidRecord>();
 
     //Need to loop through Hash Map
-    Iterator it = onlyVid.entrySet().iterator();
+    Iterator<Map.Entry<GroupID, ArrayList<String[]>>> it = onlyVid.entrySet().iterator();
     while (it.hasNext()) {
-      Map.Entry pairs = (Map.Entry)it.next();
-      ArrayList<String[]> currList = (ArrayList<String[]>)pairs.getValue();
+      Map.Entry<GroupID, ArrayList<String[]>> pairs = it.next();
+      ArrayList<String[]> currList = pairs.getValue();
 
       //Metrics are aggregated here
       Integer totalClicks = 0;
@@ -124,9 +126,6 @@ public class VidRecord implements importRecord {
       Integer piConversions = 0;
       
       //TODO: Need to be able to handle empty cells that should be zero
-
-      //TODO:Discarding last row as a band aid
-      //eventually need to stop importing last row
 
       for (String[] row : currList) {
         //Index 0 : Start Date, Index 1 : End Date, !!!Index 2 : Campaign!!!
@@ -178,7 +177,7 @@ public class VidRecord implements importRecord {
 
       String[] dateArray = {sDate.toString(),eDate.toString()};
       
-      GroupID currID = (GroupID)pairs.getKey();
+      GroupID currID = pairs.getKey();
 
       VidRecord rec = new VidRecord(dateArray,currID.getSource(),currID.getMedium(),currID.getCampaign(),currID.getSource(),//<- This is network
           currID.getAdContent(),totalClicks,totalImpressions,totalYTViews,aggCTR,aggCPC,aggCPM,totalSpend, totalConversions,pcConversions,piConversions);
@@ -189,7 +188,6 @@ public class VidRecord implements importRecord {
   }
   
   public static void main(String[] args) {
-    // TODO Auto-generated method stub
 
   }
 

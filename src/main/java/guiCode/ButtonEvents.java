@@ -18,7 +18,6 @@ import com.dropbox.core.DbxEntry;
 import com.dropbox.core.DbxException;
 
 import DataAppCode.DropBoxConnection;
-import javafx.scene.layout.ColumnConstraints;
 import javafx.stage.WindowEvent;
 import javafx.concurrent.Worker;
 import javafx.scene.control.ProgressBar;
@@ -30,12 +29,11 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.control.CheckBox;
 
-import java.io.File;
-import java.io.IOException;
+
+
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
 
 import javafx.scene.control.Button;
@@ -67,6 +65,7 @@ public class ButtonEvents {
   
   public static EventHandler<ActionEvent> evntFullImport() {
     EventHandler<ActionEvent> evnt = new EventHandler<ActionEvent>() {
+      @SuppressWarnings("unchecked")
       @Override
       public void handle(ActionEvent event) {
         Stage stgFullImport = new Stage();
@@ -85,13 +84,13 @@ public class ButtonEvents {
          * Table Columns below here
          */
 
-        TableColumn col0 = new TableColumn("Vendor"); //Heading
+        TableColumn<FilePrep,String> col0 = new TableColumn<>("Vendor"); //Heading
         col0.setMinWidth(250);
         col0.setCellValueFactory(
             new PropertyValueFactory<FilePrep,String>("vendorName"));//This string is used as a reference to the FilePrep variable
 
         TableColumn<FilePrep,Image> col1 = new TableColumn<>("File Found");
-        col1.setCellValueFactory(new PropertyValueFactory("fileFoundImage"));
+        col1.setCellValueFactory(new PropertyValueFactory<>("fileFoundImage"));
         col1.setMinWidth(100);
 
         //Testing Images in the table
@@ -218,9 +217,6 @@ public class ButtonEvents {
         EventHandler<ActionEvent> evntInitiateFullImport = evntCommenceFullImport(btnStartFullImport);
         btnStartFullImport.setOnAction(evntInitiateFullImport);
         fullImportGrid.add(btnStartFullImport,1,3);
-        final Label statusLabel = new Label("Status");
-        
-        //TODO: Create button that starts import check
         
         Button btnCheckFiles = new Button("Pre-Import Check");
         fullImportGrid.add(btnCheckFiles, 0, 3);
@@ -267,6 +263,7 @@ public class ButtonEvents {
   
   public static EventHandler<ActionEvent> evntPartialImport(){
     EventHandler<ActionEvent> evnt = new EventHandler<ActionEvent>() {
+      @Override
       public void handle(ActionEvent event) {
         Stage stgPartialImport = new Stage();
         stgPartialImport.setTitle("Partial Import");
@@ -284,13 +281,13 @@ public class ButtonEvents {
                                               "Centro Mobile Display","Centro Video Display","Centro Rich Media","Facebook",
                                               "Twitter","LinkedIn"};
 
-        //TODO: Create a method that on check a specified String is added to the import Array
         final ArrayList<String> importList = new ArrayList<String>();
 
         for (int i=0; i< cbNames.length; i++) {
           final String name = cbNames[i];
           final CheckBox cb = new CheckBox(cbNames[i]);
           cb.selectedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
             public void changed (ObservableValue<? extends Boolean> ov,
                                  Boolean old_val, Boolean new_val) {
               if (new_val) {
@@ -309,6 +306,7 @@ public class ButtonEvents {
         partImportGrid.add(btnBeginImport,1,13);
 
         btnBeginImport.setOnAction(new EventHandler<ActionEvent>() {
+          @Override
           public void handle(ActionEvent event) {
 
             Map<String, Method> methodMap = null;
@@ -351,6 +349,7 @@ public class ButtonEvents {
   
   public static EventHandler<ActionEvent> evntCommenceFullImport(Button commenceImportButton){
     EventHandler<ActionEvent> evnt = new EventHandler<ActionEvent>() {
+      @Override
       public void handle(ActionEvent event) {
         Stage stgFullImportStatus = new Stage();
         stgFullImportStatus.setTitle("Import Progress");
@@ -455,8 +454,9 @@ public class ButtonEvents {
    */
   public static EventHandler<ActionEvent> evntCheckFiles(ObservableList<FilePrep> files, TableView<FilePrep> table, Button commenceImport){
     EventHandler<ActionEvent> evnt = new EventHandler<ActionEvent>() {
+      @Override
       public void handle(ActionEvent event) {
-        Task task = new Task<Void>() {
+        Task<Void> task = new Task<Void>() {
           @Override
           public Void call() throws Exception {
             //Iterate through ArrayList
@@ -467,7 +467,6 @@ public class ButtonEvents {
                   
                 Map<String,String> fileLocations = FilePathBuilder.buildFilePathMapDropBox(DataAppTest.startDate);  
                 //update occurs in here
-                //TODO: correct this so that it works with DropBox
          
                   
                   boolean fileExists = false; //flag to determine if file exists in dbx
@@ -548,6 +547,7 @@ public class ButtonEvents {
   
   public static EventHandler<ActionEvent> evntCommencePartialImport(ArrayList<String> importList){
     EventHandler<ActionEvent> evnt = new EventHandler<ActionEvent>() {
+      @Override
       public void handle(ActionEvent event) {
         //need to open a Python interpreter and for each
         //value provied in the multi-select array run the 
@@ -590,7 +590,6 @@ public class ButtonEvents {
   
   
   public static void main(String[] args) {
-    // TODO Auto-generated method stub
 
   }
 

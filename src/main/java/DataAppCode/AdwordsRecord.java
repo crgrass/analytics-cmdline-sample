@@ -66,6 +66,7 @@ public class AdwordsRecord {
     bounceRate = bounce;
   }
   
+  @Override
   public String toString() {
     String printThis = "";
     printThis += "Start Date: " + this.getStartDate() + "\n";
@@ -278,9 +279,6 @@ public class AdwordsRecord {
    */
   public static void main(String[] args) {
     System.out.println("Testing Method for AdwordsRecord Class");
-    
-    //create testDates
-    String[] testDates1 = {"2014-01-01","2014-01-02"};
 
   }
 

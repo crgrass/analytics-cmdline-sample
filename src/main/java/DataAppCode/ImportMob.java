@@ -42,8 +42,7 @@ public class ImportMob {
    * @param args
    */
   
-  public static void updateCentroMob(ArrayList<MobRecord> importData, Connection cnxn)
-      throws SQLException {
+  public static void updateCentroMob(ArrayList<MobRecord> importData, Connection cnxn) {
 
     PreparedStatement updateCentroMob = null;
 
@@ -124,7 +123,6 @@ public class ImportMob {
     
     guiCode.DataAppTest.outputDisplay.write(OutputMessages.startingVendorImport("Centro Mobile"));
     
-    Map<String,String> filePaths = FilePathBuilder.buildFilePathMapDropBox(DataAppTest.startDate);
     ArrayList<String[]> data = null;
     
     //pull down data, write to file and overwrite any existing files
@@ -189,7 +187,7 @@ public class ImportMob {
   //execute query
     try{
       updateCentroMob(acquisitionData,cnx);
-    } catch (SQLException e) {
+    } catch (Exception e) {
     System.out.println(e.getMessage());  
     }
     

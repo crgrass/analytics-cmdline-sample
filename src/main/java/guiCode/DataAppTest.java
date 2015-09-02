@@ -1,29 +1,21 @@
 package guiCode;
 
-import javafx.scene.control.ScrollPane;
+
 import DataAppCode.DropBoxConnection;
-import javafx.scene.text.TextFlow;
-import javafx.scene.web.HTMLEditor;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
-import javafx.scene.control.Label;
+
 import javafx.event.ActionEvent;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextAreaBuilder;
+
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Priority;
-import javafx.geometry.HPos;
-import javafx.geometry.Pos;
+
 import javafx.scene.control.DateCell;
 import javafx.util.Callback;
-import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.control.DatePicker;
 
 import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.PrintStream;
-import java.nio.file.Files;
+
+//import java.io.PrintStream;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.DayOfWeek;
@@ -33,15 +25,17 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Calendar;
 import java.util.Date;
+
 import java.util.logging.FileHandler;
 import java.util.logging.Handler;
-import java.util.logging.LogManager;
+import java.util.logging.Level;
+
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 
 import javafx.scene.Scene;
 import javafx.scene.text.Font;
-import javafx.scene.control.Hyperlink;
+
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.scene.layout.VBox;
@@ -50,8 +44,8 @@ import javafx.geometry.Insets;
 import javafx.scene.layout.HBox;
 import javafx.application.Application;
 import javafx.stage.Stage;
-import DataAppCode.StdOutErrLevel;
-import DataAppCode.LoggingOutputStream;
+//import DataAppCode.StdOutErrLevel;
+//import DataAppCode.LoggingOutputStream;
 
 public class DataAppTest extends Application {
   public static LocalDate startDate = null;
@@ -59,32 +53,14 @@ public class DataAppTest extends Application {
   public static boolean importCheckSuccess = false;
   public static DataAppTextDisplay outputDisplay;
   public static ByteArrayOutputStream importActivity = new ByteArrayOutputStream();
-  private final PrintStream ps = new PrintStream(importActivity);
+//  private final PrintStream ps = new PrintStream(importActivity);
+  public static final Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
 	@Override
 	public void start(Stage primaryStage) {
-//	  System.setOut(ps); //These redirect standard output to app console
-//	  System.setErr(ps);
-	  
-	  
-//	  //Create logger, filehandler and formatter
-//	  try{
-//	    Date currDate = new Date();
-//	    fh = new FileHandler("%t/dataAppLog_" + currDate.toString() +".log");
-//	    LOGGER.addHandler(fh);
-//	    SimpleFormatter formatter = new SimpleFormatter();
-//	    fh.setFormatter(formatter);
-//	  } catch (SecurityException e) {
-//	    e.printStackTrace();
-//	  } catch (IOException e) {
-//	    e.printStackTrace();
-//	  }
-	   
 	  
 	  VBox primaryVBox = new VBox();
 	  primaryVBox.setPadding(new Insets(5,5,5,5));
-	  
-	  
 	  
 	  //Based off of current date find most recent valid reporting cycle
       Calendar[] reportingCycle = DateMethods.findLastReportingCycle();
@@ -119,37 +95,59 @@ public class DataAppTest extends Application {
 	  primaryStage.show();
 	}
 
+	
+	
 	public static void main(String[] args) throws Exception {
-	  //initialize logging to go to a rolling log file
-	  LogManager logManager = LogManager.getLogManager();
-	  logManager.reset();
+  	  /*
+  	   * Initialize Logging
+  	   */
+	  
+      //logger created upon class initialization
+      logger.setLevel(Level.ALL); //Show all log levels
 	  
 	  Date currDate = new Date();
 	  //Need to format date to remove spaces for filename
-	  DateFormat df = new SimpleDateFormat("MM.dd.yyyy_HHmmss");
+	  DateFormat df = new SimpleDateFormat("MM.dd.yyyy_HH.mm.ss");
+	  
 	  String logDate = df.format(currDate);
-	  Handler fileHandler= new FileHandler("%t/dataAppLog_" + logDate +".log");
-	  SimpleFormatter formatter = new SimpleFormatter();
-	  fileHandler.setFormatter(formatter);
-	  Logger.getLogger("").addHandler(fileHandler);
+	  Handler fh= new FileHandler("%t/dataAppLog_" + logDate +".log");
+	  SimpleFormatter logFileFormatter = new SimpleFormatter();
+	  fh.setFormatter(logFileFormatter);
 	  
-//	  //preserve older stdout/stderr streams
-//	  PrintStream stdout = System.out;
-//	  PrintStream stderr = System.err;
-//	  
-//	  //rebind stdout/stderr to logger
-//	  Logger logger;
-//	  LoggingOutputStream los;
-//	  
-//	  logger = Logger.getLogger("stdout");
-//	  los = new LoggingOutputStream(logger, StdOutErrLevel.STDOUT);
-//	  System.setOut(new PrintStream(los,true));
-//	  
-//	  logger = Logger.getLogger("stderr");
-//	  los = new LoggingOutputStream(logger, StdOutErrLevel.STDERR);
-//	  System.setErr(new PrintStream(los,true));
+	  logger.addHandler(fh);
 	  
+	  logger.log(Level.INFO, "Application Started." + System.lineSeparator());
+	  
+	  
+	  /*
+	   * Potentially useful code for logging to textbox in GUI
+	   */
+
+	  
+      //	  //preserve older stdout/stderr streams
+      //	  PrintStream stdout = System.out;
+      //	  PrintStream stderr = System.err;
+      //	  
+      //	  //rebind stdout/stderr to logger
+      //	  Logger logger;
+      //	  LoggingOutputStream los;
+      //	  
+      //	  logger = Logger.getLogger("stdout");
+      //	  los = new LoggingOutputStream(logger, StdOutErrLevel.STDOUT);
+      //	  System.setOut(new PrintStream(los,true));
+      //	  
+      //	  logger = Logger.getLogger("stderr");
+      //	  los = new LoggingOutputStream(logger, StdOutErrLevel.STDERR);
+      //	  System.setErr(new PrintStream(los,true));
+      	  
+      	  
+      	  
+      //    System.setOut(ps); //These redirect standard output to app console
+      //    System.setErr(ps);
+      
 	  //Open connection to dropbox API
+	  logger.log(Level.INFO,"Initializing Dropbox Connection" +
+	  System.lineSeparator());
 	  DropBoxConnection.initializeDropboxConnection();
 	  
 	  //master method for JavaFX
@@ -260,7 +258,8 @@ public class DataAppTest extends Application {
 	//Date Picker Cell Factorys
 	    //Only allows selection of Tuesday
 	    final Callback<DatePicker, DateCell> startDateDayCellFactory = new Callback<DatePicker, DateCell>() {
-	      public DateCell call(final DatePicker datePicker) {
+	      @Override
+        public DateCell call(final DatePicker datePicker) {
 	          return new DateCell() {
 	              @Override public void updateItem(LocalDate item, boolean empty) {
 	                  super.updateItem(item, empty);
@@ -274,9 +273,9 @@ public class DataAppTest extends Application {
 	  };
 	  final DatePicker startDatePicker = new DatePicker(initialDate);
 	    startDatePicker.setDayCellFactory(startDateDayCellFactory);
-	     startDatePicker.setOnAction(new EventHandler() {
+	     startDatePicker.setOnAction(new EventHandler<ActionEvent>() {
 	         @Override
-	      public void handle(Event t) {
+	      public void handle(ActionEvent t) {
 	             startDate = startDatePicker.getValue();
 	             endDate = startDate.plusDays(6);
 	         }
@@ -286,22 +285,7 @@ public class DataAppTest extends Application {
 	}
 	   
 	   
-	   
-	   
-	
-	public HTMLEditor createOutputConsole() {
-	//TODO: Add Text Area for console output
-//	    TextArea ta = TextAreaBuilder.create().prefWidth(600).prefHeight(400).wrapText(true).build();
-	    HTMLEditor html = new HTMLEditor();
-//	    Console console = new Console(ta);
-	    HTMLConsole console = new HTMLConsole(html);
-//	    PrintStream ps = new PrintStream(console,true);
-//	    System.setOut(ps);
-//	    System.out.println("Working?");
-//	    System.setErr(ps);
-	    
-	    return html;
-	}
+	  
 	
 	
 }

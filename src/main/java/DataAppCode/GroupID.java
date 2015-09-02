@@ -42,9 +42,8 @@ public class GroupID {
    * the )
    */
   
-  @Deprecated
-  //This three parameter constructor was used prior to adContent being used
-  //for every vendor
+
+  //This is used for Twitter as we don't split this medium by adContent
   public GroupID(String source, String medium,String campaign) {
     this.source = source;
     this.medium = medium;
@@ -102,7 +101,6 @@ public class GroupID {
 
 
   public static void main(String[] args) {
-    // TODO Auto-generated method stub
 
   }
 

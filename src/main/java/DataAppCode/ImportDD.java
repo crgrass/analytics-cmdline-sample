@@ -426,7 +426,7 @@ public static void printGroupedData(HashMap<GroupID, ArrayList<String[]>> groupe
     //We will then iterate through the HashMap and aggregate each entry
     
     System.out.println("Grouping Data by Source, Medium, Campaign and AdContent... ");
-    HashMap<GroupID, ArrayList<String[]>> groupedData = groupRawData(data);
+    HashMap<GroupID, ArrayList<String[]>> groupedData = importUtils.groupCentroRawData(data, DataAppTest.startDate);
     System.out.print("Complete.\n");
 
     

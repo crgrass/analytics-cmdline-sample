@@ -30,7 +30,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.Map;
+import java.util.logging.Level;
 
 /**
  * @author cgrass@google.com (Your Name Here)
@@ -38,13 +38,12 @@ import java.util.Map;
  */
 public class ImportFB {
   
-  public static void updateFB(ArrayList<FBRecord> importData, Connection cnxn)
-      throws SQLException {
+  public static void updateFB(ArrayList<FBRecord> importData, Connection cnxn) {
 
     PreparedStatement updateFB = null;
 
     String tblName = "DATESTtblFacebookMetrics";
-    //These fields are out of order
+    //TODO: Put these fields in the proper order
     String fields = "(startDate,endDate,componentName,adContent, placement,device,source,medium,reach,frequency,clicks,"
         + "uniqueClicks,websiteClicks,impressions,CTR,uniqueCTR,averageCPC,averageCPM,CP1KR,actions,PTA,spend,"
         + "likes,visits,pagesPerVisit,averageDuration,percentNewVisits,bounceRate,partialWeek,daysActive)";
@@ -121,86 +120,87 @@ public class ImportFB {
    * @param args
    */
   public static void main(String[] args) {
-    
+
+    DataAppTest.logger.log(Level.INFO, "Beginning Facebook Import." + System.lineSeparator());
     guiCode.DataAppTest.outputDisplay.write(OutputMessages.startingVendorImport("Facebook"));
-    
-    ArrayList<String[]> data = null;
+
+    ArrayList<String[]> data = null; //Holds raw data
+
     try {
-      
-      //pull down data, write to file and overwrite any existing files
+      //pull down data form Dropbox, write to file and overwrite any existing files
       try {
-         DropBoxConnection.pullCSV("Facebook", DataAppTest.startDate); //TODO: These
-      } catch (DbxException exception) {
-        exception.printStackTrace();
-      } catch (IOException exception) {
-        exception.printStackTrace();
+        DataAppTest.logger.log(Level.INFO, "Pulling Facebook data from Dropbox." + System.lineSeparator()); 
+        DropBoxConnection.pullCSV("Facebook", DataAppTest.startDate);
+      } catch (DbxException e) {
+        DataAppTest.logger.log(Level.SEVERE, "There was a Database Exception.", e);
+      } catch (IOException e) {
+        DataAppTest.logger.log(Level.SEVERE, "There was an IO Exception.", e);
       }
+
+
+      //Read the csv created from Dropbox file and return raw data
+      DataAppTest.logger.log(Level.INFO, "Reading Facebook File." + System.lineSeparator());
+      data = CSVReaders.readCsv("retrievedFacebook.csv");
       
-    
-  //Read csv and return raw data
-    System.out.println("Reading Facebook File...\n");
-    data = CSVReaders.readCsv("retrievedFacebook.csv");
-    CSVReaders.removeHeader(data);
-//    CSVReaders.removeTail(data); //This likely deletes pertinent info
-    System.out.println("Facebook File Read Complete.\n");
-    
-    System.out.println("Grouping Data by Source, Medium, Campaign and Placement...\n");
-    HashMap<GroupID, ArrayList<String[]>> groupedData = importUtils.groupFacebookRawData(data);
-    System.out.println("Grouping Complete.\n");
-    
-    System.out.println("Aggregating Facebook Data...\n");
-    ArrayList<FBRecord> acquisitionData = FBRecord.aggregate(groupedData, DataAppTest.startDate,
-        DataAppTest.endDate);
-    System.out.println("Aggregation Complete.\n");
-   
-    System.out.println("Removing all records with 0 Impressions.\n");
-    acquisitionData = importUtils.remove0ImpressionRecords(acquisitionData);
-    
-    //Data is now aggregated and ready for matching
-    
-    String startDate = guiCode.DataAppTest.startDate.toString();
-    String endDate = guiCode.DataAppTest.endDate.toString();
-    String[] testDates = {startDate,endDate};
-    
-    System.out.println("Connecting to Google Analytics API for "
-        + "Behavior metrics\n");
-    System.out.println("Google Analytics API messages below: \n");
-    GaData behaviorResults = GACall.main(args,testDates,6);
-    System.out.println("\nGoogle Analytics API Request Complete.\n");
-    
-    //match behavior and acquisition data
-    System.out.println("Matching Acquisition Metrics to their respective behavior metrics...\n");
-    importUtils.matchBehaviorAcq(acquisitionData, behaviorResults);
-    System.out.println("Matching Complete.\n");
-    
-    //Establish Connection
-    Connection cnx = null;
-    try {
-//      cnx = DatabaseUtils.getTestDBConnection();
-      cnx = DatabaseUtils.getGoogleCloudTestDBConnection();
-      System.out.println("Database Connection Successful\n");
-    } catch (Exception e) {
-      System.out.println("There was an error establishing connection to the database");
-      System.out.println(e.getMessage());
-    }
-       
-    
-  //execute query
-    try{
-      updateFB(acquisitionData,cnx);
-    } catch (SQLException e) {
-    System.out.println(e.getMessage());  
-    }
-    
-    guiCode.DataAppTest.outputDisplay.write(OutputMessages.importActivity(DataAppTest.importActivity.toString()));
+      CSVReaders.removeHeader(data); //remove header row
+      
+      DataAppTest.logger.log(Level.INFO, "Grouping Facebook Raw Data by Source, Medium, "
+          + "Campaign and Placement." + System.lineSeparator());
+      HashMap<GroupID, ArrayList<String[]>> groupedData = importUtils.groupFacebookRawData(data);
 
-    DataAppTest.importActivity.reset();
-    
-    guiCode.DataAppTest.outputDisplay.write(OutputMessages.vendorImportComplete("Facebook"));
-  } finally {
-    
-  }
+      DataAppTest.logger.log(Level.INFO, "Aggregating Facebook Data." + System.lineSeparator());
+      ArrayList<FBRecord> acquisitionData = FBRecord.aggregate(groupedData, DataAppTest.startDate,
+          DataAppTest.endDate);
 
-}
+      DataAppTest.logger.log(Level.INFO, "Removing Facebook Records"
+          + "with zero impressions." + System.lineSeparator());
+      acquisitionData = importUtils.remove0ImpressionRecords(acquisitionData);
+
+      //Data is now aggregated and ready for matching
+
+      //TODO: Consolidate these lines of code once sDate is passed in as a parameter
+      //and not called from the static variable in Data App Test
+      String startDate = guiCode.DataAppTest.startDate.toString();
+      String endDate = guiCode.DataAppTest.endDate.toString();
+      String[] testDates = {startDate,endDate};
+
+      DataAppTest.logger.log(Level.INFO, "Connecting to Google Analytics API"
+          + "for Behavior Metrics." + System.lineSeparator());
+      GaData behaviorResults = GACall.main(args,testDates,6);
+
+      //match behavior and acquisition data
+      DataAppTest.logger.log(Level.INFO, "Matching acquisition and behavior metrics." + System.lineSeparator());
+      importUtils.matchBehaviorAcq(acquisitionData, behaviorResults);
+
+      
+      //Establish Database Connection
+      DataAppTest.logger.log(Level.INFO, "Connecting to Facebook MySQL database." 
+      + System.lineSeparator());
+      Connection cnx = null;
+      try {
+        cnx = DatabaseUtils.getGoogleCloudTestDBConnection();
+      } catch (Exception e) {
+        DataAppTest.logger.log(Level.SEVERE, "There was an issue connecting to the database." 
+      + System.lineSeparator(), e);
+      }
+
+      //execute query
+      try{
+        updateFB(acquisitionData,cnx);
+      } catch (Exception e) {
+        DataAppTest.logger.log(Level.SEVERE, "There was an issue executing the Facebook DB Query." 
+            + System.lineSeparator(), e); 
+      }
+
+      guiCode.DataAppTest.outputDisplay.write(OutputMessages.importActivity(DataAppTest.importActivity.toString()));
+
+      DataAppTest.importActivity.reset();
+
+      guiCode.DataAppTest.outputDisplay.write(OutputMessages.vendorImportComplete("Facebook"));
+    } finally {
+
+    } //end of try
+
+  }//end of main
   
-}
+}//end of class

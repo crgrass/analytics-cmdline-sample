@@ -16,7 +16,7 @@ package DataAppCode;
 
 import com.google.api.services.analytics.model.GaData;
 
-import guiCode.DataAppTest;
+//import guiCode.DataAppTest;
 
 import java.time.LocalDate;
 import java.time.Month;
@@ -222,7 +222,7 @@ public class importUtils {
         adContent = "misc";
       }
       
-      //TODO: Since this is DD Tracking pixel wouldn't ap
+
       if (adContent.equals("Tracking Pixel")) {
         if (campaign.equals("FY2015_Courses_Summer")) {
           adContent = "summer";
@@ -243,10 +243,10 @@ public class importUtils {
       
       boolean groupIDExists = false;
       //Iterates through hashmap and raised flag if the groupID already exists
-      Iterator it = groupedData.entrySet().iterator();
+      Iterator<Map.Entry<GroupID, ArrayList<String[]>>> it = groupedData.entrySet().iterator();
       while (it.hasNext()) {
-        Map.Entry pairs = (Map.Entry)it.next();
-        GroupID iteratedGroupID = (GroupID)pairs.getKey();
+        Map.Entry<GroupID, ArrayList<String[]>> pairs = it.next();
+        GroupID iteratedGroupID = pairs.getKey();
         if (iteratedGroupID.equals(currGroupID)) {
           groupIDExists = true;
           //add string once match is identified
@@ -277,7 +277,6 @@ public static HashMap<GroupID, ArrayList<String[]>> groupFacebookRawData(ArrayLi
   
   HashMap<GroupID, ArrayList<String[]>> groupedData = new HashMap<GroupID, ArrayList<String[]>>();
   for (String[] row : rawData) {
-    //TODO: Update this to include relevant fields
     
     //what are the key fields necessary for the groupID
     /*
@@ -380,10 +379,10 @@ public static HashMap<GroupID, ArrayList<String[]>> groupFacebookRawData(ArrayLi
     
     boolean groupIDExists = false;
     //Iterates through hashmap and raised flag if the groupID already exists
-    Iterator it = groupedData.entrySet().iterator();
+    Iterator<Map.Entry<GroupID, ArrayList<String[]>>> it = groupedData.entrySet().iterator();
     while (it.hasNext()) {
-      Map.Entry pairs = (Map.Entry)it.next();
-      GroupID iteratedGroupID = (GroupID)pairs.getKey();
+      Map.Entry<GroupID, ArrayList<String[]>> pairs = it.next();
+      GroupID iteratedGroupID = pairs.getKey();
       if (iteratedGroupID.equals(currGroupID)) {
         groupIDExists = true;
         //add string once match is identified
@@ -442,15 +441,16 @@ public static HashMap<GroupID, ArrayList<String[]>> groupTwitterRawData(ArrayLis
     }
     
     //load GroupID
+    //TODO: Remove deprecated method
     GroupID currGroupID = new GroupID(source,medium,campaign);
     
     
     boolean groupIDExists = false;
     //Iterates through hashmap and raised flag if the groupID already exists
-    Iterator it = groupedData.entrySet().iterator();
+    Iterator<Map.Entry<GroupID, ArrayList<String[]>>> it = groupedData.entrySet().iterator();
     while (it.hasNext()) {
-      Map.Entry pairs = (Map.Entry)it.next();
-      GroupID iteratedGroupID = (GroupID)pairs.getKey();
+      Map.Entry<GroupID, ArrayList<String[]>> pairs = it.next();
+      GroupID iteratedGroupID = pairs.getKey();
       if (iteratedGroupID.twitterEquals(currGroupID)) {
         groupIDExists = true;
         //add string once match is identified
@@ -471,7 +471,6 @@ public static HashMap<GroupID, ArrayList<String[]>> groupTwitterRawData(ArrayLis
   
   
   public static void main(String[] args) {
-    // TODO Auto-generated method stub
 
   }
 

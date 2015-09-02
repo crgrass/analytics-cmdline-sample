@@ -2,7 +2,7 @@ package guiCode;
 
 import javafx.application.Platform;
 
-import java.io.IOException;
+
 
 import javafx.scene.text.Text;
 import javafx.scene.Scene;

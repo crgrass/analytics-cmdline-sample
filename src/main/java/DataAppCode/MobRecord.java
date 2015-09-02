@@ -27,9 +27,12 @@ import java.util.Map;
  */
 public class MobRecord implements importRecord {
   
-  private final int SOURCE_INDEX = 0;
-  private final int MEDIUM_INDEX = 0;
-  private final int CAMPAIGN_INDEX = 4;
+  //TODO: Need to find a way to contain all vendor specific
+  //info inside the vendor record classes. It would probably be
+  //easier to store this as one dictionary
+//  private final int SOURCE_INDEX = 0;
+//  private final int MEDIUM_INDEX = 0;
+//  private final int CAMPAIGN_INDEX = 4;
   
  //record attributes
   private int recordCount = 0;
@@ -85,7 +88,8 @@ public class MobRecord implements importRecord {
   
   
   //TODO: The DD aggregate method is in the importDD class. Need to move one method
-  //or another to ensure consistency.
+  //or another to ensure consistency. Where are the other aggregate methods, how will combining
+  //all of these impact the aggregate method?
   
   /*
    * PreCondition: Raw data is already grouped appropriately
@@ -98,11 +102,11 @@ public class MobRecord implements importRecord {
     
     //Iterate through HashMap and place only digial display entries into a new HashMap
     HashMap<GroupID,ArrayList<String[]>> onlyMob = new HashMap<GroupID,ArrayList<String[]>>();
-    Iterator itr = rawData.entrySet().iterator();
+    Iterator<Map.Entry<GroupID, ArrayList<String[]>>> itr = rawData.entrySet().iterator();
     while (itr.hasNext()) {
-      Map.Entry pairs = (Map.Entry)itr.next();
-      GroupID currID = (GroupID)pairs.getKey();
-      ArrayList<String[]> currArray = (ArrayList<String[]>)pairs.getValue();
+      Map.Entry<GroupID,ArrayList<String[]>> pairs = itr.next();
+      GroupID currID = pairs.getKey();
+      ArrayList<String[]> currArray = pairs.getValue();
       if (currID.getMedium().equals("Mobile")) {
         onlyMob.put(currID, currArray);
       }//end of if
@@ -112,10 +116,10 @@ public class MobRecord implements importRecord {
     ArrayList<MobRecord> MobRecordCollection = new ArrayList<MobRecord>();
 
     //Need to loop through Hash Map
-    Iterator it = onlyMob.entrySet().iterator();
+    Iterator<Map.Entry<GroupID, ArrayList<String[]>>> it = onlyMob.entrySet().iterator();
     while (it.hasNext()) {
-      Map.Entry pairs = (Map.Entry)it.next();
-      ArrayList<String[]> currList = (ArrayList<String[]>)pairs.getValue();
+      Map.Entry<GroupID, ArrayList<String[]>> pairs = it.next();
+      ArrayList<String[]> currList = pairs.getValue();
 
       //Metrics are aggregated here
       Integer totalClicks = 0;
@@ -125,8 +129,6 @@ public class MobRecord implements importRecord {
       Integer pcConversions = 0;
       Integer piConversions = 0;
 
-      //TODO:Discarding last row as a band aid
-      //eventually need to stop importing last row
 
       for (String[] row : currList) {
         //Index 0 : Start Date, Index 1 : End Date, !!!Index 2 : Campaign!!!
@@ -136,7 +138,6 @@ public class MobRecord implements importRecord {
         //Index 11: CTR, Index 12: Average CPC, Index 13: Average CPM, Index 14: Total Media Cost
         //Index 15: Total Conversions, Index 16: PC Conversions, Index 17: PI Conversions
         totalImpressions += Integer.parseInt(row[9]);
-        //TODO: Need to ensure all csvs can handle number formats with commas
 
         //Index 12: Clicks
         totalClicks += Integer.parseInt(row[8]);
@@ -150,7 +151,6 @@ public class MobRecord implements importRecord {
       Float aggCPC = totalSpend/(float)totalClicks;
       Float kImpressions = (float)totalImpressions/1000;
       Float aggCPM = totalSpend/kImpressions;
-      //TODO: System.out.println("Ensure this cpm calc is correct: " + aggCPM);
       
       //TODO: checking for NaN and Infinity happens in the updateDD method
       //as opposed to here where it takes place in the aggregate method.
@@ -172,7 +172,7 @@ public class MobRecord implements importRecord {
       String[] dateArray = {sDate.toString(),eDate.toString()};
       
       //Get the GroupID of the current record
-      GroupID currID = (GroupID)pairs.getKey();
+      GroupID currID = pairs.getKey();
 
       MobRecord rec = new MobRecord(dateArray,currID.getSource(),currID.getMedium(),currID.getCampaign(),currID.getSource(),//<- This is network
       currID.getAdContent(),totalClicks,totalImpressions,aggCTR,aggCPC,aggCPM,totalSpend, totalConversions,pcConversions,piConversions);
@@ -182,7 +182,6 @@ public class MobRecord implements importRecord {
     return MobRecordCollection;
   }
   public static void main(String[] args) {
-    // TODO Auto-generated method stub
 
   }
 

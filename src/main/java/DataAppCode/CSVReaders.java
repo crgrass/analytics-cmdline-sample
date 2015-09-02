@@ -14,8 +14,6 @@
 
 package DataAppCode;
 
-import guiCode.DataAppTest;
-
 import java.io.BufferedReader;
 
 import au.com.bytecode.opencsv.*;
@@ -160,8 +158,6 @@ public class CSVReaders {
   }// end of CSVReaders
   
   public static boolean correctDate(String filePath) {
-    //Check filepath to determine appropriate vendor
-    String vendor = null; //Use this as a key
     Map<String,Integer[]> dateIndexes = new HashMap<String,Integer[]>();
     //If there are two integers in the array this indicates that both the
     //start and end dates are relevant

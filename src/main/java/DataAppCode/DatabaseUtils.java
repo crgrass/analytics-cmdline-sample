@@ -17,7 +17,6 @@ package DataAppCode;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.Vector;
 
 /**
  * @author cgrass@google.com (Your Name Here)

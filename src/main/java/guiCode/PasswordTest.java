@@ -3,7 +3,6 @@ package guiCode;
 import javafx.scene.control.TextField;
 
 import javafx.application.Platform;
-import javafx.beans.Observable;
 import javafx.scene.Scene;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -22,8 +21,8 @@ public class PasswordTest extends Application {
   
   public void launchDataApp() {
       Platform.runLater(new Runnable() {
-         public void run() {             
-             String[] test = {};
+         @Override
+        public void run() {             
              new DataAppTest().start(new Stage());
          }
       });
@@ -46,7 +45,7 @@ public class PasswordTest extends Application {
 	    hbUserName.setSpacing(10);
 	    hb.setAlignment(Pos.CENTER_LEFT);
 	    
-	    Label label = new Label("Password  ");//TODO: use something other than spacing to align
+	    Label label = new Label("Password  ");
 	    PasswordField pwField = new PasswordField();
 	    pwField.setPromptText("Password:");
 	    Label lblUserName = new Label("User Name");

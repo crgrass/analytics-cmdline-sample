@@ -17,7 +17,6 @@ package DataAppCode;
 import guiCode.DataAppTest;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -79,8 +78,10 @@ public class FilePathBuilder {
   
   Map<String,String> fileLocations = new HashMap<String,String>();
   
-  //TODO: Adwords does not require a import folder and this should eventually be removed 
-  fileLocations.put("Google Adwords", "/Vendor Data - Import and Archive/");
+  //Note: Adwords does not have a vendor file as all data is pulled from the API
+  
+  fileLocations.put("Google Adwords", 
+      "/Vendor Data - Import and Archive");
   
   fileLocations.put("Centro Digital Display", 
       "/Vendor Data - Import and Archive/Centro/FY15/FY15 Centro Reporting - Weekly Drop Folder");
@@ -145,38 +146,5 @@ public class FilePathBuilder {
     
 
   }
-  
-  
-  
-//TODO: Determine if this following method is used anywhere. If this was just a starter method the 
-  
-  public static Map<String,String> dummyFilePathMap() {
-  
-  Map<String,String> fileLocations = new HashMap<String,String>();
-  
-  //Will leave this for now
-  fileLocations.put("Google Adwords", "Z:\\marketing\\common\\Marketing Data App\\FileCheckTest\\fileCheckTest.txt");
-  
-  fileLocations.put("Centro Digital Display", 
-      "Z:\\marketing\\common\\Marketing Data App\\FileCheckTest\\fileCheckTest.txt");
-  
-  fileLocations.put("Centro Mobile Display", 
-      "Z:\\marketing\\common\\Marketing Data App\\FileCheckTest\\fileCheckTest.txt");
-  
-  fileLocations.put("Centro Video Display", 
-      "Z:\\marketing\\common\\Marketing Data App\\FileCheckTest\\fileCheckTest.txt");
-  
-  fileLocations.put("Centro Rich Media", 
-      "Z:\\marketing\\common\\Marketing Data App\\FileCheckTest\\fileCheckTest.txt");
-  
-  fileLocations.put("Facebook", "Z:\\marketing\\common\\Marketing Data App\\FileCheckTest\\fileCheckTest.txt");
-  
-  fileLocations.put("Twitter", "Z:\\marketing\\common\\Marketing Data App\\FileCheckTest\\fileCheckTest.txt");
-  
-  fileLocations.put("LinkedIn", "Z:\\marketing\\common\\Marketing Data App\\FileCheckTest\\fileCheckTest.txt");
-  
-  
-  return fileLocations;
-}
 
 }

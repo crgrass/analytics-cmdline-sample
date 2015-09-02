@@ -12,15 +12,16 @@ public class Console extends OutputStream {
 	
 	//constructor
 	public Console(TextArea ta) {
-		this.output =ta;
+		this.setOutput(ta);
 	}
 	
 	@Override
 	public void write(final int i) throws IOException {
 		//This has something to do with multi-threading
 		Platform.runLater(new Runnable() {
-			public void run() {
-				output.appendText(String.valueOf((char) i));
+			@Override
+      public void run() {
+				getOutput().appendText(String.valueOf((char) i));
 			}
 		});
 	}
@@ -29,5 +30,13 @@ public class Console extends OutputStream {
 		// TODO Auto-generated method stub
 
 	}
+
+  public TextArea getOutput() {
+    return output;
+  }
+
+  public void setOutput(TextArea output) {
+    this.output = output;
+  }
 
 }

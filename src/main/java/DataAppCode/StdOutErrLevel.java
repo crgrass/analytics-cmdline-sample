@@ -28,6 +28,11 @@ public class StdOutErrLevel extends Level {
    * Private constructor
    */
 
+    /**
+   * 
+   */
+  private static final long serialVersionUID = 1L;
+
     private StdOutErrLevel(String name, int value) {
       super(name, value);
     }
@@ -45,13 +50,13 @@ public class StdOutErrLevel extends Level {
         new StdOutErrLevel("STDERR", Level.INFO.intValue()+54);
     
     /*
-     * Mehod to avoid creating duplicate instances when deserializing the object
+     * Method to avoid creating duplicate instances when deserializing the object
      * @return the singleton instance of this <code>Level<code> value in this
      * 
      */
     
     /*
-     * classloader
+     * class loader
      * @throws ObjectStreamException If unable to deserialize
      */
     

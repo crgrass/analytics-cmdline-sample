@@ -45,18 +45,17 @@ public class FilePrep {
 	 * The method takes the full absolute filepath as a parameter.
 	 */
 	public boolean fileFound () {
-		File f = new File(filePath);
-		//if path change fileFound attribute and fileFoundImage Attribute exists return true
-		if(f.exists() && !f.isDirectory()) {
-			fileFound = true;
-			fileFoundImage = new Image("/mainPackage/checkMark.jpg");
-			System.out.println("The file " + filePath + " was found.");
-			return true;
-		} else {
-			//file is not found
-			System.out.println("The file " + filePath + " was not found.");
-			return false;
-		}
+	  File f = new File(filePath);
+	  //if path change fileFound attribute and fileFoundImage Attribute exists return true
+	  if(f.exists() && !f.isDirectory()) {
+	    fileFound = true;
+	    fileFoundImage = new Image("/mainPackage/checkMark.jpg");
+	    System.out.println("The file " + filePath + " was found.");
+	    return true;
+	  }
+	  //file is not found
+	  System.out.println("The file " + filePath + " was not found.");
+	  return false;
 	}// end of fileFoundMethod
 	
 	/*
@@ -74,36 +73,35 @@ public class FilePrep {
 	 */
 	
 	public boolean fileScanned() {
-		File f = new File(filePath);
-		boolean extPassed = false; // file passes the extension checked test
-		int pathLength = filePath.length();
-		String fileExtension = filePath.substring(pathLength - 4);
-		String desiredFileExtension = new String(".csv");
-		//put this in a separate file
-		if (fileExtension.equals(desiredFileExtension)) {
-			fileScanned = extPassed = true;
-			fileScannedImage = new Image("/mainPackage/checkMark.jpg");
-			return true;
-		} else {
-			System.out.println("The file provided does not have a .csv file extension");
-			return false;
-		}
-		
+
+	  int pathLength = filePath.length();
+	  String fileExtension = filePath.substring(pathLength - 4);
+	  String desiredFileExtension = new String(".csv");
+	  //put this in a separate file
+
+	  if (fileExtension.equals(desiredFileExtension)) {
+	    fileScannedImage = new Image("/mainPackage/checkMark.jpg");
+	    return true;
+	  }
+	  System.out.println("The file provided does not have a .csv file extension");
+	  return false;
+
+
 	}// end of fileScanned Method
 	
 	/*
 	 * fileReady method
 	 */
 	public boolean fileReady() {
-		if (fileFound && fileScanned ) {
-			System.out.println("The file " + filePath + " is ready for import");
-			fileReady = true;
-			fileReadyImage = new Image("/mainPackage/checkMark.jpg");
-			return true;
-		} else {
-			System.out.println("The file " + filePath + " is not ready for import ");
-			return false;
-		}
+	  if (fileFound && fileScanned ) {
+	    System.out.println("The file " + filePath + " is ready for import");
+	    fileReady = true;
+	    fileReadyImage = new Image("/mainPackage/checkMark.jpg");
+	    return true;
+	  }
+	  System.out.println("The file " + filePath + " is not ready for import ");
+	  return false;
+
 	}
 
 	

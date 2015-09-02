@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.io.OutputStream;
 
 import javafx.application.Platform;
-import javafx.scene.control.TextArea;
 
 public class HTMLConsole extends OutputStream {
 	
@@ -14,7 +13,7 @@ public class HTMLConsole extends OutputStream {
 	
 	//constructor
 	public HTMLConsole(HTMLEditor html) {
-		this.output =html;
+		this.setOutput(html);
 	}
 	
 	@Override
@@ -23,7 +22,7 @@ public class HTMLConsole extends OutputStream {
 		Platform.runLater(new Runnable() {
 		  @Override
 		  public void run() {
-				output.setHtmlText(String.valueOf((char) i));
+				getOutput().setHtmlText(String.valueOf((char) i));
 			}
 		});
 	}
@@ -32,5 +31,13 @@ public class HTMLConsole extends OutputStream {
 		// TODO Auto-generated method stub
 
 	}
+
+  public HTMLEditor getOutput() {
+    return output;
+  }
+
+  public void setOutput(HTMLEditor output) {
+    this.output = output;
+  }
 
 }

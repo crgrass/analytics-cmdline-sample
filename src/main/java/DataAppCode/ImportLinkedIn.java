@@ -34,8 +34,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import javax.naming.NamingException;
-
 
 
 
@@ -64,14 +62,15 @@ public class ImportLinkedIn {
       }// end of else
       
       //load GroupID
+      //TODO: Replace deprecated method
       GroupID currGroupID = new GroupID(source,medium,campaign);
       
       boolean groupIDExists = false;
       //Iterates through hashmap and raised flag if the groupID already exists
-      Iterator it = groupedData.entrySet().iterator();
+      Iterator<Map.Entry<GroupID, ArrayList<String[]>>> it = groupedData.entrySet().iterator();
       while (it.hasNext()) {
-        Map.Entry pairs = (Map.Entry)it.next();
-        GroupID iteratedGroupID = (GroupID)pairs.getKey();
+        Map.Entry<GroupID, ArrayList <String[]>> pairs = it.next();
+        GroupID iteratedGroupID = pairs.getKey();
         if (iteratedGroupID.equals(currGroupID)) {
           groupIDExists = true;
           //add string once match is identified
@@ -90,8 +89,7 @@ public class ImportLinkedIn {
     return groupedData;
   }//end of group raw data
   
-  public static void updateLinkedIn(ArrayList<LIRecord> importData, Connection cnxn)
-      throws SQLException {
+  public static void updateLinkedIn(ArrayList<LIRecord> importData, Connection cnxn) {
 
     PreparedStatement updateLinkedIn = null;
 
@@ -173,8 +171,6 @@ public class ImportLinkedIn {
     //TODO: This filepathBuilder map is built every time a vendor import file is run.
     //This is wasteful and should be created once and then stored for multiple uses.
     
-    
-    Map<String,String> filePaths = FilePathBuilder.buildFilePathMapDropBox(DataAppTest.startDate); //contains all vendors and their respective import directory paths
     ArrayList<String[]> data = null;
     try {
       
@@ -182,7 +178,6 @@ public class ImportLinkedIn {
       try {
          DropBoxConnection.pullCSV("LinkedIn",DataAppTest.startDate);
       } catch (DbxException exception) {
-        // TODO Auto-generated catch block
         exception.printStackTrace();
       }
       
@@ -191,7 +186,6 @@ public class ImportLinkedIn {
       data = CSVReaders.readLICsv("retrievedLinkedIn.csv");
       System.out.println("LinkedIn Read Complete.\n");
     } catch (IOException exception) {
-      // TODO Auto-generated catch block
       exception.printStackTrace();
     }
     
@@ -255,7 +249,7 @@ public class ImportLinkedIn {
     
     try{
       updateLinkedIn(acquisitionData,cnx);
-    } catch (SQLException e) {
+    } catch (Exception e) {
     System.out.println(e.getMessage());  
     }
     

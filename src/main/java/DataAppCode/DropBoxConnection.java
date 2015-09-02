@@ -17,14 +17,11 @@ import com.dropbox.core.*;
 
 import java.io.*;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Map;
 import java.awt.Desktop;
 import java.net.URI;
 import java.net.URISyntaxException;
-
-import org.apache.commons.io.FileUtils;
 
 /**
  * @author cgrass@google.com (Your Name Here)
@@ -130,15 +127,14 @@ public class DropBoxConnection {
           + " Authorization token created and additional authorization is not required.\n");
       
       try {
-        DbxAppInfo appInfo = new DbxAppInfo(APP_KEY,APP_SECRET); //Create app Info
         DbxRequestConfig config = new DbxRequestConfig(
             "JavaTuturial/1.0",Locale.getDefault().toString()); //Create config
-        DbxWebAuthNoRedirect webAuth = new DbxWebAuthNoRedirect(config,appInfo); //Create web auth
         BufferedReader br = new BufferedReader(new FileReader(f)); //Reads token from file
         String token = br.readLine();// There should only be one line in this file
         
         //client is created
         client = new DbxClient(config, token); //Create client with config and token
+        br.close();
       } catch (FileNotFoundException e1) {
         e1.printStackTrace();
       } catch (IOException e2) {
@@ -173,6 +169,7 @@ public class DropBoxConnection {
       while((line = r.readLine()) != null) {
         s += line;
       }
+      r.close();
     } finally {
       out.close();
     }

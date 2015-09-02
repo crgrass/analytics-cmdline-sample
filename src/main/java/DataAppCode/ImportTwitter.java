@@ -30,7 +30,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.Map;
 
 /**
  * @author cgrass@google.com (Your Name Here)
@@ -38,8 +37,7 @@ import java.util.Map;
  */
 public class ImportTwitter {
   
-  public static void updateTW(ArrayList<TWRecord> importData, Connection cnxn)
-      throws SQLException {
+  public static void updateTW(ArrayList<TWRecord> importData, Connection cnxn){
 
     PreparedStatement updateTW = null;
 
@@ -70,7 +68,6 @@ public class ImportTwitter {
         } catch (ParseException e) {
           e.printStackTrace();
         } catch (java.text.ParseException exception) {
-          // TODO Auto-generated catch block
           exception.printStackTrace();
         }
         
@@ -120,7 +117,6 @@ public class ImportTwitter {
 
     guiCode.DataAppTest.outputDisplay.write(OutputMessages.startingVendorImport("Twitter"));
     
-    Map<String,String> filePaths = FilePathBuilder.buildFilePathMapDropBox(DataAppTest.startDate); //contains all vendors and their respective import directory paths
     ArrayList<String[]> data = null;
     try {
       
@@ -128,10 +124,8 @@ public class ImportTwitter {
       try {
          DropBoxConnection.pullCSV("Twitter",DataAppTest.startDate);
       } catch (DbxException exception) {
-        // TODO Auto-generated catch block
         exception.printStackTrace();
       } catch (IOException exception) {
-        // TODO Auto-generated catch block
         exception.printStackTrace();
       }
     
@@ -192,7 +186,7 @@ public class ImportTwitter {
     //execute query
     try{
       updateTW(acquisitionData,cnx);
-    } catch (SQLException e) {
+    } catch (Exception e) {
       System.out.println(e.getMessage());  
 
     }

@@ -98,18 +98,15 @@ public class FBRecord implements importRecord {
    */
   public static ArrayList<FBRecord> aggregate(HashMap<GroupID,ArrayList<String[]>> rawData,
       LocalDate sDate, LocalDate eDate) {
-
-    //TODO: all start dates should come from one place
-    
     
     //Iterate through HashMap and place only digial display entries into a new HashMap
     HashMap<GroupID,ArrayList<String[]>> onlyFB = new HashMap<GroupID,ArrayList<String[]>>();
     Iterator<Map.Entry<GroupID,ArrayList<String[]>>> itr = rawData.entrySet().iterator();
     while (itr.hasNext()) {
-      Map.Entry pairs = (Map.Entry)itr.next();
-      GroupID currID = (GroupID)pairs.getKey();
+      Map.Entry<GroupID, ArrayList<String[]>> pairs = itr.next();
+      GroupID currID = pairs.getKey();
       @SuppressWarnings("unchecked")
-      ArrayList<String[]> currArray = (ArrayList<String[]>)pairs.getValue();
+      ArrayList<String[]> currArray = pairs.getValue();
       if (currID.getSource().equals("Facebook")) {
         onlyFB.put(currID, currArray);
       }//end of if
@@ -119,10 +116,10 @@ public class FBRecord implements importRecord {
     ArrayList<FBRecord> FBRecordCollection = new ArrayList<FBRecord>();
 
     //Need to loop through Hash Map
-    Iterator it = onlyFB.entrySet().iterator();
+    Iterator<Map.Entry<GroupID, ArrayList<String[]>>> it = onlyFB.entrySet().iterator();
     while (it.hasNext()) {
-      Map.Entry pairs = (Map.Entry)it.next();
-      ArrayList<String[]> currList = (ArrayList<String[]>)pairs.getValue();
+      Map.Entry<GroupID,ArrayList<String[]>> pairs = it.next();
+      ArrayList<String[]> currList = pairs.getValue();
 
       //Metrics are aggregated here
       Integer totalReach = 0;
@@ -136,7 +133,8 @@ public class FBRecord implements importRecord {
      
       Float totalSpend = 0.0f;
       
-      //TODO: Need to be able to handle empty cells that should be zero
+      //TODO: Need to be able to handle empty cells that should be zero. This problem is apparent
+      //When execution fails due to indexes 19 and 20 being null when they should be zero.
       
 
 
@@ -176,7 +174,6 @@ public class FBRecord implements importRecord {
         totalWebsiteClicks += Integer.parseInt(row[20]);
         
         
-        //TODO: Need to ensure all csvs can handle number formats with commas
       }// end of inner loop
 
       Float aggFrequency = (float)totalImpressions/(float)totalReach;
@@ -213,7 +210,7 @@ public class FBRecord implements importRecord {
       String endDate = eDate.toString();
       String[] dateArray = {startDate,endDate};
       
-      GroupID currID = (GroupID)pairs.getKey();
+      GroupID currID = pairs.getKey();
 
       FBRecord rec = new FBRecord(dateArray,currID.getSource(),currID.getMedium(),currID.getCampaign(),currID.getAdContent(), currID.getPlacement(), "Device",//placeholder for device
           totalReach,aggFrequency,totalClicks,totalUniqueClicks,totalImpressions,aggCTR,aggUniqueCTR,aggCPC,aggCPM,
@@ -261,7 +258,6 @@ public class FBRecord implements importRecord {
     return returnString;
   }
   public static void main(String[] args) {
-    // TODO Auto-generated method stub
 
   }
   /**

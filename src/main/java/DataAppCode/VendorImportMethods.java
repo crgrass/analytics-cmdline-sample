@@ -18,8 +18,8 @@ import com.dropbox.core.DbxException;
 import com.google.api.services.analytics.model.GaData;
 import com.google.api.services.samples.analytics.cmdline.GACall;
 
-import guiCode.DataAppTest;
-import guiCode.OutputMessages;
+//import guiCode.DataAppTest;
+//import guiCode.OutputMessages;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -27,7 +27,6 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 
 /**
  * @author cgrass@google.com (Chris Grass)
@@ -57,8 +56,6 @@ public class VendorImportMethods {
        * Note: Adding dimensions or metrics shifts the indexes and can lead to 
        * incorrect metrics populating in the object
        */
-      
-      //TODO: Incorporate Logging Functionality
       
       String startDate = sDate.toString();
       String endDate = eDate.toString();
@@ -96,7 +93,7 @@ public class VendorImportMethods {
       
       try{
         ImportAdwords.updateAdwords(groupedAdwordsData,cnx);
-      } catch (SQLException e) {
+      } catch (Exception e) {
       System.out.println(e.getMessage());
       //guiCode.DataAppTest.outputDisplay.write(OutputMessages.errorMessage(e.getMessage()));
       }
@@ -185,7 +182,7 @@ public class VendorImportMethods {
       //TODO: Move this query to FB Record enabling the eventual removal of the import
       //FB record
       ImportFB.updateFB(acquisitionData,cnx);
-    } catch (SQLException e) {
+    } catch (Exception e) {
     System.out.println(e.getMessage());  
     }
     
@@ -271,7 +268,7 @@ public class VendorImportMethods {
     //execute query
     try{
       ImportTwitter.updateTW(acquisitionData,cnx);
-    } catch (SQLException e) {
+    } catch (Exception e) {
       System.out.println(e.getMessage());  
 
     }
@@ -298,10 +295,8 @@ public class VendorImportMethods {
       try {
          DropBoxConnection.pullCSV("Centro Digital Display",sDate);
       } catch (DbxException exception) {
-        // TODO Auto-generated catch block
         exception.printStackTrace();
       } catch (IOException exception) {
-        // TODO Auto-generated catch block
         exception.printStackTrace();
       }
   
@@ -320,7 +315,7 @@ public class VendorImportMethods {
     //We will then iterate through the HashMap and aggregate each entry
     
     System.out.println("Grouping Data by Source, Medium, Campaign and AdContent... ");
-    HashMap<GroupID, ArrayList<String[]>> groupedData = ImportDD.groupRawData(data);
+    HashMap<GroupID, ArrayList<String[]>> groupedData = importUtils.groupCentroRawData(data,sDate);
     System.out.print("Complete.\n");
 
     
@@ -382,17 +377,14 @@ public class VendorImportMethods {
   
   public static void importCentroVideo(String[] args, LocalDate sDate, LocalDate eDate) {
 //    guiCode.DataAppTest.outputDisplay.write(OutputMessages.startingVendorImport("Centro Video"));
-    Map<String,String> filePaths = FilePathBuilder.buildFilePathMapDropBox(sDate);
     ArrayList<String[]> data = null;
     
     //pull down data, write to file and overwrite any existing files
     try {
       DropBoxConnection.pullCSV("Centro Video Display", sDate);
     } catch (DbxException exception) {
-      // TODO Auto-generated catch block
       exception.printStackTrace();
     } catch (IOException exception) {
-      // TODO Auto-generated catch block
       exception.printStackTrace();
     }
     
@@ -443,7 +435,6 @@ public class VendorImportMethods {
       ImportCentroVid.updateCentroVid(acquisitionData,cnx);
     } catch (SQLException e) {
     System.out.println(e.getMessage()); 
-    String error = e.getMessage();
     
     }
     
@@ -464,10 +455,8 @@ public class VendorImportMethods {
     try {
       DropBoxConnection.pullCSV("Centro Mobile Display",sDate);
     } catch (DbxException exception) {
-      // TODO Auto-generated catch block
       exception.printStackTrace();
     } catch (IOException exception) {
-      // TODO Auto-generated catch block
       exception.printStackTrace();
     }
     
@@ -520,7 +509,7 @@ public class VendorImportMethods {
   //execute query
     try{
       ImportMob.updateCentroMob(acquisitionData,cnx);
-    } catch (SQLException e) {
+    } catch (Exception e) {
     System.out.println(e.getMessage());  
     }
     
@@ -535,7 +524,6 @@ public class VendorImportMethods {
   
   
   public static void main(String[] args) {
-    // TODO Auto-generated method stub
 
   }
 

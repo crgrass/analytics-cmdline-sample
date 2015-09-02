@@ -22,12 +22,9 @@ import java.util.Map;
  * @author cgrass@google.com (Your Name Here)
  *
  */
-public class ImportFunctionLauncher {
-  
-//  final String[] cbNames = new String[]{"Google Adwords","Centro Digital Display",
-//                                        "Centro Mobile Display","Centro Video Display","Centro Rich Media","Facebook",
-//                                        "Twitter","LinkedIn"};
 
+//TODO: This entire class needs to be documented
+public class ImportFunctionLauncher {
 
   
   public static Map<String,Method> generateMethodMap() throws Exception {

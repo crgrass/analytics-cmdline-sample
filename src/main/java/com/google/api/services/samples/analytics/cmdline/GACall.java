@@ -28,11 +28,8 @@ import com.google.api.client.util.store.DataStoreFactory;
 import com.google.api.client.util.store.FileDataStoreFactory;
 import com.google.api.services.analytics.Analytics;
 import com.google.api.services.analytics.AnalyticsScopes;
-import com.google.api.services.analytics.model.Accounts;
 import com.google.api.services.analytics.model.GaData;
 import com.google.api.services.analytics.model.GaData.ColumnHeaders;
-import com.google.api.services.analytics.model.Profiles;
-import com.google.api.services.analytics.model.Webproperties;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -94,44 +91,39 @@ public class GACall {
       dataStoreFactory = new FileDataStoreFactory(DATA_STORE_DIR);
       //This is the analytics services object
       Analytics analytics = initializeAnalytics();
-      
+
       //TODO: This needs to be modified so that it gets the correct analytics ID
       //Deprecated in lieu of hardcode: String profileId = getFirstProfileId(analytics);
       String profileId = "63145830"; 
-      if (profileId == null) {
-        System.err.println("No profiles found.");
-        //exceptions are needed here to deal with fact that GaData is not returned
-        throw new EmptyStackException();
-      } else {
-        //can I execute all queries at once to save time?
-        //Determine which query to execute
-        GaData gaData = null;
-        
-        //eventually this solution should be implemented
-        //http://stackoverflow.com/questions/4480334/how-to-call-a-method-stored-in-a-hashmap-java
-        if (queryType == 0) {
-          gaData = executeAdwordsQuery(analytics, profileId,testDates);
-        } else if (queryType == 1) {
-          gaData = executeLinkedInBehaviorQuery(analytics, profileId,testDates);
-        } else if (queryType == 2) {
-          gaData = executeCentroDDBehaviorQuery(analytics, profileId, testDates);
-        } else if (queryType == 3) {
-          gaData = executeCentroVidBehaviorQuery(analytics, profileId, testDates);
-        } else if (queryType == 4) {
-          gaData = executeCentroMobBehaviorQuery(analytics, profileId, testDates);
-        } else if (queryType == 5) {
-          gaData = executeCentroRichBehaviorQuery(analytics, profileId, testDates);
-        } else if (queryType == 6) {
-          gaData = executeFacebookBehaviorQuery(analytics, profileId, testDates);
-        } else if (queryType == 7) {
-          gaData = executeTwitterBehaviorQuery(analytics,profileId,testDates);
-        }else {
-          System.out.println("Error: queryType value is not valid");
-        }
-        
-//        printGaData(gaData);
-        return gaData;
+
+      //can I execute all queries at once to save time?
+      //Determine which query to execute
+      GaData gaData = null;
+
+      //eventually this solution should be implemented
+      //http://stackoverflow.com/questions/4480334/how-to-call-a-method-stored-in-a-hashmap-java
+      if (queryType == 0) {
+        gaData = executeAdwordsQuery(analytics, profileId,testDates);
+      } else if (queryType == 1) {
+        gaData = executeLinkedInBehaviorQuery(analytics, profileId,testDates);
+      } else if (queryType == 2) {
+        gaData = executeCentroDDBehaviorQuery(analytics, profileId, testDates);
+      } else if (queryType == 3) {
+        gaData = executeCentroVidBehaviorQuery(analytics, profileId, testDates);
+      } else if (queryType == 4) {
+        gaData = executeCentroMobBehaviorQuery(analytics, profileId, testDates);
+      } else if (queryType == 5) {
+        gaData = executeCentroRichBehaviorQuery(analytics, profileId, testDates);
+      } else if (queryType == 6) {
+        gaData = executeFacebookBehaviorQuery(analytics, profileId, testDates);
+      } else if (queryType == 7) {
+        gaData = executeTwitterBehaviorQuery(analytics,profileId,testDates);
+      }else {
+        System.out.println("Error: queryType value is not valid");
       }
+
+      return gaData;
+
     } catch (GoogleJsonResponseException e) {
       System.err.println("There was a service error: " + e.getDetails().getCode() + " : "
           + e.getDetails().getMessage());
@@ -180,49 +172,7 @@ public class GACall {
         APPLICATION_NAME).build();
   }
 
-  /**
-   * Returns the first profile id by traversing the Google Analytics Management API. This makes 3
-   * queries, first to the accounts collection, then to the web properties collection, and finally
-   * to the profiles collection. In each request the first ID of the first entity is retrieved and
-   * used in the query for the next collection in the hierarchy.
-   *
-   * @param analytics the analytics service object used to access the API.
-   * @return the profile ID of the user's first account, web property, and profile.
-   * @throws IOException if the API encounters an error.
-   */
-  private static String getFirstProfileId(Analytics analytics) throws IOException {
-    String profileId = null;
 
-    // Query accounts collection.
-    Accounts accounts = analytics.management().accounts().list().execute();
-
-    if (accounts.getItems().isEmpty()) {
-      System.err.println("No accounts found");
-    } else {
-      String firstAccountId = accounts.getItems().get(0).getId();
-
-      // Query webproperties collection.
-      Webproperties webproperties =
-          analytics.management().webproperties().list(firstAccountId).execute();
-
-      if (webproperties.getItems().isEmpty()) {
-        System.err.println("No Webproperties found");
-      } else {
-        String firstWebpropertyId = webproperties.getItems().get(0).getId();
-
-        // Query profiles collection.
-        Profiles profiles =
-            analytics.management().profiles().list(firstAccountId, firstWebpropertyId).execute();
-
-        if (profiles.getItems().isEmpty()) {
-          System.err.println("No profiles found");
-        } else {
-          profileId = profiles.getItems().get(0).getId();
-        }
-      }
-    }
-    return profileId;
-  }
 
   /**
    * Returns the top 25 organic search keywords and traffic source by visits. The Core Reporting API
@@ -233,19 +183,7 @@ public class GACall {
    * @return the response from the API.
    * @throws IOException tf an API error occured.
    */
-  
-  //Note: This is the sample query that is provided with the sample code
-  private static GaData executeDataQuery(Analytics analytics, String profileId) throws IOException {
-    return analytics.data().ga().get("ga:" + profileId, // Table Id. ga: + profile id.
-        "2012-01-01", // Start date.
-        "2012-01-14", // End date.
-        "ga:visits") // Metrics.
-        .setDimensions("ga:source,ga:keyword")
-        .setSort("-ga:visits,ga:source")
-        .setFilters("ga:medium==organic")
-        .setMaxResults(25)
-        .execute();
-  }
+
   
   //Only one query is needed for Adwords since all data come from GA
   //This needs to accept a dateArray which contains two strings the first being a startDate and

@@ -25,8 +25,8 @@ import javafx.concurrent.Task;
  */
 public class Tasks {
 
-  public static Task disableFullImport(Button commenceImportButton, boolean b){
-    Task disableImportOnExit = new Task<Void>(){
+  public static Task<Void> disableFullImport(Button commenceImportButton, boolean b){
+    Task<Void> disableImportOnExit = new Task<Void>(){
       @Override
       public Void call(){
         Platform.runLater(new Runnable() {
