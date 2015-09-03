@@ -33,6 +33,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
 
 
 
@@ -163,7 +164,7 @@ public class ImportLinkedIn {
 
 
   public static void main(String[] args) {
-    System.out.println("Importing LinkedIn");
+    DataAppTest.logger.log(Level.INFO,"Importing LinkedIn." + System.lineSeparator());
     
 //    guiCode.DataAppTest.outputDisplay.write(OutputMessages.startingVendorImport("LinkedIn"));
     
@@ -176,34 +177,30 @@ public class ImportLinkedIn {
       
       //pull down data, write to file and overwrite any existing files
       try {
-         DropBoxConnection.pullCSV("LinkedIn",DataAppTest.startDate);
+        DropBoxConnection.pullCSV("LinkedIn",DataAppTest.startDate);
       } catch (DbxException exception) {
         exception.printStackTrace();
       }
       
       
-      System.out.println("Reading LinkedIn File...\n");
+      DataAppTest.logger.log(Level.INFO,"Reading LinkedIn File." + System.lineSeparator()); 
       data = CSVReaders.readLICsv("retrievedLinkedIn.csv");
-      System.out.println("LinkedIn Read Complete.\n");
     } catch (IOException exception) {
       exception.printStackTrace();
     }
     
     CSVReaders.removeHeader(data);
-    CSVReaders.removeTail(data);
     
     //Now that we have the raw data in ArrayList<String[]> form
     //We need to group appropriately into a hashmap
     //We will then iterate through the HashMap and aggregate each entry
     
-    System.out.println("Grouping Data by Source, Medium and Campaign...\n");
+    DataAppTest.logger.log(Level.INFO,"Grouping Data by Source, Medium and Campaign." + System.lineSeparator()); 
     HashMap<GroupID, ArrayList<String[]>> groupedData = groupRawData(data);
-    System.out.println("Grouping Complete.\n");
     
     
-    System.out.println("Aggregating LinkedIn Data...\n");
+    DataAppTest.logger.log(Level.INFO,"Aggregating LinkedIn Data." + System.lineSeparator());
     ArrayList<LIRecord> acquisitionData = LIRecord.aggregate(groupedData);
-    System.out.println("Aggregation Complete.\n");
     
     //Now that acquisition data is obtained we need
     //behavior data
@@ -212,15 +209,17 @@ public class ImportLinkedIn {
     String endDate = guiCode.DataAppTest.endDate.toString();
     String[] testDates = {startDate,endDate};
     
-    System.out.println("Connecting to Google Analytics API for "
-        + "Behavior metrics\n");
-    System.out.println("Google Analytics API messages below: \n");
+    
+    
+    
+    DataAppTest.logger.log(Level.INFO,"Connecting to Google Analytics API for "
+        + "Behavior metrics." + System.lineSeparator());
     GaData behaviorResults = GACall.main(args,testDates,1);
-    System.out.println("\nGoogle Analytics API Request Complete.\n");
 
     
-    //when refactoring use the import Utils generic method
-    System.out.println("Matching Acquisition Metrics to their respective behavior metrics...\n");
+
+    DataAppTest.logger.log(Level.INFO,"Matching Acquisition Metrics to their respective"
+        + " behavior metrics." + System.lineSeparator());
     for (LIRecord currRec : acquisitionData) {
       for (int i = 0 ; i < behaviorResults.getRows().size(); i ++) {
         List<String> currBehaviorRow = behaviorResults.getRows().get(i);
@@ -233,24 +232,24 @@ public class ImportLinkedIn {
         }// end of if
       }//end of inner for
     }//end of outer for
-    System.out.println("Matching Complete.\n");
     
     //Now that we have the VORecord fully loaded we will import into the database
     //Establish Connection
+    
+    DataAppTest.logger.log(Level.INFO,"Connecting to MySQL database." + System.lineSeparator());
     Connection cnx = null;
     try {
-//      cnx = DatabaseUtils.getTestDBConnection();
       cnx = DatabaseUtils.getGoogleCloudTestDBConnection();
-      System.out.println("Database Connection Successful\n");
     } catch (Exception e) {
-      System.out.println("There was an error establishing connection to the database");
-      e.printStackTrace();
+      DataAppTest.logger.log(Level.SEVERE,"There was an error establishing connection to the"
+          + " database" + System.lineSeparator(), e);
     }
     
     try{
       updateLinkedIn(acquisitionData,cnx);
     } catch (Exception e) {
-    System.out.println(e.getMessage());  
+      DataAppTest.logger.log(Level.SEVERE,"There was an error executing the LinkedIn "
+          + "Query." + System.lineSeparator(), e);  
     }
     
     guiCode.DataAppTest.outputDisplay.write(OutputMessages.importActivity(DataAppTest.importActivity.toString()));

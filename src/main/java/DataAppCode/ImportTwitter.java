@@ -30,6 +30,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.logging.Level;
 
 /**
  * @author cgrass@google.com (Your Name Here)
@@ -114,6 +115,8 @@ public class ImportTwitter {
 
 
   public static void main(String[] args) {
+    
+    DataAppTest.logger.log(Level.INFO, "Starting Twitter Import." + System.lineSeparator());
 
     guiCode.DataAppTest.outputDisplay.write(OutputMessages.startingVendorImport("Twitter"));
     
@@ -132,27 +135,27 @@ public class ImportTwitter {
     //Read csv and return raw data
     
     try {
-      System.out.println("Reading Twitter File...\n");
+      DataAppTest.logger.log(Level.INFO, "Reading Twitter File." + System.lineSeparator());
       data = CSVReaders.readLICsv("retrievedTwitter.csv");
-      System.out.println("Twitter File Read Complete.\n");
     } catch (IOException e) {
-      System.out.println("There was a problem reading the Twitter File.");
-      e.printStackTrace();
+      DataAppTest.logger.log(Level.SEVERE, "There was a problem reading the Twitter file."
+    + System.lineSeparator(), e);
     }
     
     
     CSVReaders.removeHeader(data);
     
-    System.out.println("Grouping Data by Source, Medium and Campaign...\n");
+    DataAppTest.logger.log(Level.INFO, "Grouping Data by Source, Medium and Campaign." 
+    + System.lineSeparator());
     HashMap<GroupID, ArrayList<String[]>> groupedData = importUtils.groupTwitterRawData(data);
-    System.out.println("Grouping Complete.\n");
     
-    System.out.println("Aggregating Twitter Data...\n");
+    
+    DataAppTest.logger.log(Level.INFO, "Aggregating Twitter Data." + System.lineSeparator());
     ArrayList<TWRecord> acquisitionData = TWRecord.aggregate(groupedData, DataAppTest.startDate,
         DataAppTest.endDate);
-    System.out.println("Aggregation Complete.\n");
     
-    System.out.println("Removing all records with 0 Impressions.\n");
+    
+    DataAppTest.logger.log(Level.INFO, "Removing all records with 0 Impressions." + System.lineSeparator());
     acquisitionData = importUtils.remove0ImpressionRecords(acquisitionData);
     
     //Data is now aggregated and ready for matching
@@ -161,34 +164,31 @@ public class ImportTwitter {
     String endDate = guiCode.DataAppTest.endDate.toString();
     String[] testDates = {startDate,endDate};
     
-    System.out.println("Connecting to Google Analytics API for "
-        + "Behavior metrics\n");
-    System.out.println("Google Analytics API messages below: \n");
+    DataAppTest.logger.log(Level.INFO, "Connecting to Google Analytics API for "
+        + "Behavior metrics." + System.lineSeparator());
     GaData behaviorResults = GACall.main(args,testDates,7);
-    System.out.println("\nGoogle Analytics API Request Complete.\n");
     
     //match behavior and acquisition data
-    System.out.println("Matching Acquisition Metrics to their respective behavior metrics...\n");
+    DataAppTest.logger.log(Level.INFO, "Matching Acquisition Metrics to "
+        + "their respective behavior metrics." + System.lineSeparator());
     importUtils.matchTWBehaviorAcq(acquisitionData, behaviorResults);
-    System.out.println("Matching Complete.\n");
     
     //Establish Connection
     Connection cnx = null;
+    DataAppTest.logger.log(Level.INFO, "Connecting to MySQL database.");
     try {
-//      cnx = DatabaseUtils.getTestDBConnection();
       cnx = DatabaseUtils.getGoogleCloudTestDBConnection();
-      System.out.println("Database Connection Successful\n");
     } catch (Exception e) {
-      System.out.println("There was an error establishing connection to the database");
-      System.out.println(e.getMessage());
+      DataAppTest.logger.log(Level.SEVERE, "There was an error establishing connection to the database.",
+          e);
     }
 
     //execute query
     try{
       updateTW(acquisitionData,cnx);
     } catch (Exception e) {
-      System.out.println(e.getMessage());  
-
+      DataAppTest.logger.log(Level.SEVERE, "There was an error executing the Twitter Query.",
+          e);
     }
 
     guiCode.DataAppTest.outputDisplay.write(OutputMessages.importActivity(DataAppTest.importActivity.toString()));
