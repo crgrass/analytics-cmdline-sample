@@ -139,10 +139,8 @@ public class FBRecord implements importRecord {
 
 
       for (String[] row : currList) {
-        //Each array should be of size 20
-        //Checking size of list and exiting import method if
-        //size is incorrect
         
+        //Each array should be of size 20
         if (row.length != 21) {
           System.out.println("The Facebook data was not imported due to an incorrect"
               + " number of fields.  Check the source file.");
@@ -626,6 +624,8 @@ public class FBRecord implements importRecord {
   public void setBounceRate(Float bounceRate) {
     this.bounceRate = bounceRate;
   }
+  
+  //TODO: Generalize the match method. There only needs to be one match method for all vendors.
   /*
    * Pre: The query passed to the GA API requests source, medium and campaign
    * as the first, second and third dimensions. Without this query structure the
@@ -633,6 +633,23 @@ public class FBRecord implements importRecord {
    */
   @Override
   public boolean match(List<String> gaRow) {
+    if (gaRow.get(0).equals(this.source) && gaRow.get(1).equals(this.medium) && gaRow.get(2).equals(this.campaign)
+        && gaRow.get(3).equals(this.adContent)) {
+      return true;
+    }
+    return false;
+  }
+  
+  /*
+   * Method is identical to match but includes debug statements when dimensions to not match
+   */
+  @Override
+  public boolean matchDebug(List<String> gaRow) {
+    System.out.println("Source, GA response first: " + gaRow.get(0) + "=? " + this.source);
+    System.out.println("Medium, GA response first: " + gaRow.get(1) + "=? " + this.medium);
+    System.out.println("Campaign, GA response first: " + gaRow.get(2) + "=? " + this.campaign);
+    System.out.println("AdContent, GA response first: " + gaRow.get(3) + "=? " + this.adContent);
+    System.out.println();
     if (gaRow.get(0).equals(this.source) && gaRow.get(1).equals(this.medium) && gaRow.get(2).equals(this.campaign)
         && gaRow.get(3).equals(this.adContent)) {
       return true;

@@ -29,4 +29,5 @@ public interface importRecord {
   public void setPercentNewVisits(Float e);
   public void setBounceRate(Float e);
   public boolean match(List<String> e);
+  public boolean matchDebug(List<String> e);
 }

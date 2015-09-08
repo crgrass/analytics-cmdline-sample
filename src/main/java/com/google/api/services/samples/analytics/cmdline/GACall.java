@@ -207,8 +207,8 @@ public class GACall {
         dateArray[1], // End date.
         "ga:visits,ga:pageViewsPerVisit,ga:avgTimeOnSite,ga:percentNewVisits,ga:entranceBounceRate") // Metrics.
         .setDimensions("ga:source,ga:medium,ga:campaign,ga:adContent")
-        .setFilters("ga:campaign=@FY2015;ga:source==Facebook;ga:medium==Newsfeed,ga:medium==Right_Rail,ga:medium==Social")
-        .setMaxResults(25)
+        .setFilters("ga:campaign=@FY2015,ga:campaign=@FY2016;ga:source==Facebook;ga:medium==Newsfeed,ga:medium==Right_Rail,ga:medium==Social,ga:medium==Newsfeed_PPE,ga:medium==Newsfeed_Link")
+        .setMaxResults(100)
         .execute();
   }
   
@@ -221,7 +221,7 @@ public class GACall {
         "ga:visits,ga:pageViewsPerVisit,ga:avgTimeOnSite,ga:percentNewVisits,ga:entranceBounceRate") // Metrics.
         .setDimensions("ga:source,ga:medium,ga:campaign,ga:adContent")
         .setFilters("ga:source==Collective,ga:source==Sparknotes,ga:source==Brand_Exchange,ga:source==Pandora;ga:medium==Display")
-        .setMaxResults(25)
+        .setMaxResults(100)
         .execute();
   }
   

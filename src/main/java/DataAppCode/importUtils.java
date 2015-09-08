@@ -18,6 +18,10 @@ import com.google.api.services.analytics.model.GaData;
 
 //import guiCode.DataAppTest;
 
+
+
+import guiCode.DataAppTest;
+
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.ArrayList;
@@ -25,6 +29,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
 
 /**
  * @author cgrass@google.com (Your Name Here)
@@ -60,14 +65,14 @@ public class importUtils {
       //Check if returned GA query is empty and exit to avoid
       //null pointer exception if so
       if (behavior.getRows() == null) {
-        System.out.println("Google Analytics did not return any data in response"
+        DataAppTest.logger.log(Level.SEVERE,"Google Analytics did not return any data in response"
             + " to the query.");
         return;
       }
       
       for (int i = 0 ; i < behavior.getRows().size(); i ++) {
         List<String> currBehaviorRow = behavior.getRows().get(i);
-        if (curr.match(currBehaviorRow)) {
+        if (curr.matchDebug(currBehaviorRow)) {
             curr.setVisits(Integer.parseInt(currBehaviorRow.get(4)));
             curr.setPagesPerVisit(Float.parseFloat(currBehaviorRow.get(5)));
             curr.setAvgDuration(Float.parseFloat(currBehaviorRow.get(6)));
@@ -85,7 +90,7 @@ public class importUtils {
       //Check if returned GA query is empty and exit to avoid
       //null pointer exception if so
       if (behavior.getRows() == null) {
-        System.out.println("Google Analytics did not return any data in response"
+        DataAppTest.logger.log(Level.SEVERE,"Google Analytics did not return any data in response"
             + " to the query.");
         return;
       }
@@ -278,18 +283,21 @@ public static HashMap<GroupID, ArrayList<String[]>> groupFacebookRawData(ArrayLi
   HashMap<GroupID, ArrayList<String[]>> groupedData = new HashMap<GroupID, ArrayList<String[]>>();
   for (String[] row : rawData) {
     
-    //what are the key fields necessary for the groupID
-    /*
-     * Source: Hardcoded
-     * Medium: Hardcoded
-     * Campaign: Index: 3 Values: Campaign Naming Conventions
-     * Placement: Index: 4 Values: News Feed, Right Column
-     * Device: Index: 4 Values: Mobile, Desktop
-     */
+    
+    //Values to be populated
+    String source = "Facebook";
+    String medium = ""; 
+    String campaign = "";
+    String adContent = "";
+    String placement = "";
+    
+    //TODO: This whole method of mapping source, medium, placement and ad content is too complex.
+    //find a simpler way.
     
     //These mappings convert the string identifying the campaign and placement in the Centro Files
     //to the string that matches the corresponding term in Google Analytics    
     HashMap<String,String> facebookCampaignMappings = new HashMap<String,String>();
+    //FY15 Campaigns
     facebookCampaignMappings.put("fy15_lg_fb_disp_hs_ug","FY2015_Undergrad");
     facebookCampaignMappings.put("fy15_lg_fb_disp_wa_gr","FY2015_Graduate");// these are not tracked separately
     facebookCampaignMappings.put("fy15_lg_fb_disp_cu_gr","FY2015_Graduate");// 
@@ -299,11 +307,53 @@ public static HashMap<GroupID, ArrayList<String[]>> groupFacebookRawData(ArrayLi
     facebookCampaignMappings.put("fy15_lg_fb_disp_hs_ug_tour1","FY2015_CampusTourTest1");
     facebookCampaignMappings.put("fy15_lg_fb_disp_cu_sic","FY2015_Courses_Summer");//these are not tracked separately
     facebookCampaignMappings.put("fy15_lg_fb_disp_wa_sic","FY2015_Courses_Summer");
+    //FY16 Campaigns
+    facebookCampaignMappings.put("UG_GR","FY2016_Graduate");
+    facebookCampaignMappings.put("WA_GR","FY2016_Graduate");
+    facebookCampaignMappings.put("WA_DC","FY2016_Degree_Completion");
+    facebookCampaignMappings.put("CU_TT","FY2016_Transfer");
+    //TODO: Determine if we are running IC at the start of the campaign
+    facebookCampaignMappings.put("WA_IC","FY2016_Courses_Fall/Spring");
+    facebookCampaignMappings.put("HS_UG","FY2016_Undergrad");
+    
+    //Campaign
+    //Get the first 5 characters
+    if (facebookCampaignMappings.containsKey(row[4].substring(0,5))) {
+      campaign = facebookCampaignMappings.get(row[4].substring(0, 5)); 
+    } else {
+      campaign = "Campaign Not Found";
+      DataAppTest.logger.log(Level.SEVERE,
+          "Campaign for \"" + row[4] +"\" could not be identified");
+    }
     
    
+    //TODO: 2016-09-01 file is reporting the presence of Right Rail
+    //At index 1 in the report
     HashMap<String,String> facebookPlacementMappings = new HashMap<String,String>();
     facebookPlacementMappings.put("Right Column","Right_Rail");
     facebookPlacementMappings.put("News Feed","Newsfeed");
+    facebookPlacementMappings.put("Page Post","Newsfeed_PPE");
+    facebookPlacementMappings.put("Page Link","Newsfeed_Link");
+    
+    //Placement
+    if (row[1].contains("Right Column")) {
+      placement = "Right_Rail";
+      medium = "Right_Rail";
+    } else if (row[1].contains("News Feed")) {
+      placement = "Newsfeed";
+      medium = "Newsfeed";
+    } else {
+      DataAppTest.logger.log(Level.SEVERE,
+          "Campaign for \"" + row[1] +"\" could not be identified");
+    }
+    
+    if (row[5].contains("Page Post")) {
+      System.out.println("Contains Page Post");
+      medium = "Newsfeed_PPE";
+    } else if (row[5].contains("Page Link")) {
+      System.out.println("Contains Page Link");
+      medium = "Newsfeed_Link";
+    }
     
     HashMap<String,String> facebookAdContentMappings = new HashMap<String,String>();
     facebookAdContentMappings.put("Time","Time_Is_Now");
@@ -313,35 +363,18 @@ public static HashMap<GroupID, ArrayList<String[]>> groupFacebookRawData(ArrayLi
     facebookAdContentMappings.put("Summer_Undergraduate", "Undergraduate");
     facebookAdContentMappings.put("WA_Time_Is_Now", "WA_Time_Is_Now");
     facebookAdContentMappings.put("UG_Time_Is_Now", "UG_Time_Is_Now");
+    facebookAdContentMappings.put("WA_SAL_V1", "WA_SAL_V1");
+    facebookAdContentMappings.put("UG_SAL_V1", "UG_SAL_V1");
+    facebookAdContentMappings.put("SAL_V1", "SAL_V1");
     
     
+    /*
+     * Campaign information used to be contained in the ad name field at index 0
+     * , however, it was alos contained at index four in the Campaign name field.
+     * With the launch of the FY16 campaign we will be using index 4.
+     */
     
-    String source = "Facebook";
-    String medium = ""; 
-    String campaign = "";
-    String adContent;
-    String placement = "";
-    
-    if (facebookCampaignMappings.containsKey(row[4])) {
-      campaign = facebookCampaignMappings.get(row[4]); 
-    } else {
-      campaign = "Campaign Not Found";
-      System.out.println("Campaign for \"" + row[4] +"\" could not be identified");
-    }
-    
-    if (row[1].contains("Right Column")) {
-      placement = "Right_Rail";
-      medium = "Right_Rail";
-    } else if (row[1].contains("News Feed")) {
-      placement = "Newsfeed";
-      medium = "Newsfeed";
-    } else {
-      System.out.println("Placement for \"" + row[1] +"\" could not be identified");
-    }
-    
-    
-    
-    //determine what which key is needed to access to correct adContent value
+    //AdContent
     if (row[0].contains("Tour")) {
       adContent = "Tour";
     } else if (row[0].contains("wa_gr_Time")) {
@@ -354,13 +387,28 @@ public static HashMap<GroupID, ArrayList<String[]>> groupFacebookRawData(ArrayLi
       adContent = "Summer_Working_Adults";
     } else if (row[0].contains("cu_sic_Newsfeed_Summer") ||row[0].contains("cu_sic_Mobile_Newsfeed_Summer")) {
       adContent = "Summer_Undergraduate";
+    } else if (row[0].contains("SAL_V1") &&
+        row[4].contains("WA")) {
+      adContent = "WA_SAL_V1";
+    }else if (row[0].contains("SAL_V1") &&
+        row[4].contains("HS_UG")) {
+      adContent = "SAL_V1";
+    } else if (row[0].contains("SAL_V1") &&
+        row[4].contains("UG_GR")) {
+      adContent = "UG_SAL_V1";
+    }else if (row[0].contains("SAL_V1") &&
+        row[4].contains("WA")) {
+      adContent = "WA_SAL_V1";
     } else if(row[0].contains("RightRail_Summer")) {
       adContent = "Summer_Undergraduate";
       medium = "Right_Rail";
       placement = "Right_Rail";
     } else {
-      adContent = "not found";
+      DataAppTest.logger.log(Level.SEVERE,
+          "AdContent for \"" + row +"\" could not be identified");
     }
+    
+    System.out.println("Ad Content: " + adContent);
     
     //get the matching ga value from the dictionary
     adContent = facebookAdContentMappings.get(adContent);
