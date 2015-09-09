@@ -758,5 +758,9 @@ public class TWRecord implements importRecord {
     }
     return false;
   }
+  
+  public boolean matchDebug(List<String> gaRow) {
+    return true;
+  }
 
 }

@@ -599,6 +599,10 @@ public class VidRecord implements importRecord {
   public void setAdContent(String adContent) {
     this.adContent = adContent;
   }
+  
+  public boolean matchDebug(List<String> gaRow) {
+    return true;
+  }
 
 }// end of VidRecord
 
