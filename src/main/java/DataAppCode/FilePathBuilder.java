@@ -28,45 +28,6 @@ import java.util.Map.Entry;
  */
 public class FilePathBuilder {
 
-
-  /*
-   * The buildFilePathMap loads a map with a key for each
-   * Vendor and that vendors local filepath directory housing import
-   * files as the key.
-   */
-  public static Map<String,String> buildFilePathMap() {
-  
-  Map<String,String> fileLocations = new HashMap<String,String>();
-  
-  
-  /*
-   * The following code block determines what the filename of the correct import file is.
-   * This is determined based off of the naming convention that each file will be named
-   * [Vendor]_[YYYY_MM_DD].csv. 
-   */
-  
-  Iterator<Entry<String, String>> itr = fileLocations.entrySet().iterator();
-  while (itr.hasNext()) {
-    Map.Entry<String,String> pairs = itr.next();
-    String currVendor = pairs.getKey();
-    String currFilePath = pairs.getValue();
-    if (!currVendor.contains("Centro")) {
-      currFilePath = currFilePath + "\\"+ currVendor + "_" + DataAppTest.startDate.toString() +".csv";
-    } else {
-      //TODO: Eliminate the need for a special case here.
-      //A special case is required for centro as there are four different mediums that come from this
-      //vendor
-      currFilePath = currFilePath + "\\Centro"+ "_" + DataAppTest.startDate.toString() +".csv";
-    }
-    
-    fileLocations.put(currVendor,currFilePath); // replace existing entries with updated entrieds
-  }//end of while
-  
-  return fileLocations;
-}
-  
-  
-  
   
   
   /*
@@ -74,7 +35,8 @@ public class FilePathBuilder {
    * Vendor and that vendors dropbox directory housing import
    * files as the key.
    */
-  public static Map<String,String> buildFilePathMapDropBox(LocalDate startDate) {
+
+  public static Map<String,String> buildFilePathMapDropBox(LocalDate sDate) {
   
   Map<String,String> fileLocations = new HashMap<String,String>();
   
@@ -101,6 +63,9 @@ public class FilePathBuilder {
   
   fileLocations.put("LinkedIn", "/Vendor Data - Import and Archive/LinkedIn/FY15/FY15 LinkedIn Reporting - Weekly Drop Folder");
   
+  fileLocations.put("DoubleClick Digital Display", 
+      "/Vendor Data - Import and Archive/DoubleClick/FY16/FY16 DoubleClick Reporting - Weekly Drop Folder");
+  
   
   /*
    * The following code block determines what the filename of the correct import file is.
@@ -115,12 +80,14 @@ public class FilePathBuilder {
     System.out.println("currVendor: " + currVendor);
     String currFilePath = pairs.getValue();
     if (!currVendor.contains("Centro")) {
-      currFilePath = currFilePath + "//"+ currVendor + "_" + startDate.toString() +".csv";
+      currFilePath = currFilePath + "//"+ currVendor + "_" + sDate.toString() +".csv";
+
     } else {
       //TODO: Eliminate the need for a special case here.
       //A special case is required for centro as there are four different mediums that come from this
       //vendor
-      currFilePath = currFilePath + "//Centro"+ "_" + startDate.toString() +".csv";
+
+      currFilePath = currFilePath + "//Centro"+ "_" + sDate.toString() +".csv";
     }
     
     fileLocations.put(currVendor,currFilePath); // replace existing entries with updated entrieds
@@ -131,19 +98,6 @@ public class FilePathBuilder {
 
   
   public static void main(String[] args) {
-
-    
-    
-    Map<String,String> test = buildFilePathMap();
-    
-    Iterator<Entry<String, String>> itr = test.entrySet().iterator();
-    while (itr.hasNext()) {
-      Map.Entry<String,String> pairs = itr.next();
-      String currFilePath = pairs.getValue();
-      System.out.println(currFilePath);
-    }//end of while
-    
-    
 
   }
 

@@ -108,6 +108,112 @@ public class importUtils {
     }//end of outer for
   }
   
+  
+  
+  
+
+  public static HashMap<GroupID, ArrayList<String[]>> groupDCMRawData(ArrayList<String[]> rawData) {
+    
+    HashMap<GroupID, ArrayList<String[]>> groupedData = new HashMap<GroupID, ArrayList<String[]>>();
+    HashMap<String,String> DCMSourceMappings = new HashMap<String,String>();
+    DCMSourceMappings.put("MobileFuse.com","MobileFuse");
+    DCMSourceMappings.put("Collective.com","Collective");
+    DCMSourceMappings.put("Pandora","Pandora");
+    DCMSourceMappings.put("YouTube.com","YouTube");
+    
+    HashMap<String,String> DCMMediumMappings = new HashMap<String,String>();
+    DCMMediumMappings.put("Cross Platform","Display");
+    DCMMediumMappings.put("YouTube","Preroll");
+    DCMMediumMappings.put("Digital Display (web)","Display");
+    DCMMediumMappings.put("Preroll","Preroll");
+    DCMMediumMappings.put("Tablet","Preroll");
+    DCMMediumMappings.put("Mobile","Mobile");
+    //TODO: Note this is an anomaly from campaign set up, find a way to remove
+    DCMMediumMappings.put("Collective.com","Display");
+    
+    
+    HashMap<String,String> DCMCampaignMappings = new HashMap<String,String>();
+    DCMCampaignMappings.put("FY2016_Undergraduate","FY2016_Undergrad");
+    DCMCampaignMappings.put("FY2016","FY2016_Graduate");
+    DCMCampaignMappings.put("FY2016_Degree_Completion","FY2016_Degree_Completion");
+    DCMCampaignMappings.put("FY2016_Transfer","FY2016_Transfer");
+    
+    HashMap<String,String> centroAdContentMappings = new HashMap<String,String>();
+    centroAdContentMappings.put("SAL","SAL_V1");
+    
+    for (String[] row : rawData) {
+      
+      String source;
+      String medium; 
+      String campaign;
+      String adContent;
+      
+      
+      if (DCMSourceMappings.containsKey(row[3])) {
+        source = DCMSourceMappings.get(row[3]);
+      } else {
+        source = "Source Not Found";
+        System.out.println("Source not found for: " + row[3]);
+      }
+
+      
+      if (DCMMediumMappings.containsKey(row[4])) {
+        medium = DCMMediumMappings.get(row[4]); 
+      } else {
+        medium = "Medium Not Found";
+        System.out.println("Medium not found for: " + row[4]);
+      }
+      
+      if (DCMCampaignMappings.containsKey(row[1])) {
+        campaign = DCMCampaignMappings.get(row[1]);
+      } else {
+        campaign = "Campaign Not Found";
+        System.out.println("Campaign not found for: " + row[1]);
+      }
+      
+      //TODO: Remove hardcoded value before creative refresh
+      //Note:  this value is replaced by map key
+      adContent= "SAL";
+      
+      //if key is not dictionary a null value is returned?
+      //this can raise a null pointer exception
+      adContent = centroAdContentMappings.get(adContent);
+      
+      //load GroupID
+      GroupID currGroupID = new GroupID(source,medium,campaign, adContent);
+      
+      
+      boolean groupIDExists = false;
+      //Iterates through hashmap and raised flag if the groupID already exists
+      Iterator it = groupedData.entrySet().iterator();
+      while (it.hasNext()) {
+        Map.Entry pairs = (Map.Entry)it.next();
+        GroupID iteratedGroupID = (GroupID)pairs.getKey();
+        if (iteratedGroupID.equals(currGroupID)) {
+          groupIDExists = true;
+          //add string once match is identified
+          groupedData.get(iteratedGroupID).add(row);
+        } //end of if
+      }// end of while
+      
+      //A matching key was not found
+      if (!groupIDExists) {
+        groupedData.put(currGroupID, new ArrayList<String[]>()); //create the new key value pair with empty array list
+        groupedData.get(currGroupID).add(row); //add row
+      }//end of if   
+      
+    }// end of for
+    
+    return groupedData;
+  }//end of group raw data
+  
+  
+  
+  
+  
+  
+  
+  
 
   /*
    * These methods can eventually be turned multi-purpose by passing in the

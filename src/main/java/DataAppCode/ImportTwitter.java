@@ -120,12 +120,13 @@ public class ImportTwitter {
 
     guiCode.DataAppTest.outputDisplay.write(OutputMessages.startingVendorImport("Twitter"));
     
+
     ArrayList<String[]> data = null;
     try {
       
       //pull down data, write to file and overwrite any existing files
       try {
-         DropBoxConnection.pullCSV("Twitter",DataAppTest.startDate);
+         DropBoxConnection.pullCSV("Twitter", DataAppTest.startDate, DataAppTest.endDate);
       } catch (DbxException exception) {
         exception.printStackTrace();
       } catch (IOException exception) {

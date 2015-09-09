@@ -150,15 +150,15 @@ public class DropBoxConnection {
   }
   
   
-  public static File pullCSV(String vendor, LocalDate startDate) throws DbxException, IOException {
+
+  public static File pullCSV(String vendor, LocalDate sDate, LocalDate eDate) throws DbxException, IOException {
     DbxEntry.File md;
     //where is this file built in mac
     File outputFile = new File("retrieved" + vendor + ".csv");
     OutputStream out = new FileOutputStream(outputFile);
     
     try {
-      Map<String,String> paths = FilePathBuilder.buildFilePathMapDropBox(startDate);
-      System.out.println("paths size: " + paths.size());
+      Map<String,String> paths = FilePathBuilder.buildFilePathMapDropBox(sDate);
       //check if the file exists
       if (client.getMetadata(paths.get(vendor)) == null ) {
         System.out.println("The file at path " + paths.get(vendor) + " could not be found");

@@ -177,7 +177,8 @@ public class ImportLinkedIn {
       
       //pull down data, write to file and overwrite any existing files
       try {
-        DropBoxConnection.pullCSV("LinkedIn",DataAppTest.startDate);
+
+         DropBoxConnection.pullCSV("LinkedIn", DataAppTest.startDate,DataAppTest.endDate);
       } catch (DbxException exception) {
         exception.printStackTrace();
       }

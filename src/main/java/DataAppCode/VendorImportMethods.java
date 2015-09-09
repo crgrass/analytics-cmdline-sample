@@ -121,7 +121,7 @@ public class VendorImportMethods {
       
       //pull down data, write to file and overwrite any existing files
       try {
-         DropBoxConnection.pullCSV("Facebook", sDate); //TODO: These
+         DropBoxConnection.pullCSV("Facebook", sDate, eDate); //TODO: These
       } catch (DbxException exception) {
         exception.printStackTrace();
       } catch (IOException exception) {
@@ -204,7 +204,7 @@ public class VendorImportMethods {
       
       //pull down data, write to file and overwrite any existing files
       try {
-         DropBoxConnection.pullCSV("Twitter", sDate);
+         DropBoxConnection.pullCSV("Twitter", sDate, eDate);
       } catch (DbxException exception) {
         exception.printStackTrace();
       } catch (IOException exception) {
@@ -292,7 +292,7 @@ public class VendorImportMethods {
       
       //pull down data from dropbox, write to file and overwrite any data files
       try {
-         DropBoxConnection.pullCSV("Centro Digital Display",sDate);
+         DropBoxConnection.pullCSV("Centro Digital Display",sDate, eDate);
       } catch (DbxException exception) {
         exception.printStackTrace();
       } catch (IOException exception) {
@@ -380,7 +380,7 @@ public class VendorImportMethods {
     
     //pull down data, write to file and overwrite any existing files
     try {
-      DropBoxConnection.pullCSV("Centro Video Display", sDate);
+      DropBoxConnection.pullCSV("Centro Video Display", sDate, eDate);
     } catch (DbxException exception) {
       exception.printStackTrace();
     } catch (IOException exception) {
@@ -452,7 +452,7 @@ public class VendorImportMethods {
     
     //pull down data, write to file and overwrite any existing files
     try {
-      DropBoxConnection.pullCSV("Centro Mobile Display",sDate);
+      DropBoxConnection.pullCSV("Centro Mobile Display",sDate, eDate);
     } catch (DbxException exception) {
       exception.printStackTrace();
     } catch (IOException exception) {

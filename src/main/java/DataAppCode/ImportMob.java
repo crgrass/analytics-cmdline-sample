@@ -126,7 +126,9 @@ public class ImportMob {
     
     //pull down data, write to file and overwrite any existing files
     try {
-      DropBoxConnection.pullCSV("Centro Mobile Display",DataAppTest.startDate);
+
+      DropBoxConnection.pullCSV("Centro Mobile Display", DataAppTest.startDate,DataAppTest.endDate);
+
     } catch (DbxException exception) {
       // TODO Auto-generated catch block
       exception.printStackTrace();

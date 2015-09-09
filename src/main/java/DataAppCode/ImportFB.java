@@ -125,12 +125,11 @@ public class ImportFB {
     guiCode.DataAppTest.outputDisplay.write(OutputMessages.startingVendorImport("Facebook"));
 
     ArrayList<String[]> data = null; //Holds raw data
-
     try {
       //pull down data form Dropbox, write to file and overwrite any existing files
       try {
         DataAppTest.logger.log(Level.INFO, "Pulling Facebook data from Dropbox." + System.lineSeparator()); 
-        DropBoxConnection.pullCSV("Facebook", DataAppTest.startDate);
+        DropBoxConnection.pullCSV("Facebook", DataAppTest.startDate, DataAppTest.endDate);
       } catch (DbxException e) {
         DataAppTest.logger.log(Level.SEVERE, "There was a Database Exception.", e);
       } catch (IOException e) {
