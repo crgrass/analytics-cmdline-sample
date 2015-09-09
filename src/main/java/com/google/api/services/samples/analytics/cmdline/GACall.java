@@ -118,6 +118,8 @@ public class GACall {
         gaData = executeFacebookBehaviorQuery(analytics, profileId, testDates);
       } else if (queryType == 7) {
         gaData = executeTwitterBehaviorQuery(analytics,profileId,testDates);
+      } else if (queryType == 8) {
+        gaData = executeMasterDigitalBehaviorQuery(analytics,profileId,testDates);
       }else {
         System.out.println("Error: queryType value is not valid");
       }
@@ -209,6 +211,20 @@ public class GACall {
         .setDimensions("ga:source,ga:medium,ga:campaign,ga:adContent")
         .setFilters("ga:campaign=@FY2015,ga:campaign=@FY2016;ga:source==Facebook;ga:medium==Newsfeed,ga:medium==Right_Rail,ga:medium==Social,ga:medium==Newsfeed_PPE,ga:medium==Newsfeed_Link")
         .setMaxResults(100)
+        .execute();
+  }
+  
+  
+//This needs to accept a dateArray which contains two strings the first being a startDate and
+  //the second being the endDate
+  private static GaData executeMasterDigitalBehaviorQuery(Analytics analytics, String profileId, String[] dateArray) throws IOException {
+    return analytics.data().ga().get("ga:" + profileId, // Table Id. ga: + profile id.
+        dateArray[0], // Start date.
+        dateArray[1], // End date.
+        "ga:visits,ga:pageViewsPerVisit,ga:avgTimeOnSite,ga:percentNewVisits,ga:entranceBounceRate") // Metrics.
+        .setDimensions("ga:source,ga:medium,ga:campaign,ga:adContent")
+        .setFilters("ga:source==MobileFuse,ga:source==Sparknotes,ga:source==Pandora,ga:source==Collective,ga:source==YouTube;ga:medium==Mobile,ga:medium==Display,ga:medium:Preroll")
+        .setMaxResults(25)
         .execute();
   }
   

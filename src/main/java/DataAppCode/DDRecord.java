@@ -470,7 +470,16 @@ public class DDRecord implements importRecord {
   
   @Override
   public boolean matchDebug(List<String> gaRow) {
-    return true;
+    System.out.println("Source, GA response first: " + gaRow.get(0) + "=? " + this.source);
+    System.out.println("Medium, GA response first: " + gaRow.get(1) + "=? " + this.medium);
+    System.out.println("Campaign, GA response first: " + gaRow.get(2) + "=? " + this.campaign);
+    System.out.println("AdContent, GA response first: " + gaRow.get(3) + "=? " + this.adContent);
+    System.out.println();
+    if (gaRow.get(0).equals(this.source) && gaRow.get(1).equals(this.medium) && gaRow.get(2).equals(this.campaign)
+        && gaRow.get(3).equals(this.adContent)) {
+      return true;
+    }
+    return false;
   }
 
 }

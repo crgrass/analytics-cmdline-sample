@@ -135,14 +135,17 @@ public class importUtils {
     DCMMediumMappings.put("Pandora_Tile","Pandora");
     
     
+    //Note for FY16 all DCM digital goes to the umbrella campaign
     HashMap<String,String> DCMCampaignMappings = new HashMap<String,String>();
-    DCMCampaignMappings.put("FY2016_Undergraduate","FY2016_Undergrad");
-    DCMCampaignMappings.put("FY2016_Graduate","FY2016_Graduate");
-    DCMCampaignMappings.put("FY2016_Degree_Completion","FY2016_Degree_Completion");
-    DCMCampaignMappings.put("FY2016_Transfer","FY2016_Transfer");
+    DCMCampaignMappings.put("FY2016_Undergraduate","FY2016_Umbrella");
+    DCMCampaignMappings.put("FY2016_Graduate","FY2016_Umbrella");
+    DCMCampaignMappings.put("FY2016_Degree_Completion","FY2016_Umbrella");
+    DCMCampaignMappings.put("FY2016_Transfer","FY2016_Umbrella");
     
-    HashMap<String,String> centroAdContentMappings = new HashMap<String,String>();
-    centroAdContentMappings.put("SAL","SAL_V1");
+    HashMap<String,String> DCMAdContentMappings = new HashMap<String,String>();
+    DCMAdContentMappings.put("SAL","SAL_v1");
+    DCMAdContentMappings.put("Graduate_SAL_V1","Graduate_SAL_v1");
+    DCMAdContentMappings.put("Undergrad_SAL_V1","Undergrad_SAL_v1");
     
     for (String[] row : rawData) {
       
@@ -178,9 +181,30 @@ public class importUtils {
       //Note:  this value is replaced by map key
       adContent= "SAL";
       
+    //What are the rules for adContent
+      // If a Hulu campaign --> SAL_v1
+      //If a Graduate campaign --> Graduate_SAL_V1
+      //If a UG campaign --> Undergrad_SAL_V1
+      
+      if (medium.equals("Hulu")) {
+        adContent = "SAL_V1";
+      } else if (campaign.equals("FY2016_Undergrad") ||
+          campaign.equals("Fy2016_Degree_Completion")) {
+        adContent = "Undergrad_SAL_V1";
+      } else if (campaign.equals("FY2016_Graduate")) {
+        adContent = "Graduate_SAL_V1";
+      } else {
+        //TODO: Replace with logging
+        System.out.println("Adcontent could not be found");
+
+      }
+        
+      
       //if key is not dictionary a null value is returned?
       //this can raise a null pointer exception
-      adContent = centroAdContentMappings.get(adContent);
+      adContent = DCMAdContentMappings.get(adContent);
+      
+    
       
       //load GroupID
       GroupID currGroupID = new GroupID(source,medium,campaign, adContent);

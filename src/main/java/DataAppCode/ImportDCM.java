@@ -58,22 +58,21 @@ public static void printGroupedData(HashMap<GroupID, ArrayList<String[]>> groupe
 
  //TODO: This method can likely be modified to work aggregate all Centro data at once.
   public static ArrayList<DDRecord> aggregate(HashMap<GroupID,ArrayList<String[]>> rawData, LocalDate sDate,
-      LocalDate eDate) {
+      LocalDate eDate, String medium) {
 
     System.out.println("Aggregating rows based on Source, Network, Campaign and AdContent...\n");
     
     
     //Iterate through HashMap and place only digital display entries into a new onlyDD HashMap
-    HashMap<GroupID,ArrayList<String[]>> onlyDCM = new HashMap<GroupID,ArrayList<String[]>>();
+    HashMap<GroupID,ArrayList<String[]>> filteredByMedium = new HashMap<GroupID,ArrayList<String[]>>();
     Iterator<Map.Entry<GroupID, ArrayList<String[]>>> itr = rawData.entrySet().iterator();
     while (itr.hasNext()) {
       Map.Entry<GroupID, ArrayList<String[]>> pairs = itr.next();
       GroupID currID = pairs.getKey();
       ArrayList<String[]> currArray = pairs.getValue();
       
-      //If below previously contained currID.getMedium().equals("Display")
-      if (true) {
-        onlyDCM.put(currID, currArray);
+      if (currID.getMedium().equals(medium)) {
+        filteredByMedium.put(currID, currArray);
       }//end of if
     }//end of while
     
@@ -81,7 +80,7 @@ public static void printGroupedData(HashMap<GroupID, ArrayList<String[]>> groupe
     ArrayList<DDRecord> DDRecordCollection = new ArrayList<DDRecord>();
 
     //Loop through hash map aggregating values
-    Iterator<Map.Entry<GroupID, ArrayList<String[]>>> it = onlyDCM.entrySet().iterator();
+    Iterator<Map.Entry<GroupID, ArrayList<String[]>>> it = filteredByMedium.entrySet().iterator();
     while (it.hasNext()) {
       Map.Entry<GroupID, ArrayList<String[]>> pairs = it.next();
       ArrayList<String[]> currList = pairs.getValue();
@@ -216,7 +215,7 @@ public static void printGroupedData(HashMap<GroupID, ArrayList<String[]>> groupe
   } // end of update adwords
   
   
-  public static void importDCM(String[] args, LocalDate sDate, LocalDate eDate) {
+  public static void importDCM(String[] args, LocalDate sDate, LocalDate eDate, String medium) {
     
     ArrayList<String[]> data = null;
     try {
@@ -253,7 +252,7 @@ public static void printGroupedData(HashMap<GroupID, ArrayList<String[]>> groupe
     
     System.out.println("Aggregating DoubleClick Digital Display Data... ");
     //TODO: Create Aggregate method
-    ArrayList<DDRecord> acquisitionData = aggregate(groupedData, sDate, eDate);
+    ArrayList<DDRecord> acquisitionData = aggregate(groupedData, sDate, eDate, "Mobile");
     System.out.print("Complete.\n");
     
     System.out.println("The number of DD records for import is: " + acquisitionData.size());
@@ -313,7 +312,7 @@ public static void printGroupedData(HashMap<GroupID, ArrayList<String[]>> groupe
     //Open connection to dropbox API
     DropBoxConnection.initializeDropboxConnection();
     
-    importDCM(testArgs, startDate, endDate);
+    importDCM(testArgs, startDate, endDate, "Mobile");
     
     System.out.println("Testing Completed");
     
