@@ -130,11 +130,14 @@ public class importUtils {
     DCMMediumMappings.put("Mobile","Mobile");
     //TODO: Note this is an anomaly from campaign set up, find a way to remove
     DCMMediumMappings.put("Collective.com","Display");
+    //TODO: Use regex to consolidate?
+    DCMMediumMappings.put("Pandora","Pandora");
+    DCMMediumMappings.put("Pandora_Tile","Pandora");
     
     
     HashMap<String,String> DCMCampaignMappings = new HashMap<String,String>();
     DCMCampaignMappings.put("FY2016_Undergraduate","FY2016_Undergrad");
-    DCMCampaignMappings.put("FY2016","FY2016_Graduate");
+    DCMCampaignMappings.put("FY2016_Graduate","FY2016_Graduate");
     DCMCampaignMappings.put("FY2016_Degree_Completion","FY2016_Degree_Completion");
     DCMCampaignMappings.put("FY2016_Transfer","FY2016_Transfer");
     
@@ -185,10 +188,10 @@ public class importUtils {
       
       boolean groupIDExists = false;
       //Iterates through hashmap and raised flag if the groupID already exists
-      Iterator it = groupedData.entrySet().iterator();
+      Iterator<Map.Entry<GroupID,ArrayList<String[]>>> it = groupedData.entrySet().iterator();
       while (it.hasNext()) {
-        Map.Entry pairs = (Map.Entry)it.next();
-        GroupID iteratedGroupID = (GroupID)pairs.getKey();
+        Map.Entry<GroupID,ArrayList<String[]>> pairs = it.next();
+        GroupID iteratedGroupID = pairs.getKey();
         if (iteratedGroupID.equals(currGroupID)) {
           groupIDExists = true;
           //add string once match is identified

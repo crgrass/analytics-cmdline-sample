@@ -19,8 +19,8 @@ import com.google.api.services.analytics.model.GaData;
 import com.google.api.services.samples.analytics.cmdline.GACall;
 import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
 
-import guiCode.DataAppTest;
-import guiCode.OutputMessages;
+//import guiCode.DataAppTest;
+//import guiCode.OutputMessages;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -33,7 +33,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
-import java.util.Set;
 
 /**
  * @author cgrass@google.com (Your Name Here)
@@ -43,11 +42,11 @@ public class ImportDCM {
 
 
 public static void printGroupedData(HashMap<GroupID, ArrayList<String[]>> grouped) {
-  Iterator it = grouped.entrySet().iterator();
+  Iterator<Map.Entry<GroupID, ArrayList<String[]>>> it = grouped.entrySet().iterator();
   while (it.hasNext()) {
-    Map.Entry pairs = (Map.Entry)it.next();
-    System.out.println(pairs.getKey()); //this should trigger the too string method
-    ArrayList<String[]> val = (ArrayList<String[]>)pairs.getValue();
+    Map.Entry<GroupID, ArrayList<String[]>> pairs = it.next();
+    ArrayList<String[]> val = pairs.getValue();
+    System.out.println(pairs.getKey() + " : " + val.toString()); //this should trigger the too string method
   }//end of record iteration
 }
   
@@ -65,14 +64,16 @@ public static void printGroupedData(HashMap<GroupID, ArrayList<String[]>> groupe
     
     
     //Iterate through HashMap and place only digital display entries into a new onlyDD HashMap
-    HashMap<GroupID,ArrayList<String[]>> onlyDD = new HashMap<GroupID,ArrayList<String[]>>();
-    Iterator itr = rawData.entrySet().iterator();
+    HashMap<GroupID,ArrayList<String[]>> onlyDCM = new HashMap<GroupID,ArrayList<String[]>>();
+    Iterator<Map.Entry<GroupID, ArrayList<String[]>>> itr = rawData.entrySet().iterator();
     while (itr.hasNext()) {
-      Map.Entry pairs = (Map.Entry)itr.next();
-      GroupID currID = (GroupID)pairs.getKey();
-      ArrayList<String[]> currArray = (ArrayList<String[]>)pairs.getValue();
-      if (currID.getMedium().equals("Display")) {
-        onlyDD.put(currID, currArray);
+      Map.Entry<GroupID, ArrayList<String[]>> pairs = itr.next();
+      GroupID currID = pairs.getKey();
+      ArrayList<String[]> currArray = pairs.getValue();
+      
+      //If below previously contained currID.getMedium().equals("Display")
+      if (true) {
+        onlyDCM.put(currID, currArray);
       }//end of if
     }//end of while
     
@@ -80,10 +81,10 @@ public static void printGroupedData(HashMap<GroupID, ArrayList<String[]>> groupe
     ArrayList<DDRecord> DDRecordCollection = new ArrayList<DDRecord>();
 
     //Loop through hash map aggregating values
-    Iterator it = onlyDD.entrySet().iterator();
+    Iterator<Map.Entry<GroupID, ArrayList<String[]>>> it = onlyDCM.entrySet().iterator();
     while (it.hasNext()) {
-      Map.Entry pairs = (Map.Entry)it.next();
-      ArrayList<String[]> currList = (ArrayList<String[]>)pairs.getValue();
+      Map.Entry<GroupID, ArrayList<String[]>> pairs = it.next();
+      ArrayList<String[]> currList = pairs.getValue();
 
       //Metrics are aggregated here
       Integer totalClicks = 0;
@@ -111,7 +112,7 @@ public static void printGroupedData(HashMap<GroupID, ArrayList<String[]>> groupe
       //Dates need to come from one common source
       String[] dateArray = {sDate.toString(),eDate.toString()};
       
-      GroupID currID = (GroupID)pairs.getKey();
+      GroupID currID = pairs.getKey();
 
       DDRecord rec = new DDRecord(dateArray,currID.getSource(),currID.getMedium(),currID.getCampaign(),currID.getSource(),//<- This is network
           currID.getAdContent(),totalClicks,totalImpressions,aggCTR,aggCPC,aggCPM,totalSpend, totalConversions,pcConversions,piConversions);
@@ -121,8 +122,7 @@ public static void printGroupedData(HashMap<GroupID, ArrayList<String[]>> groupe
     return DDRecordCollection;
   }
   
-  public static void updateDCMDD(ArrayList<DDRecord> importData, Connection cnxn)
-      throws SQLException {
+  public static void updateDCMDD(ArrayList<DDRecord> importData, Connection cnxn) {
 
     PreparedStatement updateDCMDD = null;
 
@@ -224,7 +224,7 @@ public static void printGroupedData(HashMap<GroupID, ArrayList<String[]>> groupe
       //pull down data from dropbox, write to file and overwrite any data files
       try {
         //TODO: Ensure this filpath is added to the method 
-        DropBoxConnection.pullCSV("DoubleClick Digital Display", sDate, eDate);
+        DropBoxConnection.pullCSV("DoubleClick", sDate, eDate);
       } catch (DbxException exception) {
         exception.printStackTrace();
       } catch (IOException exception) {
@@ -233,7 +233,7 @@ public static void printGroupedData(HashMap<GroupID, ArrayList<String[]>> groupe
   
     //Read csv generated and return raw data
     System.out.println("Reading Double Click Display File... ");
-    data = CSVReaders.readCsv("retrievedDoubleClick Digital Display.csv");
+    data = CSVReaders.readCsv("retrievedDoubleClick.csv");
 
     
     CSVReaders.formatDCMData(data);
@@ -291,7 +291,7 @@ public static void printGroupedData(HashMap<GroupID, ArrayList<String[]>> groupe
     //execute query
     try{
       updateDCMDD(acquisitionData,cnx);
-    } catch (SQLException e) {
+    } catch (Exception e) {
     System.out.println(e.getMessage());  
     }
 
@@ -300,8 +300,6 @@ public static void printGroupedData(HashMap<GroupID, ArrayList<String[]>> groupe
   }
     
  }
-
-
   
   
   
@@ -309,8 +307,8 @@ public static void printGroupedData(HashMap<GroupID, ArrayList<String[]>> groupe
     
     String[] testArgs =  new String[0] ;
     
-    LocalDate startDate = LocalDate.of(2015, 8,18);
-    LocalDate endDate = LocalDate.of(2015, 8,24);
+    LocalDate startDate = LocalDate.of(2015, 9, 1);
+    LocalDate endDate = LocalDate.of(2015, 9, 7);
     
     //Open connection to dropbox API
     DropBoxConnection.initializeDropboxConnection();

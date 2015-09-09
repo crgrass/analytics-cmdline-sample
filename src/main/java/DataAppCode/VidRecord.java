@@ -600,6 +600,7 @@ public class VidRecord implements importRecord {
     this.adContent = adContent;
   }
   
+  @Override
   public boolean matchDebug(List<String> gaRow) {
     return true;
   }

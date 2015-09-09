@@ -15,10 +15,13 @@
 package DataAppCode;
 import com.dropbox.core.*;
 
+import guiCode.DataAppTest;
+
 import java.io.*;
 import java.time.LocalDate;
 import java.util.Locale;
 import java.util.Map;
+import java.util.logging.Level;
 import java.awt.Desktop;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -161,7 +164,8 @@ public class DropBoxConnection {
       Map<String,String> paths = FilePathBuilder.buildFilePathMapDropBox(sDate);
       //check if the file exists
       if (client.getMetadata(paths.get(vendor)) == null ) {
-        System.out.println("The file at path " + paths.get(vendor) + " could not be found");
+        //Throw exception here
+        DataAppTest.logger.log(Level.SEVERE, "The file at path " + paths.get(vendor) + " could not be found");
       }
       md = client.getFile(paths.get(vendor), null, out); //null second param indicates latest version requested
       BufferedReader r = new BufferedReader( new FileReader(outputFile));

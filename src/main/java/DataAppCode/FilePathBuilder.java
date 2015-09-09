@@ -14,8 +14,6 @@
 
 package DataAppCode;
 
-import guiCode.DataAppTest;
-
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -63,7 +61,7 @@ public class FilePathBuilder {
   
   fileLocations.put("LinkedIn", "/Vendor Data - Import and Archive/LinkedIn/FY15/FY15 LinkedIn Reporting - Weekly Drop Folder");
   
-  fileLocations.put("DoubleClick Digital Display", 
+  fileLocations.put("DoubleClick", 
       "/Vendor Data - Import and Archive/DoubleClick/FY16/FY16 DoubleClick Reporting - Weekly Drop Folder");
   
   
@@ -77,7 +75,6 @@ public class FilePathBuilder {
   while (itr.hasNext()) {
     Map.Entry<String,String> pairs = itr.next();
     String currVendor = pairs.getKey();
-    System.out.println("currVendor: " + currVendor);
     String currFilePath = pairs.getValue();
     if (!currVendor.contains("Centro")) {
       currFilePath = currFilePath + "//"+ currVendor + "_" + sDate.toString() +".csv";
