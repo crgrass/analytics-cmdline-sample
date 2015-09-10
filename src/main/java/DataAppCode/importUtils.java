@@ -72,7 +72,7 @@ public class importUtils {
       
       for (int i = 0 ; i < behavior.getRows().size(); i ++) {
         List<String> currBehaviorRow = behavior.getRows().get(i);
-        if (curr.matchDebug(currBehaviorRow)) {
+        if (curr.match(currBehaviorRow)) {
             curr.setVisits(Integer.parseInt(currBehaviorRow.get(4)));
             curr.setPagesPerVisit(Float.parseFloat(currBehaviorRow.get(5)));
             curr.setAvgDuration(Float.parseFloat(currBehaviorRow.get(6)));
@@ -122,17 +122,17 @@ public class importUtils {
     DCMSourceMappings.put("YouTube.com","YouTube");
     
     HashMap<String,String> DCMMediumMappings = new HashMap<String,String>();
-    DCMMediumMappings.put("Cross Platform","Display");
+    DCMMediumMappings.put("Cross Platform","CrossPlatform");
     DCMMediumMappings.put("YouTube","Preroll");
     DCMMediumMappings.put("Digital Display (web)","Display");
     DCMMediumMappings.put("Preroll","Preroll");
-    DCMMediumMappings.put("Tablet","Preroll");
+    DCMMediumMappings.put("Tablet","Mobile");
     DCMMediumMappings.put("Mobile","Mobile");
     //TODO: Note this is an anomaly from campaign set up, find a way to remove
     DCMMediumMappings.put("Collective.com","Display");
     //TODO: Use regex to consolidate?
-    DCMMediumMappings.put("Pandora","Pandora");
-    DCMMediumMappings.put("Pandora_Tile","Pandora");
+    DCMMediumMappings.put("Pandora","Display");
+    DCMMediumMappings.put("Pandora_Tile","Tracking");
     
     
     //Note for FY16 all DCM digital goes to the umbrella campaign
@@ -188,10 +188,10 @@ public class importUtils {
       
       if (medium.equals("Hulu")) {
         adContent = "SAL_V1";
-      } else if (campaign.equals("FY2016_Undergrad") ||
+      } else if (row[1].equals("FY2016_Undergraduate") ||
           campaign.equals("Fy2016_Degree_Completion")) {
         adContent = "Undergrad_SAL_V1";
-      } else if (campaign.equals("FY2016_Graduate")) {
+      } else if (row[1].equals("FY2016_Graduate")) {
         adContent = "Graduate_SAL_V1";
       } else {
         //TODO: Replace with logging

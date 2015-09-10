@@ -223,7 +223,7 @@ public class GACall {
         dateArray[1], // End date.
         "ga:visits,ga:pageViewsPerVisit,ga:avgTimeOnSite,ga:percentNewVisits,ga:entranceBounceRate") // Metrics.
         .setDimensions("ga:source,ga:medium,ga:campaign,ga:adContent")
-        .setFilters("ga:source==MobileFuse,ga:source==Sparknotes,ga:source==Pandora,ga:source==Collective,ga:source==YouTube;ga:medium==Mobile,ga:medium==Display,ga:medium:Preroll")
+        .setFilters("ga:source==MobileFuse,ga:source==Sparknotes,ga:source==Pandora,ga:source==Collective,ga:source==YouTube;ga:medium==Mobile,ga:medium==Display,ga:medium==Preroll,ga:medium==CrossPlatform")
         .setMaxResults(25)
         .execute();
   }

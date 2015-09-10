@@ -121,11 +121,23 @@ public static void printGroupedData(HashMap<GroupID, ArrayList<String[]>> groupe
     return DDRecordCollection;
   }
   
-  public static void updateDCMDD(ArrayList<DDRecord> importData, Connection cnxn) {
+  public static void updateDCMDD(ArrayList<DDRecord> importData, Connection cnxn, String medium) {
 
     PreparedStatement updateDCMDD = null;
 
-    String tblName = "DATESTtblDigitalDisplayMetrics";
+    String tblName = "";
+    
+    if (medium == "CrossPlatform" || medium == "Display") {
+      tblName = "DATESTtblDigitalDisplayMetrics";
+    } else if (medium == "Preroll") {
+      tblName = "DATESTtblVideoMetrics";
+    } else if (medium == "Mobile") {
+      tblName = "DATESTtblMobileMetrics";
+    } else {
+      System.out.println("The correct table for " + medium + "could not be identified");
+    }
+    
+    
     //These fields are out of order
     String fields = "(startDate,endDate,source,medium,componentName,adContent,clicks,"
         + "impressions,allCTR,averageCPC,averageCPM,spend,totalConversions,pcConversions,piConversions,"
@@ -252,7 +264,7 @@ public static void printGroupedData(HashMap<GroupID, ArrayList<String[]>> groupe
     
     System.out.println("Aggregating DoubleClick Digital Display Data... ");
     //TODO: Create Aggregate method
-    ArrayList<DDRecord> acquisitionData = aggregate(groupedData, sDate, eDate, "Mobile");
+    ArrayList<DDRecord> acquisitionData = aggregate(groupedData, sDate, eDate, medium);
     System.out.print("Complete.\n");
     
     System.out.println("The number of DD records for import is: " + acquisitionData.size());
@@ -268,7 +280,7 @@ public static void printGroupedData(HashMap<GroupID, ArrayList<String[]>> groupe
     System.out.println("Connecting to Google Analytics API for "
         + "Behavior metrics\n");
     System.out.println("Google Analytics API messages below: \n");
-    GaData behaviorResults = GACall.main(args,testDates,2);
+    GaData behaviorResults = GACall.main(args,testDates,8);
     System.out.println("\nGoogle Analytics API Request Complete.\n");
     
     //match aggregated acquisition data and behavior data from Google Analytics
@@ -289,7 +301,7 @@ public static void printGroupedData(HashMap<GroupID, ArrayList<String[]>> groupe
     
     //execute query
     try{
-      updateDCMDD(acquisitionData,cnx);
+      updateDCMDD(acquisitionData,cnx, medium);
     } catch (Exception e) {
     System.out.println(e.getMessage());  
     }
@@ -312,7 +324,10 @@ public static void printGroupedData(HashMap<GroupID, ArrayList<String[]>> groupe
     //Open connection to dropbox API
     DropBoxConnection.initializeDropboxConnection();
     
+    importDCM(testArgs, startDate, endDate, "CrossPlatform");
     importDCM(testArgs, startDate, endDate, "Mobile");
+    importDCM(testArgs, startDate, endDate, "Preroll");
+    importDCM(testArgs, startDate, endDate, "Display");
     
     System.out.println("Testing Completed");
     
