@@ -20,20 +20,17 @@ public class DataAppTextDisplay extends Application {
   
   
     //Constructor
+    //Constructs the visible text display in the data app
     public DataAppTextDisplay() {
       //create scrollpane
       classSP = new ScrollPane();
       classSP.setVbarPolicy(ScrollBarPolicy.ALWAYS);
-      
       
       //create textflow
       classTF = new TextFlow();
       classTF.setPrefWidth(600);
       classTF.setPrefHeight(400);
       classSP.setContent(classTF);
-
-      
-      
     }
     
     
@@ -49,7 +46,9 @@ public class DataAppTextDisplay extends Application {
 
     
     
-	@Override
+	
+    
+    @Override
 	public void start(Stage primaryStage) {
 	  DataAppTextDisplay testDATD = new DataAppTextDisplay(); // build display
 	  

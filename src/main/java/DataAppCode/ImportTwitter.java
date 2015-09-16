@@ -20,7 +20,6 @@ import com.google.api.services.samples.analytics.cmdline.GACall;
 import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
 
 import guiCode.DataAppTest;
-import guiCode.OutputMessages;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -118,7 +117,6 @@ public class ImportTwitter {
     
     DataAppTest.logger.log(Level.INFO, "Starting Twitter Import." + System.lineSeparator());
 
-    guiCode.DataAppTest.outputDisplay.write(OutputMessages.startingVendorImport("Twitter"));
     
 
     ArrayList<String[]> data = null;
@@ -192,11 +190,9 @@ public class ImportTwitter {
           e);
     }
 
-    guiCode.DataAppTest.outputDisplay.write(OutputMessages.importActivity(DataAppTest.importActivity.toString()));
 
     DataAppTest.importActivity.reset();
 
-    guiCode.DataAppTest.outputDisplay.write(OutputMessages.vendorImportComplete("Twitter"));
 
   } finally {
     

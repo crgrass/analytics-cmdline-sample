@@ -20,7 +20,6 @@ import com.google.api.services.samples.analytics.cmdline.GACall;
 import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
 
 import guiCode.DataAppTest;
-import guiCode.OutputMessages;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -122,7 +121,6 @@ public class ImportFB {
   public static void main(String[] args) {
 
     DataAppTest.logger.log(Level.INFO, "Beginning Facebook Import." + System.lineSeparator());
-    guiCode.DataAppTest.outputDisplay.write(OutputMessages.startingVendorImport("Facebook"));
 
     ArrayList<String[]> data = null; //Holds raw data
     try {
@@ -191,11 +189,9 @@ public class ImportFB {
             + System.lineSeparator(), e); 
       }
 
-      guiCode.DataAppTest.outputDisplay.write(OutputMessages.importActivity(DataAppTest.importActivity.toString()));
 
       DataAppTest.importActivity.reset();
 
-      guiCode.DataAppTest.outputDisplay.write(OutputMessages.vendorImportComplete("Facebook"));
     } finally {
 
     } //end of try

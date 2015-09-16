@@ -380,37 +380,30 @@ public class ButtonEvents {
                 try{
                 
                 String[] testArgs = {};
-                guiCode.DataAppTest.outputDisplay.write(OutputMessages.divider());
                 updateMessage("Importing Adwords");
                 updateProgress(0.10,1.0);
                 DataAppCode.ImportAdwords.main(testArgs);
                 
-                guiCode.DataAppTest.outputDisplay.write(OutputMessages.divider());
                 updateMessage("Importing Centro Video");
                 updateProgress(0.30,1.0);
                 DataAppCode.ImportCentroVid.main(testArgs);
                 
-                guiCode.DataAppTest.outputDisplay.write(OutputMessages.divider());
                 updateMessage("Importing Centro Mobile");
                 updateProgress(0.5,1.0);
                 DataAppCode.ImportMob.main(testArgs);
                 
-                guiCode.DataAppTest.outputDisplay.write(OutputMessages.divider());
                 updateMessage("Importing Centro Digital Display");
                 updateProgress(0.7,1.0);
                 DataAppCode.ImportDD.main(testArgs);
                 
-                guiCode.DataAppTest.outputDisplay.write(OutputMessages.divider());
                 updateMessage("Importing LinkedIn");
                 updateProgress(0.80,1.0);
                 DataAppCode.ImportLinkedIn.main(testArgs);
                 
-                guiCode.DataAppTest.outputDisplay.write(OutputMessages.divider());
                 updateMessage("Importing Facebook");
                 updateProgress(0.87,1.0);
                 DataAppCode.ImportFB.main(testArgs);
                 
-                guiCode.DataAppTest.outputDisplay.write(OutputMessages.divider());
                 updateMessage("Importing Twitter");
                 updateProgress(0.95,1.0);
                 DataAppCode.ImportTwitter.main(testArgs); 

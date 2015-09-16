@@ -5,7 +5,6 @@ import com.google.api.services.samples.analytics.cmdline.GACall;
 import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
 
 import guiCode.DataAppTest;
-import guiCode.OutputMessages;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -154,8 +153,7 @@ public class ImportAdwords {
     DataAppTest.logger.log(Level.INFO, "Beginning Adwords Import." + System.lineSeparator());
 
 
-    //TODO: Modify the output so that it is not a static method this makes testing very difficult
-    guiCode.DataAppTest.outputDisplay.write(OutputMessages.startingVendorImport("Google Adwords"));
+
 
     /*
      * GA Data is pulled in below this point
@@ -210,12 +208,8 @@ public class ImportAdwords {
     //the adwords object is then added to a map where the groupID is the key
     //and an arrayList of Adwords objects is the value
 
-    guiCode.DataAppTest.outputDisplay.write(OutputMessages.importActivity(DataAppTest.importActivity.toString()));
-
-    //TODO: Determine what this does
+    //TODO: Determine what this does and document
     DataAppTest.importActivity.reset();
-
-    guiCode.DataAppTest.outputDisplay.write(OutputMessages.vendorImportComplete("Google Adwords"));
     
     DataAppTest.logger.log(Level.INFO, "Adwords Import is Complete." + System.lineSeparator());
 

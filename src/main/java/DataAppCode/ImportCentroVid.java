@@ -20,7 +20,6 @@ import com.google.api.services.samples.analytics.cmdline.GACall;
 import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
 
 import guiCode.DataAppTest;
-import guiCode.OutputMessages;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -113,7 +112,6 @@ public class ImportCentroVid {
   
   public static void main(String[] args) {
     
-    guiCode.DataAppTest.outputDisplay.write(OutputMessages.startingVendorImport("Centro Video"));
     ArrayList<String[]> data = null;
     
     //pull down data, write to file and overwrite any existing files
@@ -182,11 +180,9 @@ public class ImportCentroVid {
     
     }
     
-    guiCode.DataAppTest.outputDisplay.write(OutputMessages.importActivity(DataAppTest.importActivity.toString()));
 
     DataAppTest.importActivity.reset();
 
-    guiCode.DataAppTest.outputDisplay.write(OutputMessages.vendorImportComplete("Centro Video"));
 
   }
 

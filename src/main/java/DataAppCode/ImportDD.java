@@ -20,7 +20,6 @@ import com.google.api.services.samples.analytics.cmdline.GACall;
 import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
 
 import guiCode.DataAppTest;
-import guiCode.OutputMessages;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -386,7 +385,6 @@ public static void printGroupedData(HashMap<GroupID, ArrayList<String[]>> groupe
 
   public static void main(String[] args) {
     
-    guiCode.DataAppTest.outputDisplay.write(OutputMessages.startingVendorImport("Centro Digital Display"));
     
 
     ArrayList<String[]> data = null;
@@ -465,10 +463,8 @@ public static void printGroupedData(HashMap<GroupID, ArrayList<String[]>> groupe
     System.out.println(e.getMessage());  
     }
     
-    guiCode.DataAppTest.outputDisplay.write(OutputMessages.importActivity(DataAppTest.importActivity.toString()));
     DataAppTest.importActivity.reset();
 
-    guiCode.DataAppTest.outputDisplay.write(OutputMessages.vendorImportComplete("Centro Digital Display"));
 
   } finally {
     

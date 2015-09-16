@@ -120,6 +120,7 @@ public class importUtils {
     DCMSourceMappings.put("Collective.com","Collective");
     DCMSourceMappings.put("Pandora","Pandora");
     DCMSourceMappings.put("YouTube.com","YouTube");
+    DCMSourceMappings.put("WGME","WGME");
     
     HashMap<String,String> DCMMediumMappings = new HashMap<String,String>();
     DCMMediumMappings.put("Cross Platform","CrossPlatform");
@@ -132,7 +133,7 @@ public class importUtils {
     DCMMediumMappings.put("Collective.com","Display");
     //TODO: Use regex to consolidate?
     DCMMediumMappings.put("Pandora","Display");
-    DCMMediumMappings.put("Pandora_Tile","Tracking");
+    DCMMediumMappings.put("Pandora_Tile","Display");
     
     
     //Note for FY16 all DCM digital goes to the umbrella campaign
@@ -141,9 +142,11 @@ public class importUtils {
     DCMCampaignMappings.put("FY2016_Graduate","FY2016_Umbrella");
     DCMCampaignMappings.put("FY2016_Degree_Completion","FY2016_Umbrella");
     DCMCampaignMappings.put("FY2016_Transfer","FY2016_Umbrella");
+    DCMCampaignMappings.put("WGME","FY2016_Undergrad");
     
     HashMap<String,String> DCMAdContentMappings = new HashMap<String,String>();
-    DCMAdContentMappings.put("SAL","SAL_v1");
+    DCMAdContentMappings.put("SAL_v1","SAL_v1");
+    DCMAdContentMappings.put("WGME","SAL_V1");
     DCMAdContentMappings.put("Graduate_SAL_V1","Graduate_SAL_v1");
     DCMAdContentMappings.put("Undergrad_SAL_V1","Undergrad_SAL_v1");
     
@@ -170,7 +173,9 @@ public class importUtils {
         System.out.println("Medium not found for: " + row[4]);
       }
       
-      if (DCMCampaignMappings.containsKey(row[1])) {
+      if (source == "WGME") {
+        campaign = DCMCampaignMappings.get("WGME");
+      } else if (DCMCampaignMappings.containsKey(row[1])) {
         campaign = DCMCampaignMappings.get(row[1]);
       } else {
         campaign = "Campaign Not Found";
@@ -187,8 +192,10 @@ public class importUtils {
       //If a UG campaign --> Undergrad_SAL_V1
       
       if (medium.equals("Hulu")) {
-        adContent = "SAL_V1";
-      } else if (row[1].equals("FY2016_Undergraduate") ||
+        adContent = "SAL_v1";
+      } else if (source.equals("WGME")) {
+          adContent = "WGME";
+      }else if (row[1].equals("FY2016_Undergraduate") ||
           campaign.equals("Fy2016_Degree_Completion")) {
         adContent = "Undergrad_SAL_V1";
       } else if (row[1].equals("FY2016_Graduate")) {
@@ -481,10 +488,8 @@ public static HashMap<GroupID, ArrayList<String[]>> groupFacebookRawData(ArrayLi
     }
     
     if (row[5].contains("Page Post")) {
-      System.out.println("Contains Page Post");
       medium = "Newsfeed_PPE";
     } else if (row[5].contains("Page Link")) {
-      System.out.println("Contains Page Link");
       medium = "Newsfeed_Link";
     }
     
@@ -540,8 +545,6 @@ public static HashMap<GroupID, ArrayList<String[]>> groupFacebookRawData(ArrayLi
       DataAppTest.logger.log(Level.SEVERE,
           "AdContent for \"" + row +"\" could not be identified");
     }
-    
-    System.out.println("Ad Content: " + adContent);
     
     //get the matching ga value from the dictionary
     adContent = facebookAdContentMappings.get(adContent);

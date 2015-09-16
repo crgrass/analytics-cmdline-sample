@@ -267,7 +267,8 @@ public static void printGroupedData(HashMap<GroupID, ArrayList<String[]>> groupe
     ArrayList<DDRecord> acquisitionData = aggregate(groupedData, sDate, eDate, medium);
     System.out.print("Complete.\n");
     
-    System.out.println("The number of DD records for import is: " + acquisitionData.size());
+    System.out.println("The number of " + medium + " records for import is: " + 
+    acquisitionData.size());
 
     System.out.println("Removing all records with 0 Impressions.\n");
     acquisitionData = importUtils.remove0ImpressionRecords(acquisitionData);
@@ -318,8 +319,8 @@ public static void printGroupedData(HashMap<GroupID, ArrayList<String[]>> groupe
     
     String[] testArgs =  new String[0] ;
     
-    LocalDate startDate = LocalDate.of(2015, 9, 1);
-    LocalDate endDate = LocalDate.of(2015, 9, 7);
+    LocalDate startDate = LocalDate.of(2015, 9, 8);
+    LocalDate endDate = LocalDate.of(2015, 9, 14);
     
     //Open connection to dropbox API
     DropBoxConnection.initializeDropboxConnection();

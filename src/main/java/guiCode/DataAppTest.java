@@ -1,12 +1,11 @@
 package guiCode;
 
 
+import DataAppCode.LoggingOutputStream;
+
 import DataAppCode.DropBoxConnection;
-
 import javafx.event.ActionEvent;
-
 import javafx.scene.layout.AnchorPane;
-
 import javafx.scene.control.DateCell;
 import javafx.util.Callback;
 import javafx.event.EventHandler;
@@ -16,6 +15,7 @@ import java.io.ByteArrayOutputStream;
 
 //import java.io.PrintStream;
 
+import java.io.PrintStream;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.DayOfWeek;
@@ -25,17 +25,14 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Calendar;
 import java.util.Date;
-
 import java.util.logging.FileHandler;
 import java.util.logging.Handler;
 import java.util.logging.Level;
-
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 
 import javafx.scene.Scene;
 import javafx.scene.text.Font;
-
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.scene.layout.VBox;
@@ -44,8 +41,8 @@ import javafx.geometry.Insets;
 import javafx.scene.layout.HBox;
 import javafx.application.Application;
 import javafx.stage.Stage;
-//import DataAppCode.StdOutErrLevel;
-//import DataAppCode.LoggingOutputStream;
+import DataAppCode.StdOutErrLevel;
+import DataAppCode.LoggingOutputStream;
 
 public class DataAppTest extends Application {
   public static LocalDate startDate = null;
@@ -53,7 +50,7 @@ public class DataAppTest extends Application {
   public static boolean importCheckSuccess = false;
   public static DataAppTextDisplay outputDisplay;
   public static ByteArrayOutputStream importActivity = new ByteArrayOutputStream();
-//  private final PrintStream ps = new PrintStream(importActivity);
+  private static final PrintStream ps = new PrintStream(importActivity);
   public static final Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
 	@Override
@@ -81,7 +78,6 @@ public class DataAppTest extends Application {
       HBox dateSelection = addDateSelection();
 	  AnchorPane fullImport = addFullImport();
 	  AnchorPane partialImport = addPartialImport();
-	  outputDisplay = new DataAppTextDisplay();
 	  
 	  //VBox that holds all components for primary scene
 	  primaryVBox.getChildren().addAll(welcome,dateSelection,fullImport,partialImport,outputDisplay.classSP);
@@ -111,10 +107,14 @@ public class DataAppTest extends Application {
 	  
 	  String logDate = df.format(currDate);
 	  Handler fh= new FileHandler("%t/dataAppLog_" + logDate +".log");
+	  TextDisplayHandler displayHandler = new TextDisplayHandler();
+	  outputDisplay = new DataAppTextDisplay();
+	  displayHandler.setTextDisplay(outputDisplay);
 	  SimpleFormatter logFileFormatter = new SimpleFormatter();
 	  fh.setFormatter(logFileFormatter);
 	  
 	  logger.addHandler(fh);
+	  logger.addHandler(displayHandler);
 	  
 	  logger.log(Level.INFO, "Application Started." + System.lineSeparator());
 	  
@@ -125,25 +125,25 @@ public class DataAppTest extends Application {
 
 	  
       //	  //preserve older stdout/stderr streams
-      //	  PrintStream stdout = System.out;
-      //	  PrintStream stderr = System.err;
+//      	  PrintStream stdout = System.out;
+//      	  PrintStream stderr = System.err;
       //	  
       //	  //rebind stdout/stderr to logger
-      //	  Logger logger;
-      //	  LoggingOutputStream los;
-      //	  
-      //	  logger = Logger.getLogger("stdout");
-      //	  los = new LoggingOutputStream(logger, StdOutErrLevel.STDOUT);
-      //	  System.setOut(new PrintStream(los,true));
-      //	  
-      //	  logger = Logger.getLogger("stderr");
-      //	  los = new LoggingOutputStream(logger, StdOutErrLevel.STDERR);
-      //	  System.setErr(new PrintStream(los,true));
+
+//      	  LoggingOutputStream los;
+      	  
+//      	  logger = Logger.getLogger("stdout");
+//      	  los = new LoggingOutputStream(logger, StdOutErrLevel.STDOUT);
+//      	  System.setOut(new PrintStream(los,true));
+      	  
+//      	  Logger.getLogger("stderr");
+//      	  los = new LoggingOutputStream(logger, StdOutErrLevel.STDERR);
+//      	  System.setErr(new PrintStream(los,true));
       	  
       	  
       	  
-      //    System.setOut(ps); //These redirect standard output to app console
-      //    System.setErr(ps);
+//          System.setOut(ps); //These redirect standard output to app console
+//          System.setErr(ps);
       
 	  //Open connection to dropbox API
 	  logger.log(Level.INFO,"Initializing Dropbox Connection" +

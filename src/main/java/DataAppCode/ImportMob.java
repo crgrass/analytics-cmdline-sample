@@ -20,7 +20,6 @@ import com.google.api.services.samples.analytics.cmdline.GACall;
 import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
 
 import guiCode.DataAppTest;
-import guiCode.OutputMessages;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -120,7 +119,6 @@ public class ImportMob {
   } // end of update adwords
   public static void main(String[] args) {
     
-    guiCode.DataAppTest.outputDisplay.write(OutputMessages.startingVendorImport("Centro Mobile"));
     
     ArrayList<String[]> data = null;
     
@@ -192,11 +190,9 @@ public class ImportMob {
     System.out.println(e.getMessage());  
     }
     
-    guiCode.DataAppTest.outputDisplay.write(OutputMessages.importActivity(DataAppTest.importActivity.toString()));
 
     DataAppTest.importActivity.reset();
 
-    guiCode.DataAppTest.outputDisplay.write(OutputMessages.vendorImportComplete("Centro Mobile"));
 
   }//end of main
 
