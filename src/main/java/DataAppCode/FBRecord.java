@@ -146,29 +146,15 @@ public class FBRecord implements importRecord {
               + " number of fields.  Check the source file.");
           return new ArrayList<FBRecord>(); //exit method
         }
-        //Index 0 : Start Date, Index 1 : End Date, Index 2 : Campaign Name
-        //!!!Index 3 : Ad Set Name - !!!Campaign!!!, Index 4 : !!!Placement, Device!!!,
-        //Index 5 : Reach
+
         totalReach += Integer.parseInt(row[6]);
-        //Index 6 : Frequency, 
-        //Index 7 : Impressions
         totalImpressions += Integer.parseInt(row[8]);
-        //Index: 8 Clicks
         totalClicks += Integer.parseInt(row[9]);
-        //Index 9 : UniqueClicks
         totalUniqueClicks += Integer.parseInt(row[10]);
-        //Index 10 : CTR, Index 11: uniqueCTR 
-        //Index 12: Spend
         totalSpend += Float.parseFloat(row[13]);
-        //Index 13: AverageCPM, Index 14: CP1KR
-        //Index 15: CPC
-        //Index 16: Actions
         totalActions += Integer.parseInt(row[17]);
-        //Index 17: PTA
         totalPTA += Integer.parseInt(row[18]);
-        //Index 18: Page Likes
         totalLikes += Integer.parseInt(row[19]);
-        //Index 19: Website Clicks
         totalWebsiteClicks += Integer.parseInt(row[20]);
         
         

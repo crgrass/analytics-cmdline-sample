@@ -24,9 +24,6 @@ import java.util.List;
 public class DDRecord implements importRecord {
   
   //TODO: Determine way to store vendor specific data in the vendorRecor itself
-//  private final int SOURCE_INDEX = 0;
-//  private final int MEDIUM_INDEX = 0;
-//  private final int CAMPAIGN_INDEX = 4;
   
  //record attributes
   private int recordCount = 0;
@@ -58,7 +55,7 @@ public class DDRecord implements importRecord {
   
   
   //constructor
-  //behavior metrics are always created at a later date
+  //behavior metrics are created at a later date
   public DDRecord(String[] dateArray, String src, String med, String camp, String ntwk, String adc,
                        Integer clks, Integer impr, Float ctr, Float cpc, Float cpm, Float spnd,
                        Integer totalcnv, Integer pccnv, Integer picnv) {

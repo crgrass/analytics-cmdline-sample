@@ -17,6 +17,13 @@ package guiCode;
 import com.dropbox.core.DbxEntry;
 import com.dropbox.core.DbxException;
 
+import javafx.scene.layout.Priority;
+
+import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
+import javafx.stage.FileChooser;
+import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.RadioButton;
 import DataAppCode.DropBoxConnection;
 import javafx.stage.WindowEvent;
 import javafx.concurrent.Worker;
@@ -31,6 +38,18 @@ import javafx.scene.control.CheckBox;
 
 
 
+
+
+
+
+
+
+
+
+
+import java.awt.Desktop;
+import java.io.File;
+import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -578,6 +597,139 @@ public class ButtonEvents {
 //((Node)(event.getSource())).getScene().getWindow().hide();
 }//end of handle
 };//end of setOnAction
+    return evnt;
+  }// end of method
+  
+  
+  
+  //This event launches the individual file import window from the
+  //main window.
+  public static EventHandler<ActionEvent> evntIndivFileImport(){
+    EventHandler<ActionEvent> evnt = new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        //Create stage and assign properties
+        Stage stgPartialImport = new Stage();
+        stgPartialImport.setTitle("Individual File Import");
+        GridPane partImportGrid = new GridPane();
+        partImportGrid.setGridLinesVisible(true);
+        partImportGrid.setHgap(10);
+        partImportGrid.setVgap(10);
+        partImportGrid.setPadding(new Insets(25,25,25,25));
+        stgPartialImport.setScene(new Scene(partImportGrid,450,450));
+        stgPartialImport.show();
+
+        
+        //TODO: Add label prompting user to select the file
+        Label lblFilePrompt = new Label("Please select which file to import.");
+        Button btnFileChooser = new Button("Select File");
+        FileChooser fileChooser = new FileChooser();
+        //TODO: Align this button right
+        fileChooser.setTitle("Select Import File");
+        HBox hbxFileChooser = new HBox();
+        hbxFileChooser.getChildren().add(0,lblFilePrompt);
+        hbxFileChooser.getChildren().add(1,btnFileChooser);
+        
+        HBox hbxFileDisplay = new HBox();
+        //TODO: Make this the entire width of the window
+        TextField txtFileDisplay = new TextField();
+        HBox.setHgrow(txtFileDisplay, Priority.ALWAYS);
+        
+        hbxFileDisplay.getChildren().add(txtFileDisplay);
+        
+        //Event that takes place when button is clicked
+        btnFileChooser.setOnAction(
+            new EventHandler<ActionEvent>() {
+              @Override
+              public void handle(final ActionEvent e) {
+                //show file
+                File file = fileChooser.showOpenDialog(stgPartialImport);
+                if (file != null) {
+                  txtFileDisplay.setText(file.getName());
+                  DataAppTest.individualFilePath = file.getAbsolutePath();
+                }
+              }
+            });
+        
+        
+        
+        Label lblSelectImports = new Label("Which vendor would you like to import?");
+        partImportGrid.add(lblSelectImports, 0, 0);
+        partImportGrid.add(hbxFileChooser, 0, 1);
+        partImportGrid.add(hbxFileDisplay, 0, 2, 3, 1);
+        
+
+        //Names of vendors that will be assigned radio buttons
+        final String[] rbNames = new String[]{"Google Adwords","Centro Digital Display",
+                                              "Centro Mobile Display","Centro Video Display","Centro Rich Media","Facebook",
+                                              "Twitter","LinkedIn"};
+
+        final ArrayList<String> importList = new ArrayList<String>();
+
+        //Create a toggle group that indicates which buttons are mutually exclusive.
+        ToggleGroup group = new ToggleGroup();
+        //TODO: Convert checkboxes to radio buttons
+        for (int i=0; i< rbNames.length; i++) {
+          final String name = rbNames[i];
+          final RadioButton rb = new RadioButton(rbNames[i]);
+          rb.setToggleGroup(group);
+          rb.selectedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed (ObservableValue<? extends Boolean> ov,
+                                 Boolean old_val, Boolean new_val) {
+              if (new_val) {
+                importList.add(name);
+              } else {
+                importList.remove(name);
+              }
+            }// end of changed
+          });//end of add Listener
+
+          //add radio button to stage in appropriate grid space
+          partImportGrid.add(rb, 0, i +3);
+        }
+
+        Button btnBeginImport = new Button("Begin Partial Import");
+        partImportGrid.add(btnBeginImport,1,13);
+
+        btnBeginImport.setOnAction(new EventHandler<ActionEvent>() {
+          @Override
+          public void handle(ActionEvent event) {
+
+            Map<String, Method> methodMap = null;
+            try {
+              methodMap = ImportFunctionLauncher.generateMethodMap();
+            } catch (Exception exception) {
+              exception.printStackTrace();
+            }
+
+
+            //TODO: modify parameters so that this will accept the VendorImport
+            //version
+            String[] params = null;
+
+            //Run methods by pulling them as values from the array
+            for (int i = 0; i < importList.size(); i++) {
+              //execute method in arrray
+              String currVendor = importList.get(i);
+              try {
+                methodMap.get(currVendor).invoke(null, (Object) params);
+              } catch (IllegalAccessException | IllegalArgumentException
+                  | InvocationTargetException exception) {
+                exception.printStackTrace();
+              }
+            }
+
+
+          }
+        });
+
+
+
+        //      //hide this current window
+        //      ((Node)(event.getSource())).getScene().getWindow().hide();
+      }//end of handle
+    };//end of setOnAction
     return evnt;
   }// end of method
   

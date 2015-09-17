@@ -30,16 +30,17 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Map;
 
-/**
- * @author cgrass@google.com (Your Name Here)
- *
- */
 
 /*
  * Reference http://www.beingjavaguys.com/2013/09/read-and-parse-csv-file-in-java.html
  */
 public class CSVReaders {
   
+  /*
+   * readCSV accepts a filepath as a parameter. The file
+   * is then parsed line by line and added to an array
+   * of strings for later processing
+   */
   public static ArrayList<String[]> readCsv(String filePath) {
     BufferedReader br = null;
     String line = "";
@@ -52,12 +53,9 @@ public class CSVReaders {
       //read lines
       while ((line = br.readLine()) != null) {
         String[] csvData = line.split(splitBy);
-        //This is where we test for correctDates
-        //This may also be a good place to test other csv operations
+        //TODO:This is where we test for correct dates
         
-        
-        
-        rawData.add(csvData);
+        rawData.add(csvData); //add line to scv
       } // end of while
       
     } catch(FileNotFoundException e) {
@@ -65,6 +63,7 @@ public class CSVReaders {
     } catch(IOException e) {
       e.printStackTrace();
     } finally {
+      //Close the buffered reader
       if (br != null) {
         try {
           br.close();
@@ -76,7 +75,13 @@ public class CSVReaders {
     
     return rawData;
   }// end of CSVReaders
-
+  
+  
+  /*
+   * Print raw data is a convenience method that is used 
+   * to view the raw data after it has been read into the
+   * string array. This method is only used for debugging.
+   */
   public static void printRawData(ArrayList<String[]> raw) {
     for (String[] row : raw) {
       for (int i = 0; i < row.length; i++) {
@@ -86,16 +91,23 @@ public class CSVReaders {
     }// end of outer loop
   } //end of printRawData
   
+  /*
+   * removeHeader removes the first row from the file
+   */
+  //TODO: This method can be generalized if a parameter
+  //containing the number of rows to remove is passed. 
+  //Each vendor record could contain this static variable
   //PreCondition: Header is first Array in ArrayList
   public static void removeHeader(ArrayList<String[]> raw) {
     raw.remove(0);
   }
   
-  //PreCondition: Header is first Array in ArrayList
+
   /*
    * Exported Double Click reports contain report meta data in 
    * the first 9 rows of the file. Thus, requiring a different
-   * method to trim the header
+   * method to trim the header. This method also removes the
+   * last row which contains totals.
    */
   public static void formatDCMData(ArrayList<String[]> raw) {
     //Remove first 10 rows (header)
@@ -103,18 +115,14 @@ public class CSVReaders {
       //This is inefficient and should be optimized
       raw.remove(0);
     }
-    
     //Remove Grand Total (footer)
     raw.remove(raw.size()-1);
-    
   }
   
-  //PreCondition: Header is first Array in ArrayList
-  //PostCondition: rawData no longer 
-  public static void removeTail(ArrayList<String[]> raw) {
-    raw.remove(raw.size()-1);
-  }
-  
+  /*
+   * removeInvalidDates parses files that contain data for more than one reporting cycle. When
+   * a row from outside of the specified reporting cycle is found, the row is removed.
+   */
   public static void removeInvalidDates(ArrayList<String[]> raw, String vendor, LocalDate startDate) {
   
     //if start date positions and format are inconsistent create either a dictionary that 
@@ -175,6 +183,11 @@ public class CSVReaders {
     return rawData;
   }// end of CSVReaders
   
+  /*
+   * The correctDate method generates a map which contains
+   * the relevant indexes that contain the dates in each
+   * vendors import file.
+   */
   public static boolean correctDate(String filePath) {
     Map<String,Integer[]> dateIndexes = new HashMap<String,Integer[]>();
     //If there are two integers in the array this indicates that both the
@@ -199,6 +212,7 @@ public class CSVReaders {
   }
   
   
+  //Used for testing
   public static void main(String[] args) {
     ArrayList<String[]> rawData = new ArrayList<String[]>();
     try {

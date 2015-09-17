@@ -46,10 +46,6 @@ public class VendorImportMethods {
   //does not require this parameter.
   
   public static void importAdwords(String[] args, LocalDate sDate, LocalDate eDate) {
-    
-      
-      //guiCode.DataAppTest.outputDisplay.write(OutputMessages.startingVendorImport("Google Adwords"));
-      
       /*
        * GA Data is pulled in below this point
        * Note: Adding dimensions or metrics shifts the indexes and can lead to 
@@ -82,7 +78,6 @@ public class VendorImportMethods {
       
       System.out.println("Connecting to database...\n");
       try {
-//      cnx = DatabaseUtils.getTestDBConnection();
         cnx = DatabaseUtils.getGoogleCloudTestDBConnection();
         System.out.println("Database Connection Successful\n");
       } catch (Exception e) {
@@ -94,15 +89,9 @@ public class VendorImportMethods {
         ImportAdwords.updateAdwords(groupedAdwordsData,cnx);
       } catch (Exception e) {
       System.out.println(e.getMessage());
-      //guiCode.DataAppTest.outputDisplay.write(OutputMessages.errorMessage(e.getMessage()));
       }
-      
-
-      //guiCode.DataAppTest.outputDisplay.write(OutputMessages.importActivity(DataAppTest.importActivity.toString()));
 
       //DataAppTest.importActivity.reset(); 
-      
-      //guiCode.DataAppTest.outputDisplay.write(OutputMessages.vendorImportComplete("Google Adwords"));
 
   }
   
@@ -113,25 +102,36 @@ public class VendorImportMethods {
   //this parameter is to move the GACall main code into a different method that
   //does not require this parameter.
   
-  public static void importFacebook(String[] args, LocalDate sDate, LocalDate eDate) {
-//    guiCode.DataAppTest.outputDisplay.write(OutputMessages.startingVendorImport("Facebook"));
+  //TODO: Have this method accept a parameter that indicates whether traditional dropbox
+  //import should be followed or whether and individual file is being imported
+  public static void importFacebook(String[] args, LocalDate sDate, LocalDate eDate, String fileSource) {
     
-    ArrayList<String[]> data = null;
-    try {
-      
-      //pull down data, write to file and overwrite any existing files
+    String filepath = null;
+    
+    if (fileSource != "DropBox") {
+      //load file from static variable in data app test
+      filepath = "Provided Filepath";
+    } else {
+    //pull down data, write to file and overwrite any existing files
       try {
          DropBoxConnection.pullCSV("Facebook", sDate, eDate); //TODO: These
+         filepath = "retrievedFacebook.csv";
       } catch (DbxException exception) {
         exception.printStackTrace();
       } catch (IOException exception) {
         exception.printStackTrace();
       }
-      
+    }
     
+    //holds raw data
+    ArrayList<String[]> data = null;
+    
+    
+    try {
+      
   //Read csv and return raw data
     System.out.println("Reading Facebook File...\n");
-    data = CSVReaders.readCsv("retrievedFacebook.csv");
+    data = CSVReaders.readCsv(filepath);
     CSVReaders.removeHeader(data);
 //    CSVReaders.removeTail(data); //This likely deletes pertinent info
     System.out.println("Facebook File Read Complete.\n");
@@ -184,12 +184,8 @@ public class VendorImportMethods {
     } catch (Exception e) {
     System.out.println(e.getMessage());  
     }
-    
-//    guiCode.DataAppTest.outputDisplay.write(OutputMessages.importActivity(DataAppTest.importActivity.toString()));
 
 //    DataAppTest.importActivity.reset();
-    
-//    guiCode.DataAppTest.outputDisplay.write(OutputMessages.vendorImportComplete("Facebook"));
   } finally {
     
   }
@@ -197,7 +193,6 @@ public class VendorImportMethods {
 }
   
   public static void importTwitter(String[] args, LocalDate sDate, LocalDate eDate) {
-//    guiCode.DataAppTest.outputDisplay.write(OutputMessages.startingVendorImport("Twitter"));
     
     ArrayList<String[]> data = null;
     try {
@@ -272,11 +267,7 @@ public class VendorImportMethods {
 
     }
 
-//    guiCode.DataAppTest.outputDisplay.write(OutputMessages.importActivity(DataAppTest.importActivity.toString()));
-
     //    DataAppTest.importActivity.reset();
-
-    //    guiCode.DataAppTest.outputDisplay.write(OutputMessages.vendorImportComplete("Twitter"));
 
     } finally {
 
@@ -285,7 +276,6 @@ public class VendorImportMethods {
   
   
   public static void importCentroDigitalDisplay(String[] args, LocalDate sDate, LocalDate eDate) {
-//guiCode.DataAppTest.outputDisplay.write(OutputMessages.startingVendorImport("Centro Digital Display"));
     
     ArrayList<String[]> data = null;
     try {
@@ -360,10 +350,7 @@ public class VendorImportMethods {
     System.out.println(e.getMessage());  
     }
     
-//    guiCode.DataAppTest.outputDisplay.write(OutputMessages.importActivity(DataAppTest.importActivity.toString()));
 //    DataAppTest.importActivity.reset();
-
-//    guiCode.DataAppTest.outputDisplay.write(OutputMessages.vendorImportComplete("Centro Digital Display"));
 
   } finally {
     
@@ -375,7 +362,6 @@ public class VendorImportMethods {
   
   
   public static void importCentroVideo(String[] args, LocalDate sDate, LocalDate eDate) {
-//    guiCode.DataAppTest.outputDisplay.write(OutputMessages.startingVendorImport("Centro Video"));
     ArrayList<String[]> data = null;
     
     //pull down data, write to file and overwrite any existing files
@@ -436,17 +422,12 @@ public class VendorImportMethods {
     System.out.println(e.getMessage()); 
     
     }
-    
-//    guiCode.DataAppTest.outputDisplay.write(OutputMessages.importActivity(DataAppTest.importActivity.toString()));
 
 //    DataAppTest.importActivity.reset();
-
-//    guiCode.DataAppTest.outputDisplay.write(OutputMessages.vendorImportComplete("Centro Video"));
 
 }
   
   public static void importCentroMobile(String[] args, LocalDate sDate, LocalDate eDate) {
-//    guiCode.DataAppTest.outputDisplay.write(OutputMessages.startingVendorImport("Centro Mobile"));
     
     ArrayList<String[]> data = null;
     
@@ -511,12 +492,9 @@ public class VendorImportMethods {
     } catch (Exception e) {
     System.out.println(e.getMessage());  
     }
-    
-//    guiCode.DataAppTest.outputDisplay.write(OutputMessages.importActivity(DataAppTest.importActivity.toString()));
+
 
 //    DataAppTest.importActivity.reset();
-
-//    guiCode.DataAppTest.outputDisplay.write(OutputMessages.vendorImportComplete("Centro Mobile"));
 
 }
 

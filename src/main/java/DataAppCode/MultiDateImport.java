@@ -68,7 +68,7 @@ public class MultiDateImport {
   public static void multiImportFacebook(ArrayList<LocalDate> importDates){
     
     for (LocalDate currDate : importDates) {
-      VendorImportMethods.importFacebook(new String[] {}, currDate, currDate.plusDays(6));
+      VendorImportMethods.importFacebook(new String[] {}, currDate, currDate.plusDays(6), "Standard");
     }
   }
   

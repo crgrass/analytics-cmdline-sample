@@ -18,14 +18,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-/**
- * @author cgrass@google.com (Your Name Here)
- *
- */
+
 public class DatabaseUtils {
 
-  
-  
   //This connection connects to the Microsoft Access Test Database
   public static Connection getTestDBConnection() throws Exception {
     Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
@@ -35,8 +30,6 @@ public class DatabaseUtils {
     Connection conn = DriverManager.getConnection(url);
     return conn;
   }
-  
- 
   
   public static Connection getGoogleCloudTestDBConnection() throws Exception {
     
@@ -62,14 +55,6 @@ public class DatabaseUtils {
   
   
   public static void main(String[] args) {
-    
-    //Test googleCloudTestDB method
-    try {
-      getGoogleCloudTestDBConnection();
-    } catch (Exception e) {
-      //errors are printed in the method
-      e.printStackTrace();
-    }
     
 
   }

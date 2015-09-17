@@ -139,6 +139,7 @@ public class ImportFB {
       DataAppTest.logger.log(Level.INFO, "Reading Facebook File." + System.lineSeparator());
       data = CSVReaders.readCsv("retrievedFacebook.csv");
       
+      
       CSVReaders.removeHeader(data); //remove header row
       
       DataAppTest.logger.log(Level.INFO, "Grouping Facebook Raw Data by Source, Medium, "

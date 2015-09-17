@@ -50,6 +50,7 @@ public class DataAppTest extends Application {
   public static boolean importCheckSuccess = false;
   public static DataAppTextDisplay outputDisplay;
   public static ByteArrayOutputStream importActivity = new ByteArrayOutputStream();
+  public static String individualFilePath;
   private static final PrintStream ps = new PrintStream(importActivity);
   public static final Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
@@ -78,9 +79,10 @@ public class DataAppTest extends Application {
       HBox dateSelection = addDateSelection();
 	  AnchorPane fullImport = addFullImport();
 	  AnchorPane partialImport = addPartialImport();
+	  AnchorPane indivFileImport = addIndividualFileImport();
 	  
 	  //VBox that holds all components for primary scene
-	  primaryVBox.getChildren().addAll(welcome,dateSelection,fullImport,partialImport,outputDisplay.classSP);
+	  primaryVBox.getChildren().addAll(welcome,dateSelection,fullImport,partialImport,indivFileImport,outputDisplay.classSP);
 	  
 	  
 	  Scene scene = new Scene(primaryVBox,800,800);
@@ -241,6 +243,33 @@ public class DataAppTest extends Application {
           
           return apFullImport;
         }
+	   
+	   public AnchorPane addIndividualFileImport() {
+	     AnchorPane apIndivFile = new AnchorPane();
+	     HBox hboxLeft = new HBox();
+         HBox hboxRight = new HBox();
+         hboxLeft.setPadding(new Insets(15,12,15,12));
+         hboxRight.setPadding(new Insets(15,12,15,12));
+         hboxLeft.setSpacing(10);
+         hboxRight.setSpacing(10);
+         
+         Text txtImportPartialVendors = new Text("Select which vendors to import.");
+         Button btnImportPartialVendors = new Button("Begin");
+         
+         //TODO: Create button event
+         EventHandler<ActionEvent> evntIndivFileImport = ButtonEvents.evntIndivFileImport();
+         btnImportPartialVendors.setOnAction(evntIndivFileImport);
+         
+         hboxLeft.getChildren().add(txtImportPartialVendors);
+         hboxRight.getChildren().add(btnImportPartialVendors);
+         
+         apIndivFile.getChildren().addAll(hboxLeft,hboxRight);
+         AnchorPane.setLeftAnchor(hboxLeft, 0.0);
+         AnchorPane.setRightAnchor(hboxRight, 0.0);
+         
+         return apIndivFile;
+	     
+	   }
 	   
 	
 	

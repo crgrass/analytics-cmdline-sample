@@ -21,6 +21,7 @@ package DataAppCode;
 public class AdwordsRecord {
   
   //record attributes
+  //TODO: Ensure these are populated
   private int recordCount = 0;
   private boolean partialWeek = false;
   private int daysActive = 7;
@@ -44,6 +45,7 @@ public class AdwordsRecord {
   private Float bounceRate;
   
   
+  //Constructor
   public AdwordsRecord(String[] dateArray, String src, String med, String camp,
                        String adg, Integer clks, Integer impr, Float ctr, Float cpc, Float spnd,
                        Integer vsts, Float ppv, Float avgDur, Float pnv, Float bounce) {
@@ -65,6 +67,7 @@ public class AdwordsRecord {
     percentNewVisits = pnv;
     bounceRate = bounce;
   }
+  
   
   @Override
   public String toString() {
@@ -90,6 +93,7 @@ public class AdwordsRecord {
     return printThis;
   }
 
+  
   
   /*
    * Getter and Setter Methods below
@@ -272,14 +276,6 @@ public class AdwordsRecord {
 
   public void setDaysActive(int daysActive) {
     this.daysActive = daysActive;
-  }
-
-  /**
-   * @param args
-   */
-  public static void main(String[] args) {
-    System.out.println("Testing Method for AdwordsRecord Class");
-
   }
 
 }

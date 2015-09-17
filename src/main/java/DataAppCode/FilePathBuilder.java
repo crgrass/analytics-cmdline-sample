@@ -39,7 +39,6 @@ public class FilePathBuilder {
   Map<String,String> fileLocations = new HashMap<String,String>();
   
   //Note: Adwords does not have a vendor file as all data is pulled from the API
-  
   fileLocations.put("Google Adwords", 
       "/Vendor Data - Import and Archive");
   
