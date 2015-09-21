@@ -21,6 +21,9 @@ import com.google.api.services.samples.analytics.cmdline.GACall;
 //import guiCode.DataAppTest;
 //import guiCode.OutputMessages;
 
+
+import guiCode.DataAppTest;
+
 import java.io.IOException;
 import java.sql.Connection;
 import java.time.LocalDate;
@@ -110,7 +113,7 @@ public class VendorImportMethods {
     
     if (fileSource != "DropBox") {
       //load file from static variable in data app test
-      filepath = "Provided Filepath";
+      filepath = DataAppTest.individualFilePath;
     } else {
     //pull down data, write to file and overwrite any existing files
       try {
@@ -131,6 +134,7 @@ public class VendorImportMethods {
       
   //Read csv and return raw data
     System.out.println("Reading Facebook File...\n");
+    System.out.println("This is the filepath: " + filepath);
     data = CSVReaders.readCsv(filepath);
     CSVReaders.removeHeader(data);
 //    CSVReaders.removeTail(data); //This likely deletes pertinent info
@@ -192,25 +196,33 @@ public class VendorImportMethods {
 
 }
   
-  public static void importTwitter(String[] args, LocalDate sDate, LocalDate eDate) {
+  public static void importTwitter(String[] args, LocalDate sDate, LocalDate eDate, String fileSource) {
     
-    ArrayList<String[]> data = null;
-    try {
-      
-      //pull down data, write to file and overwrite any existing files
+    String filepath = null;
+    
+    if (fileSource != "DropBox") {
+      //load file from static variable in data app test
+      filepath = DataAppTest.individualFilePath;
+    } else {
+    //pull down data, write to file and overwrite any existing files
       try {
-         DropBoxConnection.pullCSV("Twitter", sDate, eDate);
+         DropBoxConnection.pullCSV("Twitter", sDate, eDate); //TODO: These
+         filepath = "retrievedTwitter.csv";
       } catch (DbxException exception) {
         exception.printStackTrace();
       } catch (IOException exception) {
         exception.printStackTrace();
       }
+    }
+    
+    ArrayList<String[]> data = null;
+    try {
     
     //Read csv and return raw data
     
     try {
       System.out.println("Reading Twitter File...\n");
-      data = CSVReaders.readLICsv("retrievedTwitter.csv");
+      data = CSVReaders.readLICsv(filepath);
       System.out.println("Twitter File Read Complete.\n");
     } catch (IOException e) {
       System.out.println("There was a problem reading the Twitter File.");
@@ -275,23 +287,31 @@ public class VendorImportMethods {
   }
   
   
-  public static void importCentroDigitalDisplay(String[] args, LocalDate sDate, LocalDate eDate) {
+  public static void importCentroDigitalDisplay(String[] args, LocalDate sDate, LocalDate eDate, String fileSource) {
     
-    ArrayList<String[]> data = null;
-    try {
-      
-      //pull down data from dropbox, write to file and overwrite any data files
+    String filepath = null;
+    
+    if (fileSource != "DropBox") {
+      //load file from static variable in data app test
+      filepath = DataAppTest.individualFilePath;
+    } else {
+    //pull down data, write to file and overwrite any existing files
       try {
-         DropBoxConnection.pullCSV("Centro Digital Display",sDate, eDate);
+         DropBoxConnection.pullCSV("Centro Digital Display", sDate, eDate); //TODO: These
+         filepath = "retrievedCentro Digital Display.csv";
       } catch (DbxException exception) {
         exception.printStackTrace();
       } catch (IOException exception) {
         exception.printStackTrace();
       }
+    }
+    
+    ArrayList<String[]> data = null;
+    try {
   
     //Read csv generated and return raw data
     System.out.println("Reading Centro Display File... ");
-    data = CSVReaders.readCsv("retrievedCentro Digital Display.csv");
+    data = CSVReaders.readCsv(filepath);
 
     
     CSVReaders.removeHeader(data);
@@ -361,20 +381,30 @@ public class VendorImportMethods {
   
   
   
-  public static void importCentroVideo(String[] args, LocalDate sDate, LocalDate eDate) {
+  public static void importCentroVideo(String[] args, LocalDate sDate, LocalDate eDate, String fileSource) {
+    
+    String filepath = null;
+    
     ArrayList<String[]> data = null;
     
-    //pull down data, write to file and overwrite any existing files
-    try {
-      DropBoxConnection.pullCSV("Centro Video Display", sDate, eDate);
-    } catch (DbxException exception) {
-      exception.printStackTrace();
-    } catch (IOException exception) {
-      exception.printStackTrace();
+    if (fileSource != "DropBox") {
+      //load file from static variable in data app test
+      filepath = DataAppTest.individualFilePath;
+    } else {
+      //pull down data, write to file and overwrite any existing files
+      try {
+        DropBoxConnection.pullCSV("Centro Video Display", sDate, eDate); //TODO: These
+        filepath = "retrievedCentro Video Display.csv";
+      } catch (DbxException exception) {
+        exception.printStackTrace();
+      } catch (IOException exception) {
+        exception.printStackTrace();
+      }
     }
     
+    
     System.out.println("Reading Centro Video File...\n");
-    data = CSVReaders.readCsv("retrievedCentro Video Display.csv");
+    data = CSVReaders.readCsv(filepath);
     CSVReaders.removeHeader(data);
     CSVReaders.removeInvalidDates(data, "Centro", sDate);
     System.out.println("Centro Video File Read Complete.\n");
@@ -427,21 +457,29 @@ public class VendorImportMethods {
 
 }
   
-  public static void importCentroMobile(String[] args, LocalDate sDate, LocalDate eDate) {
+  public static void importCentroMobile(String[] args, LocalDate sDate, LocalDate eDate, String fileSource) {
+    
+    String filepath = null;
     
     ArrayList<String[]> data = null;
     
+    if (fileSource != "DropBox") {
+      //load file from static variable in data app test
+      filepath = DataAppTest.individualFilePath;
+    } else {
     //pull down data, write to file and overwrite any existing files
-    try {
-      DropBoxConnection.pullCSV("Centro Mobile Display",sDate, eDate);
-    } catch (DbxException exception) {
-      exception.printStackTrace();
-    } catch (IOException exception) {
-      exception.printStackTrace();
+      try {
+         DropBoxConnection.pullCSV("Centro Mobile Display", sDate, eDate); //TODO: These
+         filepath = "retrievedCentro Mobile Display.csv";
+      } catch (DbxException exception) {
+        exception.printStackTrace();
+      } catch (IOException exception) {
+        exception.printStackTrace();
+      }
     }
     
     System.out.println("Reading Centro Mobile File...\n");
-    data = CSVReaders.readCsv("retrievedCentro Mobile Display.csv");
+    data = CSVReaders.readCsv(filepath);
     
     CSVReaders.removeHeader(data);
     CSVReaders.removeInvalidDates(data, "Centro", sDate);

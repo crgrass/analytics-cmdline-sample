@@ -68,7 +68,7 @@ public class MultiDateImport {
   public static void multiImportFacebook(ArrayList<LocalDate> importDates){
     
     for (LocalDate currDate : importDates) {
-      VendorImportMethods.importFacebook(new String[] {}, currDate, currDate.plusDays(6), "Standard");
+      VendorImportMethods.importFacebook(new String[] {}, currDate, currDate.plusDays(6), "DropBox");
     }
   }
   
@@ -76,7 +76,7 @@ public class MultiDateImport {
   public static void multiImportTwitter(ArrayList<LocalDate> importDates){
     
     for (LocalDate currDate : importDates) {
-      VendorImportMethods.importTwitter(new String[] {}, currDate, currDate.plusDays(6));
+      VendorImportMethods.importTwitter(new String[] {}, currDate, currDate.plusDays(6), "DropBox");
     }
   }
   
@@ -84,7 +84,7 @@ public class MultiDateImport {
   public static void multiImportCentroDigitalDisplay(ArrayList<LocalDate> importDates){
     
     for (LocalDate currDate : importDates) {
-      VendorImportMethods.importCentroDigitalDisplay(new String[] {}, currDate, currDate.plusDays(6));
+      VendorImportMethods.importCentroDigitalDisplay(new String[] {}, currDate, currDate.plusDays(6), "DropBox");
     }
   }
   
@@ -92,7 +92,7 @@ public class MultiDateImport {
   public static void multiImportCentroVideo(ArrayList<LocalDate> importDates){
     
     for (LocalDate currDate : importDates) {
-      VendorImportMethods.importCentroVideo(new String[] {}, currDate, currDate.plusDays(6));
+      VendorImportMethods.importCentroVideo(new String[] {}, currDate, currDate.plusDays(6), "DropBox");
     }
   }
   
@@ -100,7 +100,7 @@ public class MultiDateImport {
   public static void multiImportCentroMobile(ArrayList<LocalDate> importDates){
     
     for (LocalDate currDate : importDates) {
-      VendorImportMethods.importCentroMobile(new String[] {}, currDate, currDate.plusDays(6));
+      VendorImportMethods.importCentroMobile(new String[] {}, currDate, currDate.plusDays(6), "DropBox");
     }
   }
   

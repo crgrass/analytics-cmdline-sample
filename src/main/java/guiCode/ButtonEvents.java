@@ -612,7 +612,6 @@ public class ButtonEvents {
         Stage stgPartialImport = new Stage();
         stgPartialImport.setTitle("Individual File Import");
         GridPane partImportGrid = new GridPane();
-        partImportGrid.setGridLinesVisible(true);
         partImportGrid.setHgap(10);
         partImportGrid.setVgap(10);
         partImportGrid.setPadding(new Insets(25,25,25,25));
@@ -624,6 +623,7 @@ public class ButtonEvents {
         Label lblFilePrompt = new Label("Please select which file to import.");
         Button btnFileChooser = new Button("Select File");
         FileChooser fileChooser = new FileChooser();
+        fileChooser.setInitialDirectory(new File("C:/Users/cgrass/Dropbox/Vendor Data - Import and Archive"));
         //TODO: Align this button right
         fileChooser.setTitle("Select Import File");
         HBox hbxFileChooser = new HBox();
@@ -646,7 +646,10 @@ public class ButtonEvents {
                 File file = fileChooser.showOpenDialog(stgPartialImport);
                 if (file != null) {
                   txtFileDisplay.setText(file.getName());
+                  //This static method holds the absolute filepath
                   DataAppTest.individualFilePath = file.getAbsolutePath();
+                  File fpTest = new File(file.getAbsolutePath());
+                  System.out.println(fpTest.exists());
                 }
               }
             });
@@ -655,7 +658,7 @@ public class ButtonEvents {
         
         Label lblSelectImports = new Label("Which vendor would you like to import?");
         partImportGrid.add(lblSelectImports, 0, 0);
-        partImportGrid.add(hbxFileChooser, 0, 1);
+        partImportGrid.add(hbxFileChooser, 0, 1, 3, 1);
         partImportGrid.add(hbxFileDisplay, 0, 2, 3, 1);
         
 
@@ -698,7 +701,8 @@ public class ButtonEvents {
 
             Map<String, Method> methodMap = null;
             try {
-              methodMap = ImportFunctionLauncher.generateMethodMap();
+              //TODO: A different method map needs to be used
+              methodMap = ImportFunctionLauncher.generateVendorImportMethodMap();
             } catch (Exception exception) {
               exception.printStackTrace();
             }
@@ -713,7 +717,8 @@ public class ButtonEvents {
               //execute method in arrray
               String currVendor = importList.get(i);
               try {
-                methodMap.get(currVendor).invoke(null, (Object) params);
+                //add additional parameter for vendorImport methods
+                methodMap.get(currVendor).invoke(null, params, DataAppTest.startDate,DataAppTest.endDate,"Not Dropbox");
               } catch (IllegalAccessException | IllegalArgumentException
                   | InvocationTargetException exception) {
                 exception.printStackTrace();

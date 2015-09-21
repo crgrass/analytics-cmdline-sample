@@ -15,6 +15,7 @@
 package DataAppCode;
 
 import java.lang.reflect.Method;
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -42,16 +43,16 @@ public class ImportFunctionLauncher {
     
   }
   
+  
+  //This method matp calls the methods from VendorImport which take different methods
   public static Map<String,Method> generateVendorImportMethodMap() throws Exception {
     Map<String,Method> methodMap = new HashMap<String,Method>();
 
-    methodMap.put("Google Adwords", DataAppCode.VendorImportMethods.class.getMethod("importAdwords", String[].class));
-    methodMap.put("Centro Digital Display", DataAppCode.VendorImportMethods.class.getMethod("importCentroDigitalDisplay", String[].class));
-    methodMap.put("Centro Mobile Display", DataAppCode.VendorImportMethods.class.getMethod("importCentroMobile", String[].class));
-    methodMap.put("Centro Video Display", DataAppCode.VendorImportMethods.class.getMethod("importCentroVideo", String[].class));
-    methodMap.put("Facebook", DataAppCode.VendorImportMethods.class.getMethod("importFacebook", String[].class));
-    methodMap.put("Twitter", DataAppCode.VendorImportMethods.class.getMethod("importTwitter", String[].class));
-    methodMap.put("LinkedIn", DataAppCode.VendorImportMethods.class.getMethod("main", String[].class));
+    methodMap.put("Centro Digital Display", DataAppCode.VendorImportMethods.class.getMethod("importCentroDigitalDisplay", String[].class, LocalDate.class, LocalDate.class, String.class));
+    methodMap.put("Centro Mobile Display", DataAppCode.VendorImportMethods.class.getMethod("importCentroMobile", String[].class, LocalDate.class, LocalDate.class, String.class));
+    methodMap.put("Centro Video Display", DataAppCode.VendorImportMethods.class.getMethod("importCentroVideo", String[].class, LocalDate.class, LocalDate.class, String.class));
+    methodMap.put("Facebook", DataAppCode.VendorImportMethods.class.getMethod("importFacebook", String[].class, LocalDate.class, LocalDate.class, String.class));
+    methodMap.put("Twitter", DataAppCode.VendorImportMethods.class.getMethod("importTwitter", String[].class, LocalDate.class, LocalDate.class, String.class));
     
     return methodMap;
     

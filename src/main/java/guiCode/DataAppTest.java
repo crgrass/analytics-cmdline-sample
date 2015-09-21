@@ -119,33 +119,6 @@ public class DataAppTest extends Application {
 	  logger.addHandler(displayHandler);
 	  
 	  logger.log(Level.INFO, "Application Started." + System.lineSeparator());
-	  
-	  
-	  /*
-	   * Potentially useful code for logging to textbox in GUI
-	   */
-
-	  
-      //	  //preserve older stdout/stderr streams
-//      	  PrintStream stdout = System.out;
-//      	  PrintStream stderr = System.err;
-      //	  
-      //	  //rebind stdout/stderr to logger
-
-//      	  LoggingOutputStream los;
-      	  
-//      	  logger = Logger.getLogger("stdout");
-//      	  los = new LoggingOutputStream(logger, StdOutErrLevel.STDOUT);
-//      	  System.setOut(new PrintStream(los,true));
-      	  
-//      	  Logger.getLogger("stderr");
-//      	  los = new LoggingOutputStream(logger, StdOutErrLevel.STDERR);
-//      	  System.setErr(new PrintStream(los,true));
-      	  
-      	  
-      	  
-//          System.setOut(ps); //These redirect standard output to app console
-//          System.setErr(ps);
       
 	  //Open connection to dropbox API
 	  logger.log(Level.INFO,"Initializing Dropbox Connection" +
@@ -253,7 +226,7 @@ public class DataAppTest extends Application {
          hboxLeft.setSpacing(10);
          hboxRight.setSpacing(10);
          
-         Text txtImportPartialVendors = new Text("Select which vendors to import.");
+         Text txtImportPartialVendors = new Text("Import an ad hoc file.");
          Button btnImportPartialVendors = new Button("Begin");
          
          //TODO: Create button event
