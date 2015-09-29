@@ -67,6 +67,10 @@ public class DropBoxConnection {
         "JavaTuturial/1.0",Locale.getDefault().toString());
     DbxWebAuthNoRedirect webAuth = new DbxWebAuthNoRedirect(config,appInfo);
     
+   
+    
+    
+    
     String authorizeUrl = webAuth.start();
     System.out.println("1. Go to: " + authorizeUrl);
     System.out.println("2. Click \"Allow\" (you might have to log in first)");
@@ -82,9 +86,11 @@ public class DropBoxConnection {
       e.printStackTrace();
     }
     
-    //Read the input auth code use the code to receive the access token
-    String code = new BufferedReader(new InputStreamReader(System.in)).readLine().trim();
+  //Launch a window that requests the dropbox authorization code
+    String code = DropboxAuthWindow.createWindow();
     
+//    //Read the input auth code use the code to receive the access token
+//    String code = new BufferedReader(new InputStreamReader(System.in)).readLine().trim();
     
     finishedAuth = webAuth.finish(code);
     String accessToken = finishedAuth.accessToken;

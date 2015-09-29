@@ -56,6 +56,12 @@ public class DataAppTest extends Application {
 
 	@Override
 	public void start(Stage primaryStage) {
+	  DropBoxConnection.initializeDropboxConnection();
+	  
+	  TextDisplayHandler displayHandler = new TextDisplayHandler();
+	  outputDisplay = new DataAppTextDisplay();
+      displayHandler.setTextDisplay(outputDisplay);
+      logger.addHandler(displayHandler);
 	  
 	  VBox primaryVBox = new VBox();
 	  primaryVBox.setPadding(new Insets(5,5,5,5));
@@ -109,21 +115,16 @@ public class DataAppTest extends Application {
 	  
 	  String logDate = df.format(currDate);
 	  Handler fh= new FileHandler("%t/dataAppLog_" + logDate +".log");
-	  TextDisplayHandler displayHandler = new TextDisplayHandler();
-	  outputDisplay = new DataAppTextDisplay();
-	  displayHandler.setTextDisplay(outputDisplay);
 	  SimpleFormatter logFileFormatter = new SimpleFormatter();
 	  fh.setFormatter(logFileFormatter);
 	  
 	  logger.addHandler(fh);
-	  logger.addHandler(displayHandler);
 	  
 	  logger.log(Level.INFO, "Application Started." + System.lineSeparator());
       
 	  //Open connection to dropbox API
 	  logger.log(Level.INFO,"Initializing Dropbox Connection" +
 	  System.lineSeparator());
-	  DropBoxConnection.initializeDropboxConnection();
 	  
 	  //master method for JavaFX
 	  launch(args);
