@@ -331,6 +331,5 @@ public static void printGroupedData(HashMap<GroupID, ArrayList<String[]>> groupe
     importDCM(testArgs, startDate, endDate, "Display");
     
     System.out.println("Testing Completed");
-    
   }
 }
