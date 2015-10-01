@@ -26,6 +26,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -51,11 +52,15 @@ public class ImportLinkedIn {
        */
       String source = "LinkedIn"; //Hard coded due to this method used only to import LinkedIn
       String medium = "Social"; //Hardcoded due to LinkedIn always being social
-      String campaignExpectedValue = "PDP- Broader Targeting";
+      String campaignExpectedValueFY15 = "PDP- Broader Targeting";
+      String campaignExpectedValueFY16 = "PDP- Broader Targeting_1";
       String campaign = "";
+      String adContent = "(not set)";
       
-      if (row[4].equals(campaignExpectedValue)) {
+      if (row[4].equals(campaignExpectedValueFY15)) {
         campaign = "FY2015_LinkedIn";
+      } else if (row[4].equals(campaignExpectedValueFY16)) {
+        campaign = "FY2016_PDP";
       } else {
         throw new IllegalArgumentException("The value at index 4 (" + row[4] + ")"
             + "  used to determine campaign was not expected.");
@@ -63,7 +68,7 @@ public class ImportLinkedIn {
       
       //load GroupID
       //TODO: Replace deprecated method
-      GroupID currGroupID = new GroupID(source,medium,campaign);
+      GroupID currGroupID = new GroupID(source,medium,campaign,adContent);
       
       boolean groupIDExists = false;
       //Iterates through hashmap and raised flag if the groupID already exists
@@ -200,7 +205,19 @@ public class ImportLinkedIn {
     
     
     DataAppTest.logger.log(Level.INFO,"Aggregating LinkedIn Data." + System.lineSeparator());
-    ArrayList<LIRecord> acquisitionData = LIRecord.aggregate(groupedData);
+    
+    //Check start date here to run appropriate aggregate method
+    //LinkedIn changed it's data extract format between the end of LinkedIn advertising
+    //in FY15 and the start of LinkedInAdvertising in FY16 
+    
+
+    ArrayList<LIRecord> acquisitionData;
+    if (DataAppTest.startDate.isBefore(LocalDate.of(2015,06,01))) {
+      acquisitionData = LIRecord.aggregate(groupedData);
+    } else {
+      acquisitionData = LIRecord.newAggregate(groupedData);
+    }
+    
     
     //Now that acquisition data is obtained we need
     //behavior data
@@ -224,11 +241,11 @@ public class ImportLinkedIn {
       for (int i = 0 ; i < behaviorResults.getRows().size(); i ++) {
         List<String> currBehaviorRow = behaviorResults.getRows().get(i);
         if (currRec.match(currBehaviorRow)) {
-          currRec.setVisits(Integer.parseInt(currBehaviorRow.get(3)));
-          currRec.setPagesPerVisit(Float.parseFloat(currBehaviorRow.get(4)));
-          currRec.setAvgDuration(Float.parseFloat(currBehaviorRow.get(5)));
-          currRec.setPercentNewVisits(Float.parseFloat(currBehaviorRow.get(6)));
-          currRec.setBounceRate(Float.parseFloat(currBehaviorRow.get(7)));
+          currRec.setVisits(Integer.parseInt(currBehaviorRow.get(4)));
+          currRec.setPagesPerVisit(Float.parseFloat(currBehaviorRow.get(5)));
+          currRec.setAvgDuration(Float.parseFloat(currBehaviorRow.get(6)));
+          currRec.setPercentNewVisits(Float.parseFloat(currBehaviorRow.get(7)));
+          currRec.setBounceRate(Float.parseFloat(currBehaviorRow.get(8)));
         }// end of if
       }//end of inner for
     }//end of outer for

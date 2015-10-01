@@ -287,7 +287,7 @@ public class GACall {
         dateArray[0], // Start date.
         dateArray[1], // End date.
         "ga:visits,ga:pageViewsPerVisit,ga:avgTimeOnSite,ga:percentNewVisits,ga:entranceBounceRate") // Metrics.
-        .setDimensions("ga:source,ga:medium,ga:campaign")
+        .setDimensions("ga:source,ga:medium,ga:campaign,ga:adContent")
         .setFilters("ga:source==LinkedIn;ga:medium==Social")
         .setMaxResults(25)
         .execute();

@@ -42,6 +42,7 @@ public class LIRecord implements importRecord {
   private String source;
   private String medium;
   private String campaign;
+  private String adContent;
   private Integer clicks;
   private Integer impressions;
   private Float CTR;
@@ -59,13 +60,14 @@ public class LIRecord implements importRecord {
   
   //constructor
   //behavior metrics are always created at a later date
-  public LIRecord(String[] dateArray, String src, String med, String camp,
+  public LIRecord(String[] dateArray, String src, String med, String camp, String adC,
                        Integer clks, Integer impr, Float ctr, Float cpc, Float cpm, Float spnd) {
     setStartDate(dateArray[0]);
     setEndDate(dateArray[1]);
     setSource(src);
     setMedium(med);
     setCampaign(camp);
+    setAdContent(adC);
     setClicks(clks);
     setImpressions(impr);
     setCTR(ctr);
@@ -81,7 +83,8 @@ public class LIRecord implements importRecord {
    */
   @Override
   public boolean match(List<String> gaRow) {
-    if (gaRow.get(0).equals(this.source) && gaRow.get(1).equals(this.medium) && gaRow.get(2).equals(this.campaign) ) {
+    if (gaRow.get(0).equals(this.source) && gaRow.get(1).equals(this.medium) && gaRow.get(2).equals(this.campaign) &&
+        gaRow.get(3).equals(this.adContent)) {
       return true;
     }
     return false;
@@ -108,6 +111,7 @@ public class LIRecord implements importRecord {
       Map.Entry<GroupID, ArrayList<String[]>> pairs = it.next();
       //pairs.getValue() is the adwords record
       ArrayList<String[]> currList = pairs.getValue();
+      GroupID currGroupID = pairs.getKey();
 
       //Metrics are aggregated here
       Integer totalClicks = 0;
@@ -139,7 +143,54 @@ public class LIRecord implements importRecord {
       String endDate = guiCode.DataAppTest.endDate.toString();
       String[] dateArray = {startDate,endDate};
 
-      LIRecord rec = new LIRecord(dateArray,"LinkedIn","Social","FY2015_PDP",
+      LIRecord rec = new LIRecord(dateArray,currGroupID.getSource(),currGroupID.getMedium(),currGroupID.getCampaign(), currGroupID.getAdContent(),
+          totalClicks,totalImpressions,aggCTR,aggCPC,aggCPM,totalSpend);
+      LIRecordCollection.add(rec);
+    }
+
+    return LIRecordCollection;
+  }
+  
+  
+  /*
+   * PreCondition: Raw data is already grouped appropriately
+   */
+  public static ArrayList<LIRecord> newAggregate(HashMap<GroupID,ArrayList<String[]>> rawData) {
+    System.out.println("Aggregating rows based on Source, Medium and Campaign...\n");
+    
+    ArrayList<LIRecord> LIRecordCollection = new ArrayList<LIRecord>();
+
+    //Need to loop through Hash Map
+    Iterator<Map.Entry<GroupID, ArrayList<String[]>>> it = rawData.entrySet().iterator();
+    while (it.hasNext()) {
+      Map.Entry<GroupID, ArrayList<String[]>> pairs = it.next();
+      //pairs.getValue() is the adwords record
+      ArrayList<String[]> currList = pairs.getValue();
+      GroupID currGroupID = pairs.getKey();
+
+      //Metrics are aggregated here
+      Integer totalClicks = 0;
+      Integer totalImpressions = 0;
+      Float totalSpend = 0.0f;
+
+      for (String[] row : currList) {
+        totalImpressions += Integer.parseInt(row[17]);
+
+        //Index 12: Clicks
+        totalClicks += Integer.parseInt(row[18]);
+        totalSpend += Float.parseFloat(row[30]);
+      }// end of outer loop
+
+      Float aggCTR = (float)totalClicks/(float)totalImpressions;
+      Float aggCPC = totalSpend/(float)totalClicks;
+      Float kImpressions = (float)totalImpressions/1000;
+      Float aggCPM = totalSpend/kImpressions;
+
+      String startDate = guiCode.DataAppTest.startDate.toString();
+      String endDate = guiCode.DataAppTest.endDate.toString();
+      String[] dateArray = {startDate,endDate};
+
+      LIRecord rec = new LIRecord(dateArray,currGroupID.getSource(),currGroupID.getMedium(),currGroupID.getCampaign(),currGroupID.getAdContent(),
           totalClicks,totalImpressions,aggCTR,aggCPC,aggCPM,totalSpend);
       LIRecordCollection.add(rec);
     }
@@ -382,6 +433,10 @@ public class LIRecord implements importRecord {
 
   public void setPartialWeek(boolean partialWeek) {
     this.partialWeek = partialWeek;
+  }
+  
+  public void setAdContent(String adContent) {
+    this.adContent = adContent;
   }
 
 
