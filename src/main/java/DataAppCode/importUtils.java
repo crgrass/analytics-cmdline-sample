@@ -304,6 +304,9 @@ public class importUtils {
       } else {
         centroCampaignMappings.put("USM010","FY2015_Fall/Spring");
       }
+      centroCampaignMappings.put("USM009","FY2015_Transfer");
+      centroCampaignMappings.put("USM009","FY2015_Transfer");
+      centroCampaignMappings.put("USM009","FY2015_Transfer");
       
       //USM011 is run through Centro by Rinck but USM Marketing is not responsible
       //for this campaign
