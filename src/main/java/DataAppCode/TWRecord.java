@@ -186,11 +186,11 @@ public class TWRecord implements importRecord {
             totalReplies += Integer.parseInt(row[13].replaceAll("\"",""));//Index13: Replies
             totalFollows += Integer.parseInt(row[14].replaceAll("\"",""));//Index 14: Follows
             totalTWClicks += Integer.parseInt(row[15].replaceAll("\"",""));//Index 15: TWClicks
-            totalFavorites += Integer.parseInt(row[16].replaceAll("\"",""));//Index 16: Favorites
-            totalCardEngagements += Integer.parseInt(row[17].replaceAll("\"",""));//Index 17: Card Engagements
-            totalUnfollows += Integer.parseInt(row[18].replaceAll("\"",""));//Index 18: Unfollows
+            totalFavorites += Integer.parseInt(row[17].replaceAll("\"",""));//Index 16: Favorites
+            totalCardEngagements += Integer.parseInt(row[18].replaceAll("\"",""));//Index 17: Card Engagements
+            totalUnfollows += Integer.parseInt(row[19].replaceAll("\"",""));//Index 18: Unfollows
             //Index 19: Engagement Rate
-            totalLinkClicks += (int)Float.parseFloat(row[20].replaceAll("\"",""));//Index 20: Link Clicks
+            totalLinkClicks += (int)Float.parseFloat(row[21].replaceAll("\"",""));//Index 20: Link Clicks
             //TODO: Need to ensure all csvs can handle number formats with commas
           }// end of inner loop
           
