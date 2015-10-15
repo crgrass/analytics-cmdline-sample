@@ -54,7 +54,7 @@ public class ImportLinkedIn {
       String campaignExpectedValue = "PDP- Broader Targeting";
       String campaign = "";
       
-      if (row[4].equals(campaignExpectedValue)) {
+      if (row[4].contains(campaignExpectedValue)) {
         campaign = "FY2015_LinkedIn";
       } else {
         throw new IllegalArgumentException("The value at index 4 (" + row[4] + ")"
