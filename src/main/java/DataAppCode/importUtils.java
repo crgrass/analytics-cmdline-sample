@@ -393,6 +393,8 @@ public class importUtils {
       //load GroupID
       GroupID currGroupID = new GroupID(source,medium,campaign, adContent);
       
+      System.out.println(currGroupID);
+      
       
       boolean groupIDExists = false;
       //Iterates through hashmap and raised flag if the groupID already exists
