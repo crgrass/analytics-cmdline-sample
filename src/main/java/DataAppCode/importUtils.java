@@ -132,6 +132,8 @@ public class importUtils {
     //TODO: Note this is an anomaly from campaign set up, find a way to remove
     DCMMediumMappings.put("Collective.com","Display");
     //TODO: Use regex to consolidate?
+    
+    //Even though Pandora is Audio it is converted to display so that it matched the GA tag
     DCMMediumMappings.put("Pandora","Display");
     DCMMediumMappings.put("Pandora_Tile","Display");
     
@@ -149,6 +151,7 @@ public class importUtils {
     DCMAdContentMappings.put("WGME","SAL_V1");
     DCMAdContentMappings.put("Graduate_SAL_V1","Graduate_SAL_v1");
     DCMAdContentMappings.put("Undergrad_SAL_V1","Undergrad_SAL_v1");
+    DCMAdContentMappings.put("Transfer_SAL_V1","Transfer_SAL_v1");
     
     for (String[] row : rawData) {
       
@@ -200,9 +203,11 @@ public class importUtils {
         adContent = "Undergrad_SAL_V1";
       } else if (row[1].equals("FY2016_Graduate")) {
         adContent = "Graduate_SAL_V1";
+      } else if (row[1].equals("FY2016_Transfer")) {
+        adContent = "Transfer_SAL_V1";
       } else {
         //TODO: Replace with logging
-        System.out.println("Adcontent could not be found");
+        System.out.println("Adcontent " + row[1] +" could not be found");
 
       }
         
@@ -455,6 +460,7 @@ public static HashMap<GroupID, ArrayList<String[]>> groupFacebookRawData(ArrayLi
     //TODO: Determine if we are running IC at the start of the campaign
     facebookCampaignMappings.put("WA_IC","FY2016_Courses_Fall/Spring");
     facebookCampaignMappings.put("HS_UG","FY2016_Undergrad");
+    facebookCampaignMappings.put("UG_TR","FY2016_Transfer");
     
     //Campaign
     //Get the first 5 characters
@@ -513,6 +519,7 @@ public static HashMap<GroupID, ArrayList<String[]>> groupFacebookRawData(ArrayLi
      */
     
     //AdContent
+    //Don't forget and expressions here
     if (row[0].contains("Tour")) {
       adContent = "Tour";
     } else if (row[0].contains("wa_gr_Time")) {
@@ -541,11 +548,17 @@ public static HashMap<GroupID, ArrayList<String[]>> groupFacebookRawData(ArrayLi
       adContent = "Summer_Undergraduate";
       medium = "Right_Rail";
       placement = "Right_Rail";
-    } else {
+    } else if (row[0].contains("Post:")) {
+      adContent = "SAL_V1";
+    } else if (row[0].contains("SAL_V1") &&
+        row[4].contains("UG_TR")) {
+      adContent = "SAL_V1";
+    }else {
       DataAppTest.logger.log(Level.SEVERE,
-          "AdContent for \"" + row +"\" could not be identified");
+          "AdContent for \"" + row[0] +"\" could not be identified");
     }
     
+
     //get the matching ga value from the dictionary
     adContent = facebookAdContentMappings.get(adContent);
     

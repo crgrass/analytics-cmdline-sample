@@ -328,6 +328,7 @@ public static void printGroupedData(HashMap<GroupID, ArrayList<String[]>> groupe
     importDCM(testArgs, startDate, endDate, "CrossPlatform");
     importDCM(testArgs, startDate, endDate, "Mobile");
     importDCM(testArgs, startDate, endDate, "Preroll");
+    //Note this import is for Pandora which although is Audio is treated as display
     importDCM(testArgs, startDate, endDate, "Display");
     
     System.out.println("Testing Completed");
