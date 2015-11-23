@@ -627,6 +627,7 @@ public static HashMap<GroupID, ArrayList<String[]>> groupTwitterRawData(ArrayLis
     twitterCampaignMappings.put("USM FY 2015-2016_WA_DC_SAL_V1","FY2016_Degree_Completion");
     twitterCampaignMappings.put("USM FY 2015-2016_HS_UG_SAL_V1","FY2016_Undergrad");
     twitterCampaignMappings.put("USM FY 2015-2016_UG_GR_SAL_V1","FY2016_Graduate");
+    twitterCampaignMappings.put("Transfers","FY2016_Transfer");
     
     
     String source = "Twitter";
