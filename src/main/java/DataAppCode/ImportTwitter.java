@@ -176,7 +176,7 @@ public class ImportTwitter {
     Connection cnx = null;
     DataAppTest.logger.log(Level.INFO, "Connecting to MySQL database.");
     try {
-      cnx = DatabaseUtils.getGoogleCloudTestDBConnection();
+      cnx = DatabaseUtils.getGoogleCloudDBConnection();
     } catch (Exception e) {
       DataAppTest.logger.log(Level.SEVERE, "There was an error establishing connection to the database.",
           e);

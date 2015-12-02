@@ -176,7 +176,7 @@ public class ImportFB {
       + System.lineSeparator());
       Connection cnx = null;
       try {
-        cnx = DatabaseUtils.getGoogleCloudTestDBConnection();
+        cnx = DatabaseUtils.getGoogleCloudDBConnection();
       } catch (Exception e) {
         DataAppTest.logger.log(Level.SEVERE, "There was an issue connecting to the database." 
       + System.lineSeparator(), e);

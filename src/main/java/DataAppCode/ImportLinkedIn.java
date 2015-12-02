@@ -162,9 +162,6 @@ public class ImportLinkedIn {
 
   } // end of update adwords
   
-  public static void tryThis(){
-    System.out.println("Did this work?");
-  }
   
 
 
@@ -190,6 +187,7 @@ public class ImportLinkedIn {
       
       
       DataAppTest.logger.log(Level.INFO,"Reading LinkedIn File." + System.lineSeparator()); 
+      //TODO: Why is this special method required.
       data = CSVReaders.readLICsv("retrievedLinkedIn.csv");
     } catch (IOException exception) {
       exception.printStackTrace();
@@ -257,7 +255,7 @@ public class ImportLinkedIn {
     DataAppTest.logger.log(Level.INFO,"Connecting to MySQL database." + System.lineSeparator());
     Connection cnx = null;
     try {
-      cnx = DatabaseUtils.getGoogleCloudTestDBConnection();
+      cnx = DatabaseUtils.getGoogleCloudDBConnection();
     } catch (Exception e) {
       DataAppTest.logger.log(Level.SEVERE,"There was an error establishing connection to the"
           + " database" + System.lineSeparator(), e);

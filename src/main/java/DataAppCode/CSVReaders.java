@@ -28,7 +28,6 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.Map;
 
 
 /*
@@ -37,7 +36,7 @@ import java.util.Map;
 public class CSVReaders {
   
   /*
-   * readCSV accepts a filepath as a parameter. The file
+   * readCSV accepts a String filepath as a parameter. The file
    * is then parsed line by line and added to an array
    * of strings for later processing
    */
@@ -48,19 +47,22 @@ public class CSVReaders {
     
     //returnedDataStructure
     ArrayList<String[]> rawData = new ArrayList<String[]>();
+    
     try {
+      
       br = new BufferedReader(new FileReader(filePath));
-      //read lines
+      
+      //read lines and add to rawData array
       while ((line = br.readLine()) != null) {
         String[] csvData = line.split(splitBy);
-        //TODO:This is where we test for correct dates
-        
         rawData.add(csvData); //add line to scv
       } // end of while
       
     } catch(FileNotFoundException e) {
+      //TODO: Log this exception
       e.printStackTrace();
     } catch(IOException e) {
+    //TODO: Log this exception
       e.printStackTrace();
     } finally {
       //Close the buffered reader
@@ -68,13 +70,14 @@ public class CSVReaders {
         try {
           br.close();
         } catch(IOException e) {
+        //TODO: Log this exception
           e.printStackTrace();
         }//end of catch
       }//end of if
     }//end of finally
     
     return rawData;
-  }// end of CSVReaders
+  }// end of readCSV
   
   
   /*
@@ -104,7 +107,7 @@ public class CSVReaders {
   
 
   /*
-   * Exported Double Click reports contain report meta data in 
+   * Exported Double Click reports contain report metadata in 
    * the first 9 rows of the file. Thus, requiring a different
    * method to trim the header. This method also removes the
    * last row which contains totals.
@@ -121,39 +124,42 @@ public class CSVReaders {
   
   /*
    * removeInvalidDates parses files that contain data for more than one reporting cycle. When
-   * a row from outside of the specified reporting cycle is found, the row is removed.
+   * a row from outside of the specified reporting cycle is found, the row is removed. This is used
+   * as a safeguard against vendors either providing additional data outside of the established date
+   * range or naming a file with the incorrect reporting cycle. The method takes three parameters; the
+   * raw data to be parsed, the name of the vendor which will identify the date format and the startDate
+   * which is used to determine the acceptable range of dates for import.
    */
   public static void removeInvalidDates(ArrayList<String[]> raw, String vendor, LocalDate startDate) {
   
-    //if start date positions and format are inconsistent create either a dictionary that 
-    //contains all startDate indexes or make this a final field in the object
-    //if this is the case medium will likely need to be passed as a parameter
+    //Create a hashmap that uses the vendor name as the key and a linked list as the value.
     HashMap<String,LinkedList<String>> vendorConfig = new HashMap<String, LinkedList<String>>();
     
     //TODO: this is currently going to build the vendorConfig library everytime the 
     //method is run. It would be more efficient to build this once per application
     //run time.
     
-    vendorConfig.put("Centro", new LinkedList<String>(Arrays.asList("M/d/yyyy","0"))); // mm/dd/yyyy
-    vendorConfig.put("Facebook", new LinkedList<String>(Arrays.asList("yyyy-MM-dd","2"))); // mm/dd/yyyy
-    vendorConfig.put("Twitter", new LinkedList<String>(Arrays.asList("yyyy-M-d H:m Z","5"))); // yyyy-mm-dd hh:mm -0400(timezone)
-    vendorConfig.put("LinkedIn", new LinkedList<String>(Arrays.asList("L dd, yyyy","0")));// Mar dd, yyyy
-    vendorConfig.put("DoubleClick", new LinkedList<String>(Arrays.asList("yyyy-M-d","0")));// mm/dd/yyyy yyyy-M-d
+    //The linked list contains two values the first being the dateFormat for each value and the
+    //second being the index in which this date file can be found in the rawData array.
+    vendorConfig.put("Centro", new LinkedList<String>(Arrays.asList("M/d/yyyy","0")));
+    vendorConfig.put("Facebook", new LinkedList<String>(Arrays.asList("yyyy-MM-dd","2")));
+    vendorConfig.put("Twitter", new LinkedList<String>(Arrays.asList("yyyy-M-d H:m Z","5")));
+    vendorConfig.put("LinkedIn", new LinkedList<String>(Arrays.asList("L dd, yyyy","0")));
+    vendorConfig.put("DoubleClick", new LinkedList<String>(Arrays.asList("yyyy-M-d","0")));
     
     
     
-    //iterate through array
+    //iterate through raw data array
     for (Iterator<String[]> it = raw.iterator(); it.hasNext();) {
       String[] currRow = it.next();
       //accesses the correct row for the date string from the vendorConfig dictionary
       String dateString = currRow[Integer.parseInt(vendorConfig.get(vendor).get(1))];
       
-      //access the format pattern from the vendor config dict
+      //access the format pattern from the vendorConfig dictionary
       DateTimeFormatter formatter = DateTimeFormatter.ofPattern(vendorConfig.get(vendor).get(0));
       LocalDate currDate = LocalDate.parse(dateString, formatter);
       
-      //compare date to startDate provided from user input
-      //remove values outside startDate + 6
+      //compare date to startDate provided from user input and remove values outside startDate + 6
       if (currDate.isBefore(startDate) 
           || currDate.isAfter(startDate.plusDays(6))) {
        it.remove();
@@ -161,6 +167,9 @@ public class CSVReaders {
     } 
   }//end of remove invalid dates
   
+  
+  //TODO: Determine if readLICSV is still used. If this is still used determine why this
+  //separate method is necessary and see if there is a way to combine with other csvReader method.
   public static ArrayList<String[]> readLICsv(String filePath) throws IOException {
     ArrayList<String[]> rawData = new ArrayList<String[]>();
     //Build reader instance
@@ -182,34 +191,6 @@ public class CSVReaders {
     }
     return rawData;
   }// end of CSVReaders
-  
-  /*
-   * The correctDate method generates a map which contains
-   * the relevant indexes that contain the dates in each
-   * vendors import file.
-   */
-  public static boolean correctDate(String filePath) {
-    Map<String,Integer[]> dateIndexes = new HashMap<String,Integer[]>();
-    //If there are two integers in the array this indicates that both the
-    //start and end dates are relevant
-    dateIndexes.put("Google Adwords", new Integer[] {0,0});
-    
-    dateIndexes.put("Centro Digital Display", new Integer[] {0,1});
-    
-    dateIndexes.put("Centro Mobile Display", new Integer[] {0,1});
-    
-    dateIndexes.put("Centro Video Display", new Integer[] {0,1});
-    
-    dateIndexes.put("Centro Rich Media", new Integer[] {0,1});
-    
-    dateIndexes.put("Facebook", new Integer[] {0,1});
-    
-    dateIndexes.put("Twitter", new Integer[] {5});
-    
-    dateIndexes.put("LinkedIn", new Integer[] {0});
-    
-    return true;
-  }
   
   
   //Used for testing

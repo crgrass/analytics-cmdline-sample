@@ -190,7 +190,7 @@ public class ImportAdwords {
     Connection cnx = null;
     
     try {
-      cnx = DatabaseUtils.getGoogleCloudTestDBConnection();
+      cnx = DatabaseUtils.getGoogleCloudDBConnection();
       DataAppTest.logger.log(Level.INFO,"Adwords Database Connection Successful." + System.lineSeparator());
     } catch (Exception e) {
       DataAppTest.logger.log(Level.SEVERE, "There was an error establishing connection"

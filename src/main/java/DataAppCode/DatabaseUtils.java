@@ -19,9 +19,14 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 
+//TODO: This class likely can be combined with another
+
 public class DatabaseUtils {
 
-  //This connection connects to the Microsoft Access Test Database
+  //This connection connects to the original deprecated 
+  //Microsoft Access Test Database. The initial purpose of this database
+  //was to store the initial import for review before moving the records
+  //to the production access database.
   public static Connection getTestDBConnection() throws Exception {
     Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
     String url = "jdbc:ucanaccess://C:/users/cgrass/Desktop/"
@@ -31,7 +36,11 @@ public class DatabaseUtils {
     return conn;
   }
   
-  public static Connection getGoogleCloudTestDBConnection() throws Exception {
+  /*
+   * This database connection links to the mySQL database hosted
+   * through GoogleCloudSQL.
+   */
+  public static Connection getGoogleCloudDBConnection() throws Exception {
     
     Class.forName("com.mysql.jdbc.Driver").newInstance();
     Connection conn = null;

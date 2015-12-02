@@ -18,25 +18,25 @@ import java.util.List;
 
 
 /**
- * @author cgrass@google.com (Your Name Here)
+ * @author cgrass@google.com (Chris Grass)
  *
  */
 public class DDRecord implements importRecord {
   
-  //TODO: Determine way to store vendor specific data in the vendorRecor itself
+  //TODO: Determine way to store vendor specific data in the vendorRecord itself
   
- //record attributes
+ //Fields for record metaData
   private int recordCount = 0;
   private boolean partialWeek = false;
   private int daysActive = 7;
   
-  //import data
+  //Fields for advertising performance data
   private String startDate;
   private String endDate;
   private String source; // the source is also the network
   private String medium;
   private String campaign;
-  private String network; //This is new be sure to include in query
+  private String network;
   private String adContent;
   private Integer clicks;
   private Integer impressions;
@@ -44,9 +44,9 @@ public class DDRecord implements importRecord {
   private Float avgCPC;
   private Float avgCPM;
   private Float spend;
-  private Integer totalConversions; //This is new be sure to include in query
-  private Integer PCConversions; //This is new be sure to include in query
-  private Integer PIConversions; //This is new be sure to include in query
+  private Integer totalConversions;
+  private Integer PCConversions;
+  private Integer PIConversions;
   private Integer visits = 0;
   private Float pagesPerVisit = 0.0f;
   private Float avgDuration = 0.0f;
@@ -54,8 +54,7 @@ public class DDRecord implements importRecord {
   private Float bounceRate = 0.0f;
   
   
-  //constructor
-  //behavior metrics are created at a later date
+  //Constructor. Note: Behavior values are assigned to fields later in the import process.
   public DDRecord(String[] dateArray, String src, String med, String camp, String ntwk, String adc,
                        Integer clks, Integer impr, Float ctr, Float cpc, Float cpm, Float spnd,
                        Integer totalcnv, Integer pccnv, Integer picnv) {
@@ -80,10 +79,34 @@ public class DDRecord implements importRecord {
   /*
    * Pre: The query passed to the GA API requests source, medium and campaign
    * as the first, second and third dimensions. Without this query structure the
-   * the wrong dimension from the GA results will be matched always returning false 
+   * the wrong dimension from the GA results will be matched always returning false.
+   * 
+   * The match method compares the source, medium, campaign and adContent of the vendorRecord to the corresponding values
+   * provided by the Google Analytics API. If this method returns true the data app will no it has found the correct matching
+   * engagement data and will load that data into the vendorRecord.
    */
   @Override
   public boolean match(List<String> gaRow) {
+    if (gaRow.get(0).equals(this.source) && gaRow.get(1).equals(this.medium) && gaRow.get(2).equals(this.campaign)
+        && gaRow.get(3).equals(this.adContent)) {
+      return true;
+    }
+    return false;
+  }
+  
+  /*
+   * This is a debugging method which can be used when engagement data for import records is missing. If engagement data
+   * does exist for the Campaign, Source, Medium and AdContent (which should be verified first manually through Google
+   * Analytics) then this will print out the matching process to help determine why the engagement data is not being 
+   * paired with the acquistion data.
+   */
+  @Override
+  public boolean matchDebug(List<String> gaRow) {
+    System.out.println("Source, GA response first: " + gaRow.get(0) + "=? " + this.source);
+    System.out.println("Medium, GA response first: " + gaRow.get(1) + "=? " + this.medium);
+    System.out.println("Campaign, GA response first: " + gaRow.get(2) + "=? " + this.campaign);
+    System.out.println("AdContent, GA response first: " + gaRow.get(3) + "=? " + this.adContent);
+    System.out.println();
     if (gaRow.get(0).equals(this.source) && gaRow.get(1).equals(this.medium) && gaRow.get(2).equals(this.campaign)
         && gaRow.get(3).equals(this.adContent)) {
       return true;
@@ -125,10 +148,14 @@ public class DDRecord implements importRecord {
    * @param args
    */
   public static void main(String[] args) {
-    System.out.println("Testing method for DDRecord.");
 
   }
 
+  
+  /*
+   * Setter and Getter methods below this point.
+   */
+  
   /**
    * @return the recordCount
    */
@@ -463,20 +490,6 @@ public class DDRecord implements importRecord {
 
   public void setAdContent(String adContent) {
     this.adContent = adContent;
-  }
-  
-  @Override
-  public boolean matchDebug(List<String> gaRow) {
-    System.out.println("Source, GA response first: " + gaRow.get(0) + "=? " + this.source);
-    System.out.println("Medium, GA response first: " + gaRow.get(1) + "=? " + this.medium);
-    System.out.println("Campaign, GA response first: " + gaRow.get(2) + "=? " + this.campaign);
-    System.out.println("AdContent, GA response first: " + gaRow.get(3) + "=? " + this.adContent);
-    System.out.println();
-    if (gaRow.get(0).equals(this.source) && gaRow.get(1).equals(this.medium) && gaRow.get(2).equals(this.campaign)
-        && gaRow.get(3).equals(this.adContent)) {
-      return true;
-    }
-    return false;
   }
 
 }

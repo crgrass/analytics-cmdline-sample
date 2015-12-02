@@ -15,18 +15,22 @@
 package DataAppCode;
 
 /**
- * @author cgrass@google.com (Your Name Here)
+ * @author cgrass@google.com (Chris Grass)
  *
  */
+
+/*
+ * The AdwordsRecord class is an object that stores all relevant data
+ * necessary for import.
+ */
 public class AdwordsRecord {
-  
-  //record attributes
+ 
   //TODO: Ensure these are populated
   private int recordCount = 0;
   private boolean partialWeek = false;
   private int daysActive = 7;
   
-  //import data
+  //Marketing Metrics
   private String startDate;
   private String endDate;
   private String source;
@@ -69,6 +73,7 @@ public class AdwordsRecord {
   }
   
   
+  //TODO: Ensure there are consistent toString methods for all vendorRecords
   @Override
   public String toString() {
     String printThis = "";
@@ -92,7 +97,6 @@ public class AdwordsRecord {
     printThis += "Days Active: " + this.getDaysActive() + "\n";
     return printThis;
   }
-
   
   
   /*

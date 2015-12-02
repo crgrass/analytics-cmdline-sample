@@ -165,7 +165,7 @@ public class ImportCentroVid {
     Connection cnx = null;
     try {
 //      cnx = DatabaseUtils.getTestDBConnection();
-      cnx = DatabaseUtils.getGoogleCloudTestDBConnection();
+      cnx = DatabaseUtils.getGoogleCloudDBConnection();
       System.out.println("Database Connection Successful\n");
     } catch (Exception e) {
       System.out.println("There was an error establishing connection to the database");

@@ -56,8 +56,13 @@ public class DataAppTest extends Application {
 
 	@Override
 	public void start(Stage primaryStage) {
+	  
+	  //Initialize dropbox connection so that data files can be pulled for import
+      logger.log(Level.INFO,"Initializing Dropbox Connection" +
+      System.lineSeparator());
 	  DropBoxConnection.initializeDropboxConnection();
 	  
+	  //??
 	  TextDisplayHandler displayHandler = new TextDisplayHandler();
 	  outputDisplay = new DataAppTextDisplay();
       displayHandler.setTextDisplay(outputDisplay);
@@ -69,26 +74,26 @@ public class DataAppTest extends Application {
 	  //Based off of current date find most recent valid reporting cycle
       Calendar[] reportingCycle = DateMethods.findLastReportingCycle();
       
-      Date sd = null;
-      Date ed = null;
-      //Convert to LocalDate
-      sd = reportingCycle[0].getTime();
-      ed = reportingCycle[1].getTime();
+      //Convert reporting cycle dates to LocalDates
+      Date sd = reportingCycle[0].getTime();
+      Date ed = reportingCycle[1].getTime();
   
+      //TODO: Determine if the following four lines of code are necessary
       Instant sdInstant = Instant.ofEpochMilli(sd.getTime());
       Instant edInstant = Instant.ofEpochMilli(ed.getTime());
       startDate = LocalDateTime.ofInstant(sdInstant, ZoneId.systemDefault()).toLocalDate();
       endDate = LocalDateTime.ofInstant(edInstant, ZoneId.systemDefault()).toLocalDate();
 	  
-      //Generate component so be added to master scene
+      //Generate key components to be added to the master scene
       VBox welcome = addWelcome();
       HBox dateSelection = addDateSelection();
 	  AnchorPane fullImport = addFullImport();
 	  AnchorPane partialImport = addPartialImport();
 	  AnchorPane indivFileImport = addIndividualFileImport();
 	  
-	  //VBox that holds all components for primary scene
-	  primaryVBox.getChildren().addAll(welcome,dateSelection,fullImport,partialImport,indivFileImport,outputDisplay.classSP);
+	  //Parent VBox that holds all components for primary scene created above
+	  primaryVBox.getChildren().addAll(welcome,dateSelection,fullImport,partialImport,
+	      indivFileImport,outputDisplay.classSP);
 	  
 	  
 	  Scene scene = new Scene(primaryVBox,800,800);
@@ -102,15 +107,14 @@ public class DataAppTest extends Application {
 	
 	
 	public static void main(String[] args) throws Exception {
-  	  /*
-  	   * Initialize Logging
-  	   */
 	  
-      //logger created upon class initialization
-      logger.setLevel(Level.ALL); //Show all log levels
+      //logger created upon class initialization showing all log levels
+      logger.setLevel(Level.ALL);
 	  
-	  Date currDate = new Date();
-	  //Need to format date to remove spaces for filename
+	  //Create date to use as string in log filename.
+      Date currDate = new Date();
+	  
+      //Create date format that will be acceptable to include in filename
 	  DateFormat df = new SimpleDateFormat("MM.dd.yyyy_HH.mm.ss");
 	  
 	  String logDate = df.format(currDate);
@@ -121,12 +125,8 @@ public class DataAppTest extends Application {
 	  logger.addHandler(fh);
 	  
 	  logger.log(Level.INFO, "Application Started." + System.lineSeparator());
-      
-	  //Open connection to dropbox API
-	  logger.log(Level.INFO,"Initializing Dropbox Connection" +
-	  System.lineSeparator());
 	  
-	  //master method for JavaFX
+	  //master method for JavaFX which launches the start method
 	  launch(args);
 	}
 	
@@ -134,7 +134,7 @@ public class DataAppTest extends Application {
 	
 	
 	/*
-	 * Generate a VBox that is ready to be added to the master VBox.
+	 * Generate a VBox that is ready to be added to the primaryVBox.
 	 * This VBox contains only a simple welcome message
 	 */
 	public VBox addWelcome() {
@@ -150,7 +150,7 @@ public class DataAppTest extends Application {
 	
 	/*
 	 * Generate a fully populated date selection HBox.
-	 * Once this is generated it simply needs to be added to a parent node.
+	 * Once this is generated it simply needs to be added to a primaryVBox.
 	 * The HBox contains an instructional message as well as a date selector.
 	 */
 	public HBox addDateSelection(){
@@ -168,127 +168,154 @@ public class DataAppTest extends Application {
 	
 	
 	
-	   public AnchorPane addFullImport(){
-	     AnchorPane apFullImport = new AnchorPane();
-	      HBox hboxLeft = new HBox();
-	      HBox hboxRight = new HBox();
-	      hboxLeft.setPadding(new Insets(15,12,15,12));
-	      hboxRight.setPadding(new Insets(15,12,15,12));
-	      hboxLeft.setSpacing(10);
-	      hboxRight.setSpacing(10);
-	      
-	      Text txtImportAllVendors = new Text("Import All Vendors.");
-	      Button btnImportAllVendors = new Button("Begin");
-	      EventHandler<ActionEvent> evntFullImport = ButtonEvents.evntFullImport();
-	      btnImportAllVendors.setOnAction(evntFullImport);
-	      
-	      
-	      hboxLeft.getChildren().add(txtImportAllVendors);
-	      hboxRight.getChildren().add(btnImportAllVendors);
-	      
-	      apFullImport.getChildren().addAll(hboxLeft,hboxRight);
-	      AnchorPane.setLeftAnchor(hboxLeft, 0.0);
-	      AnchorPane.setRightAnchor(hboxRight, 0.0);
-	      
-	      return apFullImport;
-	    }
-	   
-	   public AnchorPane addPartialImport(){
-         AnchorPane apFullImport = new AnchorPane();
-          HBox hboxLeft = new HBox();
-          HBox hboxRight = new HBox();
-          hboxLeft.setPadding(new Insets(15,12,15,12));
-          hboxRight.setPadding(new Insets(15,12,15,12));
-          hboxLeft.setSpacing(10);
-          hboxRight.setSpacing(10);
-          
-          Text txtImportPartialVendors = new Text("Select which vendors to import.");
-          Button btnImportPartialVendors = new Button("Begin");
-          EventHandler<ActionEvent> evntPartialImport = ButtonEvents.evntPartialImport();
-          btnImportPartialVendors.setOnAction(evntPartialImport);
-          
-          
-          hboxLeft.getChildren().add(txtImportPartialVendors);
-          hboxRight.getChildren().add(btnImportPartialVendors);
-          
-          apFullImport.getChildren().addAll(hboxLeft,hboxRight);
-          AnchorPane.setLeftAnchor(hboxLeft, 0.0);
-          AnchorPane.setRightAnchor(hboxRight, 0.0);
-          
-          return apFullImport;
-        }
-	   
-	   public AnchorPane addIndividualFileImport() {
-	     AnchorPane apIndivFile = new AnchorPane();
-	     HBox hboxLeft = new HBox();
-         HBox hboxRight = new HBox();
-         hboxLeft.setPadding(new Insets(15,12,15,12));
-         hboxRight.setPadding(new Insets(15,12,15,12));
-         hboxLeft.setSpacing(10);
-         hboxRight.setSpacing(10);
-         
-         Text txtImportPartialVendors = new Text("Import an ad hoc file.");
-         Button btnImportPartialVendors = new Button("Begin");
-         
-         //TODO: Create button event
-         EventHandler<ActionEvent> evntIndivFileImport = ButtonEvents.evntIndivFileImport();
-         btnImportPartialVendors.setOnAction(evntIndivFileImport);
-         
-         hboxLeft.getChildren().add(txtImportPartialVendors);
-         hboxRight.getChildren().add(btnImportPartialVendors);
-         
-         apIndivFile.getChildren().addAll(hboxLeft,hboxRight);
-         AnchorPane.setLeftAnchor(hboxLeft, 0.0);
-         AnchorPane.setRightAnchor(hboxRight, 0.0);
-         
-         return apIndivFile;
-	     
-	   }
-	   
-	
-	
-	   
-	   public DatePicker dpDate(String whichDate) {
-	    
-	    LocalDate initialDate = null;
-	    //Convert to LocalDate
-	    if (whichDate.equals("start")) {
-	      initialDate = startDate;
-	    } else {
-	      initialDate = endDate;
-	    }
+	/*
+	 * Generate a fully populated AnchorPane that includes and instructional message for
+	 * importing all files and a button that launches the fullImport window.
+	 */
+	public AnchorPane addFullImport(){
+	  AnchorPane apFullImport = new AnchorPane();
+	  HBox hboxLeft = new HBox();
+	  HBox hboxRight = new HBox();
+	  hboxLeft.setPadding(new Insets(15,12,15,12));
+	  hboxRight.setPadding(new Insets(15,12,15,12));
+	  hboxLeft.setSpacing(10);
+	  hboxRight.setSpacing(10);
+
+	  Text txtImportAllVendors = new Text("Import All Vendors.");
+	  Button btnImportAllVendors = new Button("Begin");
 	  
-	//Date Picker Cell Factorys
-	    //Only allows selection of Tuesday
-	    final Callback<DatePicker, DateCell> startDateDayCellFactory = new Callback<DatePicker, DateCell>() {
-	      @Override
-        public DateCell call(final DatePicker datePicker) {
-	          return new DateCell() {
-	              @Override public void updateItem(LocalDate item, boolean empty) {
-	                  super.updateItem(item, empty);
-	                  if (!item.getDayOfWeek().equals(DayOfWeek.TUESDAY) ||
-	                      item.isAfter(LocalDate.now().minusDays(6))) {
-	                    setDisable(true);
-	                  }
-	              }
-	          };
-	      }
-	  };
-	  final DatePicker startDatePicker = new DatePicker(initialDate);
-	    startDatePicker.setDayCellFactory(startDateDayCellFactory);
-	     startDatePicker.setOnAction(new EventHandler<ActionEvent>() {
-	         @Override
-	      public void handle(ActionEvent t) {
-	             startDate = startDatePicker.getValue();
-	             endDate = startDate.plusDays(6);
-	         }
-	     });
-	     
-	     return startDatePicker;
+	  //evntFullImport launches the fullImport window
+	  EventHandler<ActionEvent> evntFullImport = ButtonEvents.evntFullImport();
+	  btnImportAllVendors.setOnAction(evntFullImport);
+
+	  hboxLeft.getChildren().add(txtImportAllVendors);
+	  hboxRight.getChildren().add(btnImportAllVendors);
+
+	  apFullImport.getChildren().addAll(hboxLeft,hboxRight);
+	  AnchorPane.setLeftAnchor(hboxLeft, 0.0);
+	  AnchorPane.setRightAnchor(hboxRight, 0.0);
+
+	  return apFullImport;
 	}
 	   
-	   
+	
+	/*
+     * Generate a fully populated AnchorPane that includes and instructional message for
+     * completing a partial import and a button that launches the partialImport window.
+     */
+	public AnchorPane addPartialImport(){
+	  AnchorPane apFullImport = new AnchorPane();
+	  HBox hboxLeft = new HBox();
+	  HBox hboxRight = new HBox();
+	  hboxLeft.setPadding(new Insets(15,12,15,12));
+	  hboxRight.setPadding(new Insets(15,12,15,12));
+	  hboxLeft.setSpacing(10);
+	  hboxRight.setSpacing(10);
+
+	  Text txtImportPartialVendors = new Text("Select which vendors to import from a list.");
+	  Button btnImportPartialVendors = new Button("Begin");
 	  
+	  //This event launches the partialImport window 
+	  EventHandler<ActionEvent> evntPartialImport = ButtonEvents.evntPartialImport();
+	  btnImportPartialVendors.setOnAction(evntPartialImport);
+
+	  hboxLeft.getChildren().add(txtImportPartialVendors);
+	  hboxRight.getChildren().add(btnImportPartialVendors);
+
+	  apFullImport.getChildren().addAll(hboxLeft,hboxRight);
+	  AnchorPane.setLeftAnchor(hboxLeft, 0.0);
+	  AnchorPane.setRightAnchor(hboxRight, 0.0);
+
+	  return apFullImport;
+	}
+	   
+	/*
+     * Generate a fully populated AnchorPane that includes and instructional message for
+     * importing an individual vendor file that does not require the filename contain the
+     * [vendor]_YYYY-MM-DD.csv convention. This method has been created to accomodate the
+     * import of updated files that are provided by vendors when errors are identified. 
+     * This is designed to reduce confusion over which file is accurate after the import
+     * process which can be difficult when filenames are being changed back and forth to
+     * meet to preconditions required for the data app to import data through the normal
+     * import process.
+     */
+	public AnchorPane addIndividualFileImport() {
+	  AnchorPane apIndivFile = new AnchorPane();
+	  HBox hboxLeft = new HBox();
+	  HBox hboxRight = new HBox();
+	  hboxLeft.setPadding(new Insets(15,12,15,12));
+	  hboxRight.setPadding(new Insets(15,12,15,12));
+	  hboxLeft.setSpacing(10);
+	  hboxRight.setSpacing(10);
+
+	  Text txtImportPartialVendors = new Text("Import an ad hoc file.");
+	  Button btnImportPartialVendors = new Button("Begin");
+
+	  //This event launches the individual file import window.
+	  EventHandler<ActionEvent> evntIndivFileImport = ButtonEvents.evntIndivFileImport();
+	  btnImportPartialVendors.setOnAction(evntIndivFileImport);
+
+	  hboxLeft.getChildren().add(txtImportPartialVendors);
+	  hboxRight.getChildren().add(btnImportPartialVendors);
+
+	  apIndivFile.getChildren().addAll(hboxLeft,hboxRight);
+	  AnchorPane.setLeftAnchor(hboxLeft, 0.0);
+	  AnchorPane.setRightAnchor(hboxRight, 0.0);
+
+	  return apIndivFile;
+	}
+	   
+	/*
+	 * This method generates a datePicker which allows for easy selection of available
+	 * reporting cycle start dates. The returned date picker is added into the dateSelection
+	 * hBox.  
+	 */
+	public DatePicker dpDate(String whichDate) {
+
+	  LocalDate initialDate = null;
+	  
+	  //TODO: The parameter being passed here is a string that is being used as a switch
+	  //to determine whether the start date or end date should be used. Is there actually an
+	  //instance where the endDate is used. It's possible that this was created with the intent
+	  //that the selection of startDate would auto-populate the end date for display, however,
+	  //this was not deemed necessary for the final design. Consider removing.
+	  if (whichDate.equals("start")) {
+	    initialDate = startDate;
+	  } else {
+	    initialDate = endDate;
+	  }
+
+	  //Date Picker Cell Factory only allows selection of Tuesday's
+	  //Creates the cells within the datepicker and restricts selection.
+	  final Callback<DatePicker, DateCell> startDateDayCellFactory = new Callback<DatePicker, DateCell>() {
+	    @Override
+	    public DateCell call(final DatePicker datePicker) {
+	      return new DateCell() {
+	        @Override public void updateItem(LocalDate item, boolean empty) {
+	          super.updateItem(item, empty);
+	          //calculation that determines which cells are selectable.
+	          if (!item.getDayOfWeek().equals(DayOfWeek.TUESDAY) ||
+	              item.isAfter(LocalDate.now().minusDays(6))) {
+	            setDisable(true);
+	          }
+	        }
+	      };
+	    }
+	  };
+	  
+	  final DatePicker startDatePicker = new DatePicker(initialDate);
+	  startDatePicker.setDayCellFactory(startDateDayCellFactory);
+	  startDatePicker.setOnAction(new EventHandler<ActionEvent>() {
+	    @Override
+	    public void handle(ActionEvent t) {
+	      //On selection of startDate is is assigned to the classes static method and
+	      //endDate is calculated and assigned as well.
+	      startDate = startDatePicker.getValue();
+	      endDate = startDate.plusDays(6);
+	    }
+	  });
+
+	  return startDatePicker;
+	} 
 	
-	
-}
+}//end of DataAppTest
