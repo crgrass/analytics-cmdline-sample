@@ -314,6 +314,9 @@ public class importUtils {
       //for this campaign
       centroCampaignMappings.put("USM011","ERROR_FY2015_Law");
       centroCampaignMappings.put("USM012","FY2015_Umbrella");
+      centroCampaignMappings.put("USM013","FY2016_Umbrella");
+      centroCampaignMappings.put("USM014","FY2016_Umbrella");
+      centroCampaignMappings.put("USM015","FY2016_Umbrella");
       /*
        * USM012 is actually Umbrella
        */
@@ -324,6 +327,7 @@ public class importUtils {
       centroAdContentMappings.put("tour","Campus_Tour");
       centroAdContentMappings.put("misc","Unknown");
       centroAdContentMappings.put("scholarship", "Scholarship");
+      centroAdContentMappings.put("SAL_v1", "SAL_v1");
       
       
       String source;
@@ -363,7 +367,8 @@ public class importUtils {
         adContent = "tour";
       } else if (campaign.equals("FY2015_Courses_Summer")) { //ad content not set for Summer DD
         adContent = "summer";
-      } else if (row[6].contains("Tracking")) {
+      } else if (row[6].contains("Tracking") || row[6].equals("USM_2015_Choice_USM30AUG15_PreRoll_Update")
+          || row[6].equals("USM_Choice_USM30AUG15_Pre_Roll")) {
         adContent = "Tracking Pixel";
       } else if (row[6].contains("GAME")) {
         adContent = "scholarship";
@@ -372,12 +377,15 @@ public class importUtils {
         adContent = "misc";
       }
       
+      
 
       if (adContent.equals("Tracking Pixel")) {
         if (campaign.equals("FY2015_Courses_Summer")) {
           adContent = "summer";
         } else if (campaign.equals("FY2015_Umbrella")) {
           adContent = "scholarship";
+        }else if (campaign.equals("FY2016_Umbrella")) {
+          adContent = "SAL_v1";
         } else {
           adContent = "time";
         }

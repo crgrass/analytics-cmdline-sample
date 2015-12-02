@@ -94,7 +94,7 @@ public class GroupID {
   
   @Override
   public String toString() {
-    String formattedString = "Source: " + this.source +", Medium: " + this.medium + ", Campaign: " + this.campaign;
+    String formattedString = "Source: " + this.source +", Medium: " + this.medium + ", Campaign: " + this.campaign + ", AdContent:  " + this.adContent;
     return formattedString;
   }
 

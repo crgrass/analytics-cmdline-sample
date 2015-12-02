@@ -57,6 +57,7 @@ public class ImportLinkedIn {
       String campaign = "";
       String adContent = "(not set)";
       
+
       if (row[4].equals(campaignExpectedValueFY15)) {
         campaign = "FY2015_LinkedIn";
       } else if (row[4].equals(campaignExpectedValueFY16)) {
