@@ -1,220 +1,186 @@
 testReport
 
-Date/Time Generated,11/23/15 11:04 AM
+Date/Time Generated,12/1/15 9:41 AM
 Report Time Zone,America/New_York
 SubAccount Name,Rinck Advertising
 Account ID,9515
-Date Range,11/3/15 - 11/9/15
+Date Range,11/24/15 - 11/30/15
 
 Report Fields
 Date,Campaign,Ad,Site (DCM),Placement,Ad Type,Creative,Click-through URL,Clicks,Impressions,Click Rate,Active View: Viewable Impressions,Active View: Measurable Impressions,Active View: Eligible Impressions,Media Cost
-2015-11-03,FY2016_Graduate,160x600 Default Web Ad,Collective.com,Cross Platform,Default,SAL_V1,http://usm.maine.edu/explore,0,2,0.00,0,0,0,0.009700000
-2015-11-03,FY2016_Graduate,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,http://usm.maine.edu/explore,4,5521,0.07,363,2309,5521,26.776850000
-2015-11-03,FY2016_Graduate,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,http://usm.maine.edu/explore,3,2293,0.13,215,1234,2293,11.121050000
-2015-11-03,FY2016_Graduate,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,http://usm.maine.edu/explore,0,619,0.00,142,539,619,3.002150000
-2015-11-03,FY2016_Graduate,SAL_V1-Mobile,MobileFuse.com,Mobile,Standard,SAL_V1,http://usm.maine.edu/explore,5,995,0.50,18,898,995,6.915250000
-2015-11-03,FY2016_Graduate,SAL_V1-Tablet,MobileFuse.com,Tablet,Standard,SAL_V1,http://usm.maine.edu/explore,4,1636,0.24,18,1454,1636,13.578800000
-2015-11-03,FY2016_Graduate,SAL_V1-Tablet,MobileFuse.com,Tablet,Standard,SAL_V1,http://usm.maine.edu/explore,0,564,0.00,0,0,0,4.681200000
-2015-11-03,FY2016_Graduate,SAL_V1_grad-Mobile,MobileFuse.com,Mobile,Standard,SAL_V1_grad,http://usm.maine.edu/explore,9,861,1.05,16,771,861,5.983950000
-2015-11-03,FY2016_Graduate,Tracking-Pandora_Tile,Pandora,Pandora_Tile,Tracking,Tracking,http://usm.maine.edu/explore,13,2567,0.51,0,0,0,0.000000000
-2015-11-03,FY2016_Transfer,300x250 Default Web Ad,MobileFuse.com,Tablet,Default,SAL_V1,https://usm.maine.edu/explore,7,2062,0.34,0,0,0,17.114600000
-2015-11-03,FY2016_Transfer,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore,2,1599,0.13,366,1365,1599,7.755150000
-2015-11-03,FY2016_Transfer,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore,1,760,0.13,207,730,760,3.686000000
-2015-11-03,FY2016_Transfer,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore,0,2020,0.00,453,1744,2020,9.797000000
-2015-11-03,FY2016_Transfer,SAL_V1-Mobile,MobileFuse.com,Mobile,Standard,SAL_V1,https://usm.maine.edu/explore,17,2490,0.68,0,0,0,17.305500000
-2015-11-03,FY2016_Undergraduate,160x600 Default Web Ad,Collective.com,Cross Platform,Default,SAL_V1,https://usm.maine.edu/explore,0,1,0.00,0,0,0,0.004850000
-2015-11-03,FY2016_Undergraduate,728x90 Default Web Ad,Collective.com,Cross Platform,Default,SAL_V1,https://usm.maine.edu/explore,0,2,0.00,0,0,0,0.009700000
-2015-11-03,FY2016_Undergraduate,Display,Pandora,Pandora,Tracking,SAL_V1,https://usm.maine.edu/explore,31,2565,1.21,0,0,0,0.000000000
-2015-11-03,FY2016_Undergraduate,SAL_V1,WGME,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore-undergraduate-degree,0,62,0.00,27,57,62,0.000000000
-2015-11-03,FY2016_Undergraduate,SAL_V1,WGME,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore-undergraduate-degree,0,124,0.00,30,119,124,0.000000000
-2015-11-03,FY2016_Undergraduate,SAL_V1,WGME,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore-undergraduate-degree,0,5,0.00,1,5,5,0.000000000
-2015-11-03,FY2016_Undergraduate,SAL_V1,WGME,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore-undergraduate-degree,0,62,0.00,15,62,62,0.000000000
-2015-11-03,FY2016_Undergraduate,SAL_V1,WGME,Cross Platform,Standard,SAL_V1_courses,https://usm.maine.edu/explore-undergraduate-degree,0,11,0.00,4,11,11,0.000000000
-2015-11-03,FY2016_Undergraduate,SAL_V1,WGME,Cross Platform,Standard,SAL_V1_majors,https://usm.maine.edu/explore-undergraduate-degree,0,10,0.00,1,10,10,0.000000000
-2015-11-03,FY2016_Undergraduate,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore,0,1056,0.00,306,1011,1056,5.121600000
-2015-11-03,FY2016_Undergraduate,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore,2,2334,0.09,500,2237,2334,11.319900000
-2015-11-03,FY2016_Undergraduate,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore,0,2386,0.00,507,2120,2386,11.572100000
-2015-11-03,FY2016_Undergraduate,SAL_V1-Mobile,MobileFuse.com,Mobile,Standard,SAL_V1,https://usm.maine.edu/explore,8,813,0.98,103,672,813,5.650350000
-2015-11-03,FY2016_Undergraduate,SAL_V1-PreRoll Tracking,Collective.com,Preroll,Tracking,SAL_V1,https://usm.maine.edu/explore,23,1758,1.31,0,0,0,22.854000000
-2015-11-03,FY2016_Undergraduate,SAL_V1-Tablet,MobileFuse.com,Tablet,Standard,SAL_V1,https://usm.maine.edu/explore,7,1992,0.35,0,1989,1992,16.533600000
-2015-11-03,FY2016_Undergraduate,SAL_V1_courses-Mobile,MobileFuse.com,Mobile,Standard,SAL_V1_courses,https://usm.maine.edu/explore,6,860,0.70,115,695,860,5.977000000
-2015-11-03,FY2016_Undergraduate,SAL_V1_majors-Mobile,MobileFuse.com,Mobile,Standard,SAL_V1_majors,https://usm.maine.edu/explore,5,958,0.52,137,764,958,6.658100000
-2015-11-04,FY2016_Graduate,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,http://usm.maine.edu/explore,3,5121,0.06,218,1863,5121,24.836850000
-2015-11-04,FY2016_Graduate,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,http://usm.maine.edu/explore,0,736,0.00,119,650,736,3.569600000
-2015-11-04,FY2016_Graduate,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,http://usm.maine.edu/explore,3,2032,0.15,213,1212,2032,9.855200000
-2015-11-04,FY2016_Graduate,SAL_V1-Mobile,MobileFuse.com,Mobile,Standard,SAL_V1,http://usm.maine.edu/explore,4,946,0.42,15,871,946,6.574700000
-2015-11-04,FY2016_Graduate,SAL_V1-Tablet,MobileFuse.com,Tablet,Standard,SAL_V1,http://usm.maine.edu/explore,3,1651,0.18,13,1459,1651,13.703300000
-2015-11-04,FY2016_Graduate,SAL_V1-Tablet,MobileFuse.com,Tablet,Standard,SAL_V1,http://usm.maine.edu/explore,0,557,0.00,0,0,0,4.623100000
-2015-11-04,FY2016_Graduate,SAL_V1_grad-Mobile,MobileFuse.com,Mobile,Standard,SAL_V1_grad,http://usm.maine.edu/explore,8,745,1.07,13,705,745,5.177750000
-2015-11-04,FY2016_Graduate,Tracking-Pandora_Tile,Pandora,Pandora_Tile,Tracking,Tracking,http://usm.maine.edu/explore,26,2488,1.05,0,0,0,0.000000000
-2015-11-04,FY2016_Transfer,300x250 Default Web Ad,MobileFuse.com,Tablet,Default,SAL_V1,https://usm.maine.edu/explore,9,2024,0.44,0,0,0,16.799200000
-2015-11-04,FY2016_Transfer,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore,3,2012,0.15,394,1550,2012,9.758200000
-2015-11-04,FY2016_Transfer,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore,0,671,0.00,172,631,671,3.254350000
-2015-11-04,FY2016_Transfer,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore,6,2981,0.20,366,1551,2981,14.457850000
-2015-11-04,FY2016_Transfer,SAL_V1-Mobile,MobileFuse.com,Mobile,Standard,SAL_V1,https://usm.maine.edu/explore,25,2401,1.04,0,0,0,16.686950000
-2015-11-04,FY2016_Undergraduate,Display,Pandora,Pandora,Tracking,SAL_V1,https://usm.maine.edu/explore,38,2492,1.52,0,0,0,0.000000000
-2015-11-04,FY2016_Undergraduate,SAL_V1,WGME,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore-undergraduate-degree,0,6,0.00,2,6,6,0.000000000
-2015-11-04,FY2016_Undergraduate,SAL_V1,WGME,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore-undergraduate-degree,0,52,0.00,17,46,52,0.000000000
-2015-11-04,FY2016_Undergraduate,SAL_V1,WGME,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore-undergraduate-degree,0,26,0.00,14,20,26,0.000000000
-2015-11-04,FY2016_Undergraduate,SAL_V1,WGME,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore-undergraduate-degree,0,26,0.00,10,24,26,0.000000000
-2015-11-04,FY2016_Undergraduate,SAL_V1,WGME,Cross Platform,Standard,SAL_V1_courses,https://usm.maine.edu/explore-undergraduate-degree,0,10,0.00,2,10,10,0.000000000
-2015-11-04,FY2016_Undergraduate,SAL_V1,WGME,Cross Platform,Standard,SAL_V1_majors,https://usm.maine.edu/explore-undergraduate-degree,0,5,0.00,2,5,5,0.000000000
-2015-11-04,FY2016_Undergraduate,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore,1,2315,0.04,444,2076,2315,11.227750000
-2015-11-04,FY2016_Undergraduate,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore,0,1131,0.00,339,1092,1131,5.485350000
-2015-11-04,FY2016_Undergraduate,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore,0,2214,0.00,500,2116,2214,10.737900000
-2015-11-04,FY2016_Undergraduate,SAL_V1-Mobile,MobileFuse.com,Mobile,Standard,SAL_V1,https://usm.maine.edu/explore,8,758,1.06,155,679,758,5.268100000
-2015-11-04,FY2016_Undergraduate,SAL_V1-PreRoll Tracking,Collective.com,Preroll,Tracking,SAL_V1,https://usm.maine.edu/explore,4,1760,0.23,0,0,0,22.880000000
-2015-11-04,FY2016_Undergraduate,SAL_V1-Tablet,MobileFuse.com,Tablet,Standard,SAL_V1,https://usm.maine.edu/explore,10,2001,0.50,0,1996,2001,16.608300000
-2015-11-04,FY2016_Undergraduate,SAL_V1_courses-Mobile,MobileFuse.com,Mobile,Standard,SAL_V1_courses,https://usm.maine.edu/explore,10,848,1.18,188,756,848,5.893600000
-2015-11-04,FY2016_Undergraduate,SAL_V1_majors-Mobile,MobileFuse.com,Mobile,Standard,SAL_V1_majors,https://usm.maine.edu/explore,5,904,0.55,169,795,904,6.282800000
-2015-11-05,FY2016_Graduate,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,http://usm.maine.edu/explore,0,556,0.00,114,479,556,2.696600000
-2015-11-05,FY2016_Graduate,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,http://usm.maine.edu/explore,4,4835,0.08,225,1518,4835,23.449750000
-2015-11-05,FY2016_Graduate,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,http://usm.maine.edu/explore,5,2117,0.24,191,1111,2117,10.267450000
-2015-11-05,FY2016_Graduate,SAL_V1-Mobile,MobileFuse.com,Mobile,Standard,SAL_V1,http://usm.maine.edu/explore,15,943,1.59,3,906,943,6.553850000
-2015-11-05,FY2016_Graduate,SAL_V1-Tablet,MobileFuse.com,Tablet,Standard,SAL_V1,http://usm.maine.edu/explore,0,584,0.00,0,0,0,4.847200000
-2015-11-05,FY2016_Graduate,SAL_V1-Tablet,MobileFuse.com,Tablet,Standard,SAL_V1,http://usm.maine.edu/explore,4,1586,0.25,14,1395,1586,13.163800000
-2015-11-05,FY2016_Graduate,SAL_V1_grad-Mobile,MobileFuse.com,Mobile,Standard,SAL_V1_grad,http://usm.maine.edu/explore,4,744,0.54,5,709,744,5.170800000
-2015-11-05,FY2016_Graduate,Tracking-Pandora_Tile,Pandora,Pandora_Tile,Tracking,Tracking,http://usm.maine.edu/explore,22,2555,0.86,0,0,0,0.000000000
-2015-11-05,FY2016_Transfer,300x250 Default Web Ad,MobileFuse.com,Tablet,Default,SAL_V1,https://usm.maine.edu/explore,7,2023,0.35,0,0,0,16.790900000
-2015-11-05,FY2016_Transfer,SAL_V1,Pandora,Display,Standard,SAL_V1,https://usm.maine.edu/explore,3,3,100.00,2,2,2,0.000000000
-2015-11-05,FY2016_Transfer,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore,1,2079,0.05,385,1592,2079,10.083150000
-2015-11-05,FY2016_Transfer,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore,1,2951,0.03,326,1489,2951,14.312350000
-2015-11-05,FY2016_Transfer,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore,0,677,0.00,174,639,677,3.283450000
-2015-11-05,FY2016_Transfer,SAL_V1-Mobile,MobileFuse.com,Mobile,Standard,SAL_V1,https://usm.maine.edu/explore,23,2405,0.96,0,0,0,16.714750000
-2015-11-05,FY2016_Undergraduate,728x90 Default Web Ad,Collective.com,Cross Platform,Default,SAL_V1,https://usm.maine.edu/explore,0,1,0.00,0,0,0,0.004850000
-2015-11-05,FY2016_Undergraduate,Display,Pandora,Pandora,Tracking,SAL_V1,https://usm.maine.edu/explore,26,2555,1.02,0,0,0,0.000000000
-2015-11-05,FY2016_Undergraduate,SAL_V1,WGME,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore-undergraduate-degree,0,13,0.00,3,13,13,0.000000000
-2015-11-05,FY2016_Undergraduate,SAL_V1,WGME,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore-undergraduate-degree,0,58,0.00,25,58,58,0.000000000
-2015-11-05,FY2016_Undergraduate,SAL_V1,WGME,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore-undergraduate-degree,0,58,0.00,37,58,58,0.000000000
-2015-11-05,FY2016_Undergraduate,SAL_V1,WGME,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore-undergraduate-degree,0,116,0.00,39,116,116,0.000000000
-2015-11-05,FY2016_Undergraduate,SAL_V1,WGME,Cross Platform,Standard,SAL_V1_courses,https://usm.maine.edu/explore-undergraduate-degree,0,9,0.00,3,9,9,0.000000000
-2015-11-05,FY2016_Undergraduate,SAL_V1,WGME,Cross Platform,Standard,SAL_V1_majors,https://usm.maine.edu/explore-undergraduate-degree,0,13,0.00,5,13,13,0.000000000
-2015-11-05,FY2016_Undergraduate,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore,2,1082,0.18,402,1053,1082,5.247700000
-2015-11-05,FY2016_Undergraduate,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore,0,2423,0.00,448,2147,2423,11.751550000
-2015-11-05,FY2016_Undergraduate,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore,0,2251,0.00,558,2172,2251,10.917350000
-2015-11-05,FY2016_Undergraduate,SAL_V1-Mobile,MobileFuse.com,Mobile,Standard,SAL_V1,https://usm.maine.edu/explore,4,802,0.50,125,721,802,5.573900000
-2015-11-05,FY2016_Undergraduate,SAL_V1-PreRoll Tracking,Collective.com,Preroll,Tracking,SAL_V1,https://usm.maine.edu/explore,3,1821,0.16,0,0,0,23.673000000
-2015-11-05,FY2016_Undergraduate,SAL_V1-Tablet,MobileFuse.com,Tablet,Standard,SAL_V1,https://usm.maine.edu/explore,14,2008,0.70,0,1998,2008,16.666400000
-2015-11-05,FY2016_Undergraduate,SAL_V1_courses-Mobile,MobileFuse.com,Mobile,Standard,SAL_V1_courses,https://usm.maine.edu/explore,6,829,0.72,147,771,829,5.761550000
-2015-11-05,FY2016_Undergraduate,SAL_V1_majors-Mobile,MobileFuse.com,Mobile,Standard,SAL_V1_majors,https://usm.maine.edu/explore,8,889,0.90,139,810,889,6.178550000
-2015-11-06,FY2016_Graduate,300x250 Default Web Ad,Collective.com,Cross Platform,Default,SAL_V1,http://usm.maine.edu/explore,0,1,0.00,0,0,0,0.004850000
-2015-11-06,FY2016_Graduate,728x90 Default Web Ad,Collective.com,Cross Platform,Default,SAL_V1,http://usm.maine.edu/explore,0,1,0.00,0,0,0,0.004850000
-2015-11-06,FY2016_Graduate,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,http://usm.maine.edu/explore,0,4947,0.00,259,1814,4947,23.992950000
-2015-11-06,FY2016_Graduate,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,http://usm.maine.edu/explore,0,750,0.00,130,658,750,3.637500000
-2015-11-06,FY2016_Graduate,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,http://usm.maine.edu/explore,1,2101,0.05,231,1186,2101,10.189850000
-2015-11-06,FY2016_Graduate,SAL_V1-Mobile,MobileFuse.com,Mobile,Standard,SAL_V1,http://usm.maine.edu/explore,7,902,0.78,12,811,902,6.268900000
-2015-11-06,FY2016_Graduate,SAL_V1-Tablet,MobileFuse.com,Tablet,Standard,SAL_V1,http://usm.maine.edu/explore,0,583,0.00,0,0,0,4.838900000
-2015-11-06,FY2016_Graduate,SAL_V1-Tablet,MobileFuse.com,Tablet,Standard,SAL_V1,http://usm.maine.edu/explore,9,1886,0.48,9,1687,1886,15.653800000
-2015-11-06,FY2016_Graduate,SAL_V1_grad-Mobile,MobileFuse.com,Mobile,Standard,SAL_V1_grad,http://usm.maine.edu/explore,8,727,1.10,6,648,727,5.052650000
-2015-11-06,FY2016_Graduate,Tracking-Pandora_Tile,Pandora,Pandora_Tile,Tracking,Tracking,http://usm.maine.edu/explore,25,2480,1.01,0,0,0,0.000000000
-2015-11-06,FY2016_Transfer,300x250 Default Web Ad,MobileFuse.com,Tablet,Default,SAL_V1,https://usm.maine.edu/explore,7,2039,0.34,0,0,0,16.923700000
-2015-11-06,FY2016_Transfer,SAL_V1,Pandora,Display,Standard,SAL_V1,https://usm.maine.edu/explore,4,364,1.10,4,364,364,0.000000000
-2015-11-06,FY2016_Transfer,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore,0,628,0.00,151,589,628,3.045800000
-2015-11-06,FY2016_Transfer,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore,0,2750,0.00,363,1561,2750,13.337500000
-2015-11-06,FY2016_Transfer,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore,0,2082,0.00,342,1604,2082,10.097700000
-2015-11-06,FY2016_Transfer,SAL_V1-Display,Pandora,Display,Standard,SAL_V1,https://usm.maine.edu/explore,3,294,1.02,4,294,294,0.000000000
-2015-11-06,FY2016_Transfer,SAL_V1-Mobile,MobileFuse.com,Mobile,Standard,SAL_V1,https://usm.maine.edu/explore,26,2458,1.06,0,0,0,17.083100000
-2015-11-06,FY2016_Undergraduate,160x600 Default Web Ad,Collective.com,Cross Platform,Default,SAL_V1,https://usm.maine.edu/explore,0,2,0.00,0,0,0,0.009700000
-2015-11-06,FY2016_Undergraduate,728x90 Default Web Ad,Collective.com,Cross Platform,Default,SAL_V1,https://usm.maine.edu/explore,0,1,0.00,0,0,0,0.004850000
-2015-11-06,FY2016_Undergraduate,Display,Pandora,Pandora,Tracking,SAL_V1,https://usm.maine.edu/explore,25,2480,1.01,0,0,0,0.000000000
-2015-11-06,FY2016_Undergraduate,SAL_V1,WGME,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore-undergraduate-degree,0,660,0.00,183,632,660,0.000000000
-2015-11-06,FY2016_Undergraduate,SAL_V1,WGME,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore-undergraduate-degree,0,330,0.00,210,302,330,0.000000000
-2015-11-06,FY2016_Undergraduate,SAL_V1,WGME,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore-undergraduate-degree,0,72,0.00,10,72,72,0.000000000
-2015-11-06,FY2016_Undergraduate,SAL_V1,WGME,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore-undergraduate-degree,0,330,0.00,140,330,330,0.000000000
-2015-11-06,FY2016_Undergraduate,SAL_V1,WGME,Cross Platform,Standard,SAL_V1_courses,https://usm.maine.edu/explore-undergraduate-degree,0,88,0.00,18,88,88,0.000000000
-2015-11-06,FY2016_Undergraduate,SAL_V1,WGME,Cross Platform,Standard,SAL_V1_majors,https://usm.maine.edu/explore-undergraduate-degree,0,79,0.00,22,79,79,0.000000000
-2015-11-06,FY2016_Undergraduate,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore,1,2161,0.05,499,2080,2161,10.480850000
-2015-11-06,FY2016_Undergraduate,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore,0,903,0.00,274,875,903,4.379550000
-2015-11-06,FY2016_Undergraduate,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore,0,2687,0.00,502,2290,2687,13.031950000
-2015-11-06,FY2016_Undergraduate,SAL_V1-Mobile,MobileFuse.com,Mobile,Standard,SAL_V1,https://usm.maine.edu/explore,7,758,0.92,53,675,758,5.268100000
-2015-11-06,FY2016_Undergraduate,SAL_V1-PreRoll Tracking,Collective.com,Preroll,Tracking,SAL_V1,https://usm.maine.edu/explore,20,1789,1.12,0,0,0,23.257000000
-2015-11-06,FY2016_Undergraduate,SAL_V1-Tablet,MobileFuse.com,Tablet,Standard,SAL_V1,https://usm.maine.edu/explore,7,1980,0.35,2,1979,1980,16.434000000
-2015-11-06,FY2016_Undergraduate,SAL_V1_courses-Mobile,MobileFuse.com,Mobile,Standard,SAL_V1_courses,https://usm.maine.edu/explore,7,862,0.81,63,756,862,5.990900000
-2015-11-06,FY2016_Undergraduate,SAL_V1_majors-Mobile,MobileFuse.com,Mobile,Standard,SAL_V1_majors,https://usm.maine.edu/explore,10,896,1.12,54,792,895,6.227200000
-2015-11-07,FY2016_Graduate,300x250 Default Web Ad,Collective.com,Cross Platform,Default,SAL_V1,http://usm.maine.edu/explore,0,1,0.00,0,0,0,0.004850000
-2015-11-07,FY2016_Graduate,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,http://usm.maine.edu/explore,1,2136,0.05,210,1079,2136,10.359600000
-2015-11-07,FY2016_Graduate,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,http://usm.maine.edu/explore,4,5035,0.08,155,1860,5035,24.419750000
-2015-11-07,FY2016_Graduate,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,http://usm.maine.edu/explore,0,662,0.00,83,548,662,3.210700000
-2015-11-07,FY2016_Graduate,SAL_V1-Mobile,MobileFuse.com,Mobile,Standard,SAL_V1,http://usm.maine.edu/explore,9,873,1.03,4,773,873,6.067350000
-2015-11-07,FY2016_Graduate,SAL_V1-Tablet,MobileFuse.com,Tablet,Standard,SAL_V1,http://usm.maine.edu/explore,0,534,0.00,0,0,0,4.432200000
-2015-11-07,FY2016_Graduate,SAL_V1-Tablet,MobileFuse.com,Tablet,Standard,SAL_V1,http://usm.maine.edu/explore,7,1482,0.47,10,1334,1482,12.300600000
-2015-11-07,FY2016_Graduate,SAL_V1_grad-Mobile,MobileFuse.com,Mobile,Standard,SAL_V1_grad,http://usm.maine.edu/explore,5,756,0.66,12,687,756,5.254200000
-2015-11-07,FY2016_Graduate,Tracking-Pandora_Tile,Pandora,Pandora_Tile,Tracking,Tracking,http://usm.maine.edu/explore,22,2051,1.07,0,0,0,0.000000000
-2015-11-07,FY2016_Transfer,300x250 Default Web Ad,MobileFuse.com,Tablet,Default,SAL_V1,https://usm.maine.edu/explore,10,2039,0.49,0,0,0,16.923700000
-2015-11-07,FY2016_Transfer,SAL_V1,Pandora,Display,Standard,SAL_V1,https://usm.maine.edu/explore,14,1738,0.81,11,1738,1738,0.000000000
-2015-11-07,FY2016_Transfer,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore,0,588,0.00,141,564,588,2.851800000
-2015-11-07,FY2016_Transfer,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore,3,1853,0.16,304,1275,1853,8.987050000
-2015-11-07,FY2016_Transfer,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore,0,2772,0.00,275,1517,2772,13.444200000
-2015-11-07,FY2016_Transfer,SAL_V1-Display,Pandora,Display,Standard,SAL_V1,https://usm.maine.edu/explore,12,1491,0.80,10,1491,1491,0.000000000
-2015-11-07,FY2016_Transfer,SAL_V1-Mobile,MobileFuse.com,Mobile,Standard,SAL_V1,https://usm.maine.edu/explore,50,2421,2.07,0,0,0,16.825950000
-2015-11-07,FY2016_Undergraduate,Display,Pandora,Pandora,Tracking,SAL_V1,https://usm.maine.edu/explore,23,2051,1.12,0,0,0,0.000000000
-2015-11-07,FY2016_Undergraduate,SAL_V1,WGME,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore-undergraduate-degree,0,100,0.00,27,97,100,0.000000000
-2015-11-07,FY2016_Undergraduate,SAL_V1,WGME,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore-undergraduate-degree,0,17,0.00,2,17,17,0.000000000
-2015-11-07,FY2016_Undergraduate,SAL_V1,WGME,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore-undergraduate-degree,0,50,0.00,34,47,50,0.000000000
-2015-11-07,FY2016_Undergraduate,SAL_V1,WGME,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore-undergraduate-degree,0,50,0.00,20,49,50,0.000000000
-2015-11-07,FY2016_Undergraduate,SAL_V1,WGME,Cross Platform,Standard,SAL_V1_courses,https://usm.maine.edu/explore-undergraduate-degree,0,12,0.00,3,12,12,0.000000000
-2015-11-07,FY2016_Undergraduate,SAL_V1,WGME,Cross Platform,Standard,SAL_V1_majors,https://usm.maine.edu/explore-undergraduate-degree,0,24,0.00,2,24,24,0.000000000
-2015-11-07,FY2016_Undergraduate,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore,1,2364,0.04,533,2276,2364,11.465400000
-2015-11-07,FY2016_Undergraduate,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore,0,2559,0.00,547,2212,2559,12.411150000
-2015-11-07,FY2016_Undergraduate,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore,1,869,0.12,290,838,869,4.214650000
-2015-11-07,FY2016_Undergraduate,SAL_V1-Mobile,MobileFuse.com,Mobile,Standard,SAL_V1,https://usm.maine.edu/explore,9,736,1.22,41,617,736,5.115200000
-2015-11-07,FY2016_Undergraduate,SAL_V1-PreRoll Tracking,Collective.com,Preroll,Tracking,SAL_V1,https://usm.maine.edu/explore,3,1789,0.17,0,0,0,23.257000000
-2015-11-07,FY2016_Undergraduate,SAL_V1-Tablet,MobileFuse.com,Tablet,Standard,SAL_V1,https://usm.maine.edu/explore,11,1972,0.56,0,1971,1972,16.367600000
-2015-11-07,FY2016_Undergraduate,SAL_V1_courses-Mobile,MobileFuse.com,Mobile,Standard,SAL_V1_courses,https://usm.maine.edu/explore,8,866,0.92,43,704,866,6.018700000
-2015-11-07,FY2016_Undergraduate,SAL_V1_majors-Mobile,MobileFuse.com,Mobile,Standard,SAL_V1_majors,https://usm.maine.edu/explore,10,936,1.07,48,765,934,6.505200000
-2015-11-08,FY2016_Graduate,160x600 Default Web Ad,Collective.com,Cross Platform,Default,SAL_V1,http://usm.maine.edu/explore,0,1,0.00,0,0,0,0.004850000
-2015-11-08,FY2016_Graduate,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,http://usm.maine.edu/explore,3,4619,0.06,155,1822,4619,22.402150000
-2015-11-08,FY2016_Graduate,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,http://usm.maine.edu/explore,0,719,0.00,72,598,719,3.487150000
-2015-11-08,FY2016_Graduate,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,http://usm.maine.edu/explore,1,2102,0.05,232,1151,2102,10.194700000
-2015-11-08,FY2016_Graduate,SAL_V1-Mobile,MobileFuse.com,Mobile,Standard,SAL_V1,http://usm.maine.edu/explore,11,1028,1.07,1,960,1028,7.144600000
-2015-11-08,FY2016_Graduate,SAL_V1-Tablet,MobileFuse.com,Tablet,Standard,SAL_V1,http://usm.maine.edu/explore,7,1648,0.42,10,1494,1648,13.678400000
-2015-11-08,FY2016_Graduate,SAL_V1-Tablet,MobileFuse.com,Tablet,Standard,SAL_V1,http://usm.maine.edu/explore,0,447,0.00,0,0,0,3.710100000
-2015-11-08,FY2016_Graduate,SAL_V1_grad-Mobile,MobileFuse.com,Mobile,Standard,SAL_V1_grad,http://usm.maine.edu/explore,11,808,1.36,1,762,808,5.615600000
-2015-11-08,FY2016_Graduate,Tracking-Pandora_Tile,Pandora,Pandora_Tile,Tracking,Tracking,http://usm.maine.edu/explore,21,2160,0.97,0,0,0,0.000000000
-2015-11-08,FY2016_Transfer,300x250 Default Web Ad,MobileFuse.com,Tablet,Default,SAL_V1,https://usm.maine.edu/explore,14,2042,0.69,0,0,0,16.948600000
-2015-11-08,FY2016_Transfer,SAL_V1,Pandora,Display,Standard,SAL_V1,https://usm.maine.edu/explore,15,1346,1.11,11,1346,1346,0.000000000
-2015-11-08,FY2016_Transfer,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore,1,2049,0.05,333,1461,2049,9.937650000
-2015-11-08,FY2016_Transfer,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore,0,578,0.00,116,556,578,2.803300000
-2015-11-08,FY2016_Transfer,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore,0,3049,0.00,269,1654,3049,14.787650000
-2015-11-08,FY2016_Transfer,SAL_V1-Display,Pandora,Display,Standard,SAL_V1,https://usm.maine.edu/explore,6,1261,0.48,2,1261,1261,0.000000000
-2015-11-08,FY2016_Transfer,SAL_V1-Mobile,MobileFuse.com,Mobile,Standard,SAL_V1,https://usm.maine.edu/explore,47,2443,1.92,0,0,0,16.978850000
-2015-11-08,FY2016_Undergraduate,Display,Pandora,Pandora,Tracking,SAL_V1,https://usm.maine.edu/explore,21,2159,0.97,0,0,0,0.000000000
-2015-11-08,FY2016_Undergraduate,SAL_V1,WGME,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore-undergraduate-degree,0,42,0.00,23,40,42,0.000000000
-2015-11-08,FY2016_Undergraduate,SAL_V1,WGME,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore-undergraduate-degree,0,7,0.00,2,7,7,0.000000000
-2015-11-08,FY2016_Undergraduate,SAL_V1,WGME,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore-undergraduate-degree,0,42,0.00,24,32,42,0.000000000
-2015-11-08,FY2016_Undergraduate,SAL_V1,WGME,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore-undergraduate-degree,0,84,0.00,28,75,84,0.000000000
-2015-11-08,FY2016_Undergraduate,SAL_V1,WGME,Cross Platform,Standard,SAL_V1_courses,https://usm.maine.edu/explore-undergraduate-degree,0,12,0.00,3,12,12,0.000000000
-2015-11-08,FY2016_Undergraduate,SAL_V1,WGME,Cross Platform,Standard,SAL_V1_majors,https://usm.maine.edu/explore-undergraduate-degree,0,8,0.00,0,8,8,0.000000000
-2015-11-08,FY2016_Undergraduate,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore,1,2649,0.04,571,2281,2649,12.847650000
-2015-11-08,FY2016_Undergraduate,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore,0,881,0.00,293,848,881,4.272850000
-2015-11-08,FY2016_Undergraduate,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore,1,2277,0.04,539,2196,2277,11.043450000
-2015-11-08,FY2016_Undergraduate,SAL_V1-Mobile,MobileFuse.com,Mobile,Standard,SAL_V1,https://usm.maine.edu/explore,8,750,1.07,36,699,750,5.212500000
-2015-11-08,FY2016_Undergraduate,SAL_V1-PreRoll Tracking,Collective.com,Preroll,Tracking,SAL_V1,https://usm.maine.edu/explore,4,1797,0.22,0,0,0,23.361000000
-2015-11-08,FY2016_Undergraduate,SAL_V1-Tablet,MobileFuse.com,Tablet,Standard,SAL_V1,https://usm.maine.edu/explore,12,1967,0.61,1,1964,1967,16.326100000
-2015-11-08,FY2016_Undergraduate,SAL_V1_courses-Mobile,MobileFuse.com,Mobile,Standard,SAL_V1_courses,https://usm.maine.edu/explore,4,872,0.46,32,786,872,6.060400000
-2015-11-08,FY2016_Undergraduate,SAL_V1_majors-Mobile,MobileFuse.com,Mobile,Standard,SAL_V1_majors,https://usm.maine.edu/explore,6,941,0.64,45,858,941,6.539950000
-2015-11-09,FY2016_Graduate,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,http://usm.maine.edu/explore,1,2214,0.05,186,1126,2214,10.737900000
-2015-11-09,FY2016_Graduate,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,http://usm.maine.edu/explore,0,531,0.00,81,469,531,2.575350000
-2015-11-09,FY2016_Graduate,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,http://usm.maine.edu/explore,0,4896,0.00,155,1623,4896,23.745600000
-2015-11-09,FY2016_Graduate,SAL_V1-Mobile,MobileFuse.com,Mobile,Standard,SAL_V1,http://usm.maine.edu/explore,8,916,0.87,2,851,916,6.366200000
-2015-11-09,FY2016_Graduate,SAL_V1-Tablet,MobileFuse.com,Tablet,Standard,SAL_V1,http://usm.maine.edu/explore,0,360,0.00,0,0,0,2.988000000
-2015-11-09,FY2016_Graduate,SAL_V1-Tablet,MobileFuse.com,Tablet,Standard,SAL_V1,http://usm.maine.edu/explore,7,1759,0.40,16,1617,1759,14.599700000
-2015-11-09,FY2016_Graduate,SAL_V1_grad-Mobile,MobileFuse.com,Mobile,Standard,SAL_V1_grad,http://usm.maine.edu/explore,7,795,0.88,4,732,795,5.525250000
-2015-11-09,FY2016_Graduate,Tracking-Pandora_Tile,Pandora,Pandora_Tile,Tracking,Tracking,http://usm.maine.edu/explore,12,2486,0.48,0,0,0,0.000000000
-2015-11-09,FY2016_Transfer,300x250 Default Web Ad,MobileFuse.com,Tablet,Default,SAL_V1,https://usm.maine.edu/explore,16,2021,0.79,0,0,0,16.774300000
-2015-11-09,FY2016_Transfer,SAL_V1,Pandora,Display,Standard,SAL_V1,https://usm.maine.edu/explore,11,1329,0.83,68,1328,1329,0.000000000
-2015-11-09,FY2016_Transfer,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore,1,2772,0.04,513,2174,2772,13.444200000
-2015-11-09,FY2016_Transfer,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore,1,2654,0.04,411,1801,2654,12.871900000
-2015-11-09,FY2016_Transfer,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore,0,759,0.00,179,729,759,3.681150000
-2015-11-09,FY2016_Transfer,SAL_V1-Display,Pandora,Display,Standard,SAL_V1,https://usm.maine.edu/explore,11,1273,0.86,83,1272,1273,0.000000000
-2015-11-09,FY2016_Transfer,SAL_V1-Mobile,MobileFuse.com,Mobile,Standard,SAL_V1,https://usm.maine.edu/explore,14,2443,0.57,0,0,0,16.978850000
-2015-11-09,FY2016_Undergraduate,Display,Pandora,Pandora,Tracking,SAL_V1,https://usm.maine.edu/explore,33,2489,1.33,0,0,0,0.000000000
-2015-11-09,FY2016_Undergraduate,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore,0,969,0.00,294,930,969,4.699650000
-2015-11-09,FY2016_Undergraduate,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore,1,2105,0.05,440,2033,2105,10.209250000
-2015-11-09,FY2016_Undergraduate,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore,0,2591,0.00,402,2163,2591,12.566350000
-2015-11-09,FY2016_Undergraduate,SAL_V1-Mobile,MobileFuse.com,Mobile,Standard,SAL_V1,https://usm.maine.edu/explore,4,743,0.54,17,643,743,5.163850000
-2015-11-09,FY2016_Undergraduate,SAL_V1-PreRoll Tracking,Collective.com,Preroll,Tracking,SAL_V1,https://usm.maine.edu/explore,10,1787,0.56,0,0,0,23.231000000
-2015-11-09,FY2016_Undergraduate,SAL_V1-Tablet,MobileFuse.com,Tablet,Standard,SAL_V1,https://usm.maine.edu/explore,8,2010,0.40,1,2009,2010,16.683000000
-2015-11-09,FY2016_Undergraduate,SAL_V1_courses-Mobile,MobileFuse.com,Mobile,Standard,SAL_V1_courses,https://usm.maine.edu/explore,7,869,0.81,20,749,869,6.039550000
-2015-11-09,FY2016_Undergraduate,SAL_V1_majors-Mobile,MobileFuse.com,Mobile,Standard,SAL_V1_majors,https://usm.maine.edu/explore,4,947,0.42,31,814,947,6.581650000
-Grand Total:,---,---,---,---,---,---,---,1185,281291,0.42,22327,151283,200255,1494.691350000
+2015-11-24,FY2016_Graduate,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,http://usm.maine.edu/explore,2,3906,0.05,124,1932,3904,18.944100000
+2015-11-24,FY2016_Graduate,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,http://usm.maine.edu/explore,1,510,0.20,111,459,510,2.473500000
+2015-11-24,FY2016_Graduate,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,http://usm.maine.edu/explore,0,2103,0.00,161,1111,2100,10.199550000
+2015-11-24,FY2016_Graduate,SAL_V1-Mobile,MobileFuse.com,Mobile,Standard,SAL_V1,http://usm.maine.edu/explore,5,916,0.55,0,2,2,6.366200000
+2015-11-24,FY2016_Graduate,SAL_V1-Tablet,MobileFuse.com,Tablet,Standard,SAL_V1,http://usm.maine.edu/explore,0,473,0.00,0,0,0,3.925900000
+2015-11-24,FY2016_Graduate,SAL_V1-Tablet,MobileFuse.com,Tablet,Standard,SAL_V1,http://usm.maine.edu/explore,6,1623,0.37,0,0,0,13.470900000
+2015-11-24,FY2016_Graduate,SAL_V1_grad-Mobile,MobileFuse.com,Mobile,Standard,SAL_V1_grad,http://usm.maine.edu/explore,7,737,0.95,0,4,4,5.122150000
+2015-11-24,FY2016_Graduate,Tracking-Pandora_Tile,Pandora,Pandora_Tile,Tracking,Tracking,http://usm.maine.edu/explore,21,2485,0.85,0,0,0,0.000000000
+2015-11-24,FY2016_Transfer,300x250 Default Web Ad,MobileFuse.com,Tablet,Default,SAL_V1,https://usm.maine.edu/explore,14,2035,0.69,0,0,0,16.890500000
+2015-11-24,FY2016_Transfer,SAL_V1,Pandora,Display,Standard,SAL_V1,https://usm.maine.edu/explore,10,1433,0.70,49,51,52,0.000000000
+2015-11-24,FY2016_Transfer,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore,1,1835,0.05,233,1208,1835,8.899750000
+2015-11-24,FY2016_Transfer,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore,1,407,0.25,84,386,407,1.973950000
+2015-11-24,FY2016_Transfer,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore,2,2420,0.08,285,1794,2419,11.737000000
+2015-11-24,FY2016_Transfer,SAL_V1-Display,Pandora,Display,Standard,SAL_V1,https://usm.maine.edu/explore,12,1560,0.77,43,48,48,0.000000000
+2015-11-24,FY2016_Transfer,SAL_V1-Mobile,MobileFuse.com,Mobile,Standard,SAL_V1,https://usm.maine.edu/explore,9,2497,0.36,0,0,0,17.354150000
+2015-11-24,FY2016_Undergraduate,Display,Pandora,Pandora,Tracking,SAL_V1,https://usm.maine.edu/explore,20,2484,0.81,0,0,0,0.000000000
+2015-11-24,FY2016_Undergraduate,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore,1,3286,0.03,512,3170,3286,15.937100000
+2015-11-24,FY2016_Undergraduate,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore,3,1407,0.21,228,1242,1407,6.823950000
+2015-11-24,FY2016_Undergraduate,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore,1,1088,0.09,354,1051,1088,5.276800000
+2015-11-24,FY2016_Undergraduate,SAL_V1-Mobile,MobileFuse.com,Mobile,Standard,SAL_V1,https://usm.maine.edu/explore,3,665,0.45,0,0,1,4.621750000
+2015-11-24,FY2016_Undergraduate,SAL_V1-PreRoll Tracking,Collective.com,Preroll,Tracking,SAL_V1,https://usm.maine.edu/explore,9,1743,0.52,0,0,0,22.659000000
+2015-11-24,FY2016_Undergraduate,SAL_V1-Tablet,MobileFuse.com,Tablet,Standard,SAL_V1,https://usm.maine.edu/explore,8,2020,0.40,1,2,2,16.766000000
+2015-11-24,FY2016_Undergraduate,SAL_V1_courses-Mobile,MobileFuse.com,Mobile,Standard,SAL_V1_courses,https://usm.maine.edu/explore,7,694,1.01,0,1,1,4.823300000
+2015-11-24,FY2016_Undergraduate,SAL_V1_majors-Mobile,MobileFuse.com,Mobile,Standard,SAL_V1_majors,https://usm.maine.edu/explore,7,855,0.82,1,1,4,5.942250000
+2015-11-25,FY2016_Graduate,160x600 Default Web Ad,Collective.com,Cross Platform,Default,SAL_V1,http://usm.maine.edu/explore,0,1,0.00,0,0,0,0.004850000
+2015-11-25,FY2016_Graduate,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,http://usm.maine.edu/explore,0,542,0.00,113,495,542,2.628700000
+2015-11-25,FY2016_Graduate,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,http://usm.maine.edu/explore,2,3716,0.05,133,1947,3716,18.022600000
+2015-11-25,FY2016_Graduate,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,http://usm.maine.edu/explore,6,2618,0.23,172,1073,2617,12.697300000
+2015-11-25,FY2016_Graduate,SAL_V1-Mobile,MobileFuse.com,Mobile,Standard,SAL_V1,http://usm.maine.edu/explore,11,923,1.19,0,1,1,6.414850000
+2015-11-25,FY2016_Graduate,SAL_V1-Tablet,MobileFuse.com,Tablet,Standard,SAL_V1,http://usm.maine.edu/explore,9,1334,0.67,1,1,1,11.072200000
+2015-11-25,FY2016_Graduate,SAL_V1-Tablet,MobileFuse.com,Tablet,Standard,SAL_V1,http://usm.maine.edu/explore,0,361,0.00,0,0,0,2.996300000
+2015-11-25,FY2016_Graduate,SAL_V1_grad-Mobile,MobileFuse.com,Mobile,Standard,SAL_V1_grad,http://usm.maine.edu/explore,8,779,1.03,0,5,5,5.414050000
+2015-11-25,FY2016_Graduate,Tracking-Pandora_Tile,Pandora,Pandora_Tile,Tracking,Tracking,http://usm.maine.edu/explore,14,2413,0.58,0,0,0,0.000000000
+2015-11-25,FY2016_Transfer,300x250 Default Web Ad,MobileFuse.com,Tablet,Default,SAL_V1,https://usm.maine.edu/explore,15,2044,0.73,0,0,0,16.965200000
+2015-11-25,FY2016_Transfer,SAL_V1,Pandora,Display,Standard,SAL_V1,https://usm.maine.edu/explore,7,1270,0.55,14,14,14,0.000000000
+2015-11-25,FY2016_Transfer,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore,0,365,0.00,78,350,365,1.770250000
+2015-11-25,FY2016_Transfer,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore,3,2301,0.13,213,1796,2297,11.159850000
+2015-11-25,FY2016_Transfer,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore,0,1793,0.00,200,1146,1791,8.696050000
+2015-11-25,FY2016_Transfer,SAL_V1-Display,Pandora,Display,Standard,SAL_V1,https://usm.maine.edu/explore,7,1367,0.51,13,14,15,0.000000000
+2015-11-25,FY2016_Transfer,SAL_V1-Mobile,MobileFuse.com,Mobile,Standard,SAL_V1,https://usm.maine.edu/explore,18,2508,0.72,0,0,0,17.430600000
+2015-11-25,FY2016_Undergraduate,Display,Pandora,Pandora,Tracking,SAL_V1,https://usm.maine.edu/explore,13,2414,0.54,0,0,0,0.000000000
+2015-11-25,FY2016_Undergraduate,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore,2,1010,0.20,158,942,1010,4.898500000
+2015-11-25,FY2016_Undergraduate,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore,3,3211,0.09,619,2999,3211,15.573350000
+2015-11-25,FY2016_Undergraduate,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore,4,1561,0.26,520,1509,1561,7.570850000
+2015-11-25,FY2016_Undergraduate,SAL_V1-Mobile,MobileFuse.com,Mobile,Standard,SAL_V1,https://usm.maine.edu/explore,7,657,1.07,0,0,1,4.566150000
+2015-11-25,FY2016_Undergraduate,SAL_V1-PreRoll Tracking,Collective.com,Preroll,Tracking,SAL_V1,https://usm.maine.edu/explore,19,1736,1.09,0,0,0,22.568000000
+2015-11-25,FY2016_Undergraduate,SAL_V1-Tablet,MobileFuse.com,Tablet,Standard,SAL_V1,https://usm.maine.edu/explore,11,2029,0.54,1,0,2,16.840700000
+2015-11-25,FY2016_Undergraduate,SAL_V1_courses-Mobile,MobileFuse.com,Mobile,Standard,SAL_V1_courses,https://usm.maine.edu/explore,3,751,0.40,0,0,0,5.219450000
+2015-11-25,FY2016_Undergraduate,SAL_V1_majors-Mobile,MobileFuse.com,Mobile,Standard,SAL_V1_majors,https://usm.maine.edu/explore,7,826,0.85,0,0,0,5.740700000
+2015-11-26,FY2016_Graduate,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,http://usm.maine.edu/explore,1,442,0.23,104,405,442,2.143700000
+2015-11-26,FY2016_Graduate,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,http://usm.maine.edu/explore,1,5272,0.02,281,3023,5267,25.569200000
+2015-11-26,FY2016_Graduate,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,http://usm.maine.edu/explore,0,2187,0.00,138,956,2183,10.606950000
+2015-11-26,FY2016_Graduate,SAL_V1-Mobile,MobileFuse.com,Mobile,Standard,SAL_V1,http://usm.maine.edu/explore,7,915,0.77,0,1,1,6.359250000
+2015-11-26,FY2016_Graduate,SAL_V1-Tablet,MobileFuse.com,Tablet,Standard,SAL_V1,http://usm.maine.edu/explore,0,376,0.00,0,0,0,3.120800000
+2015-11-26,FY2016_Graduate,SAL_V1-Tablet,MobileFuse.com,Tablet,Standard,SAL_V1,http://usm.maine.edu/explore,10,1409,0.71,1,1,1,11.694700000
+2015-11-26,FY2016_Graduate,SAL_V1_grad-Mobile,MobileFuse.com,Mobile,Standard,SAL_V1_grad,http://usm.maine.edu/explore,2,719,0.28,0,0,0,4.997050000
+2015-11-26,FY2016_Graduate,Tracking-Pandora_Tile,Pandora,Pandora_Tile,Tracking,Tracking,http://usm.maine.edu/explore,10,2289,0.44,0,0,0,0.000000000
+2015-11-26,FY2016_Transfer,300x250 Default Web Ad,MobileFuse.com,Tablet,Default,SAL_V1,https://usm.maine.edu/explore,9,2044,0.44,0,0,0,16.965200000
+2015-11-26,FY2016_Transfer,SAL_V1,Pandora,Display,Standard,SAL_V1,https://usm.maine.edu/explore,12,1317,0.91,0,0,0,0.000000000
+2015-11-26,FY2016_Transfer,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore,0,271,0.00,73,259,271,1.314350000
+2015-11-26,FY2016_Transfer,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore,1,3011,0.03,274,2540,3010,14.603350000
+2015-11-26,FY2016_Transfer,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore,1,1216,0.08,150,764,1216,5.897600000
+2015-11-26,FY2016_Transfer,SAL_V1-Display,Pandora,Display,Standard,SAL_V1,https://usm.maine.edu/explore,5,1502,0.33,0,0,0,0.000000000
+2015-11-26,FY2016_Transfer,SAL_V1-Mobile,MobileFuse.com,Mobile,Standard,SAL_V1,https://usm.maine.edu/explore,14,2512,0.56,0,0,0,17.458400000
+2015-11-26,FY2016_Undergraduate,160x600 Default Web Ad,Collective.com,Cross Platform,Default,SAL_V1,https://usm.maine.edu/explore,0,2,0.00,0,0,0,0.009700000
+2015-11-26,FY2016_Undergraduate,Display,Pandora,Pandora,Tracking,SAL_V1,https://usm.maine.edu/explore,13,2284,0.57,0,0,0,0.000000000
+2015-11-26,FY2016_Undergraduate,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore,1,2673,0.04,377,2584,2672,12.964050000
+2015-11-26,FY2016_Undergraduate,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore,0,2571,0.00,441,2088,2571,12.469350000
+2015-11-26,FY2016_Undergraduate,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore,1,701,0.14,236,652,701,3.399850000
+2015-11-26,FY2016_Undergraduate,SAL_V1-Mobile,MobileFuse.com,Mobile,Standard,SAL_V1,https://usm.maine.edu/explore,1,764,0.13,0,0,0,5.309800000
+2015-11-26,FY2016_Undergraduate,SAL_V1-PreRoll Tracking,Collective.com,Preroll,Tracking,SAL_V1,https://usm.maine.edu/explore,24,1732,1.39,0,0,0,22.516000000
+2015-11-26,FY2016_Undergraduate,SAL_V1-Tablet,MobileFuse.com,Tablet,Standard,SAL_V1,https://usm.maine.edu/explore,6,2033,0.30,3,2,2,16.873900000
+2015-11-26,FY2016_Undergraduate,SAL_V1-Tablet,MobileFuse.com,Tablet,Standard,SAL_V1,https://usm.maine.edu/explore,0,1,0.00,0,0,0,0.008300000
+2015-11-26,FY2016_Undergraduate,SAL_V1_courses-Mobile,MobileFuse.com,Mobile,Standard,SAL_V1_courses,https://usm.maine.edu/explore,8,830,0.96,0,0,0,5.768500000
+2015-11-26,FY2016_Undergraduate,SAL_V1_majors-Mobile,MobileFuse.com,Mobile,Standard,SAL_V1_majors,https://usm.maine.edu/explore,6,955,0.63,0,0,0,6.637250000
+2015-11-27,FY2016_Graduate,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,http://usm.maine.edu/explore,2,2130,0.09,140,925,2127,10.330500000
+2015-11-27,FY2016_Graduate,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,http://usm.maine.edu/explore,3,4229,0.07,201,2354,4229,20.510650000
+2015-11-27,FY2016_Graduate,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,http://usm.maine.edu/explore,2,505,0.40,105,454,505,2.449250000
+2015-11-27,FY2016_Graduate,SAL_V1-Mobile,MobileFuse.com,Mobile,Standard,SAL_V1,http://usm.maine.edu/explore,5,877,0.57,0,7,7,6.095150000
+2015-11-27,FY2016_Graduate,SAL_V1-Tablet,MobileFuse.com,Tablet,Standard,SAL_V1,http://usm.maine.edu/explore,0,337,0.00,0,0,0,2.797100000
+2015-11-27,FY2016_Graduate,SAL_V1-Tablet,MobileFuse.com,Tablet,Standard,SAL_V1,http://usm.maine.edu/explore,4,1518,0.26,0,1,1,12.599400000
+2015-11-27,FY2016_Graduate,SAL_V1_grad-Mobile,MobileFuse.com,Mobile,Standard,SAL_V1_grad,http://usm.maine.edu/explore,8,746,1.07,0,8,8,5.184700000
+2015-11-27,FY2016_Graduate,Tracking-Pandora_Tile,Pandora,Pandora_Tile,Tracking,Tracking,http://usm.maine.edu/explore,8,1705,0.47,0,0,0,0.000000000
+2015-11-27,FY2016_Transfer,300x250 Default Web Ad,MobileFuse.com,Tablet,Default,SAL_V1,https://usm.maine.edu/explore,13,2049,0.63,0,0,0,17.006700000
+2015-11-27,FY2016_Transfer,SAL_V1,Pandora,Display,Standard,SAL_V1,https://usm.maine.edu/explore,16,1333,1.20,19,7,7,0.000000000
+2015-11-27,FY2016_Transfer,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore,0,2713,0.00,270,2239,2711,13.158050000
+2015-11-27,FY2016_Transfer,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore,0,234,0.00,64,229,234,1.134900000
+2015-11-27,FY2016_Transfer,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore,0,1694,0.00,248,1112,1692,8.215900000
+2015-11-27,FY2016_Transfer,SAL_V1-Display,Pandora,Display,Standard,SAL_V1,https://usm.maine.edu/explore,19,1542,1.23,7,8,8,0.000000000
+2015-11-27,FY2016_Transfer,SAL_V1-Mobile,MobileFuse.com,Mobile,Standard,SAL_V1,https://usm.maine.edu/explore,21,2530,0.83,0,0,0,17.583500000
+2015-11-27,FY2016_Undergraduate,Display,Pandora,Pandora,Tracking,SAL_V1,https://usm.maine.edu/explore,14,1704,0.82,0,0,0,0.000000000
+2015-11-27,FY2016_Undergraduate,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore,5,464,1.08,112,424,464,2.250400000
+2015-11-27,FY2016_Undergraduate,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore,3,3137,0.10,442,3063,3136,15.214450000
+2015-11-27,FY2016_Undergraduate,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore,3,2168,0.14,367,1946,2168,10.514800000
+2015-11-27,FY2016_Undergraduate,SAL_V1-Mobile,MobileFuse.com,Mobile,Standard,SAL_V1,https://usm.maine.edu/explore,7,776,0.90,0,0,0,5.393200000
+2015-11-27,FY2016_Undergraduate,SAL_V1-PreRoll Tracking,Collective.com,Preroll,Tracking,SAL_V1,https://usm.maine.edu/explore,13,1721,0.76,0,0,0,22.373000000
+2015-11-27,FY2016_Undergraduate,SAL_V1-Tablet,MobileFuse.com,Tablet,Standard,SAL_V1,https://usm.maine.edu/explore,11,2019,0.54,0,0,0,16.757700000
+2015-11-27,FY2016_Undergraduate,SAL_V1_courses-Mobile,MobileFuse.com,Mobile,Standard,SAL_V1_courses,https://usm.maine.edu/explore,4,884,0.45,0,1,1,6.143800000
+2015-11-27,FY2016_Undergraduate,SAL_V1_majors-Mobile,MobileFuse.com,Mobile,Standard,SAL_V1_majors,https://usm.maine.edu/explore,4,942,0.42,0,0,0,6.546900000
+2015-11-28,FY2016_Graduate,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,http://usm.maine.edu/explore,2,2063,0.10,157,1016,2063,10.005550000
+2015-11-28,FY2016_Graduate,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,http://usm.maine.edu/explore,1,543,0.18,84,444,543,2.633550000
+2015-11-28,FY2016_Graduate,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,http://usm.maine.edu/explore,3,4175,0.07,132,2683,4174,20.248750000
+2015-11-28,FY2016_Graduate,SAL_V1-Mobile,MobileFuse.com,Mobile,Standard,SAL_V1,http://usm.maine.edu/explore,10,882,1.13,0,3,3,6.129900000
+2015-11-28,FY2016_Graduate,SAL_V1-Tablet,MobileFuse.com,Tablet,Standard,SAL_V1,http://usm.maine.edu/explore,7,1457,0.48,1,1,1,12.093100000
+2015-11-28,FY2016_Graduate,SAL_V1-Tablet,MobileFuse.com,Tablet,Standard,SAL_V1,http://usm.maine.edu/explore,0,331,0.00,0,0,0,2.747300000
+2015-11-28,FY2016_Graduate,SAL_V1_grad-Mobile,MobileFuse.com,Mobile,Standard,SAL_V1_grad,http://usm.maine.edu/explore,4,722,0.55,0,6,6,5.017900000
+2015-11-28,FY2016_Graduate,Tracking-Pandora_Tile,Pandora,Pandora_Tile,Tracking,Tracking,http://usm.maine.edu/explore,13,2061,0.63,0,0,0,0.000000000
+2015-11-28,FY2016_Transfer,300x250 Default Web Ad,MobileFuse.com,Tablet,Default,SAL_V1,https://usm.maine.edu/explore,11,2041,0.54,0,0,0,16.940300000
+2015-11-28,FY2016_Transfer,SAL_V1,Pandora,Display,Standard,SAL_V1,https://usm.maine.edu/explore,16,1290,1.24,15,15,15,0.000000000
+2015-11-28,FY2016_Transfer,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore,0,1737,0.00,166,1396,1735,8.424450000
+2015-11-28,FY2016_Transfer,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore,0,305,0.00,76,287,305,1.479250000
+2015-11-28,FY2016_Transfer,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore,3,2034,0.15,276,1386,2032,9.864900000
+2015-11-28,FY2016_Transfer,SAL_V1-Display,Pandora,Display,Standard,SAL_V1,https://usm.maine.edu/explore,12,1402,0.86,3,6,6,0.000000000
+2015-11-28,FY2016_Transfer,SAL_V1-Mobile,MobileFuse.com,Mobile,Standard,SAL_V1,https://usm.maine.edu/explore,20,2489,0.80,0,0,0,17.298550000
+2015-11-28,FY2016_Undergraduate,Display,Pandora,Pandora,Tracking,SAL_V1,https://usm.maine.edu/explore,21,2061,1.02,0,0,0,0.000000000
+2015-11-28,FY2016_Undergraduate,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore,2,1616,0.12,461,1537,1615,7.837600000
+2015-11-28,FY2016_Undergraduate,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore,5,1246,0.40,154,1186,1245,6.043100000
+2015-11-28,FY2016_Undergraduate,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore,2,2985,0.07,561,2670,2985,14.477250000
+2015-11-28,FY2016_Undergraduate,SAL_V1-Mobile,MobileFuse.com,Mobile,Standard,SAL_V1,https://usm.maine.edu/explore,4,849,0.47,0,0,0,5.900550000
+2015-11-28,FY2016_Undergraduate,SAL_V1-PreRoll Tracking,Collective.com,Preroll,Tracking,SAL_V1,https://usm.maine.edu/explore,18,1772,1.02,0,0,0,23.036000000
+2015-11-28,FY2016_Undergraduate,SAL_V1-Tablet,MobileFuse.com,Tablet,Standard,SAL_V1,https://usm.maine.edu/explore,9,2008,0.45,0,0,0,16.666400000
+2015-11-28,FY2016_Undergraduate,SAL_V1_courses-Mobile,MobileFuse.com,Mobile,Standard,SAL_V1_courses,https://usm.maine.edu/explore,4,930,0.43,0,0,0,6.463500000
+2015-11-28,FY2016_Undergraduate,SAL_V1_majors-Mobile,MobileFuse.com,Mobile,Standard,SAL_V1_majors,https://usm.maine.edu/explore,5,1032,0.48,0,1,1,7.172400000
+2015-11-29,FY2016_Graduate,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,http://usm.maine.edu/explore,2,474,0.42,98,416,474,2.298900000
+2015-11-29,FY2016_Graduate,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,http://usm.maine.edu/explore,3,2077,0.14,189,961,2076,10.073450000
+2015-11-29,FY2016_Graduate,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,http://usm.maine.edu/explore,2,4006,0.05,136,2449,4006,19.429100000
+2015-11-29,FY2016_Graduate,SAL_V1-Mobile,MobileFuse.com,Mobile,Standard,SAL_V1,http://usm.maine.edu/explore,4,945,0.42,0,1,1,6.567750000
+2015-11-29,FY2016_Graduate,SAL_V1-Tablet,MobileFuse.com,Tablet,Standard,SAL_V1,http://usm.maine.edu/explore,6,1542,0.39,1,0,0,12.798600000
+2015-11-29,FY2016_Graduate,SAL_V1-Tablet,MobileFuse.com,Tablet,Standard,SAL_V1,http://usm.maine.edu/explore,0,260,0.00,0,0,0,2.158000000
+2015-11-29,FY2016_Graduate,SAL_V1_grad-Mobile,MobileFuse.com,Mobile,Standard,SAL_V1_grad,http://usm.maine.edu/explore,2,729,0.27,0,4,4,5.066550000
+2015-11-29,FY2016_Graduate,Tracking-Pandora_Tile,Pandora,Pandora_Tile,Tracking,Tracking,http://usm.maine.edu/explore,19,2350,0.81,0,0,0,0.000000000
+2015-11-29,FY2016_Transfer,300x250 Default Web Ad,MobileFuse.com,Tablet,Default,SAL_V1,https://usm.maine.edu/explore,8,2064,0.39,0,0,0,17.131200000
+2015-11-29,FY2016_Transfer,SAL_V1,Pandora,Display,Standard,SAL_V1,https://usm.maine.edu/explore,9,1238,0.73,2,3,3,0.000000000
+2015-11-29,FY2016_Transfer,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore,0,346,0.00,89,331,346,1.678100000
+2015-11-29,FY2016_Transfer,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore,0,1930,0.00,164,1439,1928,9.360500000
+2015-11-29,FY2016_Transfer,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore,2,2084,0.10,299,1411,2081,10.107400000
+2015-11-29,FY2016_Transfer,SAL_V1-Display,Pandora,Display,Standard,SAL_V1,https://usm.maine.edu/explore,7,1348,0.52,13,6,6,0.000000000
+2015-11-29,FY2016_Transfer,SAL_V1-Mobile,MobileFuse.com,Mobile,Standard,SAL_V1,https://usm.maine.edu/explore,13,2468,0.53,0,0,0,17.152600000
+2015-11-29,FY2016_Undergraduate,Display,Pandora,Pandora,Tracking,SAL_V1,https://usm.maine.edu/explore,19,2348,0.81,0,0,0,0.000000000
+2015-11-29,FY2016_Undergraduate,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore,0,1749,0.00,259,1445,1749,8.482650000
+2015-11-29,FY2016_Undergraduate,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore,0,921,0.00,249,873,921,4.466850000
+2015-11-29,FY2016_Undergraduate,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore,0,3220,0.00,451,3123,3220,15.617000000
+2015-11-29,FY2016_Undergraduate,SAL_V1-Mobile,MobileFuse.com,Mobile,Standard,SAL_V1,https://usm.maine.edu/explore,8,869,0.92,0,0,0,6.039550000
+2015-11-29,FY2016_Undergraduate,SAL_V1-PreRoll Tracking,Collective.com,Preroll,Tracking,SAL_V1,https://usm.maine.edu/explore,30,1739,1.73,0,0,0,22.607000000
+2015-11-29,FY2016_Undergraduate,SAL_V1-Tablet,MobileFuse.com,Tablet,Standard,SAL_V1,https://usm.maine.edu/explore,16,2036,0.79,3,1,1,16.898800000
+2015-11-29,FY2016_Undergraduate,SAL_V1-Tablet,MobileFuse.com,Tablet,Standard,SAL_V1,https://usm.maine.edu/explore,0,1,0.00,0,0,0,0.008300000
+2015-11-29,FY2016_Undergraduate,SAL_V1_courses-Mobile,MobileFuse.com,Mobile,Standard,SAL_V1_courses,https://usm.maine.edu/explore,8,986,0.81,0,0,0,6.852700000
+2015-11-29,FY2016_Undergraduate,SAL_V1_majors-Mobile,MobileFuse.com,Mobile,Standard,SAL_V1_majors,https://usm.maine.edu/explore,13,1075,1.21,0,0,0,7.471250000
+2015-11-30,FY2016_Graduate,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,http://usm.maine.edu/explore,3,4529,0.07,257,2816,4524,21.965650000
+2015-11-30,FY2016_Graduate,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,http://usm.maine.edu/explore,1,629,0.16,186,566,629,3.050650000
+2015-11-30,FY2016_Graduate,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,http://usm.maine.edu/explore,2,2269,0.09,200,1233,2268,11.004650000
+2015-11-30,FY2016_Graduate,SAL_V1-Mobile,MobileFuse.com,Mobile,Standard,SAL_V1,http://usm.maine.edu/explore,2,919,0.22,0,10,10,6.387050000
+2015-11-30,FY2016_Graduate,SAL_V1-Tablet,MobileFuse.com,Tablet,Standard,SAL_V1,http://usm.maine.edu/explore,8,1509,0.53,1,0,0,12.524700000
+2015-11-30,FY2016_Graduate,SAL_V1-Tablet,MobileFuse.com,Tablet,Standard,SAL_V1,http://usm.maine.edu/explore,0,283,0.00,0,0,0,2.348900000
+2015-11-30,FY2016_Graduate,SAL_V1_grad-Mobile,MobileFuse.com,Mobile,Standard,SAL_V1_grad,http://usm.maine.edu/explore,6,784,0.77,0,3,3,5.448800000
+2015-11-30,FY2016_Graduate,Tracking-Pandora_Tile,Pandora,Pandora_Tile,Tracking,Tracking,http://usm.maine.edu/explore,15,3055,0.49,0,0,0,0.000000000
+2015-11-30,FY2016_Transfer,300x250 Default Web Ad,MobileFuse.com,Tablet,Default,SAL_V1,https://usm.maine.edu/explore,9,2057,0.44,0,0,0,17.073100000
+2015-11-30,FY2016_Transfer,SAL_V1,Pandora,Display,Standard,SAL_V1,https://usm.maine.edu/explore,6,1355,0.44,99,107,107,0.000000000
+2015-11-30,FY2016_Transfer,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore,0,2345,0.00,246,1894,2343,11.373250000
+2015-11-30,FY2016_Transfer,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore,0,403,0.00,117,384,403,1.954550000
+2015-11-30,FY2016_Transfer,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore,3,1994,0.15,228,1320,1991,9.670900000
+2015-11-30,FY2016_Transfer,SAL_V1-Display,Pandora,Display,Standard,SAL_V1,https://usm.maine.edu/explore,10,1592,0.63,121,138,138,0.000000000
+2015-11-30,FY2016_Transfer,SAL_V1-Mobile,MobileFuse.com,Mobile,Standard,SAL_V1,https://usm.maine.edu/explore,20,2531,0.79,0,0,0,17.590450000
+2015-11-30,FY2016_Undergraduate,160x600 Default Web Ad,Collective.com,Cross Platform,Default,SAL_V1,https://usm.maine.edu/explore,0,4,0.00,0,0,0,0.019400000
+2015-11-30,FY2016_Undergraduate,728x90 Default Web Ad,Collective.com,Cross Platform,Default,SAL_V1,https://usm.maine.edu/explore,0,3,0.00,0,0,0,0.014550000
+2015-11-30,FY2016_Undergraduate,Display,Pandora,Pandora,Tracking,SAL_V1,https://usm.maine.edu/explore,22,3055,0.72,0,0,0,0.000000000
+2015-11-30,FY2016_Undergraduate,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore,1,3497,0.03,419,3365,3497,16.960450000
+2015-11-30,FY2016_Undergraduate,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore,2,1273,0.16,233,1082,1272,6.174050000
+2015-11-30,FY2016_Undergraduate,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,https://usm.maine.edu/explore,1,1120,0.09,370,1066,1120,5.432000000
+2015-11-30,FY2016_Undergraduate,SAL_V1-Mobile,MobileFuse.com,Mobile,Standard,SAL_V1,https://usm.maine.edu/explore,4,944,0.42,0,0,0,6.560800000
+2015-11-30,FY2016_Undergraduate,SAL_V1-PreRoll Tracking,Collective.com,Preroll,Tracking,SAL_V1,https://usm.maine.edu/explore,23,1710,1.35,0,0,0,22.230000000
+2015-11-30,FY2016_Undergraduate,SAL_V1-Tablet,MobileFuse.com,Tablet,Standard,SAL_V1,https://usm.maine.edu/explore,7,2016,0.35,1,3,3,16.732800000
+2015-11-30,FY2016_Undergraduate,SAL_V1-Tablet,MobileFuse.com,Tablet,Standard,SAL_V1,https://usm.maine.edu/explore,0,2,0.00,0,0,0,0.016600000
+2015-11-30,FY2016_Undergraduate,SAL_V1_courses-Mobile,MobileFuse.com,Mobile,Standard,SAL_V1_courses,https://usm.maine.edu/explore,7,1016,0.69,1,1,1,7.061200000
+2015-11-30,FY2016_Undergraduate,SAL_V1_majors-Mobile,MobileFuse.com,Mobile,Standard,SAL_V1_majors,https://usm.maine.edu/explore,6,1138,0.53,0,1,1,7.909100000
+Grand Total:,---,---,---,---,---,---,---,1118,274565,0.41,14992,89896,121709,1419.655750000

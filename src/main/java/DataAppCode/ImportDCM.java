@@ -319,8 +319,8 @@ public static void printGroupedData(HashMap<GroupID, ArrayList<String[]>> groupe
     
     String[] testArgs =  new String[0] ;
     
-    LocalDate startDate = LocalDate.of(2015, 11, 3);
-    LocalDate endDate = LocalDate.of(2015, 11, 9);
+    LocalDate startDate = LocalDate.of(2015, 11, 24);
+    LocalDate endDate = LocalDate.of(2015, 11, 30);
     
     //Open connection to dropbox API
     DropBoxConnection.initializeDropboxConnection();
