@@ -279,7 +279,10 @@ public class ButtonEvents {
   
   
   
-  
+  /*
+   * evntPartialImport launches the Partial Import Window when the "Begin" button is
+   * clicked on the main window.
+   */
   public static EventHandler<ActionEvent> evntPartialImport(){
     EventHandler<ActionEvent> evnt = new EventHandler<ActionEvent>() {
       @Override
@@ -296,12 +299,15 @@ public class ButtonEvents {
         Label lblSelectImports = new Label("Which vendors would you like to import?");
         partImportGrid.add(lblSelectImports, 0, 0);
 
+        //Vendor Names for checkboxes
         final String[] cbNames = new String[]{"Google Adwords","Centro Digital Display",
                                               "Centro Mobile Display","Centro Video Display","Centro Rich Media","Facebook",
-                                              "Twitter","LinkedIn"};
+                                              "Twitter","LinkedIn", "DoubleClick CrossPlatform","DoubleClick Display",
+                                              "DoubleClick Mobile", "DoubleClick Preroll"};
 
         final ArrayList<String> importList = new ArrayList<String>();
 
+        //Create a checkbox for each itemin the cbNames
         for (int i=0; i< cbNames.length; i++) {
           final String name = cbNames[i];
           final CheckBox cb = new CheckBox(cbNames[i]);
@@ -344,10 +350,23 @@ public class ButtonEvents {
               //execute method in arrray
               String currVendor = importList.get(i);
               try {
-                methodMap.get(currVendor).invoke(null, (Object) params);
+                //if not DoubleClick the only parameter that needs to be passed is the empty String Array
+                if (!currVendor.contains("DoubleClick")) {
+                  methodMap.get(currVendor).invoke(null, (Object) params);
+                } else {
+                  //If DoubleClick is being imported it requires that the type of import be identified as a string parameter. This is found by taking
+                  //the substring of currVendor minus the DoubleClick
+                  System.out.println("'" + currVendor.substring(12,currVendor.length()) + "'");
+                  methodMap.get(currVendor).invoke(null,  params, DataAppTest.startDate, DataAppTest.endDate, currVendor.substring(12,currVendor.length()));
+                }
+                
               } catch (IllegalAccessException | IllegalArgumentException
                   | InvocationTargetException exception) {
                 exception.printStackTrace();
+              } catch (NullPointerException e) {
+                System.out.println("An unrecognized import method for the vendor " + currVendor +
+                    " was requested.");
+                e.printStackTrace();
               }
             }
 
@@ -557,13 +576,14 @@ public class ButtonEvents {
   
   
   
+  /*
+   * eventCommencePartialImport launches the import process for all vendors that
+   * are selected by the user in the GUI.
+   */
   public static EventHandler<ActionEvent> evntCommencePartialImport(ArrayList<String> importList){
     EventHandler<ActionEvent> evnt = new EventHandler<ActionEvent>() {
       @Override
       public void handle(ActionEvent event) {
-        //need to open a Python interpreter and for each
-        //value provied in the multi-select array run the 
-        //corresponding script
       
       Map<String, Method> methodMap = null;
       try {
@@ -587,11 +607,6 @@ public class ButtonEvents {
           exception.printStackTrace();
         }
       }
-        
-        
-
-
-
 
 ////hide this current window
 //((Node)(event.getSource())).getScene().getWindow().hide();
@@ -599,6 +614,7 @@ public class ButtonEvents {
 };//end of setOnAction
     return evnt;
   }// end of method
+  
   
   
   

@@ -136,6 +136,7 @@ public class importUtils {
     //Even though Pandora is Audio it is converted to display so that it matched the GA tag
     DCMMediumMappings.put("Pandora","Display");
     DCMMediumMappings.put("Pandora_Tile","Display");
+    DCMMediumMappings.put("Display","Display");
     
     
     //Note for FY16 all DCM digital goes to the umbrella campaign

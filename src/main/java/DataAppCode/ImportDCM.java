@@ -127,14 +127,15 @@ public static void printGroupedData(HashMap<GroupID, ArrayList<String[]>> groupe
 
     String tblName = "";
     
-    if (medium == "CrossPlatform" || medium == "Display") {
+    
+    if (medium.equals("CrossPlatform") || medium.equals("Display")) {
       tblName = "DATESTtblDigitalDisplayMetrics";
-    } else if (medium == "Preroll") {
+    } else if (medium.equals( "Preroll")) {
       tblName = "DATESTtblVideoMetrics";
-    } else if (medium == "Mobile") {
+    } else if (medium.equals("Mobile")) {
       tblName = "DATESTtblMobileMetrics";
     } else {
-      System.out.println("The correct table for " + medium + "could not be identified");
+      System.out.println("The correct table for " + medium + " could not be identified");
     }
     
     
@@ -319,15 +320,15 @@ public static void printGroupedData(HashMap<GroupID, ArrayList<String[]>> groupe
     
     String[] testArgs =  new String[0] ;
     
-    LocalDate startDate = LocalDate.of(2015, 11, 24);
-    LocalDate endDate = LocalDate.of(2015, 11, 30);
+    LocalDate startDate = LocalDate.of(2015, 11, 03);
+    LocalDate endDate = LocalDate.of(2015, 11, 9);
     
     //Open connection to dropbox API
     DropBoxConnection.initializeDropboxConnection();
     
-    importDCM(testArgs, startDate, endDate, "CrossPlatform");
-    importDCM(testArgs, startDate, endDate, "Mobile");
-    importDCM(testArgs, startDate, endDate, "Preroll");
+//    importDCM(testArgs, startDate, endDate, "CrossPlatform");
+//    importDCM(testArgs, startDate, endDate, "Mobile");
+//    importDCM(testArgs, startDate, endDate, "Preroll");
     //Note this import is for Pandora which although is Audio is treated as display
     importDCM(testArgs, startDate, endDate, "Display");
     

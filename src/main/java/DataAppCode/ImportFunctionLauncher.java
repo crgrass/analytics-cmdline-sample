@@ -38,6 +38,10 @@ public class ImportFunctionLauncher {
     methodMap.put("Facebook", DataAppCode.ImportFB.class.getMethod("main", String[].class));
     methodMap.put("Twitter", DataAppCode.ImportTwitter.class.getMethod("main", String[].class));
     methodMap.put("LinkedIn", DataAppCode.ImportLinkedIn.class.getMethod("main", String[].class));
+    methodMap.put("DoubleClick CrossPlatform", DataAppCode.ImportDCM.class.getMethod("importDCM", String[].class,LocalDate.class,LocalDate.class, String.class));
+    methodMap.put("DoubleClick Mobile", DataAppCode.ImportDCM.class.getMethod("importDCM", String[].class,LocalDate.class,LocalDate.class, String.class));
+    methodMap.put("DoubleClick Preroll", DataAppCode.ImportDCM.class.getMethod("importDCM", String[].class,LocalDate.class,LocalDate.class, String.class));
+    methodMap.put("DoubleClick Display", DataAppCode.ImportDCM.class.getMethod("importDCM", String[].class,LocalDate.class,LocalDate.class, String.class));
     
     return methodMap;
     
