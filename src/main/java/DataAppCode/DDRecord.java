@@ -25,6 +25,12 @@ public class DDRecord implements importRecord {
   
   //TODO: Determine way to store vendor specific data in the vendorRecord itself
   
+//The formal name is used when the vendor needs to identify itself. This is used
+  //in lieu of hardcoding each vendors name as necessary throughout the data app, which
+  //leads to inconsistency and errors.
+  public static String formalNameCentro = "Centro Digital Display";
+  public static String formalNameDoubleClick = "DoubleClick Digital Display";
+  
  //Fields for record metaData
   private int recordCount = 0;
   private boolean partialWeek = false;
