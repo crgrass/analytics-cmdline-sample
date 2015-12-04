@@ -27,6 +27,11 @@ import java.util.Map;
 
 public class LIRecord implements importRecord {
   
+//The formal name is used when the vendor needs to identify itself. This is used
+  //in lieu of hardcoding each vendors name as necessary throughout the data app, which
+  //leads to inconsistency and errors.
+  public static String formalName = "LinkedIn";
+  
   private final int SOURCE_INDEX = 0;
   private final int MEDIUM_INDEX = 0;
   private final int CAMPAIGN_INDEX = 4;

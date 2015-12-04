@@ -27,36 +27,41 @@ import java.util.Map;
  */
 public class TWRecord implements importRecord {
 
-      private boolean partialWeek = false;
-      private Integer daysActive = 0;
-           
-      private String startDate;
-      private String endDate;
-      private String source;
-      private String medium;
-      private String campaign;
-      private Integer impressions;
-      private Integer TWclicks;
-      private Float avgCTR;
-      private Float spend;
-      private Float avgCPC;
-      private Integer engagements;
-      private Integer billedEngagements;
-      private Integer retweets;
-      private Integer replies;
-      private Integer follows;
-      private Integer favorites;
-      private Integer cardEngagements;
-      private Integer unfollows;
-      private Float engagementRate;
-      private Float avgCPE;
-      private Integer linkClicks; //this is used for clicks      
-       
-      private Integer visits = 0;
-      private Float pagesPerVisit = 0.0f;
-      private Float avgDuration = 0.0f;
-      private Float percentNewVisits = 0.0f;
-      private Float bounceRate = 0.0f;
+  //The formal name is used when the vendor needs to identify itself. This is used
+  //in lieu of hardcoding each vendors name as necessary throughout the data app, which
+  //leads to inconsistency and errors.
+  public static String formalName = "Twitter";
+
+  private boolean partialWeek = false;
+  private Integer daysActive = 0;
+
+  private String startDate;
+  private String endDate;
+  private String source;
+  private String medium;
+  private String campaign;
+  private Integer impressions;
+  private Integer TWclicks;
+  private Float avgCTR;
+  private Float spend;
+  private Float avgCPC;
+  private Integer engagements;
+  private Integer billedEngagements;
+  private Integer retweets;
+  private Integer replies;
+  private Integer follows;
+  private Integer favorites;
+  private Integer cardEngagements;
+  private Integer unfollows;
+  private Float engagementRate;
+  private Float avgCPE;
+  private Integer linkClicks; //this is used for clicks      
+
+  private Integer visits = 0;
+  private Float pagesPerVisit = 0.0f;
+  private Float avgDuration = 0.0f;
+  private Float percentNewVisits = 0.0f;
+  private Float bounceRate = 0.0f;
       
       
       

@@ -26,6 +26,11 @@ import java.util.Map;
  *
  */
 public class FBRecord implements importRecord {
+  
+//The formal name is used when the vendor needs to identify itself. This is used
+  //in lieu of hardcoding each vendors name as necessary throughout the data app, which
+  //leads to inconsistency and errors.
+  public static String formalName = "Facebook";
 
 //record attributes
   private int recordCount = 0;

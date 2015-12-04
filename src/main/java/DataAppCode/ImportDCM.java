@@ -128,11 +128,13 @@ public static void printGroupedData(HashMap<GroupID, ArrayList<String[]>> groupe
     String tblName = "";
     
     
-    if (medium.equals("CrossPlatform") || medium.equals("Display")) {
+    //Determine which database table to use for import based on medium
+    if (medium.equals(DDRecord.formalMediumNameCrossPlatform) ||
+        medium.equals(DDRecord.formalMediumNameDD)) {
       tblName = "DATESTtblDigitalDisplayMetrics";
-    } else if (medium.equals( "Preroll")) {
+    } else if (medium.equals(VidRecord.formalMediumName)) {
       tblName = "DATESTtblVideoMetrics";
-    } else if (medium.equals("Mobile")) {
+    } else if (medium.equals(MobRecord.formalMediumName)) {
       tblName = "DATESTtblMobileMetrics";
     } else {
       System.out.println("The correct table for " + medium + " could not be identified");

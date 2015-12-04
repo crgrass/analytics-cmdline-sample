@@ -17,8 +17,15 @@ package guiCode;
 import com.dropbox.core.DbxEntry;
 import com.dropbox.core.DbxException;
 
-import DataAppCode.DownloadPageLauncher;
+import DataAppCode.LIRecord;
 
+import DataAppCode.TWRecord;
+import DataAppCode.FBRecord;
+import DataAppCode.VidRecord;
+import DataAppCode.MobRecord;
+import DataAppCode.DDRecord;
+import DataAppCode.AdwordsRecord;
+import DataAppCode.DownloadPageLauncher;
 import javafx.scene.layout.Priority;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
@@ -36,6 +43,13 @@ import DataAppCode.ImportFunctionLauncher;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.control.CheckBox;
+
+
+
+
+
+
+
 
 
 
@@ -212,9 +226,9 @@ public class ButtonEvents {
         });
         
         //Populate Labels for checking vendor files
-        final String[] vendorNames = new String[]{"Google Adwords",
-                "Centro Digital Display","Centro Mobile Display","Centro Video Display","Centro Rich Media",
-                "Facebook","Twitter","LinkedIn"};
+        final String[] vendorNames = new String[]{AdwordsRecord.formalName,
+                DDRecord.formalNameCentro,MobRecord.formalNameCentro,VidRecord.formalNameCentro,"Centro Rich Media",
+                FBRecord.formalName,TWRecord.formalName,LIRecord.formalName};
         final ObservableList<FilePrep> addNames = FXCollections.observableArrayList(); //holds filePrep objects for table
         
         for (int i=0; i < vendorNames.length; i++) {
@@ -312,10 +326,10 @@ public class ButtonEvents {
         partImportGrid.add(lblSelectImports, 0, 0);
 
         //Vendor Names for checkboxes
-        final String[] cbNames = new String[]{"Google Adwords","Centro Digital Display",
-                                              "Centro Mobile Display","Centro Video Display","Centro Rich Media","Facebook",
-                                              "Twitter","LinkedIn", "DoubleClick CrossPlatform","DoubleClick Display",
-                                              "DoubleClick Mobile", "DoubleClick Preroll"};
+        final String[] cbNames = new String[]{AdwordsRecord.formalName,DDRecord.formalNameCentro,
+                                              MobRecord.formalNameCentro,VidRecord.formalNameCentro,"Centro Rich Media",FBRecord.formalName,
+                                              TWRecord.formalName,LIRecord.formalName, DDRecord.formalNameDoubleClickCP,DDRecord.formalNameDoubleClickDD,
+                                              MobRecord.formalNameDoubleClick, VidRecord.formalNameDoubleClick};
 
         final ArrayList<String> importList = new ArrayList<String>();
 

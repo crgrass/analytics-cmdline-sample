@@ -27,6 +27,14 @@ import java.util.Map;
  */
 public class VidRecord implements importRecord {
 
+  //The formal name is used when the vendor needs to identify itself. This is used
+  //in lieu of hardcoding each vendors name as necessary throughout the data app, which
+  //leads to inconsistency and errors.
+  public static String formalNameCentro = "Centro Video Display";
+  public static String formalNameDoubleClick = "DoubleClick Video Display";
+  public static String formalMediumName = "Preroll";
+  
+  
   //Contain distinct vendor info inside the
   //vendorRecord classes
 //  private final int SOURCE_INDEX = 0;

@@ -31,17 +31,17 @@ public class ImportFunctionLauncher {
   public static Map<String,Method> generateMethodMap() throws Exception {
     Map<String,Method> methodMap = new HashMap<String,Method>();
 
-    methodMap.put("Google Adwords", DataAppCode.ImportAdwords.class.getMethod("main", String[].class));
-    methodMap.put("Centro Digital Display", DataAppCode.ImportDD.class.getMethod("main", String[].class));
-    methodMap.put("Centro Mobile Display", DataAppCode.ImportMob.class.getMethod("main", String[].class));
-    methodMap.put("Centro Video Display", DataAppCode.ImportCentroVid.class.getMethod("main", String[].class));
-    methodMap.put("Facebook", DataAppCode.ImportFB.class.getMethod("main", String[].class));
-    methodMap.put("Twitter", DataAppCode.ImportTwitter.class.getMethod("main", String[].class));
-    methodMap.put("LinkedIn", DataAppCode.ImportLinkedIn.class.getMethod("main", String[].class));
-    methodMap.put("DoubleClick CrossPlatform", DataAppCode.ImportDCM.class.getMethod("importDCM", String[].class,LocalDate.class,LocalDate.class, String.class));
-    methodMap.put("DoubleClick Mobile", DataAppCode.ImportDCM.class.getMethod("importDCM", String[].class,LocalDate.class,LocalDate.class, String.class));
-    methodMap.put("DoubleClick Preroll", DataAppCode.ImportDCM.class.getMethod("importDCM", String[].class,LocalDate.class,LocalDate.class, String.class));
-    methodMap.put("DoubleClick Display", DataAppCode.ImportDCM.class.getMethod("importDCM", String[].class,LocalDate.class,LocalDate.class, String.class));
+    methodMap.put(AdwordsRecord.formalName, DataAppCode.ImportAdwords.class.getMethod("main", String[].class));
+    methodMap.put(DDRecord.formalNameCentro, DataAppCode.ImportDD.class.getMethod("main", String[].class));
+    methodMap.put(MobRecord.formalNameCentro, DataAppCode.ImportMob.class.getMethod("main", String[].class));
+    methodMap.put(VidRecord.formalNameCentro, DataAppCode.ImportCentroVid.class.getMethod("main", String[].class));
+    methodMap.put(FBRecord.formalName, DataAppCode.ImportFB.class.getMethod("main", String[].class));
+    methodMap.put(TWRecord.formalName, DataAppCode.ImportTwitter.class.getMethod("main", String[].class));
+    methodMap.put(LIRecord.formalName, DataAppCode.ImportLinkedIn.class.getMethod("main", String[].class));
+    methodMap.put(DDRecord.formalNameDoubleClickCP, DataAppCode.ImportDCM.class.getMethod("importDCM", String[].class,LocalDate.class,LocalDate.class, String.class));
+    methodMap.put(MobRecord.formalNameDoubleClick, DataAppCode.ImportDCM.class.getMethod("importDCM", String[].class,LocalDate.class,LocalDate.class, String.class));
+    methodMap.put(VidRecord.formalNameDoubleClick, DataAppCode.ImportDCM.class.getMethod("importDCM", String[].class,LocalDate.class,LocalDate.class, String.class));
+    methodMap.put(DDRecord.formalNameDoubleClickDD, DataAppCode.ImportDCM.class.getMethod("importDCM", String[].class,LocalDate.class,LocalDate.class, String.class));
     
     return methodMap;
     

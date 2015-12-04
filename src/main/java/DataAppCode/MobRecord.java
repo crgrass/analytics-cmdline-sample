@@ -26,15 +26,23 @@ import java.util.Map;
  *
  */
 public class MobRecord implements importRecord {
-  
+
   //TODO: Need to find a way to contain all vendor specific
   //info inside the vendor record classes. It would probably be
   //easier to store this as one dictionary
-//  private final int SOURCE_INDEX = 0;
-//  private final int MEDIUM_INDEX = 0;
-//  private final int CAMPAIGN_INDEX = 4;
-  
- //record attributes
+
+  //The formal name is used when the vendor needs to identify itself. This is used
+  //in lieu of hardcoding each vendors name as necessary throughout the data app, which
+  //leads to inconsistency and errors.
+  public static String formalNameCentro = "Centro Mobile";
+  public static String formalNameDoubleClick = "DoubleClick Mobile";
+  public static String formalMediumName = "Mobile";
+
+  //  private final int SOURCE_INDEX = 0;
+  //  private final int MEDIUM_INDEX = 0;
+  //  private final int CAMPAIGN_INDEX = 4;
+
+  //record attributes
   private int recordCount = 0;
   private boolean partialWeek = false;
   private int daysActive = 7;
