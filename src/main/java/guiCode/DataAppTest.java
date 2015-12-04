@@ -86,13 +86,14 @@ public class DataAppTest extends Application {
 	  
       //Generate key components to be added to the master scene
       VBox welcome = addWelcome();
+      HBox launchVendors = addLaunchVendorPages();
       HBox dateSelection = addDateSelection();
 	  AnchorPane fullImport = addFullImport();
 	  AnchorPane partialImport = addPartialImport();
 	  AnchorPane indivFileImport = addIndividualFileImport();
 	  
 	  //Parent VBox that holds all components for primary scene created above
-	  primaryVBox.getChildren().addAll(welcome,dateSelection,fullImport,partialImport,
+	  primaryVBox.getChildren().addAll(welcome,launchVendors,dateSelection,fullImport,partialImport,
 	      indivFileImport,outputDisplay.classSP);
 	  
 	  
@@ -147,6 +148,25 @@ public class DataAppTest extends Application {
       vbox.getChildren().add(title);
       return vbox;
   }
+	
+	
+	
+	public HBox addLaunchVendorPages(){
+	  HBox hboxLaunchVendorPages = new HBox();
+	  hboxLaunchVendorPages.setPadding(new Insets(25,25,25,25));
+	  hboxLaunchVendorPages.setSpacing(10);
+	  
+	  Text txtLaunchVendorPages = new Text("Launch Vendor Pages.");
+	  Button btnLaunchVendorPages = new Button("Launch");
+	  
+	//evntFullImport launches the fullImport window
+      EventHandler<ActionEvent> evntLaunchPages = ButtonEvents.evntLaunchVendorPages();
+      btnLaunchVendorPages.setOnAction(evntLaunchPages);
+	  
+	  hboxLaunchVendorPages.getChildren().addAll(txtLaunchVendorPages,btnLaunchVendorPages);
+	  
+	  return hboxLaunchVendorPages;
+	}
 	
 	/*
 	 * Generate a fully populated date selection HBox.

@@ -24,7 +24,7 @@ import java.util.ArrayList;
 public class MultiDateImport {
   
   
-  //User Interface will need to be created added
+  //User Interface will need to be added
   
   //User will need to select between providing a master file for verifying that all
   //files within the date range exists

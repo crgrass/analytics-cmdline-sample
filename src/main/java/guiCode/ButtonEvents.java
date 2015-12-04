@@ -17,8 +17,9 @@ package guiCode;
 import com.dropbox.core.DbxEntry;
 import com.dropbox.core.DbxException;
 
-import javafx.scene.layout.Priority;
+import DataAppCode.DownloadPageLauncher;
 
+import javafx.scene.layout.Priority;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.stage.FileChooser;
@@ -35,6 +36,7 @@ import DataAppCode.ImportFunctionLauncher;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.control.CheckBox;
+
 
 
 
@@ -81,6 +83,16 @@ import javafx.util.Callback;
  */
 public class ButtonEvents {
 
+  
+  public static EventHandler<ActionEvent> evntLaunchVendorPages() {
+    EventHandler<ActionEvent> evnt = new EventHandler<ActionEvent>() {
+      @Override
+      public void handle(ActionEvent event) {
+        DownloadPageLauncher.launchDownloadPages();
+      }
+    };
+    return evnt;
+  }
   
   public static EventHandler<ActionEvent> evntFullImport() {
     EventHandler<ActionEvent> evnt = new EventHandler<ActionEvent>() {
