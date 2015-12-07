@@ -171,7 +171,10 @@ public class DropBoxConnection {
       //check if the file exists
       if (client.getMetadata(paths.get(vendor)) == null ) {
         //Throw exception here
-        DataAppTest.logger.log(Level.SEVERE, "The file at path " + paths.get(vendor) + " could not be found");
+        DataAppTest.logger.log(Level.SEVERE, "The file at path " + paths.get(vendor) + " could not be found."
+            + " Please verify that the file "
+          + "was downloaded to the correct folder and is named according to convention.");
+        throw new FileNotFoundException();
       }
       md = client.getFile(paths.get(vendor), null, out); //null second param indicates latest version requested
       BufferedReader r = new BufferedReader( new FileReader(outputFile));

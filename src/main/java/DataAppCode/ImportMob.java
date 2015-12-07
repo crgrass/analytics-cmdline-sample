@@ -29,6 +29,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.logging.Level;
 
 /**
  * @author cgrass@google.com (Your Name Here)
@@ -113,7 +114,7 @@ public class ImportMob {
       }//end of loop
 
     } catch (SQLException e) {
-      System.out.println(e.getMessage());
+      DataAppTest.logger.log(Level.SEVERE, e.getMessage() + System.lineSeparator());
     }//end of catch
 
   } // end of update adwords
@@ -127,32 +128,31 @@ public class ImportMob {
 
       DropBoxConnection.pullCSV("Centro Mobile Display", DataAppTest.startDate,DataAppTest.endDate);
 
-    } catch (DbxException exception) {
-      // TODO Auto-generated catch block
-      exception.printStackTrace();
-    } catch (IOException exception) {
-      // TODO Auto-generated catch block
-      exception.printStackTrace();
+    } catch (DbxException e) {
+      DataAppTest.logger.log(Level.SEVERE, e.getMessage() + System.lineSeparator());
+    } catch (IOException e) {
+      DataAppTest.logger.log(Level.SEVERE, e.getMessage() + System.lineSeparator());
     }
     
-    System.out.println("Reading Centro Mobile File...\n");
+    DataAppTest.logger.log(Level.INFO, "Reading Centro Mobile File." + System.lineSeparator());
     data = CSVReaders.readCsv("retrievedCentro Mobile Display.csv");
     
     CSVReaders.removeHeader(data);
     CSVReaders.removeInvalidDates(data, "Centro", DataAppTest.startDate);
     
-    System.out.println("Centro Mobile File Read Complete.\n");
     
-    System.out.println("Grouping Data by Source, Medium and Campaign...\n");
+    
+    DataAppTest.logger.log(Level.INFO, "Grouping Data by Source, Medium and Campaign." + System.lineSeparator());
+    
     HashMap<GroupID, ArrayList<String[]>> groupedData = importUtils.groupCentroRawData(data, guiCode.DataAppTest.startDate);
-    System.out.println("Grouping Complete.\n");
     
-    System.out.println("Aggregating Centro Mobile Data...\n");
+    DataAppTest.logger.log(Level.INFO, "Aggregating Centro Mobile Data." + System.lineSeparator());
+    
     ArrayList<MobRecord> acquisitionData = MobRecord.aggregate(groupedData, DataAppTest.startDate,
         DataAppTest.endDate);
-    System.out.println("Aggregation Complete.\n");
     
-    System.out.println("Removing all records with 0 Impressions.\n");
+    DataAppTest.logger.log(Level.INFO, "Removing all records with 0 Impressions." + System.lineSeparator());
+    
     acquisitionData = importUtils.remove0ImpressionRecords(acquisitionData);
     
     //Data is now aggregated and ready for matching
@@ -161,25 +161,26 @@ public class ImportMob {
     String endDate = guiCode.DataAppTest.endDate.toString();
     String[] testDates = {startDate,endDate};
     
-    System.out.println("Connecting to Google Analytics API for "
-        + "Behavior metrics\n");
-    System.out.println("Google Analytics API messages below: \n");
+    DataAppTest.logger.log(Level.INFO, "Connecting to Google Analytics API for "
+        + "behavior metrics." + System.lineSeparator());
+    
+    DataAppTest.logger.log(Level.INFO, "Google Analytics API messages below:" + System.lineSeparator());
+
     GaData behaviorResults = GACall.main(args,testDates,4);
-    System.out.println("\nGoogle Analytics API Request Complete.\n");
+    
+    DataAppTest.logger.log(Level.INFO, "Matching Acquisition Metrics to their respective behavior metrics." + System.lineSeparator());
     
     //match behavior and acquisition data
-    System.out.println("Matching Acquisition Metrics to their respective behavior metrics...\n");
     importUtils.matchBehaviorAcq(acquisitionData, behaviorResults);
-    System.out.println("Matching Complete.\n");
     
     //Establish Connection
     Connection cnx = null;
     try {
 //      cnx = DatabaseUtils.getTestDBConnection();
       cnx = DatabaseUtils.getGoogleCloudDBConnection();
-      System.out.println("Database Connection Successful\n");
+      DataAppTest.logger.log(Level.INFO, "Database Connection Successful." + System.lineSeparator());
     } catch (Exception e) {
-      System.out.println("There was an error establishing connection to the database");
+      DataAppTest.logger.log(Level.SEVERE, "There was an error establishing connection to the database." + System.lineSeparator());
       System.out.println(e.getMessage());
     }
     

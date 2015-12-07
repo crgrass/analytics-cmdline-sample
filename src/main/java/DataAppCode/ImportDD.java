@@ -32,6 +32,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.logging.Level;
 
 /**
  * @author cgrass@google.com (Your Name Here)
@@ -39,188 +40,26 @@ import java.util.Map;
  */
 public class ImportDD {
   
-  
-  @Deprecated // Replaced by GroupCentroRawData in importUtils package 
-  public static HashMap<GroupID, ArrayList<String[]>> groupRawData(ArrayList<String[]> rawData) {
-    /*
-     * Build the dictionaries that convert the string identifying the source, medium, campaign and ad
-     * content to the exact string that will match with the values from the ad units data in Google
-     * Analytics. 
-     * 
-     * Note: This list will need to be updated as new campaigns are launched.
-     */
-    
-    //These mappings convert the string identifying the source, medium and campaign in the Centro Files
-    //to the string that matches the corresponding term in Google Analytics
-    //Note: As USM utilizes more networks through Centro this list will need to be updated.
-    HashMap<String,String> centroSourceMappings = new HashMap<String,String>();
-    centroSourceMappings.put("Collective.com","Collective");
-    centroSourceMappings.put("MobileFuse.com","MobileFuse");
-    centroSourceMappings.put("Pandora.com","Pandora");
-    centroSourceMappings.put("Petersons.com","Peterson");
-    centroSourceMappings.put("SparkNotes.com","Sparknotes");
-    centroSourceMappings.put("YouTube.com","YouTube");
-    centroSourceMappings.put("BrandExchange.net","Brand_Exchange");
-
-    HashMap<String,String> centroMediumMappings = new HashMap<String,String>();
-    centroMediumMappings.put("Digital Display (web)","Display");
-    centroMediumMappings.put("Video Display","Preroll");
-    centroMediumMappings.put("Mobile Display","Mobile");
-    centroMediumMappings.put("Rich media","Rich");
-
-    HashMap<String,String> centroCampaignMappings = new HashMap<String,String>();
-    centroCampaignMappings.put("USM001","");
-    centroCampaignMappings.put("USM002","");
-    centroCampaignMappings.put("USM003","");
-    centroCampaignMappings.put("USM004","");
-    centroCampaignMappings.put("USM005","");
-    centroCampaignMappings.put("USM006","FY2015_Undergrad");
-    centroCampaignMappings.put("USM007","FY2015_Graduate");
-    centroCampaignMappings.put("USM008","FY2015_Degree_Completion");
-    centroCampaignMappings.put("USM009","FY2015_Transfer");
-    centroCampaignMappings.put("USM010","FY2015_Courses_Summer");
-    
-    HashMap<String,String> centroAdContentMappings = new HashMap<String,String>();
-    centroAdContentMappings.put("time","Time_Is_Now");
-    centroAdContentMappings.put("summer","(not set)");
-    centroAdContentMappings.put("tour","Campus_Tour");
-    centroAdContentMappings.put("misc","Unknown");
-
-
-    
-    
-    //Dictionary that will house all grouped data
-    HashMap<GroupID, ArrayList<String[]>> groupedData = new HashMap<GroupID, ArrayList<String[]>>();
-
-    for (String[] row : rawData) {
-      //what are the key fields necessary for the groupID
-      /*
-       * Source: Index: 3 Values: "Collective.com", "MobileFuse.com", "Pandora.com", "Petersons.com","SparkNotes.com","YouTube.com",
-       * "BrandExchange.net",
-       * Medium: Index : 5 Values: Digital Display (web),Video Display, Mobile Display, Rich Media
-       * Campaign: Index: 2 Values: USM001-010
-       * Ad Content: Index:6
-       */
-
-      String source;
-      String medium; 
-      String campaign;
-      String adContent;
-
-
-      //Assign value to source
-      if (centroSourceMappings.containsKey(row[3])) {
-        source = centroSourceMappings.get(row[3]);
-      } else {
-        source = "Source Not Found" + row[3];
-      }
-
-      //Assign value to medium
-      if (centroMediumMappings.containsKey(row[5])) {
-        medium = centroMediumMappings.get(row[5]); 
-      } else {
-        medium = "Medium Not Found: " + row[5];
-      }
-
-      //Assign value to campaign
-      if (centroCampaignMappings.containsKey(row[2])) {
-        campaign = centroCampaignMappings.get(row[2]); 
-      } else {
-        campaign = "Campaign Not Found" + row[2];
-      }
-      
-      
-
-      
-      //Assign value to adContent based on whether the value contains the
-      //key within it. This is different then source, medium and campaign as
-      //it is not looking for an exact match.
-      if (row[6].contains("time")) {
-        adContent = "time";
-      } else if (row[6].contains("tour")) {
-        adContent = "tour";
-      } else if (campaign.equals("FY2015_Courses_Summer")) { //ad content not set for Summer DD
-        adContent = "summer";
-      } else if (row[6].equals("Tracking Pixel")) {
-        adContent = "Tracking Pixel";
-      } else {
-        adContent = "misc";
-      }
-      
-      
-      
-
-      if (adContent.equals("Tracking Pixel")) {
-        if (campaign.equals("FY2015_Courses_Summer")) {
-          adContent = "summer";
-        } else {
-          adContent = "time";
-        }
-      }
-      
-      
-      //adContent parameter for Summer YouTube is not set
-      //adContent parameter for FY2015_Undergrad YouTube is Time_Is_Now
-      
-      //if key is not dictionary a null value is returned?
-      //this can raise a null pointer exception
-      adContent = centroAdContentMappings.get(adContent);
-      
-
-      //load GroupID
-      GroupID currGroupID = new GroupID(source,medium,campaign, adContent);
-      
-      
-
-
-
-      boolean groupIDExists = false;
-      //Iterates through hashmap and raises flag if the groupID already exists
-      Iterator<Map.Entry<GroupID, ArrayList<String[]>>> it = groupedData.entrySet().iterator();
-      while (it.hasNext()) {
-        Map.Entry<GroupID,ArrayList<String[]>> pairs = it.next();
-        GroupID iteratedGroupID = pairs.getKey();
-        if (iteratedGroupID.equals(currGroupID)) {
-          groupIDExists = true;
-          //add string once match is identified
-          groupedData.get(iteratedGroupID).add(row);
-        } //end of if
-      }// end of while
-
-      //A matching groupID was not found and a new key must be created
-      if (!groupIDExists) {
-        groupedData.put(currGroupID, new ArrayList<String[]>()); //create the new key value pair with empty array list
-        groupedData.get(currGroupID).add(row); //add row
-      }//end of if   
-
-    }// end of for
-
-    return groupedData;
-  }//end of group raw data
-
-
-
-
+//TODO: Doc this
 public static void printGroupedData(HashMap<GroupID, ArrayList<String[]>> grouped) {
   Iterator<Map.Entry<GroupID, ArrayList<String[]>>> it = grouped.entrySet().iterator();
   while (it.hasNext()) {
     Map.Entry<GroupID, ArrayList<String[]>> pairs = it.next();
-    System.out.println(pairs.getKey()); //this should trigger the too string method
+    System.out.println(pairs.getKey());
   }//end of record iteration
 }
   
   
   
   /*
-   * PreCondition: Raw data is already grouped appropriately
+   * PreCondition: Raw data has already been processed by the groupCentroRawData method located in
+   * importUtils.
    */
 
- //TODO: This method can likely be modified to work aggregate all Centro data at once.
+ //TODO: This method can likely be modified to aggregate all Centro data at once. Currently each medium
+ //within centro has it's own aggregate method located within it's respective Import class
   public static ArrayList<DDRecord> aggregate(HashMap<GroupID,ArrayList<String[]>> rawData, LocalDate sDate,
       LocalDate eDate) {
-
-    System.out.println("Aggregating rows based on Source, Network, Campaign and AdContent...\n");
-    
     
     //Iterate through HashMap and place only digital display entries into a new onlyDD HashMap
     HashMap<GroupID,ArrayList<String[]>> onlyDD = new HashMap<GroupID,ArrayList<String[]>>();
@@ -254,12 +93,6 @@ public static void printGroupedData(HashMap<GroupID, ArrayList<String[]>> groupe
 
 
       for (String[] row : currList) {
-        //Index 0 : Start Date, Index 1 : End Date, !!!Index 2 : Campaign!!!
-        //!!!Index 3 : Site - This is the source!!!, Index 4 : Placement, !!!Index 5 : Type This is Medium!!!
-        //Index 6 : Ad, Index 7 : Size, Index: 8 Clicks
-        //Index 9 : Impressions, Index 10 : Views
-        //Index 11: CTR, Index 12: Average CPC, Index 13: Average CPM, Index 14: Total Media Cost
-        //Index 15: Total Conversions, Index 16: PC Conversions, Index 17: PI Conversions
         totalImpressions += Integer.parseInt(row[9]);
 
         //Index 12: Clicks
@@ -335,25 +168,22 @@ public static void printGroupedData(HashMap<GroupID, ArrayList<String[]>> groupe
         updateCentroDD.setString(6, currRec.getAdContent());
         updateCentroDD.setInt(7,currRec.getClicks());
         updateCentroDD.setInt(8,currRec.getImpressions());
-        
+
+        //MySQL databases will not accept NaN or Infinity as a float value
         if (Double.isNaN(currRec.getCTR()) || 
             currRec.getCTR() == Double.POSITIVE_INFINITY) {
           currRec.setCTR(-1.0f);
-          System.out.println("Converted special value");
         }
         updateCentroDD.setFloat(9,currRec.getCTR());
-        
-        
         
         //MySQL databases will not accept NaN or Infinity as a float value
         if (Double.isNaN(currRec.getAvgCPC())|| 
             currRec.getAvgCPC() == Double.POSITIVE_INFINITY) {
           currRec.setAvgCPC(-1.0f);
-          System.out.println("Converted special value");
         }
         updateCentroDD.setFloat(10,currRec.getAvgCPC());
         
-        
+      //MySQL databases will not accept NaN or Infinity as a float value
         if (Double.isNaN(currRec.getAvgCPM()) || 
             currRec.getAvgCPM() == Double.POSITIVE_INFINITY) {
           currRec.setAvgCPM(-1.0f);
@@ -377,10 +207,9 @@ public static void printGroupedData(HashMap<GroupID, ArrayList<String[]>> groupe
       }//end of loop
 
     } catch (SQLException e) {
-      System.out.println(e.getMessage());
+      DataAppTest.logger.log(Level.SEVERE, e.getMessage() + System.lineSeparator());
     }//end of catch
-
-  } // end of update adwords
+  } // end of updateCentroDD
 
 
   public static void main(String[] args) {
@@ -394,38 +223,35 @@ public static void printGroupedData(HashMap<GroupID, ArrayList<String[]>> groupe
       try {
          DropBoxConnection.pullCSV("Centro Digital Display",DataAppTest.startDate,
              DataAppTest.endDate);
-      } catch (DbxException exception) {
-        exception.printStackTrace();
-      } catch (IOException exception) {
-        exception.printStackTrace();
+      } catch (DbxException e) {
+        DataAppTest.logger.log(Level.SEVERE, e.getMessage() + System.lineSeparator());
+      } catch (IOException e) {
+        DataAppTest.logger.log(Level.SEVERE, e.getMessage() + System.lineSeparator());
       }
   
     //Read csv generated and return raw data
-    System.out.println("Reading Centro Display File... ");
+    DataAppTest.logger.log(Level.INFO, "Reading Centro Display File." + System.lineSeparator());
     data = CSVReaders.readCsv("retrievedCentro Digital Display.csv");
 
     
     CSVReaders.removeHeader(data);
     CSVReaders.removeInvalidDates(data, "Centro", DataAppTest.startDate);
     
-    System.out.print("Complete.\n");
-    
     //Now that we have the raw data in ArrayList<String[]> form
     //We need to group appropriately into a hashmap
     //We will then iterate through the HashMap and aggregate each entry
     
-    System.out.println("Grouping Data by Source, Medium, Campaign and AdContent... ");
+    DataAppTest.logger.log(Level.INFO, "Grouping Data by Source, Medium, Campaign and AdContent." + System.lineSeparator());
+    
     HashMap<GroupID, ArrayList<String[]>> groupedData = importUtils.groupCentroRawData(data, DataAppTest.startDate);
-    System.out.print("Complete.\n");
 
     
-    System.out.println("Aggregating Centro Digital Display Data... ");
+    DataAppTest.logger.log(Level.INFO, "Aggregating Centro Digital Display Data." + System.lineSeparator());
     ArrayList<DDRecord> acquisitionData = aggregate(groupedData, DataAppTest.startDate, DataAppTest.endDate);
-    System.out.print("Complete.\n");
     
-    System.out.println("The number of DD records for import is: " + acquisitionData.size());
+    DataAppTest.logger.log(Level.INFO, "The number of DD records for import is: " + acquisitionData.size() + System.lineSeparator());
 
-    System.out.println("Removing all records with 0 Impressions.\n");
+    DataAppTest.logger.log(Level.INFO, "Removing all records with 0 Impressions." + System.lineSeparator());
     acquisitionData = importUtils.remove0ImpressionRecords(acquisitionData);
   
     //Data is now aggregated and ready for matching
@@ -434,33 +260,33 @@ public static void printGroupedData(HashMap<GroupID, ArrayList<String[]>> groupe
     String endDate = guiCode.DataAppTest.endDate.toString();
     String[] testDates = {startDate,endDate};
     
-    System.out.println("Connecting to Google Analytics API for "
-        + "Behavior metrics\n");
-    System.out.println("Google Analytics API messages below: \n");
+    DataAppTest.logger.log(Level.INFO, "Connecting to Google Analytics API for "
+        + "Behavior metrics." + System.lineSeparator());
+    
+    DataAppTest.logger.log(Level.INFO, "Google Analytics API messages below:" + System.lineSeparator());
+    
     GaData behaviorResults = GACall.main(args,testDates,2);
-    System.out.println("\nGoogle Analytics API Request Complete.\n");
     
     //match aggregated acquisition data and behavior data from Google Analytics
-    System.out.println("Matching Acquisition Metrics to their respective behavior metrics... ");
+    DataAppTest.logger.log(Level.INFO, "Matching Acquisition Metrics to their respective behavior metrics." + System.lineSeparator());
     importUtils.matchBehaviorAcq(acquisitionData, behaviorResults);
-    System.out.print("Matching Complete.\n");
     
     //Establish database connection
     Connection cnx = null;
     try {
-//      cnx = DatabaseUtils.getTestDBConnection();
       cnx = DatabaseUtils.getGoogleCloudDBConnection();
-      System.out.println("Database Connection Successful\n");
+      DataAppTest.logger.log(Level.INFO, "Database Connection Successful." + System.lineSeparator());
     } catch (Exception e) {
-      System.out.println("There was an error establishing connection to the database");
-      System.out.println(e.getMessage());
+      DataAppTest.logger.log(Level.SEVERE, "There was an error establishing connection to the database." + System.lineSeparator());
+      DataAppTest.logger.log(Level.SEVERE, e.getMessage() + System.lineSeparator());
     }
     
     //execute query
     try{
       updateCentroDD(acquisitionData,cnx);
     } catch (Exception e) {
-    System.out.println(e.getMessage());  
+      DataAppTest.logger.log(Level.SEVERE, "There was an error executing the digital display query." + System.lineSeparator());
+      DataAppTest.logger.log(Level.SEVERE, e.getMessage() + System.lineSeparator());  
     }
     
     DataAppTest.importActivity.reset();

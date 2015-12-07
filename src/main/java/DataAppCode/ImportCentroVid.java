@@ -29,6 +29,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.logging.Level;
 
 /**
  * @author cgrass@google.com (Your Name Here)
@@ -65,10 +66,9 @@ public class ImportCentroVid {
           sDate = sdf.parse(currRec.getStartDate());
           eDate = sdf.parse(currRec.getEndDate());
         } catch (ParseException e) {
-          e.printStackTrace();
-        } catch (java.text.ParseException exception) {
-          // TODO Auto-generated catch block
-          exception.printStackTrace();
+          DataAppTest.logger.log(Level.SEVERE, e.getMessage() + System.lineSeparator());
+        } catch (java.text.ParseException e) {
+          DataAppTest.logger.log(Level.SEVERE, e.getMessage() + System.lineSeparator());
         }
         
         java.sql.Date sqlFormatStartDate = new java.sql.Date(sDate.getTime());
@@ -104,10 +104,10 @@ public class ImportCentroVid {
       }//end of loop
 
     } catch (SQLException e) {
-      System.out.println(e.getMessage());
+      DataAppTest.logger.log(Level.SEVERE, e.getMessage() + System.lineSeparator());
     }//end of catch
 
-  } // end of update adwords
+  } // end of updateCentroVid
 
   
   public static void main(String[] args) {
@@ -118,31 +118,27 @@ public class ImportCentroVid {
     try {
       DropBoxConnection.pullCSV("Centro Video Display", DataAppTest.startDate,
           DataAppTest.endDate);
-    } catch (DbxException exception) {
-      // TODO Auto-generated catch block
-      exception.printStackTrace();
-    } catch (IOException exception) {
-      // TODO Auto-generated catch block
-      exception.printStackTrace();
+    } catch (DbxException e) {
+      DataAppTest.logger.log(Level.SEVERE, e.getMessage() + System.lineSeparator());
+    } catch (IOException e) {
+      DataAppTest.logger.log(Level.SEVERE, e.getMessage() + System.lineSeparator());
     }
     
-    System.out.println("Reading Centro Video File...\n");
+    DataAppTest.logger.log(Level.INFO, "Reading Centro Video File." + System.lineSeparator());
     data = CSVReaders.readCsv("retrievedCentro Video Display.csv");
     CSVReaders.removeHeader(data);
     CSVReaders.removeInvalidDates(data, "Centro", DataAppTest.startDate);
-    System.out.println("Centro Video File Read Complete.\n");
     
-    System.out.println("Grouping Data by Source, Medium and Campaign...\n");
+    DataAppTest.logger.log(Level.INFO, "Grouping Data by Source, Medium and Campaign." + System.lineSeparator());
     HashMap<GroupID, ArrayList<String[]>> groupedData = importUtils.groupCentroRawData(data,
         guiCode.DataAppTest.startDate);
-    System.out.println("Grouping Complete.\n");
+
     
-    System.out.println("Aggregating Centro Video Data...\n");
+    DataAppTest.logger.log(Level.INFO, "Aggregating Centro Video Data." + System.lineSeparator());
     ArrayList<VidRecord> acquisitionData = VidRecord.aggregate(groupedData, DataAppTest.startDate,
         DataAppTest.endDate);
-    System.out.println("Aggregation Complete.\n");
     
-    System.out.println("Removing all records with 0 Impressions.\n");
+    DataAppTest.logger.log(Level.INFO, "Removing all records with 0 Impressions." + System.lineSeparator());
     acquisitionData = importUtils.remove0ImpressionRecords(acquisitionData);
     
     //Data is now aggregated and ready for matching
@@ -151,35 +147,33 @@ public class ImportCentroVid {
     String endDate = guiCode.DataAppTest.endDate.toString();
     String[] testDates = {startDate,endDate};
     
-    System.out.println("Connecting to Google Analytics API for "
-        + "Behavior metrics\n");
-    System.out.println("Google Analytics API messages below: \n");
+    DataAppTest.logger.log(Level.INFO, "Connecting to Google Analytics API for "
+        + "Behavior metrics." + System.lineSeparator());
+    DataAppTest.logger.log(Level.INFO, "Google Analytics API messages below:" + System.lineSeparator());
     GaData behaviorResults = GACall.main(args,testDates,3);
-    System.out.println("\nGoogle Analytics API Request Complete.\n");
     
   //match behavior and acquisition data
-    System.out.println("Matching Acquisition Metrics to their respective behavior metrics...\n");
+    DataAppTest.logger.log(Level.INFO, "Matching Acquisition Metrics to their respective behavior metrics." + System.lineSeparator());
     importUtils.matchBehaviorAcq(acquisitionData, behaviorResults);
-    System.out.println("Matching Complete.\n");
-    //Establish Connection
+    
+    //Establish database connection
     Connection cnx = null;
     try {
-//      cnx = DatabaseUtils.getTestDBConnection();
       cnx = DatabaseUtils.getGoogleCloudDBConnection();
       System.out.println("Database Connection Successful\n");
     } catch (Exception e) {
-      System.out.println("There was an error establishing connection to the database");
-      System.out.println(e.getMessage());
+      DataAppTest.logger.log(Level.INFO, "There was an error establishing connection to the database." + System.lineSeparator());
+      DataAppTest.logger.log(Level.SEVERE, e.getMessage() + System.lineSeparator());
     }
     
   //execute query
     try{
       updateCentroVid(acquisitionData,cnx);
     } catch (Exception e) {
-    System.out.println(e.getMessage()); 
+      DataAppTest.logger.log(Level.INFO, "There was an error running the Centro Video update query." + System.lineSeparator());
+      DataAppTest.logger.log(Level.SEVERE, e.getMessage() + System.lineSeparator()); 
     
     }
-    
 
     DataAppTest.importActivity.reset();
 
