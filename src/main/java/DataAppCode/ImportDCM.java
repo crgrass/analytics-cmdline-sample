@@ -22,6 +22,10 @@ import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
 //import guiCode.DataAppTest;
 //import guiCode.OutputMessages;
 
+
+
+import guiCode.DataAppTest;
+
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -33,6 +37,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.logging.Level;
 
 /**
  * @author cgrass@google.com (Your Name Here)
@@ -41,28 +46,32 @@ import java.util.Map;
 public class ImportDCM {
 
 
-public static void printGroupedData(HashMap<GroupID, ArrayList<String[]>> grouped) {
-  Iterator<Map.Entry<GroupID, ArrayList<String[]>>> it = grouped.entrySet().iterator();
-  while (it.hasNext()) {
-    Map.Entry<GroupID, ArrayList<String[]>> pairs = it.next();
-    ArrayList<String[]> val = pairs.getValue();
-    System.out.println(pairs.getKey() + " : " + val.toString()); //this should trigger the too string method
-  }//end of record iteration
-}
-  
-  
-  
+  /*
+   * @param grouped - The data structure HashMap to be printed.
+   * printGroupedData is a convenience method used to print out the
+   * data structure passed as a parameter for debugging.
+   */
+  public static void printGroupedData(HashMap<GroupID, ArrayList<String[]>> grouped) {
+    Iterator<Map.Entry<GroupID, ArrayList<String[]>>> it = grouped.entrySet().iterator();
+    while (it.hasNext()) {
+      Map.Entry<GroupID, ArrayList<String[]>> pairs = it.next();
+      ArrayList<String[]> val = pairs.getValue();
+      System.out.println(pairs.getKey() + " : " + val.toString());
+    }//end of record iteration
+  }
+
+
+
   /*
    * PreCondition: Raw data is already grouped appropriately
    */
-
- //TODO: This method can likely be modified to work aggregate all Centro data at once.
   public static ArrayList<DDRecord> aggregate(HashMap<GroupID,ArrayList<String[]>> rawData, LocalDate sDate,
       LocalDate eDate, String medium) {
 
-    System.out.println("Aggregating rows based on Source, Network, Campaign and AdContent...\n");
-    
-    
+    DataAppTest.logger.log(Level.INFO,"Aggregating rows based on Source, Network, Campaign and AdContent." +
+        System.lineSeparator());
+
+
     //Iterate through HashMap and place only digital display entries into a new onlyDD HashMap
     HashMap<GroupID,ArrayList<String[]>> filteredByMedium = new HashMap<GroupID,ArrayList<String[]>>();
     Iterator<Map.Entry<GroupID, ArrayList<String[]>>> itr = rawData.entrySet().iterator();
@@ -70,12 +79,12 @@ public static void printGroupedData(HashMap<GroupID, ArrayList<String[]>> groupe
       Map.Entry<GroupID, ArrayList<String[]>> pairs = itr.next();
       GroupID currID = pairs.getKey();
       ArrayList<String[]> currArray = pairs.getValue();
-      
+
       if (currID.getMedium().equals(medium)) {
         filteredByMedium.put(currID, currArray);
       }//end of if
     }//end of while
-    
+
     //Create final returned arrayList
     ArrayList<DDRecord> DDRecordCollection = new ArrayList<DDRecord>();
 
@@ -93,9 +102,6 @@ public static void printGroupedData(HashMap<GroupID, ArrayList<String[]>> groupe
       Integer pcConversions = 0;
       Integer piConversions = 0;
 
-      //TODO:Discarding last row as a band aid
-      //eventually need to stop importing last row
-
       for (String[] row : currList) {
         totalImpressions += Integer.parseInt(row[9]);
         totalClicks += Integer.parseInt(row[8]);
@@ -106,11 +112,10 @@ public static void printGroupedData(HashMap<GroupID, ArrayList<String[]>> groupe
       Float aggCPC = totalSpend/(float)totalClicks;
       Float kImpressions = (float)totalImpressions/1000;
       Float aggCPM = totalSpend/kImpressions;
-      //TODOL System.out.println("Ensure this cpm calc is correct: " + aggCPM);
 
       //Dates need to come from one common source
       String[] dateArray = {sDate.toString(),eDate.toString()};
-      
+
       GroupID currID = pairs.getKey();
 
       DDRecord rec = new DDRecord(dateArray,currID.getSource(),currID.getMedium(),currID.getCampaign(),currID.getSource(),//<- This is network
@@ -120,14 +125,23 @@ public static void printGroupedData(HashMap<GroupID, ArrayList<String[]>> groupe
 
     return DDRecordCollection;
   }
-  
+
+  /*
+   * @param importData - The arrayList of DDRecords that needs to be imported.
+   * @param cnxn - The connection object used to connect to the database
+   * @param medium - The medium being imported. This parameter is used to identify the
+   * appropriate database to store the data.
+   * 
+   * updateDCMDD identifies the appropriate database for import, builds the correct update query
+   * for each row and executes the query.
+   */
   public static void updateDCMDD(ArrayList<DDRecord> importData, Connection cnxn, String medium) {
 
     PreparedStatement updateDCMDD = null;
 
     String tblName = "";
-    
-    
+
+    //checks medium parameter to determine appropriate database for storing data.
     if (medium.equals("CrossPlatform") || medium.equals("Display")) {
       tblName = "DATESTtblDigitalDisplayMetrics";
     } else if (medium.equals( "Preroll")) {
@@ -135,11 +149,12 @@ public static void printGroupedData(HashMap<GroupID, ArrayList<String[]>> groupe
     } else if (medium.equals("Mobile")) {
       tblName = "DATESTtblMobileMetrics";
     } else {
-      System.out.println("The correct table for " + medium + " could not be identified");
+      DataAppTest.logger.log(Level.INFO, "The correct table for " + medium + " could not be identified" +
+          System.lineSeparator());
     }
-    
-    
-    //These fields are out of order
+
+
+    //Fields in database of which to load data.
     String fields = "(startDate,endDate,source,medium,componentName,adContent,clicks,"
         + "impressions,allCTR,averageCPC,averageCPM,spend,totalConversions,pcConversions,piConversions,"
         + "visits,pagesPerVisit,averageDuration,"
@@ -154,24 +169,23 @@ public static void printGroupedData(HashMap<GroupID, ArrayList<String[]>> groupe
       //Need to loop through Hash Map
       for(DDRecord currRec : importData) {
         updateDCMDD = cnxn.prepareStatement(insertQuery);
-        
+
         Date sDate = null;
         Date eDate = null;
-        
+
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         try {
           sDate = sdf.parse(currRec.getStartDate());
           eDate = sdf.parse(currRec.getEndDate());
         } catch (ParseException e) {
-          e.printStackTrace();
-        } catch (java.text.ParseException exception) {
-          // TODO Auto-generated catch block
-          exception.printStackTrace();
+          DataAppTest.logger.log(Level.SEVERE,e.getMessage() + System.lineSeparator());
+        } catch (java.text.ParseException e) {
+          DataAppTest.logger.log(Level.SEVERE,e.getMessage() + System.lineSeparator());
         }
-        
+
         java.sql.Date sqlFormatStartDate = new java.sql.Date(sDate.getTime());
         java.sql.Date sqlFormatEndDate = new java.sql.Date(eDate.getTime());
-   
+
         updateDCMDD.setDate(1,sqlFormatStartDate);
         updateDCMDD.setDate(2,sqlFormatEndDate);
         updateDCMDD.setString(3,currRec.getSource());
@@ -180,30 +194,28 @@ public static void printGroupedData(HashMap<GroupID, ArrayList<String[]>> groupe
         updateDCMDD.setString(6, currRec.getAdContent());
         updateDCMDD.setInt(7,currRec.getClicks());
         updateDCMDD.setInt(8,currRec.getImpressions());
-        
+
         if (Double.isNaN(currRec.getCTR()) || 
             currRec.getCTR() == Double.POSITIVE_INFINITY) {
           currRec.setCTR(-1.0f);
-          System.out.println("Converted special value");
         }
         updateDCMDD.setFloat(9,currRec.getCTR());
-        
-        
-        
+
+
+
         //MySQL databases will not accept NaN or Infinity as a float value
         if (Double.isNaN(currRec.getAvgCPC())|| 
             currRec.getAvgCPC() == Double.POSITIVE_INFINITY) {
           currRec.setAvgCPC(-1.0f);
-          System.out.println("Converted special value");
         }
         updateDCMDD.setFloat(10,currRec.getAvgCPC());
-        
-        
+
+
         if (Double.isNaN(currRec.getAvgCPM()) || 
             currRec.getAvgCPM() == Double.POSITIVE_INFINITY) {
           currRec.setAvgCPM(-1.0f);
         }
-        
+
         updateDCMDD.setFloat(11, currRec.getAvgCPM());
         updateDCMDD.setFloat(12, currRec.getSpend());
         updateDCMDD.setFloat(13,currRec.getTotalConversions());
@@ -222,117 +234,120 @@ public static void printGroupedData(HashMap<GroupID, ArrayList<String[]>> groupe
       }//end of loop
 
     } catch (SQLException e) {
-      System.out.println(e.getMessage());
+      DataAppTest.logger.log(Level.SEVERE,e.getMessage() + System.lineSeparator());
     }//end of catch
 
   } // end of update adwords
-  
-  
+
+
+  /*
+   * @param: String[] args - Serves no purpose but exists as this method was build off of a main method
+   * @param: LocalDate sDate - The startDate for the import. This value is called from a static variable in
+   * the data app test method.
+   * @param: LocalDate eDate - The endDate for the import. This value is called from a static variable in
+   * the data app test method.
+   * @param: String medium - This parameter indicates which medium the method will import. Possible values
+   * are CrossPlatform, Mobile, Preroll and Display. Display really only encompasses Pandora.
+   */
   public static void importDCM(String[] args, LocalDate sDate, LocalDate eDate, String medium) {
-    
+
     ArrayList<String[]> data = null;
     try {
-      
-      //pull down data from dropbox, write to file and overwrite any data files
+
+      //pull down data from Dropbox, write to file and overwrite any data files
       try {
-        //TODO: Ensure this filpath is added to the method 
         DropBoxConnection.pullCSV("DoubleClick", sDate, eDate);
-      } catch (DbxException exception) {
-        exception.printStackTrace();
-      } catch (IOException exception) {
-        exception.printStackTrace();
+      } catch (DbxException e) {
+        DataAppTest.logger.log(Level.SEVERE,e.getMessage() + System.lineSeparator());
+      } catch (IOException e) {
+        DataAppTest.logger.log(Level.SEVERE,e.getMessage() + System.lineSeparator());
       }
-  
-    //Read csv generated and return raw data
-    System.out.println("Reading Double Click Display File... ");
-    data = CSVReaders.readCsv("retrievedDoubleClick.csv");
 
-    
-    CSVReaders.formatDCMData(data);
-    CSVReaders.removeInvalidDates(data, "DoubleClick", sDate);
-    
-    System.out.print("Complete.\n");
-    
-    //Now that we have the raw data in ArrayList<String[]> form
-    //We need to group appropriately into a hashmap
-    //We will then iterate through the HashMap and aggregate each entry
-    
-    System.out.println("Grouping Data by Source, Medium, Campaign and AdContent... ");
-    //TODO: Create grouping method
-    HashMap<GroupID, ArrayList<String[]>> groupedData = importUtils.groupDCMRawData(data);
-    System.out.print("Complete.\n");
+      //Read csv generated from Dropbox and return raw data
+      DataAppTest.logger.log(Level.INFO,"Reading Double Click Display File." + System.lineSeparator());
+      data = CSVReaders.readCsv("retrievedDoubleClick.csv");
 
-    
-    System.out.println("Aggregating DoubleClick Digital Display Data... ");
-    //TODO: Create Aggregate method
-    ArrayList<DDRecord> acquisitionData = aggregate(groupedData, sDate, eDate, medium);
-    System.out.print("Complete.\n");
-    
-    System.out.println("The number of " + medium + " records for import is: " + 
-    acquisitionData.size());
+      //Remove header and footer and filter remove any dates that do not fall within the 
+      //sDate and eDate parameters.
+      CSVReaders.formatDCMData(data);
+      CSVReaders.removeInvalidDates(data, "DoubleClick", sDate);
 
-    System.out.println("Removing all records with 0 Impressions.\n");
-    acquisitionData = importUtils.remove0ImpressionRecords(acquisitionData);
-  
-    //Data is now aggregated and ready for matching
-    
 
-    String[] testDates = {sDate.toString(),eDate.toString()};
-    
-    System.out.println("Connecting to Google Analytics API for "
-        + "Behavior metrics\n");
-    System.out.println("Google Analytics API messages below: \n");
-    GaData behaviorResults = GACall.main(args,testDates,8);
-    System.out.println("\nGoogle Analytics API Request Complete.\n");
-    
-    //match aggregated acquisition data and behavior data from Google Analytics
-    System.out.println("Matching Acquisition Metrics to their respective behavior metrics... ");
-    importUtils.matchBehaviorAcq(acquisitionData, behaviorResults);
-    System.out.print("Matching Complete.\n");
-    
-    //Establish database connection
-    Connection cnx = null;
-    try {
-//      cnx = DatabaseUtils.getTestDBConnection();
-      cnx = DatabaseUtils.getGoogleCloudDBConnection();
-      System.out.println("Database Connection Successful\n");
-    } catch (Exception e) {
-      System.out.println("There was an error establishing connection to the database");
-      System.out.println(e.getMessage());
-    }
-    
-    //execute query
-    try{
-      updateDCMDD(acquisitionData,cnx, medium);
-    } catch (Exception e) {
-    System.out.println(e.getMessage());  
+      //Now that we have the raw data in ArrayList<String[]> form
+      //We need to group appropriately into a hashmap
+      //We will then iterate through the HashMap and aggregate each entry
+
+      HashMap<GroupID, ArrayList<String[]>> groupedData = importUtils.groupDCMRawData(data);
+
+
+      DataAppTest.logger.log(Level.INFO,"Aggregating DoubleClick Digital Display Data." + System.lineSeparator());
+      ArrayList<DDRecord> acquisitionData = aggregate(groupedData, sDate, eDate, medium);
+
+      DataAppTest.logger.log(Level.INFO,"The number of " + medium + " records for import is: " +acquisitionData.size() 
+          + System.lineSeparator());
+
+      DataAppTest.logger.log(Level.INFO,"Removing all records with 0 Impressions." + System.lineSeparator());
+      acquisitionData = importUtils.remove0ImpressionRecords(acquisitionData);
+
+      //Data is now aggregated and ready for matching
+      String[] testDates = {sDate.toString(),eDate.toString()};
+
+      DataAppTest.logger.log(Level.INFO,"Connecting to Google Analytics API for "
+          + "Behavior metrics." + System.lineSeparator());
+
+      DataAppTest.logger.log(Level.INFO,"Google Analytics API messages below: " + System.lineSeparator());
+      GaData behaviorResults = GACall.main(args,testDates,8);
+
+      //match aggregated acquisition data and behavior data from Google Analytics
+      DataAppTest.logger.log(Level.INFO,"Matching Acquisition Metrics to their respective behavior metrics." + System.lineSeparator());
+      importUtils.matchBehaviorAcq(acquisitionData, behaviorResults);
+
+      //Establish database connection
+      Connection cnx = null;
+      try {
+        cnx = DatabaseUtils.getGoogleCloudDBConnection();
+        DataAppTest.logger.log(Level.INFO,"Database Connection Successful." + System.lineSeparator());
+      } catch (Exception e) {
+        DataAppTest.logger.log(Level.INFO,"There was an error establishing connection to the database." + System.lineSeparator());
+        DataAppTest.logger.log(Level.SEVERE,e.getMessage() + System.lineSeparator());
+      }
+
+      //execute query
+      try{
+        updateDCMDD(acquisitionData,cnx, medium);
+      } catch (Exception e) {
+        DataAppTest.logger.log(Level.INFO,"There was an error executing the DoubleClick query." + System.lineSeparator());
+        DataAppTest.logger.log(Level.SEVERE,e.getMessage() + System.lineSeparator());
+      }
+
+    } finally {
+
     }
 
-  } finally {
-    
   }
-    
- }
-  
-  
-  
+
+
+
+  /*
+   * Testing method.
+   */
   public static void main(String[] args) {
-    
+
     String[] testArgs =  new String[0] ;
-    
+
     LocalDate startDate = LocalDate.of(2015, 11, 03);
     LocalDate endDate = LocalDate.of(2015, 11, 9);
-    
+
     //Open connection to dropbox API
     DropBoxConnection.initializeDropboxConnection();
-    
-//    importDCM(testArgs, startDate, endDate, "CrossPlatform");
-//    importDCM(testArgs, startDate, endDate, "Mobile");
-//    importDCM(testArgs, startDate, endDate, "Preroll");
+
+    //    importDCM(testArgs, startDate, endDate, "CrossPlatform");
+    //    importDCM(testArgs, startDate, endDate, "Mobile");
+    //    importDCM(testArgs, startDate, endDate, "Preroll");
     //Note this import is for Pandora which although is Audio is treated as display
     importDCM(testArgs, startDate, endDate, "Display");
-    
+
     System.out.println("Testing Completed");
-    
+
   }
 }

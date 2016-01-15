@@ -153,6 +153,11 @@ public class importUtils {
     DCMAdContentMappings.put("Graduate_SAL_V1","Graduate_SAL_v1");
     DCMAdContentMappings.put("Undergrad_SAL_V1","Undergrad_SAL_v1");
     DCMAdContentMappings.put("Transfer_SAL_V1","Transfer_SAL_v1");
+    DCMAdContentMappings.put("Degree_Completion_SAL_V1","Degree_Completion_SAL_v1");
+    DCMAdContentMappings.put("Graduate_SAL_V2","Graduate_SAL_v2");
+    DCMAdContentMappings.put("Undergrad_SAL_V2","Undergrad_SAL_v2");
+    DCMAdContentMappings.put("Transfer_SAL_V2","Transfer_SAL_v2");
+    DCMAdContentMappings.put("Degree_Completion_SAL_V2","Degree_Completion_SAL_v2");
     
     for (String[] row : rawData) {
       
@@ -195,21 +200,47 @@ public class importUtils {
       //If a Graduate campaign --> Graduate_SAL_V1
       //If a UG campaign --> Undergrad_SAL_V1
       
+      //Date from which v1s should become v2s
+      LocalDate v2Start = LocalDate.of(2016,01,04);
+      
       if (medium.equals("Hulu")) {
         adContent = "SAL_v1";
       } else if (source.equals("WGME")) {
           adContent = "WGME";
       }else if (row[1].equals("FY2016_Undergraduate") ||
           campaign.equals("Fy2016_Degree_Completion")) {
-        adContent = "Undergrad_SAL_V1";
+        if (DataAppTest.startDate.isAfter(v2Start)) {
+          adContent = "Undergrad_SAL_V2";
+        } else {
+          adContent = "Undergrad_SAL_V1";
+        }
+        
       } else if (row[1].equals("FY2016_Graduate")) {
-        adContent = "Graduate_SAL_V1";
+        if (DataAppTest.startDate.isAfter(v2Start)) {
+          adContent = "Graduate_SAL_V2";
+        } else {
+          adContent = "Graduate_SAL_V1";
+        }
+     
       } else if (row[1].equals("FY2016_Transfer")) {
-        adContent = "Transfer_SAL_V1";
-      } else {
+        
+        if (DataAppTest.startDate.isAfter(v2Start)) {
+          adContent = "Transfer_SAL_V2";
+        } else {
+          adContent = "Transfer_SAL_V1";
+        }
+        
+      } else if (row[1].equals("FY2016_Degree_Completion")) {
+        
+        if (DataAppTest.startDate.isAfter(v2Start)) {
+          adContent = "Degree_Completion_SAL_V2";
+        } else {
+          adContent = "Degree_Completion_SAL_V1";
+        }
+        
+      }else {
         //TODO: Replace with logging
         System.out.println("Adcontent " + row[1] +" could not be found");
-
       }
         
       
@@ -328,7 +359,10 @@ public class importUtils {
       centroAdContentMappings.put("tour","Campus_Tour");
       centroAdContentMappings.put("misc","Unknown");
       centroAdContentMappings.put("scholarship", "Scholarship");
-      centroAdContentMappings.put("SAL_v1", "SAL_v1");
+      centroAdContentMappings.put("SAL_v2", "SAL_v2");
+      centroAdContentMappings.put("Undergrad_SAL_v2", "Undergrad_SAL_v2");
+      
+      
       
       
       String source;
@@ -385,8 +419,11 @@ public class importUtils {
           adContent = "summer";
         } else if (campaign.equals("FY2015_Umbrella")) {
           adContent = "scholarship";
-        }else if (campaign.equals("FY2016_Umbrella")) {
-          adContent = "SAL_v1";
+        } else if (campaign.equals("FY2016_Umbrella") &&
+            source.equals("YouTube")) {
+          adContent = "Undergrad_SAL_v2";
+        } else if (campaign.equals("FY2016_Umbrella")) {
+          adContent = "SAL_v2";
         } else {
           adContent = "time";
         }
@@ -468,13 +505,24 @@ public static HashMap<GroupID, ArrayList<String[]>> groupFacebookRawData(ArrayLi
     facebookCampaignMappings.put("CU_TT","FY2016_Transfer");
     //TODO: Determine if we are running IC at the start of the campaign
     facebookCampaignMappings.put("WA_IC","FY2016_Courses_Fall/Spring");
+    facebookCampaignMappings.put("IN_UG","FY2016_Courses_Fall/Spring");
+    facebookCampaignMappings.put("IN_WA","FY2016_Courses_Fall/Spring");
     facebookCampaignMappings.put("HS_UG","FY2016_Undergrad");
     facebookCampaignMappings.put("UG_TR","FY2016_Transfer");
+    facebookCampaignMappings.put("Umbrella", "FY2016_Umbrella");
+    
+    //Need to add entry for FY2016_Umbrella campaign paramater
+    //facebookCampainMappings.put("","FY2016_Umbrella")
     
     //Campaign
     //Get the first 5 characters
     if (facebookCampaignMappings.containsKey(row[4].substring(0,5))) {
       campaign = facebookCampaignMappings.get(row[4].substring(0, 5)); 
+    } else if (facebookCampaignMappings.containsKey(row[4].substring(0,6).replace("\"", ""))) {
+      campaign = facebookCampaignMappings.get(row[4].substring(0,6).replace("\"", ""));
+    } else if (row[4].contains("Umbrella")) {
+      campaign = "Umbrella";
+      campaign = facebookCampaignMappings.get(campaign);
     } else {
       campaign = "Campaign Not Found";
       DataAppTest.logger.log(Level.SEVERE,
@@ -489,14 +537,21 @@ public static HashMap<GroupID, ArrayList<String[]>> groupFacebookRawData(ArrayLi
     facebookPlacementMappings.put("News Feed","Newsfeed");
     facebookPlacementMappings.put("Page Post","Newsfeed_PPE");
     facebookPlacementMappings.put("Page Link","Newsfeed_Link");
+    facebookPlacementMappings.put("Third-Party App Network","Third-Party App Network");
+    
+    //Need to add entry for Newsfeed_Video ads (testimonials)
+    //facebookPlacement Mappings.put("","Newfeed_Video")
     
     //Placement
     if (row[1].contains("Right Column")) {
       placement = "Right_Rail";
       medium = "Right_Rail";
-    } else if (row[1].contains("News Feed")) {
+    } else if (row[1].contains("News Feed") || row[1].contains("Suggested")) {
       placement = "Newsfeed";
       medium = "Newsfeed";
+    } else if (row[1].contains("Audience Network")) {
+      placement = "Third-party App Network";
+      medium = "Mobile";
     } else {
       DataAppTest.logger.log(Level.SEVERE,
           "Campaign for \"" + row[1] +"\" could not be identified");
@@ -504,6 +559,8 @@ public static HashMap<GroupID, ArrayList<String[]>> groupFacebookRawData(ArrayLi
     
     if (row[5].contains("Page Post")) {
       medium = "Newsfeed_PPE";
+    } else if (placement.equals("Third-party App Network")) {
+      medium = "Mobile";
     } else if (row[5].contains("Page Link")) {
       medium = "Newsfeed_Link";
     }
@@ -519,6 +576,9 @@ public static HashMap<GroupID, ArrayList<String[]>> groupFacebookRawData(ArrayLi
     facebookAdContentMappings.put("WA_SAL_V1", "WA_SAL_V1");
     facebookAdContentMappings.put("UG_SAL_V1", "UG_SAL_V1");
     facebookAdContentMappings.put("SAL_V1", "SAL_V1");
+    facebookAdContentMappings.put("SAL_V2", "SAL_V2");
+    facebookAdContentMappings.put("WA_SAL_V2", "WA_SAL_V2");
+    facebookAdContentMappings.put("None", "None");
     
     
     /*
@@ -526,6 +586,8 @@ public static HashMap<GroupID, ArrayList<String[]>> groupFacebookRawData(ArrayLi
      * , however, it was alos contained at index four in the Campaign name field.
      * With the launch of the FY16 campaign we will be using index 4.
      */
+    
+    
     
     //AdContent
     //Don't forget and expressions here
@@ -544,7 +606,7 @@ public static HashMap<GroupID, ArrayList<String[]>> groupFacebookRawData(ArrayLi
     } else if (row[0].contains("SAL_V1") &&
         row[4].contains("WA")) {
       adContent = "WA_SAL_V1";
-    }else if (row[0].contains("SAL_V1") &&
+    } else if (row[0].contains("SAL_V1") &&
         row[4].contains("HS_UG")) {
       adContent = "SAL_V1";
     } else if (row[0].contains("SAL_V1") &&
@@ -553,16 +615,32 @@ public static HashMap<GroupID, ArrayList<String[]>> groupFacebookRawData(ArrayLi
     }else if (row[0].contains("SAL_V1") &&
         row[4].contains("WA")) {
       adContent = "WA_SAL_V1";
-    } else if(row[0].contains("RightRail_Summer")) {
+    }else if (row[0].contains("SAL_V2") &&
+        row[4].contains("WA")) {
+      adContent = "WA_SAL_V2";
+    } else if (row[0].contains("SAL_V2") &&
+        row[4].contains("WA")) {
+      adContent = "WA_SAL_V2";
+    }else if(row[0].contains("RightRail_Summer")) {
       adContent = "Summer_Undergraduate";
       medium = "Right_Rail";
       placement = "Right_Rail";
     } else if (row[0].contains("Post:")) {
       adContent = "SAL_V1";
+    } else if (row[0].contains("SAL_V2")) {
+      adContent = "SAL_V2";
     } else if (row[0].contains("SAL_V1") &&
         row[4].contains("UG_TR")) {
       adContent = "SAL_V1";
-    }else {
+    } else if (row[0].contains("Student") ||
+        row[0].contains("Faculty") ||
+        row[0].contains("Muna") ||
+        row[0].contains("Kristina") ||
+        row[0].contains("Jay")) {
+      adContent = "None";
+      medium = "Video";
+      
+    } else {
       DataAppTest.logger.log(Level.SEVERE,
           "AdContent for \"" + row[0] +"\" could not be identified");
     }
@@ -636,6 +714,16 @@ public static HashMap<GroupID, ArrayList<String[]>> groupTwitterRawData(ArrayLis
     twitterCampaignMappings.put("USM FY 2015-2016_WA_DC_SAL_V1","FY2016_Degree_Completion");
     twitterCampaignMappings.put("USM FY 2015-2016_HS_UG_SAL_V1","FY2016_Undergrad");
     twitterCampaignMappings.put("USM FY 2015-2016_UG_GR_SAL_V1","FY2016_Graduate");
+    twitterCampaignMappings.put("USM FY 2015-2016_UG_TR_SAL_V1","FY2016_Transfer");
+    
+    
+    
+    twitterCampaignMappings.put("USM FY 2015-2016_WA_DC_SAL_V2","FY2016_Degree_Completion");
+    twitterCampaignMappings.put("USM FY 2015-2016_HS_UG_SAL_V2","FY2016_Undergrad");
+    twitterCampaignMappings.put("USM FY 2015-2016_UG_GR_SAL_V2","FY2016_Graduate");
+    twitterCampaignMappings.put("USM FY 2015-2016_IC_UG_SAL_V2","FY2016_Courses");
+    twitterCampaignMappings.put("USM FY 2015-2016_UG_TR_SAL_V2","FY2016_Transfer");
+    
     twitterCampaignMappings.put("Transfers","FY2016_Transfer");
     
     

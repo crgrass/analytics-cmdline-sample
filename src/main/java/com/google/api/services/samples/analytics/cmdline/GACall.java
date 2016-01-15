@@ -275,7 +275,7 @@ public class GACall {
         dateArray[1], // End date.
         "ga:visits,ga:pageViewsPerVisit,ga:avgTimeOnSite,ga:percentNewVisits,ga:entranceBounceRate") // Metrics.
         .setDimensions("ga:source,ga:medium,ga:campaign,ga:adContent")
-        .setFilters("ga:source==YouTube,ga:source==Collective,ga:source==Brand_Exchange;ga:medium==Preroll")
+        .setFilters("ga:source==YouTube,ga:source==Collective,ga:source==Brand_Exchange,ga:source==Hulu;ga:medium==Preroll")
         .setMaxResults(25)
         .execute();
   }
