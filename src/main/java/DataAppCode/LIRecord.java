@@ -83,8 +83,7 @@ public class LIRecord implements importRecord {
    */
   @Override
   public boolean match(List<String> gaRow) {
-    if (gaRow.get(0).equals(this.source) && gaRow.get(1).equals(this.medium) && gaRow.get(2).equals(this.campaign) &&
-        gaRow.get(3).equals(this.adContent)) {
+    if (gaRow.get(0).equals(this.source) && gaRow.get(1).equals(this.medium) && gaRow.get(2).equals(this.campaign)) {
       return true;
     }
     return false;

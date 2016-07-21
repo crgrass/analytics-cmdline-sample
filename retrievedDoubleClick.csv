@@ -1,185 +1,498 @@
 weeklyDCMImport
 
-Date/Time Generated,1/12/16 9:44 AM
+Date/Time Generated,1/26/16 12:46 PM
 Report Time Zone,America/New_York
 SubAccount Name,Rinck Advertising
 Account ID,9515
-Date Range,1/5/16 - 1/11/16
+Date Range,1/12/16 - 1/18/16
 
 Report Fields
 Date,Campaign,Ad,Site (DCM),Placement,Ad Type,Creative,Click-through URL,Clicks,Impressions,Click Rate,Active View: Viewable Impressions,Active View: Measurable Impressions,Active View: Eligible Impressions,Media Cost
-2016-01-05,FY2016_Graduate,160x600 Default Web Ad,Collective.com,Cross Platform,Default,SAL_V2,http://usm.maine.edu/explore,0,1,0.00,0,0,0,0.004850000
-2016-01-05,FY2016_Graduate,300x250 Default Web Ad,Collective.com,Cross Platform,Default,SAL_V2,http://usm.maine.edu/explore,0,1,0.00,0,0,0,0.004850000
-2016-01-05,FY2016_Graduate,728x90 Default Web Ad,Collective.com,Cross Platform,Default,SAL_V2,http://usm.maine.edu/explore,0,1,0.00,0,0,0,0.004850000
-2016-01-05,FY2016_Graduate,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,http://usm.maine.edu/explore,0,2117,0.00,166,857,2114,10.267450000
-2016-01-05,FY2016_Graduate,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,http://usm.maine.edu/explore,2,986,0.20,111,467,984,4.782100000
-2016-01-05,FY2016_Graduate,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,http://usm.maine.edu/explore,0,216,0.00,54,206,216,1.047600000
-2016-01-05,FY2016_Graduate,SAL_V1-Mobile,MobileFuse.com,Mobile,Standard,SAL_V1,http://usm.maine.edu/explore,4,402,1.00,0,3,3,2.793900000
-2016-01-05,FY2016_Graduate,SAL_V1-Tablet,MobileFuse.com,Tablet,Standard,SAL_V1,http://usm.maine.edu/explore,9,1867,0.48,0,8,8,15.496100000
-2016-01-05,FY2016_Graduate,SAL_V1-Tablet,MobileFuse.com,Tablet,Standard,SAL_V1,http://usm.maine.edu/explore,0,176,0.00,0,0,0,1.460800000
-2016-01-05,FY2016_Graduate,SAL_V1_grad-Mobile,MobileFuse.com,Mobile,Standard,SAL_V1_grad,http://usm.maine.edu/explore,3,401,0.75,0,3,3,2.786950000
-2016-01-05,FY2016_Graduate,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,http://usm.maine.edu/explore,2,2666,0.08,190,1099,2664,12.930100000
-2016-01-05,FY2016_Graduate,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,http://usm.maine.edu/explore,0,236,0.00,78,230,236,1.144600000
-2016-01-05,FY2016_Graduate,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,http://usm.maine.edu/explore,1,1186,0.08,111,581,1183,5.752100000
-2016-01-05,FY2016_Graduate,SAL_V2_Courses-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Courses,http://usm.maine.edu/explore,1,391,0.26,0,2,2,2.717450000
-2016-01-05,FY2016_Graduate,SAL_V2_Graduate-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Graduate,http://usm.maine.edu/explore,6,462,1.30,0,4,4,3.210900000
-2016-01-05,FY2016_Graduate,Tracking-Pandora_Tile,Pandora,Pandora_Tile,Tracking,Tracking,http://usm.maine.edu/explore,21,2420,0.87,0,0,0,0.000000000
-2016-01-05,FY2016_Transfer,300x250 Default Web Ad,MobileFuse.com,Tablet,Default,SAL_V2,https://usm.maine.edu/explore,14,2252,0.62,0,0,0,18.691600000
-2016-01-05,FY2016_Transfer,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,https://usm.maine.edu/explore,0,976,0.00,325,950,976,4.733600000
-2016-01-05,FY2016_Transfer,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,https://usm.maine.edu/explore,3,3068,0.10,505,2014,3064,14.879800000
-2016-01-05,FY2016_Transfer,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,https://usm.maine.edu/explore,1,3705,0.03,599,2364,3699,17.969250000
-2016-01-05,FY2016_Transfer,SAL_V2-Display,Pandora,Display,Standard,SAL_V2,https://usm.maine.edu/explore,16,2322,0.69,84,111,130,0.000000000
-2016-01-05,FY2016_Transfer,SAL_V2_Courses-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Courses,https://usm.maine.edu/explore,5,1331,0.38,0,0,0,9.250450000
-2016-01-05,FY2016_Transfer,SAL_V2_Majors-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Majors,https://usm.maine.edu/explore,3,1157,0.26,0,0,0,8.041150000
-2016-01-05,FY2016_Transfer,SAL_V2_Majors-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Majors,https://usm.maine.edu/explore,4,1455,0.27,0,0,0,10.112250000
-2016-01-05,FY2016_Undergraduate,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,https://usm.maine.edu/explore,1,2007,0.05,504,1925,2007,9.733950000
-2016-01-05,FY2016_Undergraduate,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,https://usm.maine.edu/explore,0,1810,0.00,314,1214,1810,8.778500000
-2016-01-05,FY2016_Undergraduate,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,https://usm.maine.edu/explore,0,721,0.00,274,699,721,3.496850000
-2016-01-05,FY2016_Undergraduate,SAL_V2-Tablet,MobileFuse.com,Tablet,Standard,SAL_V2,https://usm.maine.edu/explore,4,1650,0.24,0,4,4,13.695000000
-2016-01-05,FY2016_Undergraduate,SAL_V2_Courses-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Courses,https://usm.maine.edu/explore,14,1168,1.20,0,5,5,8.117600000
-2016-01-05,FY2016_Undergraduate,SAL_V2_Majors-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Majors,https://usm.maine.edu/explore,26,1506,1.73,0,6,6,10.466700000
-2016-01-06,FY2016_Graduate,300x250 Default Web Ad,MobileFuse.com,Tablet,Default,SAL_V2,http://usm.maine.edu/explore,0,18,0.00,0,0,0,0.149400000
-2016-01-06,FY2016_Graduate,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,http://usm.maine.edu/explore,2,2203,0.09,169,924,2200,10.684550000
-2016-01-06,FY2016_Graduate,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,http://usm.maine.edu/explore,1,1030,0.10,93,557,1027,4.995500000
-2016-01-06,FY2016_Graduate,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,http://usm.maine.edu/explore,0,220,0.00,61,213,220,1.067000000
-2016-01-06,FY2016_Graduate,SAL_V1-Mobile,MobileFuse.com,Mobile,Standard,SAL_V1,http://usm.maine.edu/explore,0,147,0.00,0,4,4,1.021650000
-2016-01-06,FY2016_Graduate,SAL_V1-Tablet,MobileFuse.com,Tablet,Standard,SAL_V1,http://usm.maine.edu/explore,0,64,0.00,0,0,0,0.531200000
-2016-01-06,FY2016_Graduate,SAL_V1-Tablet,MobileFuse.com,Tablet,Standard,SAL_V1,http://usm.maine.edu/explore,3,922,0.33,0,4,4,7.652600000
-2016-01-06,FY2016_Graduate,SAL_V1_grad-Mobile,MobileFuse.com,Mobile,Standard,SAL_V1_grad,http://usm.maine.edu/explore,0,138,0.00,0,1,1,0.959100000
-2016-01-06,FY2016_Graduate,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,http://usm.maine.edu/explore,0,278,0.00,70,268,278,1.348300000
-2016-01-06,FY2016_Graduate,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,http://usm.maine.edu/explore,2,1322,0.15,114,667,1318,6.411700000
-2016-01-06,FY2016_Graduate,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,http://usm.maine.edu/explore,3,2733,0.11,231,1187,2730,13.255050000
-2016-01-06,FY2016_Graduate,SAL_V2-Tablet,MobileFuse.com,Tablet,Standard,SAL_V2,http://usm.maine.edu/explore,1,1055,0.09,0,0,0,8.756500000
-2016-01-06,FY2016_Graduate,SAL_V2_Courses-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Courses,http://usm.maine.edu/explore,3,610,0.49,0,5,5,4.239500000
-2016-01-06,FY2016_Graduate,SAL_V2_Graduate-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Graduate,http://usm.maine.edu/explore,3,734,0.41,0,4,4,5.101300000
-2016-01-06,FY2016_Graduate,Tracking-Pandora_Tile,Pandora,Pandora_Tile,Tracking,Tracking,http://usm.maine.edu/explore,13,2648,0.49,0,0,0,0.000000000
-2016-01-06,FY2016_Transfer,300x250 Default Web Ad,MobileFuse.com,Tablet,Default,SAL_V2,https://usm.maine.edu/explore,13,2229,0.58,0,0,0,18.500700000
-2016-01-06,FY2016_Transfer,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,https://usm.maine.edu/explore,2,2987,0.07,489,1988,2984,14.486950000
-2016-01-06,FY2016_Transfer,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,https://usm.maine.edu/explore,0,754,0.00,234,737,754,3.656900000
-2016-01-06,FY2016_Transfer,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,https://usm.maine.edu/explore,1,3985,0.03,577,2181,3984,19.327250000
-2016-01-06,FY2016_Transfer,SAL_V2-Display,Pandora,Display,Standard,SAL_V2,https://usm.maine.edu/explore,29,2574,1.13,158,178,182,0.000000000
-2016-01-06,FY2016_Transfer,SAL_V2_Courses-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Courses,https://usm.maine.edu/explore,14,892,1.57,0,0,0,6.199400000
-2016-01-06,FY2016_Transfer,SAL_V2_Majors-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Majors,https://usm.maine.edu/explore,7,859,0.81,0,0,0,5.970050000
-2016-01-06,FY2016_Transfer,SAL_V2_Majors-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Majors,https://usm.maine.edu/explore,11,997,1.10,0,0,0,6.929150000
-2016-01-06,FY2016_Undergraduate,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,https://usm.maine.edu/explore,0,1871,0.00,478,1805,1871,9.074350000
-2016-01-06,FY2016_Undergraduate,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,https://usm.maine.edu/explore,0,1841,0.00,292,1254,1841,8.928850000
-2016-01-06,FY2016_Undergraduate,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,https://usm.maine.edu/explore,0,736,0.00,255,715,736,3.569600000
-2016-01-06,FY2016_Undergraduate,SAL_V2-Tablet,MobileFuse.com,Tablet,Standard,SAL_V2,https://usm.maine.edu/explore,8,1618,0.49,1,3,3,13.429400000
-2016-01-06,FY2016_Undergraduate,SAL_V2_Courses-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Courses,https://usm.maine.edu/explore,5,1187,0.42,0,3,3,8.249650000
-2016-01-06,FY2016_Undergraduate,SAL_V2_Majors-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Majors,https://usm.maine.edu/explore,9,1388,0.65,0,5,5,9.646600000
-2016-01-07,FY2016_Graduate,300x250 Default Web Ad,MobileFuse.com,Tablet,Default,SAL_V2,http://usm.maine.edu/explore,0,96,0.00,0,0,0,0.796800000
-2016-01-07,FY2016_Graduate,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,http://usm.maine.edu/explore,2,1841,0.11,158,855,1837,8.928850000
-2016-01-07,FY2016_Graduate,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,http://usm.maine.edu/explore,4,4838,0.08,291,1901,4833,23.464300000
-2016-01-07,FY2016_Graduate,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,http://usm.maine.edu/explore,0,429,0.00,128,410,429,2.080650000
-2016-01-07,FY2016_Graduate,SAL_V2-Tablet,MobileFuse.com,Tablet,Standard,SAL_V2,http://usm.maine.edu/explore,5,2024,0.25,0,0,0,16.799200000
-2016-01-07,FY2016_Graduate,SAL_V2_Courses-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Courses,http://usm.maine.edu/explore,6,739,0.81,0,4,4,5.136050000
-2016-01-07,FY2016_Graduate,SAL_V2_Graduate-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Graduate,http://usm.maine.edu/explore,7,885,0.79,0,2,2,6.150750000
-2016-01-07,FY2016_Graduate,Tracking-Pandora_Tile,Pandora,Pandora_Tile,Tracking,Tracking,http://usm.maine.edu/explore,27,2639,1.02,0,0,0,0.000000000
-2016-01-07,FY2016_Transfer,300x250 Default Web Ad,MobileFuse.com,Tablet,Default,SAL_V2,https://usm.maine.edu/explore,8,2199,0.36,0,0,0,18.251700000
-2016-01-07,FY2016_Transfer,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,https://usm.maine.edu/explore,0,4313,0.00,538,2206,4312,20.918050000
-2016-01-07,FY2016_Transfer,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,https://usm.maine.edu/explore,1,966,0.10,223,933,966,4.685100000
-2016-01-07,FY2016_Transfer,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,https://usm.maine.edu/explore,0,2780,0.00,413,1851,2778,13.483000000
-2016-01-07,FY2016_Transfer,SAL_V2-Display,Pandora,Display,Standard,SAL_V2,https://usm.maine.edu/explore,14,3229,0.43,159,182,189,0.000000000
-2016-01-07,FY2016_Transfer,SAL_V2_Courses-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Courses,https://usm.maine.edu/explore,4,908,0.44,0,0,0,6.310600000
-2016-01-07,FY2016_Transfer,SAL_V2_Majors-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Majors,https://usm.maine.edu/explore,7,1004,0.70,0,0,0,6.977800000
-2016-01-07,FY2016_Transfer,SAL_V2_Majors-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Majors,https://usm.maine.edu/explore,3,794,0.38,0,0,0,5.518300000
-2016-01-07,FY2016_Undergraduate,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,https://usm.maine.edu/explore,0,656,0.00,233,630,656,3.181600000
-2016-01-07,FY2016_Undergraduate,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,https://usm.maine.edu/explore,0,1847,0.00,269,1217,1847,8.957950000
-2016-01-07,FY2016_Undergraduate,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,https://usm.maine.edu/explore,0,1953,0.00,480,1850,1953,9.472050000
-2016-01-07,FY2016_Undergraduate,SAL_V2-Tablet,MobileFuse.com,Tablet,Standard,SAL_V2,https://usm.maine.edu/explore,11,2176,0.51,2,3,3,18.060800000
-2016-01-07,FY2016_Undergraduate,SAL_V2_Courses-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Courses,https://usm.maine.edu/explore,3,1138,0.26,1,3,4,7.909100000
-2016-01-07,FY2016_Undergraduate,SAL_V2_Majors-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Majors,https://usm.maine.edu/explore,9,1420,0.63,0,2,2,9.869000000
-2016-01-08,FY2016_Graduate,300x250 Default Web Ad,MobileFuse.com,Tablet,Default,SAL_V2,http://usm.maine.edu/explore,0,250,0.00,0,0,0,2.075000000
-2016-01-08,FY2016_Graduate,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,http://usm.maine.edu/explore,0,522,0.00,129,505,522,2.531700000
-2016-01-08,FY2016_Graduate,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,http://usm.maine.edu/explore,1,5288,0.02,253,1934,5285,25.646800000
-2016-01-08,FY2016_Graduate,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,http://usm.maine.edu/explore,4,2118,0.19,154,966,2115,10.272300000
-2016-01-08,FY2016_Graduate,SAL_V2-Tablet,MobileFuse.com,Tablet,Standard,SAL_V2,http://usm.maine.edu/explore,4,1920,0.21,1,2,2,15.936000000
-2016-01-08,FY2016_Graduate,SAL_V2_Courses-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Courses,http://usm.maine.edu/explore,3,760,0.39,0,3,3,5.282000000
-2016-01-08,FY2016_Graduate,SAL_V2_Graduate-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Graduate,http://usm.maine.edu/explore,8,899,0.89,0,3,4,6.248050000
-2016-01-08,FY2016_Graduate,Tracking-Pandora_Tile,Pandora,Pandora_Tile,Tracking,Tracking,http://usm.maine.edu/explore,34,2022,1.68,0,0,0,0.000000000
-2016-01-08,FY2016_Transfer,300x250 Default Web Ad,MobileFuse.com,Tablet,Default,SAL_V2,https://usm.maine.edu/explore,13,2241,0.58,0,0,0,18.600300000
-2016-01-08,FY2016_Transfer,SAL_V1,Pandora,Display,Standard,SAL_V1,https://usm.maine.edu/explore,0,0,0.00,2,0,0,0.000000000
-2016-01-08,FY2016_Transfer,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,https://usm.maine.edu/explore,0,831,0.00,243,802,831,4.030350000
-2016-01-08,FY2016_Transfer,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,https://usm.maine.edu/explore,0,3048,0.00,386,1999,3048,14.782800000
-2016-01-08,FY2016_Transfer,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,https://usm.maine.edu/explore,0,4038,0.00,535,2127,4036,19.584300000
-2016-01-08,FY2016_Transfer,SAL_V2-Display,Pandora,Display,Standard,SAL_V2,https://usm.maine.edu/explore,26,2400,1.08,128,151,156,0.000000000
-2016-01-08,FY2016_Transfer,SAL_V2_Courses-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Courses,https://usm.maine.edu/explore,8,920,0.87,0,0,0,6.394000000
-2016-01-08,FY2016_Transfer,SAL_V2_Majors-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Majors,https://usm.maine.edu/explore,8,1041,0.77,0,0,0,7.234950000
-2016-01-08,FY2016_Transfer,SAL_V2_Majors-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Majors,https://usm.maine.edu/explore,4,870,0.46,0,0,0,6.046500000
-2016-01-08,FY2016_Undergraduate,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,https://usm.maine.edu/explore,0,1173,0.00,305,1120,1172,5.689050000
-2016-01-08,FY2016_Undergraduate,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,https://usm.maine.edu/explore,0,474,0.00,139,461,474,2.298900000
-2016-01-08,FY2016_Undergraduate,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,https://usm.maine.edu/explore,0,1260,0.00,201,889,1260,6.111000000
-2016-01-08,FY2016_Undergraduate,SAL_V2-Tablet,MobileFuse.com,Tablet,Standard,SAL_V2,https://usm.maine.edu/explore,12,2218,0.54,0,14,14,18.409400000
-2016-01-08,FY2016_Undergraduate,SAL_V2_Courses-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Courses,https://usm.maine.edu/explore,2,1122,0.18,0,6,6,7.797900000
-2016-01-08,FY2016_Undergraduate,SAL_V2_Majors-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Majors,https://usm.maine.edu/explore,9,1434,0.63,1,3,3,9.966300000
-2016-01-09,FY2016_Graduate,300x250 Default Web Ad,MobileFuse.com,Tablet,Default,SAL_V2,http://usm.maine.edu/explore,0,307,0.00,0,0,0,2.548100000
-2016-01-09,FY2016_Graduate,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,http://usm.maine.edu/explore,1,4970,0.02,267,2000,4968,24.104500000
-2016-01-09,FY2016_Graduate,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,http://usm.maine.edu/explore,1,444,0.23,126,423,444,2.153400000
-2016-01-09,FY2016_Graduate,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,http://usm.maine.edu/explore,0,2042,0.00,230,1088,2040,9.903700000
-2016-01-09,FY2016_Graduate,SAL_V2-Tablet,MobileFuse.com,Tablet,Standard,SAL_V2,http://usm.maine.edu/explore,5,1873,0.27,0,3,3,15.545900000
-2016-01-09,FY2016_Graduate,SAL_V2_Courses-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Courses,http://usm.maine.edu/explore,5,707,0.71,0,2,2,4.913650000
-2016-01-09,FY2016_Graduate,SAL_V2_Graduate-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Graduate,http://usm.maine.edu/explore,7,941,0.74,0,1,1,6.539950000
-2016-01-09,FY2016_Graduate,Tracking-Pandora_Tile,Pandora,Pandora_Tile,Tracking,Tracking,http://usm.maine.edu/explore,19,2305,0.82,0,0,0,0.000000000
-2016-01-09,FY2016_Transfer,300x250 Default Web Ad,MobileFuse.com,Tablet,Default,SAL_V2,https://usm.maine.edu/explore,13,2236,0.58,0,0,0,18.558800000
-2016-01-09,FY2016_Transfer,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,https://usm.maine.edu/explore,0,850,0.00,262,826,850,4.122500000
-2016-01-09,FY2016_Transfer,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,https://usm.maine.edu/explore,0,3324,0.00,395,1868,3321,16.121400000
-2016-01-09,FY2016_Transfer,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,https://usm.maine.edu/explore,1,2916,0.03,331,1930,2915,14.142600000
-2016-01-09,FY2016_Transfer,SAL_V2-Display,Pandora,Display,Standard,SAL_V2,https://usm.maine.edu/explore,17,2796,0.61,41,42,43,0.000000000
-2016-01-09,FY2016_Transfer,SAL_V2_Courses-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Courses,https://usm.maine.edu/explore,9,904,1.00,0,0,0,6.282800000
-2016-01-09,FY2016_Transfer,SAL_V2_Majors-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Majors,https://usm.maine.edu/explore,8,850,0.94,0,0,0,5.907500000
-2016-01-09,FY2016_Transfer,SAL_V2_Majors-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Majors,https://usm.maine.edu/explore,11,1073,1.03,0,0,0,7.457350000
-2016-01-09,FY2016_Undergraduate,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,https://usm.maine.edu/explore,1,1582,0.06,363,1505,1582,7.672700000
-2016-01-09,FY2016_Undergraduate,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,https://usm.maine.edu/explore,0,2075,0.00,359,1351,2075,10.063750000
-2016-01-09,FY2016_Undergraduate,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,https://usm.maine.edu/explore,0,485,0.00,148,469,485,2.352250000
-2016-01-09,FY2016_Undergraduate,SAL_V2-Tablet,MobileFuse.com,Tablet,Standard,SAL_V2,https://usm.maine.edu/explore,8,2227,0.36,2,1,1,18.484100000
-2016-01-09,FY2016_Undergraduate,SAL_V2_Courses-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Courses,https://usm.maine.edu/explore,2,1122,0.18,0,3,3,7.797900000
-2016-01-09,FY2016_Undergraduate,SAL_V2_Majors-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Majors,https://usm.maine.edu/explore,8,1466,0.55,0,5,5,10.188700000
-2016-01-10,FY2016_Graduate,300x250 Default Web Ad,MobileFuse.com,Tablet,Default,SAL_V2,http://usm.maine.edu/explore,0,260,0.00,0,0,0,2.158000000
-2016-01-10,FY2016_Graduate,SAL_V1-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V1,http://usm.maine.edu/explore,0,0,0.00,0,-1,0,0.000000000
-2016-01-10,FY2016_Graduate,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,http://usm.maine.edu/explore,2,2059,0.10,250,1171,2056,9.986150000
-2016-01-10,FY2016_Graduate,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,http://usm.maine.edu/explore,1,480,0.21,142,463,480,2.328000000
-2016-01-10,FY2016_Graduate,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,http://usm.maine.edu/explore,3,4973,0.06,319,1998,4968,24.119050000
-2016-01-10,FY2016_Graduate,SAL_V2-Tablet,MobileFuse.com,Tablet,Standard,SAL_V2,http://usm.maine.edu/explore,8,1907,0.42,1,7,7,15.828100000
-2016-01-10,FY2016_Graduate,SAL_V2_Courses-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Courses,http://usm.maine.edu/explore,6,730,0.82,0,5,5,5.073500000
-2016-01-10,FY2016_Graduate,SAL_V2_Graduate-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Graduate,http://usm.maine.edu/explore,5,891,0.56,2,2,2,6.192450000
-2016-01-10,FY2016_Graduate,Tracking-Pandora_Tile,Pandora,Pandora_Tile,Tracking,Tracking,http://usm.maine.edu/explore,26,2398,1.08,0,0,0,0.000000000
-2016-01-10,FY2016_Transfer,300x250 Default Web Ad,MobileFuse.com,Tablet,Default,SAL_V2,https://usm.maine.edu/explore,10,2249,0.44,0,0,0,18.666700000
-2016-01-10,FY2016_Transfer,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,https://usm.maine.edu/explore,0,836,0.00,263,810,836,4.054600000
-2016-01-10,FY2016_Transfer,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,https://usm.maine.edu/explore,2,2889,0.07,364,1876,2888,14.011650000
-2016-01-10,FY2016_Transfer,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,https://usm.maine.edu/explore,0,2729,0.00,406,2093,2729,13.235650000
-2016-01-10,FY2016_Transfer,SAL_V2-Display,Pandora,Display,Standard,SAL_V2,https://usm.maine.edu/explore,20,2595,0.77,28,32,32,0.000000000
-2016-01-10,FY2016_Transfer,SAL_V2_Courses-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Courses,https://usm.maine.edu/explore,19,986,1.93,0,0,0,6.852700000
-2016-01-10,FY2016_Transfer,SAL_V2_Majors-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Majors,https://usm.maine.edu/explore,18,1057,1.70,0,0,0,7.346150000
-2016-01-10,FY2016_Transfer,SAL_V2_Majors-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Majors,https://usm.maine.edu/explore,8,907,0.88,0,0,0,6.303650000
-2016-01-10,FY2016_Undergraduate,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,https://usm.maine.edu/explore,0,172,0.00,76,153,172,0.834200000
-2016-01-10,FY2016_Undergraduate,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,https://usm.maine.edu/explore,1,276,0.36,117,273,276,1.338600000
-2016-01-10,FY2016_Undergraduate,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,https://usm.maine.edu/explore,0,92,0.00,47,88,92,0.446200000
-2016-01-10,FY2016_Undergraduate,SAL_V2-Tablet,MobileFuse.com,Tablet,Standard,SAL_V2,https://usm.maine.edu/explore,13,2233,0.58,0,1,1,18.533900000
-2016-01-10,FY2016_Undergraduate,SAL_V2_Courses-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Courses,https://usm.maine.edu/explore,7,1195,0.59,0,3,3,8.305250000
-2016-01-10,FY2016_Undergraduate,SAL_V2_Majors-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Majors,https://usm.maine.edu/explore,8,1411,0.57,1,5,5,9.806450000
-2016-01-11,FY2016_Graduate,160x600 Default Web Ad,Collective.com,Cross Platform,Default,SAL_V2,http://usm.maine.edu/explore,0,1,0.00,0,0,0,0.004850000
-2016-01-11,FY2016_Graduate,300x250 Default Web Ad,Collective.com,Cross Platform,Default,SAL_V2,http://usm.maine.edu/explore,0,1,0.00,0,0,0,0.004850000
-2016-01-11,FY2016_Graduate,300x250 Default Web Ad,MobileFuse.com,Tablet,Default,SAL_V2,http://usm.maine.edu/explore,0,307,0.00,0,0,0,2.548100000
-2016-01-11,FY2016_Graduate,728x90 Default Web Ad,Collective.com,Cross Platform,Default,SAL_V2,http://usm.maine.edu/explore,0,1,0.00,0,0,0,0.004850000
-2016-01-11,FY2016_Graduate,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,http://usm.maine.edu/explore,0,423,0.00,119,404,423,2.051550000
-2016-01-11,FY2016_Graduate,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,http://usm.maine.edu/explore,9,4289,0.21,271,1523,4283,20.801650000
-2016-01-11,FY2016_Graduate,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,http://usm.maine.edu/explore,1,1686,0.06,202,1060,1684,8.177100000
-2016-01-11,FY2016_Graduate,SAL_V2-Tablet,MobileFuse.com,Tablet,Standard,SAL_V2,http://usm.maine.edu/explore,6,1900,0.32,0,7,7,15.770000000
-2016-01-11,FY2016_Graduate,SAL_V2_Courses-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Courses,http://usm.maine.edu/explore,4,767,0.52,0,4,4,5.330650000
-2016-01-11,FY2016_Graduate,SAL_V2_Graduate-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Graduate,http://usm.maine.edu/explore,3,885,0.34,0,2,2,6.150750000
-2016-01-11,FY2016_Graduate,Tracking-Pandora_Tile,Pandora,Pandora_Tile,Tracking,Tracking,http://usm.maine.edu/explore,23,2804,0.82,0,0,0,0.000000000
-2016-01-11,FY2016_Transfer,300x250 Default Web Ad,MobileFuse.com,Tablet,Default,SAL_V2,https://usm.maine.edu/explore,14,2219,0.63,0,0,0,18.417700000
-2016-01-11,FY2016_Transfer,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,https://usm.maine.edu/explore,2,3068,0.07,508,2083,3068,14.879800000
-2016-01-11,FY2016_Transfer,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,https://usm.maine.edu/explore,0,898,0.00,274,880,898,4.355300000
-2016-01-11,FY2016_Transfer,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,https://usm.maine.edu/explore,1,2883,0.03,586,2360,2883,13.982550000
-2016-01-11,FY2016_Transfer,SAL_V2-Display,Pandora,Display,Standard,SAL_V2,https://usm.maine.edu/explore,13,2641,0.49,136,147,151,0.000000000
-2016-01-11,FY2016_Transfer,SAL_V2_Courses-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Courses,https://usm.maine.edu/explore,3,981,0.31,0,0,0,6.817950000
-2016-01-11,FY2016_Transfer,SAL_V2_Majors-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Majors,https://usm.maine.edu/explore,10,1070,0.93,0,0,0,7.436500000
-2016-01-11,FY2016_Transfer,SAL_V2_Majors-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Majors,https://usm.maine.edu/explore,5,874,0.57,0,0,0,6.074300000
-2016-01-11,FY2016_Undergraduate,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,https://usm.maine.edu/explore,0,68,0.00,27,68,68,0.329800000
-2016-01-11,FY2016_Undergraduate,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,https://usm.maine.edu/explore,1,290,0.34,99,289,290,1.406500000
-2016-01-11,FY2016_Undergraduate,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,https://usm.maine.edu/explore,0,186,0.00,83,169,186,0.902100000
-2016-01-11,FY2016_Undergraduate,SAL_V2-Tablet,MobileFuse.com,Tablet,Standard,SAL_V2,https://usm.maine.edu/explore,17,2173,0.78,0,2,2,18.035900000
-2016-01-11,FY2016_Undergraduate,SAL_V2_Courses-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Courses,https://usm.maine.edu/explore,6,1213,0.49,0,3,3,8.430350000
-2016-01-11,FY2016_Undergraduate,SAL_V2_Majors-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Majors,https://usm.maine.edu/explore,9,1391,0.65,0,5,5,9.667450000
-Grand Total:,---,---,---,---,---,---,---,917,256259,0.36,18754,77991,125986,1330.265800000
+2016-01-12,BSB Apple Pay,300x250-Audience Extension 300X250,Simpli.fi,Audience Extension 300X250,Standard,300x250,http://www.bangor.com/Personal-Banking/Online-Banking/Mobile-Banking/Apple-Pay.aspx,0,1,0.00,1,1,1,0.000000000
+2016-01-12,BSB Branding Campaign,160x600 Default Web Ad,Mainetoday.com - Portland Press Herald,Press Herald 160X600,Default,FreeATM_Mainers_160x600_static,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,1,0.00,0,0,0,0.000000000
+2016-01-12,BSB Branding Campaign,160x600 Default Web Ad,Simpli.fi,Audience Extension 160X600,Default,FreeATM_Mainers_160x600_static,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,1,0.00,0,0,0,0.000000000
+2016-01-12,BSB Branding Campaign,160x600 Default Web Ad,centralmaine.com,CentralMaine 160X600,Default,FreeATM_Mainers_160x600_static,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,1,0.00,0,0,0,0.000000000
+2016-01-12,BSB Branding Campaign,160x600_publish 2-Audience Extension 160X600,Simpli.fi,Audience Extension 160X600,Standard,160x600_publish 2,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,2,125,1.60,51,105,125,0.000000000
+2016-01-12,BSB Branding Campaign,160x600_publish 2-CentralMaine 160X600,centralmaine.com,CentralMaine 160X600,Standard,160x600_publish 2,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,5,144,3.47,41,108,142,0.000000000
+2016-01-12,BSB Branding Campaign,160x600_publish 2-MaineToday 160X600,mainetoday.com,MaineToday 160X600,Standard,160x600_publish 2,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,1,134,0.75,45,114,134,0.000000000
+2016-01-12,BSB Branding Campaign,160x600_publish 2-Press Herald 160X600,Mainetoday.com - Portland Press Herald,Press Herald 160X600,Standard,160x600_publish 2,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,1,125,0.80,32,98,124,0.000000000
+2016-01-12,BSB Branding Campaign,300x250 Default Web Ad,Bangor Daily News,BangorDailyNews 300X250,Default,FreeATM_Mainers_300x250_static,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,1838,0.00,0,0,0,0.000000000
+2016-01-12,BSB Branding Campaign,300x250 Default Web Ad,Mainetoday.com - Portland Press Herald,Press Herald 300X250,Default,FreeATM_Mainers_300x250_static,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,1,0.00,0,0,0,0.000000000
+2016-01-12,BSB Branding Campaign,300x250 Default Web Ad,Simpli.fi,Audience Extension 300X250,Default,FreeATM_Mainers_300x250_static,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,3,0.00,0,0,0,0.000000000
+2016-01-12,BSB Branding Campaign,300x250 Default Web Ad,centralmaine.com,CentralMaine 300X250,Default,FreeATM_Mainers_300x250_static,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,2,0.00,0,0,0,0.000000000
+2016-01-12,BSB Branding Campaign,300x250_publish-Audience Extension 300X250,Simpli.fi,Audience Extension 300X250,Standard,300x250_publish,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,1,396,0.25,78,325,390,0.000000000
+2016-01-12,BSB Branding Campaign,300x250_publish-CentralMaine 300X250,centralmaine.com,CentralMaine 300X250,Standard,300x250_publish,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,448,0.00,124,368,438,0.000000000
+2016-01-12,BSB Branding Campaign,300x250_publish-MaineToday 300X250,mainetoday.com,MaineToday 300X250,Standard,300x250_publish,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,1,419,0.24,109,338,415,0.000000000
+2016-01-12,BSB Branding Campaign,300x250_publish-Press Herald 300X250,Mainetoday.com - Portland Press Herald,Press Herald 300X250,Standard,300x250_publish,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,4,439,0.91,144,369,431,0.000000000
+2016-01-12,BSB Branding Campaign,320x50 Default Web Ad,Mainetoday.com - Portland Press Herald,Press Herald 320X50,Default,BSB_FreeATM_Mainers_StaticAd_320x50,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,1,915,0.11,265,905,912,0.000000000
+2016-01-12,BSB Branding Campaign,320x50 Default Web Ad,Simpli.fi,Audience Extension 320X50,Default,BSB_FreeATM_Mainers_StaticAd_320x50,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,432,0.00,106,309,370,0.000000000
+2016-01-12,BSB Branding Campaign,320x50 Default Web Ad,centralmaine.com,CentralMaine 320X50,Default,BSB_FreeATM_Mainers_StaticAd_320x50,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,1147,0.00,272,983,1146,0.000000000
+2016-01-12,BSB Branding Campaign,320x50 Default Web Ad,mainetoday.com,MaineToday 320X50,Default,BSB_FreeATM_Mainers_StaticAd_320x50,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,1,227,0.44,78,225,227,0.000000000
+2016-01-12,BSB Branding Campaign,728x90 Default Web Ad,Bangor Daily News,BangorDailyNews 728X90,Default,FreeATM_Mainers_728x90_static,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,2592,0.00,0,0,0,0.000000000
+2016-01-12,BSB Branding Campaign,728x90 Default Web Ad,Mainetoday.com - Portland Press Herald,Press Herald 728X90,Default,FreeATM_Mainers_728x90_static,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,1,0.00,0,0,0,0.000000000
+2016-01-12,BSB Branding Campaign,728x90_publish-Audience Extension 728X90,Simpli.fi,Audience Extension 728X90,Standard,728x90_publish,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,288,0.00,53,256,286,0.000000000
+2016-01-12,BSB Branding Campaign,728x90_publish-CentralMaine 728X90,centralmaine.com,CentralMaine 728X90,Standard,728x90_publish,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,1,757,0.13,364,712,749,0.000000000
+2016-01-12,BSB Branding Campaign,728x90_publish-MaineToday 728X90,mainetoday.com,MaineToday 728X90,Standard,728x90_publish,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,2,672,0.30,241,595,666,0.000000000
+2016-01-12,BSB Branding Campaign,728x90_publish-Press Herald 728X90,Mainetoday.com - Portland Press Herald,Press Herald 728X90,Standard,728x90_publish,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,2,750,0.27,319,702,748,0.000000000
+2016-01-12,BSB Mortgage,mortgage_160x600-Sitescout 160X600,sitescout.com,Sitescout 160X600,Standard,mortgage_160x600,http://www.bangormortgage.com/Default.aspx,0,0,0.00,5,0,0,0.000000000
+2016-01-12,BSB Mortgage,mortgage_300x250-Sitescout 300X250,sitescout.com,Sitescout 300X250,Standard,mortgage_300x250,http://www.bangormortgage.com/Default.aspx,0,1,0.00,6,1,1,0.000000000
+2016-01-12,BSB Mortgage,mortgage_728x90-Sitescout 728X90,sitescout.com,Sitescout 728X90,Standard,mortgage_728x90,http://www.bangormortgage.com/Default.aspx,0,0,0.00,2,0,0,0.000000000
+2016-01-12,Coastal Plastic Retargeting,160X600 smile-Sitescout_Retargeting 160X600,sitescout.com,Sitescout_Retargeting 160X600,Standard,160X600 smile,http://www.coastalplasticsurgerymaine.org/,0,1,0.00,2,1,1,0.000000000
+2016-01-12,Coastal Plastic Retargeting,728x90_smile-Sitescout_Retargeting 728x90,sitescout.com,Sitescout_Retargeting 728x90,Standard,728x90_smile,http://www.coastalplasticsurgerymaine.org/,0,0,0.00,4,0,0,0.000000000
+2016-01-12,Coastal Plastics 9.15,300x250 Default Web Ad,mainetoday.com,AudienceExtension 300X250,Default,300x250_smile,http://www.coastalplasticsurgerymaine.org/,0,1162,0.00,173,690,1142,0.000000000
+2016-01-12,Coastal Plastics 9.15,300x50 Default Web Ad,mainetoday.com,AudienceExtension 300X50,Default,300x50,http://www.coastalplasticsurgerymaine.org/,0,78,0.00,0,20,73,0.000000000
+2016-01-12,Coastal Plastics 9.15,728x90 Default Web Ad,mainetoday.com,AudienceExtension 728X90,Default,728X90 Default,http://www.coastalplasticsurgerymaine.org/,0,5,0.00,0,0,0,0.000000000
+2016-01-12,Coastal Plastics 9.15,728x90-2-AudienceExtension 728X90,mainetoday.com,AudienceExtension 728X90,Standard,728x90-2,http://www.coastalplasticsurgerymaine.org/,0,824,0.00,200,685,819,0.000000000
+2016-01-12,Coastal Plastics 9.15,Smile 160X600-AudienceExtension  160X600,mainetoday.com,AudienceExtension  160X600,Standard,Smile 160X600,http://www.coastalplasticsurgerymaine.org/,0,268,0.00,53,202,265,0.000000000
+2016-01-12,College Transitions,300X250-Site Scout 300X250 Audience,sitescout.com,Site Scout 300X250 Audience,Standard,300X250,http://www.mainecollegetransitions.org/,0,0,0.00,1,0,0,0.000000000
+2016-01-12,College Transitions,728X90-Site Scout 728X90 Audience,sitescout.com,Site Scout 728X90 Audience,Standard,728X90,http://www.mainecollegetransitions.org/,0,0,0.00,3,0,0,0.000000000
+2016-01-12,College Transitions,MCTanimation.html-Site Scout 160X600 Audience,sitescout.com,Site Scout 160X600 Audience,Standard,MCTanimation.html,http://www.mainecollegetransitions.org/,0,0,0.00,3,0,0,0.000000000
+2016-01-12,DairyPure,Tracking-Catalina,Catalina Marketing - RM,Catalina,Tracking,Tracking,http://www.landolakesmilk.com/,177,67136,0.26,0,0,0,0.000000000
+2016-01-12,FY2016_Graduate,300x250 Default Web Ad,MobileFuse.com,Tablet,Default,SAL_V2,http://usm.maine.edu/explore,0,221,0.00,0,0,0,1.834300000
+2016-01-12,FY2016_Graduate,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,http://usm.maine.edu/explore,0,2404,0.00,258,1656,2400,11.659400000
+2016-01-12,FY2016_Graduate,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,http://usm.maine.edu/explore,0,434,0.00,111,415,434,2.104900000
+2016-01-12,FY2016_Graduate,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,http://usm.maine.edu/explore,1,3837,0.03,297,1487,3831,18.609450000
+2016-01-12,FY2016_Graduate,SAL_V2-Tablet,MobileFuse.com,Tablet,Standard,SAL_V2,http://usm.maine.edu/explore,5,1899,0.26,0,8,8,15.761700000
+2016-01-12,FY2016_Graduate,SAL_V2_Courses-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Courses,http://usm.maine.edu/explore,5,755,0.66,0,0,0,5.247250000
+2016-01-12,FY2016_Graduate,SAL_V2_Graduate-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Graduate,http://usm.maine.edu/explore,4,887,0.45,0,3,3,6.164650000
+2016-01-12,FY2016_Graduate,Tracking-Pandora_Tile,Pandora,Pandora_Tile,Tracking,Tracking,http://usm.maine.edu/explore,37,2974,1.24,0,0,0,0.000000000
+2016-01-12,FY2016_Transfer,300x250 Default Web Ad,MobileFuse.com,Tablet,Default,SAL_V2,https://usm.maine.edu/explore,11,2231,0.49,0,0,0,18.517300000
+2016-01-12,FY2016_Transfer,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,https://usm.maine.edu/explore,0,2920,0.00,469,1969,2920,14.162000000
+2016-01-12,FY2016_Transfer,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,https://usm.maine.edu/explore,1,3166,0.03,622,2637,3164,15.355100000
+2016-01-12,FY2016_Transfer,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,https://usm.maine.edu/explore,2,803,0.25,247,758,803,3.894550000
+2016-01-12,FY2016_Transfer,SAL_V2-Display,Pandora,Display,Standard,SAL_V2,https://usm.maine.edu/explore,19,2825,0.67,172,190,193,0.000000000
+2016-01-12,FY2016_Transfer,SAL_V2_Courses-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Courses,https://usm.maine.edu/explore,4,978,0.41,0,0,0,6.797100000
+2016-01-12,FY2016_Transfer,SAL_V2_Majors-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Majors,https://usm.maine.edu/explore,11,1024,1.07,0,0,0,7.116800000
+2016-01-12,FY2016_Transfer,SAL_V2_Majors-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Majors,https://usm.maine.edu/explore,4,861,0.46,0,0,0,5.983950000
+2016-01-12,FY2016_Undergraduate,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,https://usm.maine.edu/explore,0,93,0.00,41,92,93,0.451050000
+2016-01-12,FY2016_Undergraduate,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,https://usm.maine.edu/explore,0,319,0.00,138,309,319,1.547150000
+2016-01-12,FY2016_Undergraduate,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,https://usm.maine.edu/explore,0,127,0.00,61,114,127,0.615950000
+2016-01-12,FY2016_Undergraduate,SAL_V2-Tablet,MobileFuse.com,Tablet,Standard,SAL_V2,https://usm.maine.edu/explore,11,2369,0.46,0,2,2,19.662700000
+2016-01-12,FY2016_Undergraduate,SAL_V2_Courses-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Courses,https://usm.maine.edu/explore,5,1351,0.37,0,5,5,9.389450000
+2016-01-12,FY2016_Undergraduate,SAL_V2_Majors-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Majors,https://usm.maine.edu/explore,9,1742,0.52,0,5,5,12.106900000
+2016-01-12,HELOC,160x600 Default Web Ad,sitescout.com,SS_Retargeting_160X600,Default,160X600 default,https://www.bangor.com/landing/fixed/default.aspx,0,1,0.00,3,1,1,0.000000000
+2016-01-12,HELOC,300x250 Default Web Ad,sitescout.com,SS_Retargeting_300X250,Default,300X250 Default,https://www.bangor.com/landing/fixed/default.aspx,0,0,0.00,1,0,0,0.000000000
+2016-01-12,HELOC,300x600 Default Web Ad,sitescout.com,SS_Retargeting_300X600,Default,300X600 default,https://www.bangor.com/landing/fixed/default.aspx,0,0,0.00,2,0,0,0.000000000
+2016-01-12,HELOC,HELOC_Lock_728X90-SS_Retargeting_728X90 (copy),sitescout.com,SS_Retargeting_728X90,Standard,HELOC_Lock_728X90,https://www.bangor.com/landing/fixed/default.aspx,0,0,0.00,2,0,0,0.000000000
+2016-01-12,PWM Elite Airways,160X600-160X600,Hearst Corporation,160X600,Standard,160X600,http://eliteairways.com/,0,0,0.00,1,0,0,0.000000000
+2016-01-12,PWM Elite Airways,PWM_Melbourne_300x250-1.zip-300X250,Hearst Corporation,300X250,Standard,PWM_Melbourne_300x250-1.zip,http://eliteairways.com/,0,0,0.00,4,0,0,0.000000000
+2016-01-12,PWM Elite Airways,PWM_Melbourne_728x90_publish 2.zip-728X90,Hearst Corporation,728X90,Standard,PWM_Melbourne_728x90_publish 2.zip,http://eliteairways.com/,0,0,0.00,1,0,0,0.000000000
+2016-01-13,BSB Apple Pay,728x90-Audience Extension 728X90,Simpli.fi,Audience Extension 728X90,Standard,728x90,http://www.bangor.com/Personal-Banking/Online-Banking/Mobile-Banking/Apple-Pay.aspx,0,1,0.00,0,1,1,0.000000000
+2016-01-13,BSB Branding Campaign,160x600 Default Web Ad,Bangor Daily News,BangorDailyNews 160X600,Default,FreeATM_Mainers_160x600_static,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,3,0.00,0,0,0,0.000000000
+2016-01-13,BSB Branding Campaign,160x600_publish 2-Audience Extension 160X600,Simpli.fi,Audience Extension 160X600,Standard,160x600_publish 2,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,116,0.00,50,97,115,0.000000000
+2016-01-13,BSB Branding Campaign,160x600_publish 2-CentralMaine 160X600,centralmaine.com,CentralMaine 160X600,Standard,160x600_publish 2,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,106,0.00,45,90,103,0.000000000
+2016-01-13,BSB Branding Campaign,160x600_publish 2-MaineToday 160X600,mainetoday.com,MaineToday 160X600,Standard,160x600_publish 2,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,100,0.00,37,83,100,0.000000000
+2016-01-13,BSB Branding Campaign,160x600_publish 2-Press Herald 160X600,Mainetoday.com - Portland Press Herald,Press Herald 160X600,Standard,160x600_publish 2,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,85,0.00,36,73,84,0.000000000
+2016-01-13,BSB Branding Campaign,300x250 Default Web Ad,Bangor Daily News,BangorDailyNews 300X250,Default,FreeATM_Mainers_300x250_static,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,1877,0.00,0,0,0,0.000000000
+2016-01-13,BSB Branding Campaign,300x250 Default Web Ad,Mainetoday.com - Portland Press Herald,Press Herald 300X250,Default,FreeATM_Mainers_300x250_static,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,2,0.00,0,0,0,0.000000000
+2016-01-13,BSB Branding Campaign,300x250 Default Web Ad,Simpli.fi,Audience Extension 300X250,Default,FreeATM_Mainers_300x250_static,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,1,0.00,0,0,0,0.000000000
+2016-01-13,BSB Branding Campaign,300x250 Default Web Ad,centralmaine.com,CentralMaine 300X250,Default,FreeATM_Mainers_300x250_static,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,2,0.00,0,0,0,0.000000000
+2016-01-13,BSB Branding Campaign,300x250 Default Web Ad,mainetoday.com,MaineToday 300X250,Default,FreeATM_Mainers_300x250_static,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,1,0.00,0,0,0,0.000000000
+2016-01-13,BSB Branding Campaign,300x250_publish-Audience Extension 300X250,Simpli.fi,Audience Extension 300X250,Standard,300x250_publish,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,365,0.00,74,313,363,0.000000000
+2016-01-13,BSB Branding Campaign,300x250_publish-CentralMaine 300X250,centralmaine.com,CentralMaine 300X250,Standard,300x250_publish,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,424,0.00,125,374,417,0.000000000
+2016-01-13,BSB Branding Campaign,300x250_publish-MaineToday 300X250,mainetoday.com,MaineToday 300X250,Standard,300x250_publish,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,1,479,0.21,143,401,473,0.000000000
+2016-01-13,BSB Branding Campaign,300x250_publish-Press Herald 300X250,Mainetoday.com - Portland Press Herald,Press Herald 300X250,Standard,300x250_publish,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,413,0.00,107,358,407,0.000000000
+2016-01-13,BSB Branding Campaign,320x50 Default Web Ad,Mainetoday.com - Portland Press Herald,Press Herald 320X50,Default,BSB_FreeATM_Mainers_StaticAd_320x50,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,867,0.00,302,864,867,0.000000000
+2016-01-13,BSB Branding Campaign,320x50 Default Web Ad,Simpli.fi,Audience Extension 320X50,Default,BSB_FreeATM_Mainers_StaticAd_320x50,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,466,0.00,111,327,417,0.000000000
+2016-01-13,BSB Branding Campaign,320x50 Default Web Ad,centralmaine.com,CentralMaine 320X50,Default,BSB_FreeATM_Mainers_StaticAd_320x50,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,1348,0.00,299,1153,1347,0.000000000
+2016-01-13,BSB Branding Campaign,320x50 Default Web Ad,mainetoday.com,MaineToday 320X50,Default,BSB_FreeATM_Mainers_StaticAd_320x50,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,344,0.00,87,342,344,0.000000000
+2016-01-13,BSB Branding Campaign,728x90 Default Web Ad,Bangor Daily News,BangorDailyNews 728X90,Default,FreeATM_Mainers_728x90_static,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,1921,0.00,0,0,0,0.000000000
+2016-01-13,BSB Branding Campaign,728x90 Default Web Ad,Mainetoday.com - Portland Press Herald,Press Herald 728X90,Default,FreeATM_Mainers_728x90_static,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,3,0.00,0,0,0,0.000000000
+2016-01-13,BSB Branding Campaign,728x90 Default Web Ad,Simpli.fi,Audience Extension 728X90,Default,FreeATM_Mainers_728x90_static,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,3,0.00,0,0,0,0.000000000
+2016-01-13,BSB Branding Campaign,728x90 Default Web Ad,centralmaine.com,CentralMaine 728X90,Default,FreeATM_Mainers_728x90_static,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,1,0.00,0,0,0,0.000000000
+2016-01-13,BSB Branding Campaign,728x90 Default Web Ad,mainetoday.com,MaineToday 728X90,Default,FreeATM_Mainers_728x90_static,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,1,0.00,0,0,0,0.000000000
+2016-01-13,BSB Branding Campaign,728x90_publish-Audience Extension 728X90,Simpli.fi,Audience Extension 728X90,Standard,728x90_publish,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,341,0.00,82,300,340,0.000000000
+2016-01-13,BSB Branding Campaign,728x90_publish-CentralMaine 728X90,centralmaine.com,CentralMaine 728X90,Standard,728x90_publish,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,572,0.00,229,518,568,0.000000000
+2016-01-13,BSB Branding Campaign,728x90_publish-MaineToday 728X90,mainetoday.com,MaineToday 728X90,Standard,728x90_publish,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,787,0.00,351,728,784,0.000000000
+2016-01-13,BSB Branding Campaign,728x90_publish-Press Herald 728X90,Mainetoday.com - Portland Press Herald,Press Herald 728X90,Standard,728x90_publish,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,1,699,0.14,331,649,694,0.000000000
+2016-01-13,BSB Mortgage,mortgage_160x600-Sitescout 160X600,sitescout.com,Sitescout 160X600,Standard,mortgage_160x600,http://www.bangormortgage.com/Default.aspx,0,0,0.00,5,0,0,0.000000000
+2016-01-13,BSB Mortgage,mortgage_300x250-Sitescout 300X250,sitescout.com,Sitescout 300X250,Standard,mortgage_300x250,http://www.bangormortgage.com/Default.aspx,0,0,0.00,2,0,0,0.000000000
+2016-01-13,BSB Mortgage,mortgage_728x90-Sitescout 728X90,sitescout.com,Sitescout 728X90,Standard,mortgage_728x90,http://www.bangormortgage.com/Default.aspx,0,0,0.00,2,0,0,0.000000000
+2016-01-13,BSB Mortgage,mortgage_728x90-Sitescout 728X90,sitescout.com,Sitescout 728X90,Standard,mortgage_728x90,http://www.bangormortgage.com/Default.aspx,0,0,0.00,1,0,0,0.000000000
+2016-01-13,Coastal Plastic Retargeting,300x250_smile-2-Sitescout_Retargeting 300X250,sitescout.com,Sitescout_Retargeting 300X250,Standard,300x250_smile-2,http://www.coastalplasticsurgerymaine.org/,0,1,0.00,1,1,1,0.000000000
+2016-01-13,Coastal Plastic Retargeting,300x250_smile-Sitescout_Retargeting 300X250,sitescout.com,Sitescout_Retargeting 300X250,Standard,300x250_smile,http://www.coastalplasticsurgerymaine.org/,0,0,0.00,1,0,0,0.000000000
+2016-01-13,Coastal Plastic Retargeting,728x90_smile-Sitescout_Retargeting 728x90,sitescout.com,Sitescout_Retargeting 728x90,Standard,728x90_smile,http://www.coastalplasticsurgerymaine.org/,0,0,0.00,2,0,0,0.000000000
+2016-01-13,Coastal Plastics 9.15,300x250 Default Web Ad,mainetoday.com,AudienceExtension 300X250,Default,300x250_smile,http://www.coastalplasticsurgerymaine.org/,1,1192,0.08,180,741,1159,0.000000000
+2016-01-13,Coastal Plastics 9.15,300x50 Default Web Ad,mainetoday.com,AudienceExtension 300X50,Default,300x50,http://www.coastalplasticsurgerymaine.org/,0,63,0.00,0,8,62,0.000000000
+2016-01-13,Coastal Plastics 9.15,728x90 Default Web Ad,mainetoday.com,AudienceExtension 728X90,Default,728X90 Default,http://www.coastalplasticsurgerymaine.org/,0,4,0.00,0,0,0,0.000000000
+2016-01-13,Coastal Plastics 9.15,728x90-2-AudienceExtension 728X90,mainetoday.com,AudienceExtension 728X90,Standard,728x90-2,http://www.coastalplasticsurgerymaine.org/,2,883,0.23,170,749,873,0.000000000
+2016-01-13,Coastal Plastics 9.15,Smile 160X600-AudienceExtension  160X600,mainetoday.com,AudienceExtension  160X600,Standard,Smile 160X600,http://www.coastalplasticsurgerymaine.org/,0,228,0.00,37,147,226,0.000000000
+2016-01-13,College Transitions,300X250-Site Scout 300X250 Audience,sitescout.com,Site Scout 300X250 Audience,Standard,300X250,http://www.mainecollegetransitions.org/,0,0,0.00,2,0,0,0.000000000
+2016-01-13,College Transitions,728X90-Site Scout 728X90 Audience,sitescout.com,Site Scout 728X90 Audience,Standard,728X90,http://www.mainecollegetransitions.org/,0,1,0.00,2,0,0,0.000000000
+2016-01-13,College Transitions,MCTanimation.html-Site Scout 160X600 Audience,sitescout.com,Site Scout 160X600 Audience,Standard,MCTanimation.html,http://www.mainecollegetransitions.org/,0,0,0.00,1,0,0,0.000000000
+2016-01-13,DairyPure,Tracking-Catalina,Catalina Marketing - RM,Catalina,Tracking,Tracking,http://www.landolakesmilk.com/,219,73003,0.30,0,0,0,0.000000000
+2016-01-13,FY2016_Graduate,300x250 Default Web Ad,MobileFuse.com,Tablet,Default,SAL_V2,http://usm.maine.edu/explore,0,283,0.00,0,0,0,2.348900000
+2016-01-13,FY2016_Graduate,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,http://usm.maine.edu/explore,1,4067,0.02,251,1480,4061,19.724950000
+2016-01-13,FY2016_Graduate,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,http://usm.maine.edu/explore,0,472,0.00,110,448,472,2.289200000
+2016-01-13,FY2016_Graduate,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,http://usm.maine.edu/explore,3,2429,0.12,269,1681,2425,11.780650000
+2016-01-13,FY2016_Graduate,SAL_V2-Tablet,MobileFuse.com,Tablet,Standard,SAL_V2,http://usm.maine.edu/explore,2,1923,0.10,0,6,6,15.960900000
+2016-01-13,FY2016_Graduate,SAL_V2_Courses-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Courses,http://usm.maine.edu/explore,10,753,1.33,0,8,8,5.233350000
+2016-01-13,FY2016_Graduate,SAL_V2_Graduate-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Graduate,http://usm.maine.edu/explore,4,876,0.46,1,2,2,6.088200000
+2016-01-13,FY2016_Graduate,Tracking-Pandora_Tile,Pandora,Pandora_Tile,Tracking,Tracking,http://usm.maine.edu/explore,22,3028,0.73,0,0,0,0.000000000
+2016-01-13,FY2016_Transfer,300x250 Default Web Ad,MobileFuse.com,Tablet,Default,SAL_V2,https://usm.maine.edu/explore,18,2247,0.80,0,0,0,18.650100000
+2016-01-13,FY2016_Transfer,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,https://usm.maine.edu/explore,0,2298,0.00,407,1771,2296,11.145300000
+2016-01-13,FY2016_Transfer,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,https://usm.maine.edu/explore,0,628,0.00,216,608,628,3.045800000
+2016-01-13,FY2016_Transfer,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,https://usm.maine.edu/explore,2,3068,0.07,342,1642,3066,14.879800000
+2016-01-13,FY2016_Transfer,SAL_V2-Display,Pandora,Display,Standard,SAL_V2,https://usm.maine.edu/explore,18,2706,0.67,121,135,145,0.000000000
+2016-01-13,FY2016_Transfer,SAL_V2_Courses-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Courses,https://usm.maine.edu/explore,4,1017,0.39,0,0,0,7.068150000
+2016-01-13,FY2016_Transfer,SAL_V2_Majors-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Majors,https://usm.maine.edu/explore,3,874,0.34,0,0,0,6.074300000
+2016-01-13,FY2016_Transfer,SAL_V2_Majors-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Majors,https://usm.maine.edu/explore,3,1035,0.29,0,0,0,7.193250000
+2016-01-13,FY2016_Undergraduate,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,https://usm.maine.edu/explore,0,303,0.00,105,284,303,1.469550000
+2016-01-13,FY2016_Undergraduate,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,https://usm.maine.edu/explore,0,117,0.00,36,99,117,0.567450000
+2016-01-13,FY2016_Undergraduate,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,https://usm.maine.edu/explore,0,112,0.00,40,112,112,0.543200000
+2016-01-13,FY2016_Undergraduate,SAL_V2-Tablet,MobileFuse.com,Tablet,Standard,SAL_V2,https://usm.maine.edu/explore,10,2370,0.42,1,0,0,19.671000000
+2016-01-13,FY2016_Undergraduate,SAL_V2_Courses-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Courses,https://usm.maine.edu/explore,9,1390,0.65,1,2,2,9.660500000
+2016-01-13,FY2016_Undergraduate,SAL_V2_Majors-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Majors,https://usm.maine.edu/explore,10,1716,0.58,0,2,2,11.926200000
+2016-01-13,HELOC,160x600 Default Web Ad,sitescout.com,SS_Retargeting_160X600,Default,160X600 default,https://www.bangor.com/landing/fixed/default.aspx,0,0,0.00,1,0,0,0.000000000
+2016-01-13,HELOC,300x250 Default Web Ad,sitescout.com,SS_Retargeting_300X250,Default,300X250 Default,https://www.bangor.com/landing/fixed/default.aspx,0,0,0.00,1,0,0,0.000000000
+2016-01-13,HELOC,300x600 Default Web Ad,sitescout.com,SS_Retargeting_300X600,Default,300X600 default,https://www.bangor.com/landing/fixed/default.aspx,0,0,0.00,2,0,0,0.000000000
+2016-01-13,HELOC,HELOC_Lock_728X90-SS_Retargeting_728X90 (copy),sitescout.com,SS_Retargeting_728X90,Standard,HELOC_Lock_728X90,https://www.bangor.com/landing/fixed/default.aspx,0,0,0.00,2,0,0,0.000000000
+2016-01-13,PWM Elite Airways,160X600-160X600,Hearst Corporation,160X600,Standard,160X600,http://eliteairways.com/,0,0,0.00,2,-1,0,0.000000000
+2016-01-13,PWM Elite Airways,PWM_Melbourne_300x250-1.zip-300X250,Hearst Corporation,300X250,Standard,PWM_Melbourne_300x250-1.zip,http://eliteairways.com/,0,0,0.00,0,-1,0,0.000000000
+2016-01-13,PWM Elite Airways,PWM_Melbourne_728x90_publish 2.zip-728X90,Hearst Corporation,728X90,Standard,PWM_Melbourne_728x90_publish 2.zip,http://eliteairways.com/,0,0,0.00,2,0,0,0.000000000
+2016-01-14,BSB Branding Campaign,160x600 Default Web Ad,Bangor Daily News,BangorDailyNews 160X600,Default,FreeATM_Mainers_160x600_static,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,6,0.00,0,0,0,0.000000000
+2016-01-14,BSB Branding Campaign,160x600_publish 2-Audience Extension 160X600,Simpli.fi,Audience Extension 160X600,Standard,160x600_publish 2,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,5,111,4.50,39,93,110,0.000000000
+2016-01-14,BSB Branding Campaign,160x600_publish 2-CentralMaine 160X600,centralmaine.com,CentralMaine 160X600,Standard,160x600_publish 2,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,121,0.00,45,96,116,0.000000000
+2016-01-14,BSB Branding Campaign,160x600_publish 2-MaineToday 160X600,mainetoday.com,MaineToday 160X600,Standard,160x600_publish 2,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,5,112,4.46,40,90,110,0.000000000
+2016-01-14,BSB Branding Campaign,160x600_publish 2-Press Herald 160X600,Mainetoday.com - Portland Press Herald,Press Herald 160X600,Standard,160x600_publish 2,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,2,108,1.85,35,82,108,0.000000000
+2016-01-14,BSB Branding Campaign,300x250 Default Web Ad,Bangor Daily News,BangorDailyNews 300X250,Default,FreeATM_Mainers_300x250_static,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,1924,0.00,0,0,0,0.000000000
+2016-01-14,BSB Branding Campaign,300x250 Default Web Ad,Mainetoday.com - Portland Press Herald,Press Herald 300X250,Default,FreeATM_Mainers_300x250_static,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,2,0.00,0,0,0,0.000000000
+2016-01-14,BSB Branding Campaign,300x250 Default Web Ad,Simpli.fi,Audience Extension 300X250,Default,FreeATM_Mainers_300x250_static,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,4,0.00,0,0,0,0.000000000
+2016-01-14,BSB Branding Campaign,300x250 Default Web Ad,centralmaine.com,CentralMaine 300X250,Default,FreeATM_Mainers_300x250_static,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,1,0.00,0,0,0,0.000000000
+2016-01-14,BSB Branding Campaign,300x250 Default Web Ad,mainetoday.com,MaineToday 300X250,Default,FreeATM_Mainers_300x250_static,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,3,0.00,0,0,0,0.000000000
+2016-01-14,BSB Branding Campaign,300x250_publish-Audience Extension 300X250,Simpli.fi,Audience Extension 300X250,Standard,300x250_publish,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,3,457,0.66,117,382,454,0.000000000
+2016-01-14,BSB Branding Campaign,300x250_publish-CentralMaine 300X250,centralmaine.com,CentralMaine 300X250,Standard,300x250_publish,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,489,0.00,121,412,479,0.000000000
+2016-01-14,BSB Branding Campaign,300x250_publish-Hearst 300X250,Hearst Corporation,Hearst 300X250,Standard,300x250_publish,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,0,0.00,0,-1,0,0.000000000
+2016-01-14,BSB Branding Campaign,300x250_publish-MaineToday 300X250,mainetoday.com,MaineToday 300X250,Standard,300x250_publish,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,3,563,0.53,188,490,559,0.000000000
+2016-01-14,BSB Branding Campaign,300x250_publish-Press Herald 300X250,Mainetoday.com - Portland Press Herald,Press Herald 300X250,Standard,300x250_publish,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,477,0.00,128,401,471,0.000000000
+2016-01-14,BSB Branding Campaign,320x50 Default Web Ad,Mainetoday.com - Portland Press Herald,Press Herald 320X50,Default,BSB_FreeATM_Mainers_StaticAd_320x50,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,1,1199,0.08,453,1191,1199,0.000000000
+2016-01-14,BSB Branding Campaign,320x50 Default Web Ad,Simpli.fi,Audience Extension 320X50,Default,BSB_FreeATM_Mainers_StaticAd_320x50,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,391,0.00,88,270,339,0.000000000
+2016-01-14,BSB Branding Campaign,320x50 Default Web Ad,centralmaine.com,CentralMaine 320X50,Default,BSB_FreeATM_Mainers_StaticAd_320x50,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,1009,0.00,293,876,1006,0.000000000
+2016-01-14,BSB Branding Campaign,320x50 Default Web Ad,mainetoday.com,MaineToday 320X50,Default,BSB_FreeATM_Mainers_StaticAd_320x50,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,259,0.00,23,258,259,0.000000000
+2016-01-14,BSB Branding Campaign,728x90 Default Web Ad,Bangor Daily News,BangorDailyNews 728X90,Default,FreeATM_Mainers_728x90_static,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,1,2259,0.04,0,0,0,0.000000000
+2016-01-14,BSB Branding Campaign,728x90 Default Web Ad,Mainetoday.com - Portland Press Herald,Press Herald 728X90,Default,FreeATM_Mainers_728x90_static,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,1,0.00,0,0,0,0.000000000
+2016-01-14,BSB Branding Campaign,728x90_publish-Audience Extension 728X90,Simpli.fi,Audience Extension 728X90,Standard,728x90_publish,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,268,0.00,59,223,265,0.000000000
+2016-01-14,BSB Branding Campaign,728x90_publish-CentralMaine 728X90,centralmaine.com,CentralMaine 728X90,Standard,728x90_publish,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,1,557,0.18,243,503,551,0.000000000
+2016-01-14,BSB Branding Campaign,728x90_publish-MaineToday 728X90,mainetoday.com,MaineToday 728X90,Standard,728x90_publish,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,3,1093,0.27,348,1044,1090,0.000000000
+2016-01-14,BSB Branding Campaign,728x90_publish-Press Herald 728X90,Mainetoday.com - Portland Press Herald,Press Herald 728X90,Standard,728x90_publish,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,3,359,0.84,107,314,357,0.000000000
+2016-01-14,BSB Mortgage,mortgage_160x600-Sitescout 160X600,sitescout.com,Sitescout 160X600,Standard,mortgage_160x600,http://www.bangormortgage.com/Default.aspx,0,0,0.00,1,0,0,0.000000000
+2016-01-14,BSB Mortgage,mortgage_300x250-Sitescout 300X250,sitescout.com,Sitescout 300X250,Standard,mortgage_300x250,http://www.bangormortgage.com/Default.aspx,0,0,0.00,5,0,0,0.000000000
+2016-01-14,BSB Mortgage,mortgage_728x90-Sitescout 728X90,sitescout.com,Sitescout 728X90,Standard,mortgage_728x90,http://www.bangormortgage.com/Default.aspx,0,0,0.00,3,0,0,0.000000000
+2016-01-14,Coastal Plastic Retargeting,160X600 smile-Sitescout_Retargeting 160X600,sitescout.com,Sitescout_Retargeting 160X600,Standard,160X600 smile,http://www.coastalplasticsurgerymaine.org/,0,0,0.00,1,0,0,0.000000000
+2016-01-14,Coastal Plastic Retargeting,300x250_smile-2-Sitescout_Retargeting 300X250,sitescout.com,Sitescout_Retargeting 300X250,Standard,300x250_smile-2,http://www.coastalplasticsurgerymaine.org/,0,0,0.00,2,0,0,0.000000000
+2016-01-14,Coastal Plastic Retargeting,728x90_smile-Sitescout_Retargeting 728x90,sitescout.com,Sitescout_Retargeting 728x90,Standard,728x90_smile,http://www.coastalplasticsurgerymaine.org/,0,0,0.00,1,0,0,0.000000000
+2016-01-14,Coastal Plastics 9.15,160x600 Default Web Ad,mainetoday.com,AudienceExtension  160X600,Default,160X600 Smile,http://www.coastalplasticsurgerymaine.org/,0,2,0.00,0,0,0,0.000000000
+2016-01-14,Coastal Plastics 9.15,300x250 Default Web Ad,mainetoday.com,AudienceExtension 300X250,Default,300x250_smile,http://www.coastalplasticsurgerymaine.org/,0,960,0.00,115,644,934,0.000000000
+2016-01-14,Coastal Plastics 9.15,300x50 Default Web Ad,mainetoday.com,AudienceExtension 300X50,Default,300x50,http://www.coastalplasticsurgerymaine.org/,0,77,0.00,1,14,67,0.000000000
+2016-01-14,Coastal Plastics 9.15,728x90 Default Web Ad,mainetoday.com,AudienceExtension 728X90,Default,728X90 Default,http://www.coastalplasticsurgerymaine.org/,0,10,0.00,0,0,0,0.000000000
+2016-01-14,Coastal Plastics 9.15,728x90-2-AudienceExtension 728X90,mainetoday.com,AudienceExtension 728X90,Standard,728x90-2,http://www.coastalplasticsurgerymaine.org/,6,879,0.68,174,769,866,0.000000000
+2016-01-14,Coastal Plastics 9.15,Smile 160X600-AudienceExtension  160X600,mainetoday.com,AudienceExtension  160X600,Standard,Smile 160X600,http://www.coastalplasticsurgerymaine.org/,3,475,0.63,148,402,468,0.000000000
+2016-01-14,College Transitions,300X250-Site Scout 300X250 Audience,sitescout.com,Site Scout 300X250 Audience,Standard,300X250,http://www.mainecollegetransitions.org/,0,0,0.00,1,0,0,0.000000000
+2016-01-14,College Transitions,728X90-Site Scout 728X90 Audience,sitescout.com,Site Scout 728X90 Audience,Standard,728X90,http://www.mainecollegetransitions.org/,0,0,0.00,3,0,0,0.000000000
+2016-01-14,DairyPure,Tracking-Catalina,Catalina Marketing - RM,Catalina,Tracking,Tracking,http://www.landolakesmilk.com/,181,58435,0.31,0,0,0,0.000000000
+2016-01-14,FY2016_Graduate,300x250 Default Web Ad,MobileFuse.com,Tablet,Default,SAL_V2,http://usm.maine.edu/explore,0,249,0.00,0,0,0,2.066700000
+2016-01-14,FY2016_Graduate,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,http://usm.maine.edu/explore,0,391,0.00,98,373,391,1.896350000
+2016-01-14,FY2016_Graduate,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,http://usm.maine.edu/explore,5,5041,0.10,292,1790,5040,24.448850000
+2016-01-14,FY2016_Graduate,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,http://usm.maine.edu/explore,4,2447,0.16,220,1608,2437,11.867950000
+2016-01-14,FY2016_Graduate,SAL_V2-Tablet,MobileFuse.com,Tablet,Standard,SAL_V2,http://usm.maine.edu/explore,7,1857,0.38,1,4,4,15.413100000
+2016-01-14,FY2016_Graduate,SAL_V2_Courses-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Courses,http://usm.maine.edu/explore,4,740,0.54,0,3,3,5.143000000
+2016-01-14,FY2016_Graduate,SAL_V2_Graduate-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Graduate,http://usm.maine.edu/explore,6,927,0.65,0,6,6,6.442650000
+2016-01-14,FY2016_Graduate,Tracking-Pandora_Tile,Pandora,Pandora_Tile,Tracking,Tracking,http://usm.maine.edu/explore,23,3103,0.74,0,0,0,0.000000000
+2016-01-14,FY2016_Transfer,300x250 Default Web Ad,MobileFuse.com,Tablet,Default,SAL_V2,https://usm.maine.edu/explore,17,2238,0.76,0,0,0,18.575400000
+2016-01-14,FY2016_Transfer,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,https://usm.maine.edu/explore,0,2176,0.00,332,1518,2175,10.553600000
+2016-01-14,FY2016_Transfer,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,https://usm.maine.edu/explore,0,2768,0.00,326,1574,2766,13.424800000
+2016-01-14,FY2016_Transfer,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,https://usm.maine.edu/explore,0,578,0.00,159,550,578,2.803300000
+2016-01-14,FY2016_Transfer,SAL_V2-Display,Pandora,Display,Standard,SAL_V2,https://usm.maine.edu/explore,23,2691,0.85,166,192,195,0.000000000
+2016-01-14,FY2016_Transfer,SAL_V2_Courses-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Courses,https://usm.maine.edu/explore,3,924,0.32,0,0,0,6.421800000
+2016-01-14,FY2016_Transfer,SAL_V2_Majors-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Majors,https://usm.maine.edu/explore,1,1058,0.09,0,0,0,7.353100000
+2016-01-14,FY2016_Transfer,SAL_V2_Majors-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Majors,https://usm.maine.edu/explore,3,852,0.35,0,0,0,5.921400000
+2016-01-14,FY2016_Undergraduate,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,https://usm.maine.edu/explore,0,244,0.00,83,219,244,1.183400000
+2016-01-14,FY2016_Undergraduate,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,https://usm.maine.edu/explore,0,131,0.00,57,129,130,0.635350000
+2016-01-14,FY2016_Undergraduate,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,https://usm.maine.edu/explore,0,146,0.00,48,126,146,0.708100000
+2016-01-14,FY2016_Undergraduate,SAL_V2-Tablet,MobileFuse.com,Tablet,Standard,SAL_V2,https://usm.maine.edu/explore,8,2378,0.34,1,2,2,19.737400000
+2016-01-14,FY2016_Undergraduate,SAL_V2_Courses-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Courses,https://usm.maine.edu/explore,9,1382,0.65,0,2,2,9.604900000
+2016-01-14,FY2016_Undergraduate,SAL_V2_Majors-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Majors,https://usm.maine.edu/explore,15,1711,0.88,0,4,4,11.891450000
+2016-01-14,Grilled2015,RecipePromoUnitDesktop,Spark People 1,160x500_Resolution Recipes Center,Tracking,TrackingCreative,http://www.sparkpeople.com/resource/realistic-resolution.asp_source=SparkPeople&utm_medium=Display_728X90_Coupon&utm_campaign=Grilled_2015,0,1,0.00,0,0,0,0.000000000
+2016-01-14,HELOC,160x600 Default Web Ad,sitescout.com,SS_Retargeting_160X600,Default,160X600 default,https://www.bangor.com/landing/fixed/default.aspx,0,0,0.00,1,0,0,0.000000000
+2016-01-14,HELOC,300x250 Default Web Ad,sitescout.com,SS_Retargeting_300X250,Default,300X250 Default,https://www.bangor.com/landing/fixed/default.aspx,0,0,0.00,1,0,0,0.000000000
+2016-01-14,HELOC,300x600 Default Web Ad,sitescout.com,SS_Retargeting_300X600,Default,300X600 default,https://www.bangor.com/landing/fixed/default.aspx,0,0,0.00,1,0,0,0.000000000
+2016-01-14,HELOC,HELOC_Lock_728X90-SS_Retargeting_728X90 (copy),sitescout.com,SS_Retargeting_728X90,Standard,HELOC_Lock_728X90,https://www.bangor.com/landing/fixed/default.aspx,0,0,0.00,1,0,0,0.000000000
+2016-01-14,PWM Elite Airways,160X600-160X600,Hearst Corporation,160X600,Standard,160X600,http://eliteairways.com/,0,2,0.00,4,2,2,0.000000000
+2016-01-14,PWM Elite Airways,PWM_Melbourne_300x250-1.zip-300X250,Hearst Corporation,300X250,Standard,PWM_Melbourne_300x250-1.zip,http://eliteairways.com/,0,0,0.00,2,-1,0,0.000000000
+2016-01-15,BSB Branding Campaign,160x600 Default Web Ad,mainetoday.com,MaineToday 160X600,Default,FreeATM_Mainers_160x600_static,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,1,0.00,0,0,0,0.000000000
+2016-01-15,BSB Branding Campaign,160x600_publish 2-Audience Extension 160X600,Simpli.fi,Audience Extension 160X600,Standard,160x600_publish 2,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,95,0.00,29,75,93,0.000000000
+2016-01-15,BSB Branding Campaign,160x600_publish 2-CentralMaine 160X600,centralmaine.com,CentralMaine 160X600,Standard,160x600_publish 2,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,100,0.00,30,82,100,0.000000000
+2016-01-15,BSB Branding Campaign,160x600_publish 2-Hearst 160X600,Hearst Corporation,Hearst 160X600,Standard,160x600_publish 2,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,0,0.00,0,-1,0,0.000000000
+2016-01-15,BSB Branding Campaign,160x600_publish 2-MaineToday 160X600,mainetoday.com,MaineToday 160X600,Standard,160x600_publish 2,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,97,0.00,43,80,97,0.000000000
+2016-01-15,BSB Branding Campaign,160x600_publish 2-Press Herald 160X600,Mainetoday.com - Portland Press Herald,Press Herald 160X600,Standard,160x600_publish 2,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,113,0.00,38,94,113,0.000000000
+2016-01-15,BSB Branding Campaign,300x250 Default Web Ad,Bangor Daily News,BangorDailyNews 300X250,Default,FreeATM_Mainers_300x250_static,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,2038,0.00,0,0,0,0.000000000
+2016-01-15,BSB Branding Campaign,300x250 Default Web Ad,Simpli.fi,Audience Extension 300X250,Default,FreeATM_Mainers_300x250_static,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,3,0.00,0,0,0,0.000000000
+2016-01-15,BSB Branding Campaign,300x250 Default Web Ad,centralmaine.com,CentralMaine 300X250,Default,FreeATM_Mainers_300x250_static,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,1,0.00,0,0,0,0.000000000
+2016-01-15,BSB Branding Campaign,300x250 Default Web Ad,mainetoday.com,MaineToday 300X250,Default,FreeATM_Mainers_300x250_static,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,2,0.00,0,0,0,0.000000000
+2016-01-15,BSB Branding Campaign,300x250_publish-Audience Extension 300X250,Simpli.fi,Audience Extension 300X250,Standard,300x250_publish,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,386,0.00,83,312,384,0.000000000
+2016-01-15,BSB Branding Campaign,300x250_publish-CentralMaine 300X250,centralmaine.com,CentralMaine 300X250,Standard,300x250_publish,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,454,0.00,115,384,450,0.000000000
+2016-01-15,BSB Branding Campaign,300x250_publish-MaineToday 300X250,mainetoday.com,MaineToday 300X250,Standard,300x250_publish,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,669,0.00,225,563,663,0.000000000
+2016-01-15,BSB Branding Campaign,300x250_publish-Press Herald 300X250,Mainetoday.com - Portland Press Herald,Press Herald 300X250,Standard,300x250_publish,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,521,0.00,147,441,518,0.000000000
+2016-01-15,BSB Branding Campaign,320x50 Default Web Ad,Mainetoday.com - Portland Press Herald,Press Herald 320X50,Default,BSB_FreeATM_Mainers_StaticAd_320x50,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,1100,0.00,354,1092,1098,0.000000000
+2016-01-15,BSB Branding Campaign,320x50 Default Web Ad,Simpli.fi,Audience Extension 320X50,Default,BSB_FreeATM_Mainers_StaticAd_320x50,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,387,0.00,116,282,359,0.000000000
+2016-01-15,BSB Branding Campaign,320x50 Default Web Ad,centralmaine.com,CentralMaine 320X50,Default,BSB_FreeATM_Mainers_StaticAd_320x50,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,1,974,0.10,214,834,971,0.000000000
+2016-01-15,BSB Branding Campaign,320x50 Default Web Ad,mainetoday.com,MaineToday 320X50,Default,BSB_FreeATM_Mainers_StaticAd_320x50,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,257,0.00,61,224,257,0.000000000
+2016-01-15,BSB Branding Campaign,728x90 Default Web Ad,Bangor Daily News,BangorDailyNews 728X90,Default,FreeATM_Mainers_728x90_static,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,1,2418,0.04,0,0,0,0.000000000
+2016-01-15,BSB Branding Campaign,728x90 Default Web Ad,Mainetoday.com - Portland Press Herald,Press Herald 728X90,Default,FreeATM_Mainers_728x90_static,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,4,0.00,0,0,0,0.000000000
+2016-01-15,BSB Branding Campaign,728x90 Default Web Ad,Simpli.fi,Audience Extension 728X90,Default,FreeATM_Mainers_728x90_static,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,3,0.00,0,0,0,0.000000000
+2016-01-15,BSB Branding Campaign,728x90 Default Web Ad,centralmaine.com,CentralMaine 728X90,Default,FreeATM_Mainers_728x90_static,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,1,0.00,0,0,0,0.000000000
+2016-01-15,BSB Branding Campaign,728x90 Default Web Ad,mainetoday.com,MaineToday 728X90,Default,FreeATM_Mainers_728x90_static,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,2,0.00,0,0,0,0.000000000
+2016-01-15,BSB Branding Campaign,728x90_publish-Audience Extension 728X90,Simpli.fi,Audience Extension 728X90,Standard,728x90_publish,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,276,0.00,59,242,273,0.000000000
+2016-01-15,BSB Branding Campaign,728x90_publish-CentralMaine 728X90,centralmaine.com,CentralMaine 728X90,Standard,728x90_publish,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,678,0.00,310,623,672,0.000000000
+2016-01-15,BSB Branding Campaign,728x90_publish-MaineToday 728X90,mainetoday.com,MaineToday 728X90,Standard,728x90_publish,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,1088,0.00,388,1041,1085,0.000000000
+2016-01-15,BSB Branding Campaign,728x90_publish-Press Herald 728X90,Mainetoday.com - Portland Press Herald,Press Herald 728X90,Standard,728x90_publish,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,570,0.00,221,532,568,0.000000000
+2016-01-15,BSB Mortgage,mortgage_160x600-Sitescout 160X600,sitescout.com,Sitescout 160X600,Standard,mortgage_160x600,http://www.bangormortgage.com/Default.aspx,0,0,0.00,1,0,0,0.000000000
+2016-01-15,BSB Mortgage,mortgage_300x250-Sitescout 300X250,sitescout.com,Sitescout 300X250,Standard,mortgage_300x250,http://www.bangormortgage.com/Default.aspx,0,0,0.00,4,0,0,0.000000000
+2016-01-15,BSB Mortgage,mortgage_728x90-Sitescout 728X90,sitescout.com,Sitescout 728X90,Standard,mortgage_728x90,http://www.bangormortgage.com/Default.aspx,0,1,0.00,1,0,0,0.000000000
+2016-01-15,Coastal Plastic Retargeting,160X600 smile-Sitescout_Retargeting 160X600,sitescout.com,Sitescout_Retargeting 160X600,Standard,160X600 smile,http://www.coastalplasticsurgerymaine.org/,0,0,0.00,1,0,0,0.000000000
+2016-01-15,Coastal Plastic Retargeting,300x250_smile-2-Sitescout_Retargeting 300X250,sitescout.com,Sitescout_Retargeting 300X250,Standard,300x250_smile-2,http://www.coastalplasticsurgerymaine.org/,0,0,0.00,1,0,0,0.000000000
+2016-01-15,Coastal Plastic Retargeting,300x250_smile-Sitescout_Retargeting 300X250,sitescout.com,Sitescout_Retargeting 300X250,Standard,300x250_smile,http://www.coastalplasticsurgerymaine.org/,0,0,0.00,1,0,0,0.000000000
+2016-01-15,Coastal Plastic Retargeting,728x90_smile-Sitescout_Retargeting 728x90,sitescout.com,Sitescout_Retargeting 728x90,Standard,728x90_smile,http://www.coastalplasticsurgerymaine.org/,0,0,0.00,2,0,0,0.000000000
+2016-01-15,Coastal Plastics 9.15,300x250 Default Web Ad,mainetoday.com,AudienceExtension 300X250,Default,300x250_smile,http://www.coastalplasticsurgerymaine.org/,3,1034,0.29,157,662,1011,0.000000000
+2016-01-15,Coastal Plastics 9.15,300x50 Default Web Ad,mainetoday.com,AudienceExtension 300X50,Default,300x50,http://www.coastalplasticsurgerymaine.org/,0,49,0.00,1,10,49,0.000000000
+2016-01-15,Coastal Plastics 9.15,728x90 Default Web Ad,mainetoday.com,AudienceExtension 728X90,Default,728X90 Default,http://www.coastalplasticsurgerymaine.org/,0,17,0.00,0,0,0,0.000000000
+2016-01-15,Coastal Plastics 9.15,728x90-2-AudienceExtension 728X90,mainetoday.com,AudienceExtension 728X90,Standard,728x90-2,http://www.coastalplasticsurgerymaine.org/,2,1002,0.20,185,834,997,0.000000000
+2016-01-15,Coastal Plastics 9.15,Smile 160X600-AudienceExtension  160X600,mainetoday.com,AudienceExtension  160X600,Standard,Smile 160X600,http://www.coastalplasticsurgerymaine.org/,0,279,0.00,68,236,276,0.000000000
+2016-01-15,College Transitions,300X250-Site Scout 300X250 Audience,sitescout.com,Site Scout 300X250 Audience,Standard,300X250,http://www.mainecollegetransitions.org/,0,0,0.00,1,0,0,0.000000000
+2016-01-15,College Transitions,728X90-Site Scout 728X90 Audience,sitescout.com,Site Scout 728X90 Audience,Standard,728X90,http://www.mainecollegetransitions.org/,0,0,0.00,1,0,0,0.000000000
+2016-01-15,College Transitions,MCTanimation.html-Site Scout 160X600 Audience,sitescout.com,Site Scout 160X600 Audience,Standard,MCTanimation.html,http://www.mainecollegetransitions.org/,0,0,0.00,1,0,0,0.000000000
+2016-01-15,DairyPure,Tracking-Catalina,Catalina Marketing - RM,Catalina,Tracking,Tracking,http://www.landolakesmilk.com/,186,65242,0.29,0,0,0,0.000000000
+2016-01-15,FY2016_Graduate,300x250 Default Web Ad,MobileFuse.com,Tablet,Default,SAL_V2,http://usm.maine.edu/explore,0,231,0.00,0,0,0,1.917300000
+2016-01-15,FY2016_Graduate,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,http://usm.maine.edu/explore,1,3646,0.03,227,1192,3644,17.683100000
+2016-01-15,FY2016_Graduate,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,http://usm.maine.edu/explore,1,346,0.29,75,328,346,1.678100000
+2016-01-15,FY2016_Graduate,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,http://usm.maine.edu/explore,4,2011,0.20,240,1409,2008,9.753350000
+2016-01-15,FY2016_Graduate,SAL_V2-Tablet,MobileFuse.com,Tablet,Standard,SAL_V2,http://usm.maine.edu/explore,6,1889,0.32,0,4,4,15.678700000
+2016-01-15,FY2016_Graduate,SAL_V2_Courses-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Courses,http://usm.maine.edu/explore,5,722,0.69,2,0,0,5.017900000
+2016-01-15,FY2016_Graduate,SAL_V2_Graduate-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Graduate,http://usm.maine.edu/explore,14,929,1.51,1,4,4,6.456550000
+2016-01-15,FY2016_Graduate,Tracking-Pandora_Tile,Pandora,Pandora_Tile,Tracking,Tracking,http://usm.maine.edu/explore,26,2524,1.03,0,0,0,0.000000000
+2016-01-15,FY2016_Transfer,300x250 Default Web Ad,MobileFuse.com,Tablet,Default,SAL_V2,https://usm.maine.edu/explore,14,2248,0.62,0,0,0,18.658400000
+2016-01-15,FY2016_Transfer,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,https://usm.maine.edu/explore,0,2922,0.00,312,1681,2921,14.171700000
+2016-01-15,FY2016_Transfer,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,https://usm.maine.edu/explore,1,644,0.16,213,621,644,3.123400000
+2016-01-15,FY2016_Transfer,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,https://usm.maine.edu/explore,0,2317,0.00,392,1621,2316,11.237450000
+2016-01-15,FY2016_Transfer,SAL_V2-Display,Pandora,Display,Standard,SAL_V2,https://usm.maine.edu/explore,18,3041,0.59,453,546,553,0.000000000
+2016-01-15,FY2016_Transfer,SAL_V2_Courses-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Courses,https://usm.maine.edu/explore,7,990,0.71,0,0,0,6.880500000
+2016-01-15,FY2016_Transfer,SAL_V2_Majors-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Majors,https://usm.maine.edu/explore,8,891,0.90,0,0,0,6.192450000
+2016-01-15,FY2016_Transfer,SAL_V2_Majors-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Majors,https://usm.maine.edu/explore,11,1060,1.04,0,0,0,7.367000000
+2016-01-15,FY2016_Undergraduate,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,https://usm.maine.edu/explore,0,307,0.00,85,264,307,1.488950000
+2016-01-15,FY2016_Undergraduate,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,https://usm.maine.edu/explore,0,69,0.00,27,67,69,0.334650000
+2016-01-15,FY2016_Undergraduate,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,https://usm.maine.edu/explore,0,117,0.00,45,106,117,0.567450000
+2016-01-15,FY2016_Undergraduate,SAL_V2-Tablet,MobileFuse.com,Tablet,Standard,SAL_V2,https://usm.maine.edu/explore,13,2365,0.55,0,2,2,19.629500000
+2016-01-15,FY2016_Undergraduate,SAL_V2_Courses-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Courses,https://usm.maine.edu/explore,12,1407,0.85,0,4,4,9.778650000
+2016-01-15,FY2016_Undergraduate,SAL_V2_Majors-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Majors,https://usm.maine.edu/explore,10,1661,0.60,1,4,4,11.543950000
+2016-01-15,HELOC,160x600 Default Web Ad,sitescout.com,SS_Retargeting_160X600,Default,160X600 default,https://www.bangor.com/landing/fixed/default.aspx,0,0,0.00,1,0,0,0.000000000
+2016-01-15,HELOC,300x250 Default Web Ad,sitescout.com,SS_Retargeting_300X250,Default,300X250 Default,https://www.bangor.com/landing/fixed/default.aspx,0,0,0.00,2,0,0,0.000000000
+2016-01-15,HELOC,300x600 Default Web Ad,sitescout.com,SS_Retargeting_300X600,Default,300X600 default,https://www.bangor.com/landing/fixed/default.aspx,0,0,0.00,2,0,0,0.000000000
+2016-01-15,HELOC,HELOC_Lock_728X90-SS_Retargeting_728X90 (copy),sitescout.com,SS_Retargeting_728X90,Standard,HELOC_Lock_728X90,https://www.bangor.com/landing/fixed/default.aspx,0,0,0.00,2,0,0,0.000000000
+2016-01-15,PWM Elite Airways,160X600-160X600,Hearst Corporation,160X600,Standard,160X600,http://eliteairways.com/,0,0,0.00,2,0,0,0.000000000
+2016-01-15,PWM Elite Airways,PWM_Melbourne_300x250-1.zip-300X250,Hearst Corporation,300X250,Standard,PWM_Melbourne_300x250-1.zip,http://eliteairways.com/,0,0,0.00,2,0,0,0.000000000
+2016-01-15,PWM Elite Airways,PWM_Melbourne_728x90_publish 2.zip-728X90,Hearst Corporation,728X90,Standard,PWM_Melbourne_728x90_publish 2.zip,http://eliteairways.com/,0,0,0.00,4,0,0,0.000000000
+2016-01-16,BSB Branding Campaign,160x600 Default Web Ad,Mainetoday.com - Portland Press Herald,Press Herald 160X600,Default,FreeATM_Mainers_160x600_static,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,1,0.00,0,0,0,0.000000000
+2016-01-16,BSB Branding Campaign,160x600 Default Web Ad,mainetoday.com,MaineToday 160X600,Default,FreeATM_Mainers_160x600_static,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,1,0.00,0,0,0,0.000000000
+2016-01-16,BSB Branding Campaign,160x600_publish 2-Audience Extension 160X600,Simpli.fi,Audience Extension 160X600,Standard,160x600_publish 2,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,1,109,0.92,36,86,107,0.000000000
+2016-01-16,BSB Branding Campaign,160x600_publish 2-CentralMaine 160X600,centralmaine.com,CentralMaine 160X600,Standard,160x600_publish 2,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,1,88,1.14,23,58,86,0.000000000
+2016-01-16,BSB Branding Campaign,160x600_publish 2-MaineToday 160X600,mainetoday.com,MaineToday 160X600,Standard,160x600_publish 2,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,3,78,3.85,25,55,78,0.000000000
+2016-01-16,BSB Branding Campaign,160x600_publish 2-Press Herald 160X600,Mainetoday.com - Portland Press Herald,Press Herald 160X600,Standard,160x600_publish 2,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,1,107,0.93,30,82,106,0.000000000
+2016-01-16,BSB Branding Campaign,300x250 Default Web Ad,Bangor Daily News,BangorDailyNews 300X250,Default,FreeATM_Mainers_300x250_static,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,1763,0.00,0,0,0,0.000000000
+2016-01-16,BSB Branding Campaign,300x250_publish-Audience Extension 300X250,Simpli.fi,Audience Extension 300X250,Standard,300x250_publish,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,1,459,0.22,80,315,444,0.000000000
+2016-01-16,BSB Branding Campaign,300x250_publish-CentralMaine 300X250,centralmaine.com,CentralMaine 300X250,Standard,300x250_publish,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,555,0.00,137,420,547,0.000000000
+2016-01-16,BSB Branding Campaign,300x250_publish-MaineToday 300X250,mainetoday.com,MaineToday 300X250,Standard,300x250_publish,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,1,807,0.12,179,662,795,0.000000000
+2016-01-16,BSB Branding Campaign,300x250_publish-Press Herald 300X250,Mainetoday.com - Portland Press Herald,Press Herald 300X250,Standard,300x250_publish,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,1,540,0.19,128,398,534,0.000000000
+2016-01-16,BSB Branding Campaign,320x50 Default Web Ad,Mainetoday.com - Portland Press Herald,Press Herald 320X50,Default,BSB_FreeATM_Mainers_StaticAd_320x50,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,931,0.00,280,927,928,0.000000000
+2016-01-16,BSB Branding Campaign,320x50 Default Web Ad,Simpli.fi,Audience Extension 320X50,Default,BSB_FreeATM_Mainers_StaticAd_320x50,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,456,0.00,82,260,377,0.000000000
+2016-01-16,BSB Branding Campaign,320x50 Default Web Ad,centralmaine.com,CentralMaine 320X50,Default,BSB_FreeATM_Mainers_StaticAd_320x50,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,1,712,0.14,183,608,712,0.000000000
+2016-01-16,BSB Branding Campaign,320x50 Default Web Ad,mainetoday.com,MaineToday 320X50,Default,BSB_FreeATM_Mainers_StaticAd_320x50,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,409,0.00,59,407,409,0.000000000
+2016-01-16,BSB Branding Campaign,728x90 Default Web Ad,Bangor Daily News,BangorDailyNews 728X90,Default,FreeATM_Mainers_728x90_static,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,1548,0.00,0,0,0,0.000000000
+2016-01-16,BSB Branding Campaign,728x90_publish-Audience Extension 728X90,Simpli.fi,Audience Extension 728X90,Standard,728x90_publish,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,1,285,0.35,52,216,274,0.000000000
+2016-01-16,BSB Branding Campaign,728x90_publish-CentralMaine 728X90,centralmaine.com,CentralMaine 728X90,Standard,728x90_publish,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,1,429,0.23,180,358,419,0.000000000
+2016-01-16,BSB Branding Campaign,728x90_publish-MaineToday 728X90,mainetoday.com,MaineToday 728X90,Standard,728x90_publish,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,1,491,0.20,113,420,485,0.000000000
+2016-01-16,BSB Branding Campaign,728x90_publish-Press Herald 728X90,Mainetoday.com - Portland Press Herald,Press Herald 728X90,Standard,728x90_publish,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,1,399,0.25,131,336,396,0.000000000
+2016-01-16,BSB Mortgage,mortgage_160x600-Sitescout 160X600,sitescout.com,Sitescout 160X600,Standard,mortgage_160x600,http://www.bangormortgage.com/Default.aspx,0,0,0.00,2,0,0,0.000000000
+2016-01-16,BSB Mortgage,mortgage_300x250-Sitescout 300X250,sitescout.com,Sitescout 300X250,Standard,mortgage_300x250,http://www.bangormortgage.com/Default.aspx,0,0,0.00,4,0,0,0.000000000
+2016-01-16,Coastal Plastic Retargeting,160X600 smile-Sitescout_Retargeting 160X600,sitescout.com,Sitescout_Retargeting 160X600,Standard,160X600 smile,http://www.coastalplasticsurgerymaine.org/,0,0,0.00,3,0,0,0.000000000
+2016-01-16,Coastal Plastic Retargeting,300x250_smile-Sitescout_Retargeting 300X250,sitescout.com,Sitescout_Retargeting 300X250,Standard,300x250_smile,http://www.coastalplasticsurgerymaine.org/,0,1,0.00,1,1,1,0.000000000
+2016-01-16,Coastal Plastic Retargeting,728x90_smile-Sitescout_Retargeting 728x90,sitescout.com,Sitescout_Retargeting 728x90,Standard,728x90_smile,http://www.coastalplasticsurgerymaine.org/,0,0,0.00,2,0,0,0.000000000
+2016-01-16,Coastal Plastics 9.15,300x250 Default Web Ad,mainetoday.com,AudienceExtension 300X250,Default,300x250_smile,http://www.coastalplasticsurgerymaine.org/,1,1192,0.08,177,695,1171,0.000000000
+2016-01-16,Coastal Plastics 9.15,300x50 Default Web Ad,mainetoday.com,AudienceExtension 300X50,Default,300x50,http://www.coastalplasticsurgerymaine.org/,0,102,0.00,9,24,100,0.000000000
+2016-01-16,Coastal Plastics 9.15,728x90 Default Web Ad,mainetoday.com,AudienceExtension 728X90,Default,728X90 Default,http://www.coastalplasticsurgerymaine.org/,0,3,0.00,0,0,0,0.000000000
+2016-01-16,Coastal Plastics 9.15,728x90-2-AudienceExtension 728X90,mainetoday.com,AudienceExtension 728X90,Standard,728x90-2,http://www.coastalplasticsurgerymaine.org/,5,1215,0.41,266,948,1191,0.000000000
+2016-01-16,Coastal Plastics 9.15,Smile 160X600-AudienceExtension  160X600,mainetoday.com,AudienceExtension  160X600,Standard,Smile 160X600,http://www.coastalplasticsurgerymaine.org/,6,366,1.64,86,284,359,0.000000000
+2016-01-16,College Transitions,300X250-Site Scout 300X250 Audience,sitescout.com,Site Scout 300X250 Audience,Standard,300X250,http://www.mainecollegetransitions.org/,0,0,0.00,2,0,0,0.000000000
+2016-01-16,College Transitions,728X90-Site Scout 728X90 Audience,sitescout.com,Site Scout 728X90 Audience,Standard,728X90,http://www.mainecollegetransitions.org/,0,0,0.00,3,0,0,0.000000000
+2016-01-16,College Transitions,MCTanimation.html-Site Scout 160X600 Audience,sitescout.com,Site Scout 160X600 Audience,Standard,MCTanimation.html,http://www.mainecollegetransitions.org/,0,0,0.00,2,0,0,0.000000000
+2016-01-16,DairyPure,Tracking-Catalina,Catalina Marketing - RM,Catalina,Tracking,Tracking,http://www.landolakesmilk.com/,237,76009,0.31,0,0,0,0.000000000
+2016-01-16,FY2016_Graduate,300x250 Default Web Ad,MobileFuse.com,Tablet,Default,SAL_V2,http://usm.maine.edu/explore,0,269,0.00,0,0,0,2.232700000
+2016-01-16,FY2016_Graduate,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,http://usm.maine.edu/explore,2,1933,0.10,211,1175,1928,9.375050000
+2016-01-16,FY2016_Graduate,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,http://usm.maine.edu/explore,2,3464,0.06,276,1270,3462,16.800400000
+2016-01-16,FY2016_Graduate,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,http://usm.maine.edu/explore,0,411,0.00,107,380,411,1.993350000
+2016-01-16,FY2016_Graduate,SAL_V2-Tablet,MobileFuse.com,Tablet,Standard,SAL_V2,http://usm.maine.edu/explore,9,1799,0.50,0,1,1,14.931700000
+2016-01-16,FY2016_Graduate,SAL_V2_Courses-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Courses,http://usm.maine.edu/explore,10,700,1.43,0,2,2,4.865000000
+2016-01-16,FY2016_Graduate,SAL_V2_Graduate-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Graduate,http://usm.maine.edu/explore,12,896,1.34,0,5,5,6.227200000
+2016-01-16,FY2016_Graduate,Tracking-Pandora_Tile,Pandora,Pandora_Tile,Tracking,Tracking,http://usm.maine.edu/explore,20,2232,0.90,0,0,0,0.000000000
+2016-01-16,FY2016_Transfer,300x250 Default Web Ad,MobileFuse.com,Tablet,Default,SAL_V2,https://usm.maine.edu/explore,9,2237,0.40,0,0,0,18.567100000
+2016-01-16,FY2016_Transfer,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,https://usm.maine.edu/explore,0,620,0.00,213,590,620,3.007000000
+2016-01-16,FY2016_Transfer,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,https://usm.maine.edu/explore,0,2631,0.00,294,1609,2627,12.760350000
+2016-01-16,FY2016_Transfer,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,https://usm.maine.edu/explore,1,2418,0.04,316,1615,2416,11.727300000
+2016-01-16,FY2016_Transfer,SAL_V2-Display,Pandora,Display,Standard,SAL_V2,https://usm.maine.edu/explore,24,2786,0.86,197,217,220,0.000000000
+2016-01-16,FY2016_Transfer,SAL_V2_Courses-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Courses,https://usm.maine.edu/explore,10,900,1.11,0,0,0,6.255000000
+2016-01-16,FY2016_Transfer,SAL_V2_Majors-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Majors,https://usm.maine.edu/explore,4,853,0.47,0,0,0,5.928350000
+2016-01-16,FY2016_Transfer,SAL_V2_Majors-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Majors,https://usm.maine.edu/explore,7,1048,0.67,0,0,0,7.283600000
+2016-01-16,FY2016_Undergraduate,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,https://usm.maine.edu/explore,0,172,0.00,69,150,172,0.834200000
+2016-01-16,FY2016_Undergraduate,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,https://usm.maine.edu/explore,0,206,0.00,70,184,206,0.999100000
+2016-01-16,FY2016_Undergraduate,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,https://usm.maine.edu/explore,0,108,0.00,42,103,108,0.523800000
+2016-01-16,FY2016_Undergraduate,SAL_V2-Tablet,MobileFuse.com,Tablet,Standard,SAL_V2,https://usm.maine.edu/explore,12,2378,0.50,0,0,0,19.737400000
+2016-01-16,FY2016_Undergraduate,SAL_V2_Courses-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Courses,https://usm.maine.edu/explore,12,1389,0.86,1,5,5,9.653550000
+2016-01-16,FY2016_Undergraduate,SAL_V2_Majors-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Majors,https://usm.maine.edu/explore,13,1682,0.77,0,5,5,11.689900000
+2016-01-16,HELOC,160x600 Default Web Ad,sitescout.com,SS_Retargeting_160X600,Default,160X600 default,https://www.bangor.com/landing/fixed/default.aspx,0,1,0.00,1,1,1,0.000000000
+2016-01-16,HELOC,300x250 Default Web Ad,sitescout.com,SS_Retargeting_300X250,Default,300X250 Default,https://www.bangor.com/landing/fixed/default.aspx,0,1,0.00,2,1,1,0.000000000
+2016-01-16,HELOC,300x600 Default Web Ad,sitescout.com,SS_Retargeting_300X600,Default,300X600 default,https://www.bangor.com/landing/fixed/default.aspx,0,0,0.00,1,0,0,0.000000000
+2016-01-16,PWM Elite Airways,160X600-160X600,Hearst Corporation,160X600,Standard,160X600,http://eliteairways.com/,0,0,0.00,1,0,0,0.000000000
+2016-01-16,PWM Elite Airways,PWM_Melbourne_728x90_publish 2.zip-728X90,Hearst Corporation,728X90,Standard,PWM_Melbourne_728x90_publish 2.zip,http://eliteairways.com/,0,0,0.00,1,0,0,0.000000000
+2016-01-17,BSB Branding Campaign,160x600 Default Web Ad,Bangor Daily News,BangorDailyNews 160X600,Default,FreeATM_Mainers_160x600_static,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,1,0.00,0,0,0,0.000000000
+2016-01-17,BSB Branding Campaign,160x600_publish 2-Audience Extension 160X600,Simpli.fi,Audience Extension 160X600,Standard,160x600_publish 2,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,97,0.00,36,74,97,0.000000000
+2016-01-17,BSB Branding Campaign,160x600_publish 2-CentralMaine 160X600,centralmaine.com,CentralMaine 160X600,Standard,160x600_publish 2,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,114,0.00,36,88,111,0.000000000
+2016-01-17,BSB Branding Campaign,160x600_publish 2-MaineToday 160X600,mainetoday.com,MaineToday 160X600,Standard,160x600_publish 2,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,104,0.00,31,80,98,0.000000000
+2016-01-17,BSB Branding Campaign,160x600_publish 2-Press Herald 160X600,Mainetoday.com - Portland Press Herald,Press Herald 160X600,Standard,160x600_publish 2,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,96,0.00,29,74,94,0.000000000
+2016-01-17,BSB Branding Campaign,300x250 Default Web Ad,Bangor Daily News,BangorDailyNews 300X250,Default,FreeATM_Mainers_300x250_static,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,1344,0.00,0,0,0,0.000000000
+2016-01-17,BSB Branding Campaign,300x250 Default Web Ad,Mainetoday.com - Portland Press Herald,Press Herald 300X250,Default,FreeATM_Mainers_300x250_static,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,2,0.00,0,0,0,0.000000000
+2016-01-17,BSB Branding Campaign,300x250_publish-Audience Extension 300X250,Simpli.fi,Audience Extension 300X250,Standard,300x250_publish,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,541,0.00,94,342,530,0.000000000
+2016-01-17,BSB Branding Campaign,300x250_publish-CentralMaine 300X250,centralmaine.com,CentralMaine 300X250,Standard,300x250_publish,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,604,0.00,116,406,594,0.000000000
+2016-01-17,BSB Branding Campaign,300x250_publish-MaineToday 300X250,mainetoday.com,MaineToday 300X250,Standard,300x250_publish,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,689,0.00,138,500,676,0.000000000
+2016-01-17,BSB Branding Campaign,300x250_publish-Press Herald 300X250,Mainetoday.com - Portland Press Herald,Press Herald 300X250,Standard,300x250_publish,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,1,611,0.16,139,417,593,0.000000000
+2016-01-17,BSB Branding Campaign,320x50 Default Web Ad,Mainetoday.com - Portland Press Herald,Press Herald 320X50,Default,BSB_FreeATM_Mainers_StaticAd_320x50,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,1024,0.00,348,1017,1022,0.000000000
+2016-01-17,BSB Branding Campaign,320x50 Default Web Ad,Simpli.fi,Audience Extension 320X50,Default,BSB_FreeATM_Mainers_StaticAd_320x50,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,1,620,0.16,122,333,509,0.000000000
+2016-01-17,BSB Branding Campaign,320x50 Default Web Ad,centralmaine.com,CentralMaine 320X50,Default,BSB_FreeATM_Mainers_StaticAd_320x50,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,1005,0.00,306,895,1005,0.000000000
+2016-01-17,BSB Branding Campaign,320x50 Default Web Ad,mainetoday.com,MaineToday 320X50,Default,BSB_FreeATM_Mainers_StaticAd_320x50,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,227,0.00,60,218,227,0.000000000
+2016-01-17,BSB Branding Campaign,728x90 Default Web Ad,Bangor Daily News,BangorDailyNews 728X90,Default,FreeATM_Mainers_728x90_static,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,1339,0.00,0,0,0,0.000000000
+2016-01-17,BSB Branding Campaign,728x90 Default Web Ad,Simpli.fi,Audience Extension 728X90,Default,FreeATM_Mainers_728x90_static,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,1,0.00,0,0,0,0.000000000
+2016-01-17,BSB Branding Campaign,728x90_publish-Audience Extension 728X90,Simpli.fi,Audience Extension 728X90,Standard,728x90_publish,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,320,0.00,53,243,312,0.000000000
+2016-01-17,BSB Branding Campaign,728x90_publish-CentralMaine 728X90,centralmaine.com,CentralMaine 728X90,Standard,728x90_publish,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,383,0.00,98,319,380,0.000000000
+2016-01-17,BSB Branding Campaign,728x90_publish-Hearst 728X90,Hearst Corporation,Hearst 728X90,Standard,728x90_publish,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,0,0.00,1,0,0,0.000000000
+2016-01-17,BSB Branding Campaign,728x90_publish-MaineToday 728X90,mainetoday.com,MaineToday 728X90,Standard,728x90_publish,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,472,0.00,101,399,466,0.000000000
+2016-01-17,BSB Branding Campaign,728x90_publish-Press Herald 728X90,Mainetoday.com - Portland Press Herald,Press Herald 728X90,Standard,728x90_publish,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,664,0.00,235,554,650,0.000000000
+2016-01-17,BSB Mortgage,mortgage_160x600-Sitescout 160X600,sitescout.com,Sitescout 160X600,Standard,mortgage_160x600,http://www.bangormortgage.com/Default.aspx,0,0,0.00,2,0,0,0.000000000
+2016-01-17,BSB Mortgage,mortgage_300x250-Sitescout 300X250,sitescout.com,Sitescout 300X250,Standard,mortgage_300x250,http://www.bangormortgage.com/Default.aspx,0,0,0.00,6,0,0,0.000000000
+2016-01-17,BSB Mortgage,mortgage_728x90-Sitescout 728X90,sitescout.com,Sitescout 728X90,Standard,mortgage_728x90,http://www.bangormortgage.com/Default.aspx,0,0,0.00,1,0,0,0.000000000
+2016-01-17,Coastal Plastic Retargeting,160X600 smile-Sitescout_Retargeting 160X600,sitescout.com,Sitescout_Retargeting 160X600,Standard,160X600 smile,http://www.coastalplasticsurgerymaine.org/,0,0,0.00,1,0,0,0.000000000
+2016-01-17,Coastal Plastic Retargeting,300x250_smile-Sitescout_Retargeting 300X250,sitescout.com,Sitescout_Retargeting 300X250,Standard,300x250_smile,http://www.coastalplasticsurgerymaine.org/,0,0,0.00,1,0,0,0.000000000
+2016-01-17,Coastal Plastic Retargeting,728x90_smile-Sitescout_Retargeting 728x90,sitescout.com,Sitescout_Retargeting 728x90,Standard,728x90_smile,http://www.coastalplasticsurgerymaine.org/,0,0,0.00,2,0,0,0.000000000
+2016-01-17,Coastal Plastics 9.15,300x250 Default Web Ad,mainetoday.com,AudienceExtension 300X250,Default,300x250_smile,http://www.coastalplasticsurgerymaine.org/,2,1407,0.14,206,852,1387,0.000000000
+2016-01-17,Coastal Plastics 9.15,300x50 Default Web Ad,mainetoday.com,AudienceExtension 300X50,Default,300x50,http://www.coastalplasticsurgerymaine.org/,0,138,0.00,7,21,136,0.000000000
+2016-01-17,Coastal Plastics 9.15,728x90 Default Web Ad,mainetoday.com,AudienceExtension 728X90,Default,728X90 Default,http://www.coastalplasticsurgerymaine.org/,0,1,0.00,0,0,0,0.000000000
+2016-01-17,Coastal Plastics 9.15,728x90-2-AudienceExtension 728X90,mainetoday.com,AudienceExtension 728X90,Standard,728x90-2,http://www.coastalplasticsurgerymaine.org/,2,1008,0.20,171,834,1004,0.000000000
+2016-01-17,Coastal Plastics 9.15,Smile 160X600-AudienceExtension  160X600,mainetoday.com,AudienceExtension  160X600,Standard,Smile 160X600,http://www.coastalplasticsurgerymaine.org/,0,355,0.00,88,286,353,0.000000000
+2016-01-17,College Transitions,300X250-Site Scout 300X250 Audience,sitescout.com,Site Scout 300X250 Audience,Standard,300X250,http://www.mainecollegetransitions.org/,0,0,0.00,2,0,0,0.000000000
+2016-01-17,College Transitions,728X90-Site Scout 728X90 Audience,sitescout.com,Site Scout 728X90 Audience,Standard,728X90,http://www.mainecollegetransitions.org/,0,0,0.00,2,0,0,0.000000000
+2016-01-17,College Transitions,MCTanimation.html-Site Scout 160X600 Audience,sitescout.com,Site Scout 160X600 Audience,Standard,MCTanimation.html,http://www.mainecollegetransitions.org/,0,0,0.00,3,0,0,0.000000000
+2016-01-17,DairyPure,Tracking-Catalina,Catalina Marketing - RM,Catalina,Tracking,Tracking,http://www.landolakesmilk.com/,197,70139,0.28,0,0,0,0.000000000
+2016-01-17,FY2016_Graduate,300x250 Default Web Ad,MobileFuse.com,Tablet,Default,SAL_V2,http://usm.maine.edu/explore,0,244,0.00,0,0,0,2.025200000
+2016-01-17,FY2016_Graduate,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,http://usm.maine.edu/explore,1,2113,0.05,235,1360,2107,10.248050000
+2016-01-17,FY2016_Graduate,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,http://usm.maine.edu/explore,1,3496,0.03,243,1277,3491,16.955600000
+2016-01-17,FY2016_Graduate,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,http://usm.maine.edu/explore,0,365,0.00,109,344,365,1.770250000
+2016-01-17,FY2016_Graduate,SAL_V2-Tablet,MobileFuse.com,Tablet,Standard,SAL_V2,http://usm.maine.edu/explore,4,1764,0.23,0,2,2,14.641200000
+2016-01-17,FY2016_Graduate,SAL_V2_Courses-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Courses,http://usm.maine.edu/explore,5,719,0.70,0,5,5,4.997050000
+2016-01-17,FY2016_Graduate,SAL_V2_Graduate-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Graduate,http://usm.maine.edu/explore,11,892,1.23,0,10,10,6.199400000
+2016-01-17,FY2016_Graduate,Tracking-Pandora_Tile,Pandora,Pandora_Tile,Tracking,Tracking,http://usm.maine.edu/explore,23,2184,1.05,0,0,0,0.000000000
+2016-01-17,FY2016_Transfer,300x250 Default Web Ad,MobileFuse.com,Tablet,Default,SAL_V2,https://usm.maine.edu/explore,16,2232,0.72,0,0,0,18.525600000
+2016-01-17,FY2016_Transfer,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,https://usm.maine.edu/explore,0,2464,0.00,350,1600,2460,11.950400000
+2016-01-17,FY2016_Transfer,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,https://usm.maine.edu/explore,0,586,0.00,160,559,586,2.842100000
+2016-01-17,FY2016_Transfer,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,https://usm.maine.edu/explore,4,2576,0.16,297,1663,2575,12.493600000
+2016-01-17,FY2016_Transfer,SAL_V2-Display,Pandora,Display,Standard,SAL_V2,https://usm.maine.edu/explore,15,2435,0.62,203,226,227,0.000000000
+2016-01-17,FY2016_Transfer,SAL_V2_Courses-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Courses,https://usm.maine.edu/explore,4,955,0.42,0,0,0,6.637250000
+2016-01-17,FY2016_Transfer,SAL_V2_Majors-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Majors,https://usm.maine.edu/explore,4,1036,0.39,0,0,0,7.200200000
+2016-01-17,FY2016_Transfer,SAL_V2_Majors-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Majors,https://usm.maine.edu/explore,10,850,1.18,0,0,0,5.907500000
+2016-01-17,FY2016_Undergraduate,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,https://usm.maine.edu/explore,1,150,0.67,64,143,150,0.727500000
+2016-01-17,FY2016_Undergraduate,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,https://usm.maine.edu/explore,0,152,0.00,61,145,151,0.737200000
+2016-01-17,FY2016_Undergraduate,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,https://usm.maine.edu/explore,1,192,0.52,52,148,192,0.931200000
+2016-01-17,FY2016_Undergraduate,SAL_V2-Tablet,MobileFuse.com,Tablet,Standard,SAL_V2,https://usm.maine.edu/explore,6,2367,0.25,1,0,0,19.646100000
+2016-01-17,FY2016_Undergraduate,SAL_V2_Courses-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Courses,https://usm.maine.edu/explore,9,1434,0.63,0,7,7,9.966300000
+2016-01-17,FY2016_Undergraduate,SAL_V2_Majors-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Majors,https://usm.maine.edu/explore,19,1675,1.13,0,8,8,11.641250000
+2016-01-17,HELOC,160x600 Default Web Ad,sitescout.com,SS_Retargeting_160X600,Default,160X600 default,https://www.bangor.com/landing/fixed/default.aspx,0,0,0.00,2,0,0,0.000000000
+2016-01-17,HELOC,300x250 Default Web Ad,sitescout.com,SS_Retargeting_300X250,Default,300X250 Default,https://www.bangor.com/landing/fixed/default.aspx,0,0,0.00,2,0,0,0.000000000
+2016-01-17,HELOC,300x600 Default Web Ad,sitescout.com,SS_Retargeting_300X600,Default,300X600 default,https://www.bangor.com/landing/fixed/default.aspx,0,0,0.00,2,0,0,0.000000000
+2016-01-17,HELOC,HELOC_Lock_728X90-SS_Retargeting_728X90 (copy),sitescout.com,SS_Retargeting_728X90,Standard,HELOC_Lock_728X90,https://www.bangor.com/landing/fixed/default.aspx,0,0,0.00,3,0,0,0.000000000
+2016-01-17,PWM Elite Airways,160X600-160X600,Hearst Corporation,160X600,Standard,160X600,http://eliteairways.com/,0,0,0.00,1,0,0,0.000000000
+2016-01-17,PWM Elite Airways,PWM_Melbourne_300x250-1.zip-300X250,Hearst Corporation,300X250,Standard,PWM_Melbourne_300x250-1.zip,http://eliteairways.com/,0,0,0.00,1,0,0,0.000000000
+2016-01-17,PWM Elite Airways,PWM_Melbourne_728x90_publish 2.zip-728X90,Hearst Corporation,728X90,Standard,PWM_Melbourne_728x90_publish 2.zip,http://eliteairways.com/,0,0,0.00,3,0,0,0.000000000
+2016-01-18,BSB Branding Campaign,160x600 Default Web Ad,Bangor Daily News,BangorDailyNews 160X600,Default,FreeATM_Mainers_160x600_static,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,72,0.00,0,0,0,0.000000000
+2016-01-18,BSB Branding Campaign,160x600 Default Web Ad,Mainetoday.com - Portland Press Herald,Press Herald 160X600,Default,FreeATM_Mainers_160x600_static,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,2,0.00,0,0,0,0.000000000
+2016-01-18,BSB Branding Campaign,160x600 Default Web Ad,Simpli.fi,Audience Extension 160X600,Default,FreeATM_Mainers_160x600_static,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,1,0.00,0,0,0,0.000000000
+2016-01-18,BSB Branding Campaign,160x600 Default Web Ad,mainetoday.com,MaineToday 160X600,Default,FreeATM_Mainers_160x600_static,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,2,0.00,0,0,0,0.000000000
+2016-01-18,BSB Branding Campaign,160x600_publish 2-Audience Extension 160X600,Simpli.fi,Audience Extension 160X600,Standard,160x600_publish 2,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,8,87,9.20,25,64,85,0.000000000
+2016-01-18,BSB Branding Campaign,160x600_publish 2-CentralMaine 160X600,centralmaine.com,CentralMaine 160X600,Standard,160x600_publish 2,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,1,73,1.37,18,56,72,0.000000000
+2016-01-18,BSB Branding Campaign,160x600_publish 2-MaineToday 160X600,mainetoday.com,MaineToday 160X600,Standard,160x600_publish 2,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,4,91,4.40,29,72,90,0.000000000
+2016-01-18,BSB Branding Campaign,160x600_publish 2-Press Herald 160X600,Mainetoday.com - Portland Press Herald,Press Herald 160X600,Standard,160x600_publish 2,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,3,86,3.49,27,62,84,0.000000000
+2016-01-18,BSB Branding Campaign,300x250 Default Web Ad,Bangor Daily News,BangorDailyNews 300X250,Default,FreeATM_Mainers_300x250_static,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,1,1989,0.05,0,0,0,0.000000000
+2016-01-18,BSB Branding Campaign,300x250 Default Web Ad,Mainetoday.com - Portland Press Herald,Press Herald 300X250,Default,FreeATM_Mainers_300x250_static,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,1,0.00,0,0,0,0.000000000
+2016-01-18,BSB Branding Campaign,300x250 Default Web Ad,Simpli.fi,Audience Extension 300X250,Default,FreeATM_Mainers_300x250_static,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,3,0.00,0,0,0,0.000000000
+2016-01-18,BSB Branding Campaign,300x250 Default Web Ad,centralmaine.com,CentralMaine 300X250,Default,FreeATM_Mainers_300x250_static,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,2,0.00,0,0,0,0.000000000
+2016-01-18,BSB Branding Campaign,300x250_publish-Audience Extension 300X250,Simpli.fi,Audience Extension 300X250,Standard,300x250_publish,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,2,419,0.48,71,326,414,0.000000000
+2016-01-18,BSB Branding Campaign,300x250_publish-CentralMaine 300X250,centralmaine.com,CentralMaine 300X250,Standard,300x250_publish,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,437,0.00,100,361,430,0.000000000
+2016-01-18,BSB Branding Campaign,300x250_publish-MaineToday 300X250,mainetoday.com,MaineToday 300X250,Standard,300x250_publish,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,1,583,0.17,198,482,577,0.000000000
+2016-01-18,BSB Branding Campaign,300x250_publish-Press Herald 300X250,Mainetoday.com - Portland Press Herald,Press Herald 300X250,Standard,300x250_publish,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,4,550,0.73,170,471,544,0.000000000
+2016-01-18,BSB Branding Campaign,320x50 Default Web Ad,Mainetoday.com - Portland Press Herald,Press Herald 320X50,Default,BSB_FreeATM_Mainers_StaticAd_320x50,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,1,1417,0.07,424,1410,1416,0.000000000
+2016-01-18,BSB Branding Campaign,320x50 Default Web Ad,Simpli.fi,Audience Extension 320X50,Default,BSB_FreeATM_Mainers_StaticAd_320x50,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,408,0.00,83,270,369,0.000000000
+2016-01-18,BSB Branding Campaign,320x50 Default Web Ad,centralmaine.com,CentralMaine 320X50,Default,BSB_FreeATM_Mainers_StaticAd_320x50,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,969,0.00,240,870,968,0.000000000
+2016-01-18,BSB Branding Campaign,320x50 Default Web Ad,mainetoday.com,MaineToday 320X50,Default,BSB_FreeATM_Mainers_StaticAd_320x50,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,308,0.00,107,278,308,0.000000000
+2016-01-18,BSB Branding Campaign,728x90 Default Web Ad,Bangor Daily News,BangorDailyNews 728X90,Default,FreeATM_Mainers_728x90_static,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,2117,0.00,0,0,0,0.000000000
+2016-01-18,BSB Branding Campaign,728x90 Default Web Ad,Mainetoday.com - Portland Press Herald,Press Herald 728X90,Default,FreeATM_Mainers_728x90_static,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,1,0.00,0,0,0,0.000000000
+2016-01-18,BSB Branding Campaign,728x90 Default Web Ad,Simpli.fi,Audience Extension 728X90,Default,FreeATM_Mainers_728x90_static,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,1,0.00,0,0,0,0.000000000
+2016-01-18,BSB Branding Campaign,728x90 Default Web Ad,centralmaine.com,CentralMaine 728X90,Default,FreeATM_Mainers_728x90_static,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,1,0.00,0,0,0,0.000000000
+2016-01-18,BSB Branding Campaign,728x90 Default Web Ad,mainetoday.com,MaineToday 728X90,Default,FreeATM_Mainers_728x90_static,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,0,4,0.00,0,0,0,0.000000000
+2016-01-18,BSB Branding Campaign,728x90_publish-Audience Extension 728X90,Simpli.fi,Audience Extension 728X90,Standard,728x90_publish,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,4,301,1.33,64,238,300,0.000000000
+2016-01-18,BSB Branding Campaign,728x90_publish-CentralMaine 728X90,centralmaine.com,CentralMaine 728X90,Standard,728x90_publish,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,2,566,0.35,250,523,564,0.000000000
+2016-01-18,BSB Branding Campaign,728x90_publish-MaineToday 728X90,mainetoday.com,MaineToday 728X90,Standard,728x90_publish,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,3,418,0.72,115,360,415,0.000000000
+2016-01-18,BSB Branding Campaign,728x90_publish-Press Herald 728X90,Mainetoday.com - Portland Press Herald,Press Herald 728X90,Standard,728x90_publish,http://www.bangor.com/Personal-Banking/Checking-Accounts/Free-ATMs-Worldwide.aspx,5,534,0.94,195,472,529,0.000000000
+2016-01-18,BSB Mortgage,mortgage_160x600-Sitescout 160X600,sitescout.com,Sitescout 160X600,Standard,mortgage_160x600,http://www.bangormortgage.com/Default.aspx,0,0,0.00,3,0,0,0.000000000
+2016-01-18,BSB Mortgage,mortgage_300x250-Sitescout 300X250,sitescout.com,Sitescout 300X250,Standard,mortgage_300x250,http://www.bangormortgage.com/Default.aspx,0,0,0.00,2,0,0,0.000000000
+2016-01-18,BSB Mortgage,mortgage_728x90-Sitescout 728X90,sitescout.com,Sitescout 728X90,Standard,mortgage_728x90,http://www.bangormortgage.com/Default.aspx,0,0,0.00,1,0,0,0.000000000
+2016-01-18,Coastal Plastic Retargeting,160X600 smile-Sitescout_Retargeting 160X600,sitescout.com,Sitescout_Retargeting 160X600,Standard,160X600 smile,http://www.coastalplasticsurgerymaine.org/,0,0,0.00,2,0,0,0.000000000
+2016-01-18,Coastal Plastic Retargeting,300x250_smile-Sitescout_Retargeting 300X250,sitescout.com,Sitescout_Retargeting 300X250,Standard,300x250_smile,http://www.coastalplasticsurgerymaine.org/,0,0,0.00,1,0,0,0.000000000
+2016-01-18,Coastal Plastic Retargeting,728x90_smile-Sitescout_Retargeting 728x90,sitescout.com,Sitescout_Retargeting 728x90,Standard,728x90_smile,http://www.coastalplasticsurgerymaine.org/,0,0,0.00,1,0,0,0.000000000
+2016-01-18,Coastal Plastics 9.15,300x250 Default Web Ad,mainetoday.com,AudienceExtension 300X250,Default,300x250_smile,http://www.coastalplasticsurgerymaine.org/,1,1034,0.10,169,699,1025,0.000000000
+2016-01-18,Coastal Plastics 9.15,300x50 Default Web Ad,mainetoday.com,AudienceExtension 300X50,Default,300x50,http://www.coastalplasticsurgerymaine.org/,0,60,0.00,1,5,58,0.000000000
+2016-01-18,Coastal Plastics 9.15,728x90 Default Web Ad,mainetoday.com,AudienceExtension 728X90,Default,728X90 Default,http://www.coastalplasticsurgerymaine.org/,0,3,0.00,0,0,0,0.000000000
+2016-01-18,Coastal Plastics 9.15,728x90-2-AudienceExtension 728X90,mainetoday.com,AudienceExtension 728X90,Standard,728x90-2,http://www.coastalplasticsurgerymaine.org/,5,775,0.65,144,613,762,0.000000000
+2016-01-18,Coastal Plastics 9.15,Smile 160X600-AudienceExtension  160X600,mainetoday.com,AudienceExtension  160X600,Standard,Smile 160X600,http://www.coastalplasticsurgerymaine.org/,2,434,0.46,102,337,433,0.000000000
+2016-01-18,College Transitions,300X250-Site Scout 300X250 Audience,sitescout.com,Site Scout 300X250 Audience,Standard,300X250,http://www.mainecollegetransitions.org/,0,0,0.00,1,0,0,0.000000000
+2016-01-18,College Transitions,728X90-Site Scout 728X90 Audience,sitescout.com,Site Scout 728X90 Audience,Standard,728X90,http://www.mainecollegetransitions.org/,0,0,0.00,2,0,0,0.000000000
+2016-01-18,College Transitions,MCTanimation.html-Site Scout 160X600 Audience,sitescout.com,Site Scout 160X600 Audience,Standard,MCTanimation.html,http://www.mainecollegetransitions.org/,0,0,0.00,1,0,0,0.000000000
+2016-01-18,DairyPure,Tracking-Catalina,Catalina Marketing - RM,Catalina,Tracking,Tracking,http://www.landolakesmilk.com/,196,64773,0.30,0,0,0,0.000000000
+2016-01-18,FY2016_Graduate,160x600 Default Web Ad,Collective.com,Cross Platform,Default,SAL_V2,http://usm.maine.edu/explore,0,8,0.00,0,0,0,0.038800000
+2016-01-18,FY2016_Graduate,300x250 Default Web Ad,Collective.com,Cross Platform,Default,SAL_V2,http://usm.maine.edu/explore,0,5,0.00,0,0,0,0.024250000
+2016-01-18,FY2016_Graduate,300x250 Default Web Ad,MobileFuse.com,Tablet,Default,SAL_V2,http://usm.maine.edu/explore,0,213,0.00,0,0,0,1.767900000
+2016-01-18,FY2016_Graduate,728x90 Default Web Ad,Collective.com,Cross Platform,Default,SAL_V2,http://usm.maine.edu/explore,0,21,0.00,0,0,0,0.101850000
+2016-01-18,FY2016_Graduate,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,http://usm.maine.edu/explore,0,321,0.00,82,301,321,1.556850000
+2016-01-18,FY2016_Graduate,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,http://usm.maine.edu/explore,1,2129,0.05,288,1321,2122,10.325650000
+2016-01-18,FY2016_Graduate,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,http://usm.maine.edu/explore,0,3549,0.00,258,1380,3546,17.212650000
+2016-01-18,FY2016_Graduate,SAL_V2-Tablet,MobileFuse.com,Tablet,Standard,SAL_V2,http://usm.maine.edu/explore,2,1767,0.11,1,0,0,14.666100000
+2016-01-18,FY2016_Graduate,SAL_V2_Courses-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Courses,http://usm.maine.edu/explore,5,736,0.68,0,3,3,5.115200000
+2016-01-18,FY2016_Graduate,SAL_V2_Graduate-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Graduate,http://usm.maine.edu/explore,10,867,1.15,0,1,1,6.025650000
+2016-01-18,FY2016_Graduate,Tracking-Pandora_Tile,Pandora,Pandora_Tile,Tracking,Tracking,http://usm.maine.edu/explore,17,2318,0.73,0,0,0,0.000000000
+2016-01-18,FY2016_Transfer,300x250 Default Web Ad,MobileFuse.com,Tablet,Default,SAL_V2,https://usm.maine.edu/explore,16,2244,0.71,0,0,0,18.625200000
+2016-01-18,FY2016_Transfer,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,https://usm.maine.edu/explore,0,2050,0.00,314,1358,2044,9.942500000
+2016-01-18,FY2016_Transfer,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,https://usm.maine.edu/explore,0,2566,0.00,280,1585,2566,12.445100000
+2016-01-18,FY2016_Transfer,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,https://usm.maine.edu/explore,0,433,0.00,138,412,433,2.100050000
+2016-01-18,FY2016_Transfer,SAL_V2-Display,Pandora,Display,Standard,SAL_V2,https://usm.maine.edu/explore,30,2573,1.17,238,254,260,0.000000000
+2016-01-18,FY2016_Transfer,SAL_V2_Courses-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Courses,https://usm.maine.edu/explore,5,983,0.51,0,0,0,6.831850000
+2016-01-18,FY2016_Transfer,SAL_V2_Majors-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Majors,https://usm.maine.edu/explore,11,1024,1.07,0,0,0,7.116800000
+2016-01-18,FY2016_Transfer,SAL_V2_Majors-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Majors,https://usm.maine.edu/explore,11,804,1.37,0,0,0,5.587800000
+2016-01-18,FY2016_Undergraduate,160x600 Default Web Ad,Collective.com,Cross Platform,Default,SAL_V2,https://usm.maine.edu/explore,0,2,0.00,0,0,0,0.009700000
+2016-01-18,FY2016_Undergraduate,728x90 Default Web Ad,Collective.com,Cross Platform,Default,SAL_V2,https://usm.maine.edu/explore,0,15,0.00,0,0,0,0.072750000
+2016-01-18,FY2016_Undergraduate,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,https://usm.maine.edu/explore,0,84,0.00,27,81,84,0.407400000
+2016-01-18,FY2016_Undergraduate,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,https://usm.maine.edu/explore,0,163,0.00,60,151,163,0.790550000
+2016-01-18,FY2016_Undergraduate,SAL_V2-Cross Platform,Collective.com,Cross Platform,Standard,SAL_V2,https://usm.maine.edu/explore,0,382,0.00,85,183,382,1.852700000
+2016-01-18,FY2016_Undergraduate,SAL_V2-Tablet,MobileFuse.com,Tablet,Standard,SAL_V2,https://usm.maine.edu/explore,6,2328,0.26,7,16,16,19.322400000
+2016-01-18,FY2016_Undergraduate,SAL_V2_Courses-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Courses,https://usm.maine.edu/explore,7,1381,0.51,1,6,6,9.597950000
+2016-01-18,FY2016_Undergraduate,SAL_V2_Majors-Mobile,MobileFuse.com,Mobile,Standard,SAL_V2_Majors,https://usm.maine.edu/explore,11,1705,0.65,0,7,7,11.849750000
+2016-01-18,HELOC,160x600 Default Web Ad,sitescout.com,SS_Retargeting_160X600,Default,160X600 default,https://www.bangor.com/landing/fixed/default.aspx,0,0,0.00,3,0,0,0.000000000
+2016-01-18,HELOC,300x250 Default Web Ad,sitescout.com,SS_Retargeting_300X250,Default,300X250 Default,https://www.bangor.com/landing/fixed/default.aspx,0,0,0.00,2,0,0,0.000000000
+2016-01-18,HELOC,300x600 Default Web Ad,sitescout.com,SS_Retargeting_300X600,Default,300X600 default,https://www.bangor.com/landing/fixed/default.aspx,0,0,0.00,2,0,0,0.000000000
+2016-01-18,HELOC,HELOC_Lock_728X90-SS_Retargeting_728X90 (copy),sitescout.com,SS_Retargeting_728X90,Standard,HELOC_Lock_728X90,https://www.bangor.com/landing/fixed/default.aspx,0,0,0.00,1,0,0,0.000000000
+2016-01-18,PWM Elite Airways,160X600-160X600,Hearst Corporation,160X600,Standard,160X600,http://eliteairways.com/,0,0,0.00,1,0,0,0.000000000
+2016-01-18,PWM Elite Airways,PWM_Melbourne_728x90_publish 2.zip-728X90,Hearst Corporation,728X90,Standard,PWM_Melbourne_728x90_publish 2.zip,http://eliteairways.com/,0,0,0.00,3,0,0,0.000000000
+Grand Total:,---,---,---,---,---,---,---,2482,798385,0.31,32089,112857,159899,1192.376450000

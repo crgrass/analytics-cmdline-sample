@@ -54,6 +54,9 @@ public class ImportLinkedIn {
       String medium = "Social"; //Hardcoded due to LinkedIn always being social
       String campaignExpectedValueFY15 = "PDP- Broader Targeting";
       String campaignExpectedValueFY16 = "PDP- Broader Targeting_1";
+      String campaignExpectedValueMPPH = "MPH/MPPM";
+      String campaignExpectedValueMPPHTest = "MPPM Test";
+      
       String campaign = "";
       String adContent = "(not set)";
       
@@ -62,6 +65,10 @@ public class ImportLinkedIn {
         campaign = "FY2015_LinkedIn";
       } else if (row[4].equals(campaignExpectedValueFY16)) {
         campaign = "FY2016_PDP";
+      } else if (row[4].equals(campaignExpectedValueMPPH)) {
+        campaign = "FY2016_Graduate";
+      } else if (row[4].equals(campaignExpectedValueMPPHTest)) {
+        campaign = "FY2016_Graduate";
       } else {
         throw new IllegalArgumentException("The value at index 4 (" + row[4] + ")"
             + "  used to determine campaign was not expected.");
@@ -231,6 +238,8 @@ public class ImportLinkedIn {
     DataAppTest.logger.log(Level.INFO,"Connecting to Google Analytics API for "
         + "Behavior metrics." + System.lineSeparator());
     GaData behaviorResults = GACall.main(args,testDates,1);
+    
+    GACall.printGaData(behaviorResults);
 
     
 
@@ -248,6 +257,10 @@ public class ImportLinkedIn {
         }// end of if
       }//end of inner for
     }//end of outer for
+    
+    for (LIRecord currRec : acquisitionData) {
+      System.out.println(currRec);
+    }
     
     //Now that we have the VORecord fully loaded we will import into the database
     //Establish Connection
